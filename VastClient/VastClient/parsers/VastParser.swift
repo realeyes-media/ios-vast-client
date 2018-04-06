@@ -149,6 +149,9 @@ extension VastParser: XMLParserDelegate {
                     vastMediaFiles.append(mediaFile)
                     currentMediaFile = nil
                 }
+            case LinearCreativeElements.mediafiles:
+                currentLinearCreative?.mediaFiles = vastMediaFiles
+                vastMediaFiles = [VastMediaFile]()
             case LinearCreativeElements.creative:
                 if let linearCreative = currentLinearCreative {
                     vastLinearCreatives.append(linearCreative)

@@ -1,0 +1,171 @@
+//
+//  VastParser.swift
+//  VastClient
+//
+//  Created by John Gainfort Jr on 4/6/18.
+//  Copyright © 2018 John Gainfort Jr. All rights reserved.
+//
+
+import Foundation
+
+class VastParser: NSObject {
+
+    var xmlParser: XMLParser?
+    var validVastDocument = false
+    var parsedFirstElement = false
+    var fatalError: Error?
+
+    var vastModel: VastModel?
+
+    var vastAds = [VastAd]()
+    var currentVastAd: VastAd?
+
+    var vastImpression = [VastImpression]()
+    var currentVastImpression: VastImpression?
+
+    var vastLinearCreatives = [VastLinearCreative]()
+    var currentLinearCreative: VastLinearCreative?
+
+    var vastTrackingEvents = [VastTrackingEvent]()
+    var currentTrackingEvent: VastTrackingEvent?
+
+    var vastVideoClicks = [VastVideoClick]()
+    var currentVideoClick: VastVideoClick?
+
+    var vastMediaFiles = [VastMediaFile]()
+    var currentMediaFile: VastMediaFile?
+
+    var currentContent = ""
+
+    func parse(url: URL) throws -> VastModel {
+        xmlParser = XMLParser(contentsOf: url)
+        guard let parser = xmlParser else {
+            throw VastErrors.unableToCreateXMLParser
+        }
+
+        parser.delegate = self
+
+        if parser.parse() {
+            if !validVastDocument {
+                throw VastErrors.invalidVASTDocument
+            }
+
+            if fatalError != nil {
+                throw VastErrors.invalidXMLDocument
+            }
+        } else {
+            throw VastErrors.unableToParseDocument
+        }
+
+        guard let vm = vastModel else {
+            throw VastErrors.internalError
+        }
+
+        return vm
+    }
+
+}
+
+extension VastParser: XMLParserDelegate {
+
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+        if !validVastDocument && !parsedFirstElement {
+            parsedFirstElement = true
+            if elementName == VastElements.vast {
+                validVastDocument = true
+                vastModel = VastModel(attrDict: attributeDict)
+            }
+        }
+
+        if validVastDocument && fatalError == nil {
+            switch elementName {
+            case AdElements.ad:
+                currentVastAd = VastAd(attrDict: attributeDict)
+            case ImpressionElements.impression:
+                currentVastImpression = VastImpression(attrDict: attributeDict)
+            case LinearCreativeElements.creative:
+                currentLinearCreative = VastLinearCreative(attrDict: attributeDict)
+            case TrackingEventElements.tracking:
+                currentTrackingEvent = VastTrackingEvent(attrDict: attributeDict)
+            case VideoClickElements.clickthrough:
+               currentVideoClick = VastVideoClick(attrDict: attributeDict)
+            case MediaFileElements.mediafile:
+                currentMediaFile = VastMediaFile(attrDict: attributeDict)
+            default:
+                break
+            }
+        }
+    }
+
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+        currentContent += string
+    }
+
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        if validVastDocument && fatalError == nil {
+            switch elementName {
+            case VastElements.vast:
+                vastModel?.ads = vastAds
+            case AdElements.ad:
+                if let vastAd = currentVastAd {
+                    vastAds.append(vastAd)
+                    currentVastAd = nil
+                }
+            case AdElements.adsystem:
+                currentVastAd?.adSystem = currentContent
+            case AdElements.adtitle:
+                currentVastAd?.adTitle = currentContent
+            case AdElements.error:
+                currentVastAd?.error = URL(string: currentContent)
+            case ImpressionElements.impression:
+                currentVastImpression?.url = URL(string: currentContent)
+                if let vastImpression = currentVastImpression {
+                    currentVastAd?.impressions.append(vastImpression)
+                    currentVastImpression = nil
+                }
+            case LinearCreativeElements.duration:
+                currentLinearCreative?.duration = currentContent.convertToSeconds() ?? -1
+            case TrackingEventElements.tracking:
+                currentTrackingEvent?.url = URL(string: currentContent)
+                if let event = currentTrackingEvent {
+                    vastTrackingEvents.append(event)
+                    currentTrackingEvent = nil
+                }
+            case LinearCreativeElements.trackingevents:
+                currentLinearCreative?.trackingEvents = vastTrackingEvents
+                vastTrackingEvents = [VastTrackingEvent]()
+            case VideoClickElements.clickthrough:
+                currentVideoClick?.url = URL(string: currentContent)
+                if let click = currentVideoClick {
+                    vastVideoClicks.append(click)
+                    currentVideoClick = nil
+                }
+            case LinearCreativeElements.videoclicks:
+                currentLinearCreative?.videoClicks = vastVideoClicks
+                vastVideoClicks = [VastVideoClick]()
+            case MediaFileElements.mediafile:
+                currentMediaFile?.url = URL(string: currentContent)
+                if let mediaFile = currentMediaFile {
+                    vastMediaFiles.append(mediaFile)
+                    currentMediaFile = nil
+                }
+            case LinearCreativeElements.creative:
+                if let linearCreative = currentLinearCreative {
+                    vastLinearCreatives.append(linearCreative)
+                    currentLinearCreative = nil
+                }
+            case AdElements.creatives:
+                currentVastAd?.linearCreatives = vastLinearCreatives
+                vastLinearCreatives = [VastLinearCreative]()
+            default:
+                break
+            }
+            currentContent = ""
+        }
+    }
+
+    func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
+        fatalError = parseError
+    }
+
+}

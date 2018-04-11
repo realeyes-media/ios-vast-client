@@ -17,8 +17,8 @@ struct VastAttributes {
 }
 
 public struct VastModel {
-    let version: String
-    var ads = [VastAd]()
+    public let version: String
+    public var ads = [VastAd]()
 }
 
 extension VastModel {

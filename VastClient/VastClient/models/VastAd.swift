@@ -23,13 +23,13 @@ struct AdAttributes {
 }
 
 public struct VastAd {
-    let id: String
-    let sequence: Int
-    var adSystem = ""
-    var adTitle = ""
-    var error: URL?
-    var impressions = [VastImpression]()
-    var linearCreatives = [VastLinearCreative]()
+    public let id: String
+    public let sequence: Int
+    public var adSystem = ""
+    public var adTitle = ""
+    public var error: URL?
+    public var impressions = [VastImpression]()
+    public var linearCreatives = [VastLinearCreative]()
 }
 
 extension VastAd {

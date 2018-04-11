@@ -21,12 +21,12 @@ struct MediaFileAttributes {
 }
 
 public struct VastMediaFile {
-    let delivery: String
-    let height: String
-    let width: String
-    let id: String
-    let type: String
-    var url: URL?
+    public let delivery: String
+    public let height: String
+    public let width: String
+    public let id: String
+    public let type: String
+    public var url: URL?
 }
 
 extension VastMediaFile {

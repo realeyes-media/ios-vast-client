@@ -17,8 +17,8 @@ struct VideoClickAttributes {
 }
 
 public struct VastVideoClick {
-    let id: String
-    var url: URL?
+    public let id: String
+    public var url: URL?
 }
 
 extension VastVideoClick {

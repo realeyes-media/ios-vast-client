@@ -17,8 +17,8 @@ struct ImpressionAttributes {
 }
 
 public struct VastImpression {
-    let id: String
-    var url: URL?
+    public let id: String
+    public var url: URL?
 }
 
 extension VastImpression {

@@ -17,7 +17,7 @@ struct VastAttributes {
 }
 
 public struct VastModel {
-    let version: String
+    public let version: String
     public var ads = [VastAd]()
 }
 

@@ -25,8 +25,8 @@ struct TrackingEventAttributes {
 }
 
 public struct VastTrackingEvent {
-    let type: TrackingEventType
-    var url: URL?
+    public let type: TrackingEventType
+    public var url: URL?
 }
 
 extension VastTrackingEvent {

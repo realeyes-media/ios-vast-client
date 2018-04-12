@@ -29,7 +29,7 @@ public struct VastAd {
     var adTitle = ""
     var error: URL?
     var impressions = [VastImpression]()
-    var linearCreatives = [VastLinearCreative]()
+    public var linearCreatives = [VastLinearCreative]()
 }
 
 extension VastAd {

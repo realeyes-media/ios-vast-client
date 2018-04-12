@@ -28,7 +28,7 @@ public struct VastLinearCreative {
     var duration = 0
     var trackingEvents = [VastTrackingEvent]()
     var videoClicks = [VastVideoClick]()
-    var mediaFiles = [VastMediaFile]()
+    public var mediaFiles = [VastMediaFile]()
 }
 
 extension VastLinearCreative {

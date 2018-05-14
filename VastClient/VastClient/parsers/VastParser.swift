@@ -40,25 +40,25 @@ class VastParser: NSObject {
     func parse(url: URL) throws -> VastModel {
         xmlParser = XMLParser(contentsOf: url)
         guard let parser = xmlParser else {
-            throw VastErrors.unableToCreateXMLParser
+            throw VastError.unableToCreateXMLParser
         }
 
         parser.delegate = self
 
         if parser.parse() {
             if !validVastDocument {
-                throw VastErrors.invalidVASTDocument
+                throw VastError.invalidVASTDocument
             }
 
             if fatalError != nil {
-                throw VastErrors.invalidXMLDocument
+                throw VastError.invalidXMLDocument
             }
         } else {
-            throw VastErrors.unableToParseDocument
+            throw VastError.unableToParseDocument
         }
 
         guard let vm = vastModel else {
-            throw VastErrors.internalError
+            throw VastError.internalError
         }
 
         return vm
@@ -105,7 +105,7 @@ extension VastParser: XMLParserDelegate {
         if validVastDocument && fatalError == nil {
             switch elementName {
             case VastElements.vast:
-                vastModel?.ads = vastAds
+                vastModel?.ads = vastAds.sorted(by: { $0.sequence < $1.sequence })
             case AdElements.ad:
                 if let vastAd = currentVastAd {
                     vastAds.append(vastAd)
@@ -124,7 +124,7 @@ extension VastParser: XMLParserDelegate {
                     currentVastImpression = nil
                 }
             case LinearCreativeElements.duration:
-                currentLinearCreative?.duration = currentContent.convertToSeconds() ?? -1
+                currentLinearCreative?.duration = currentContent.convertToSeconds() ?? -1.0
             case TrackingEventElements.tracking:
                 currentTrackingEvent?.url = URL(string: currentContent)
                 if let event = currentTrackingEvent {

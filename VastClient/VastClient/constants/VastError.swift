@@ -1,5 +1,5 @@
 //
-//  VastErrors.swift
+//  VastError.swift
 //  VastClient
 //
 //  Created by John Gainfort Jr on 4/6/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum VastErrors: Error {
+public enum VastError: Error {
     case invalidXMLDocument
     case invalidVASTDocument
     case unableToParseDocument

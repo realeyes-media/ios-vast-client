@@ -25,7 +25,7 @@ struct LinearCreativeAttributes {
 public struct VastLinearCreative {
     public let adId: String
     public let id: String
-    public var duration = 0
+    public var duration = 0.0
     public var trackingEvents = [VastTrackingEvent]()
     public var videoClicks = [VastVideoClick]()
     public var mediaFiles = [VastMediaFile]()

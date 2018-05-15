@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F442F9720AB461C00303767 /* http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F442F9620AB461C00303767 /* http.swift */; };
 		0F7B97892077CB340096438D /* VastClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7B977F2077CB340096438D /* VastClient.framework */; };
 		0F7B978E2077CB340096438D /* VastClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B978D2077CB340096438D /* VastClientTests.swift */; };
 		0F7B97902077CB340096438D /* VastClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7B97822077CB340096438D /* VastClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F442F9620AB461C00303767 /* http.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = http.swift; sourceTree = "<group>"; };
 		0F7B977F2077CB340096438D /* VastClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VastClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F7B97822077CB340096438D /* VastClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VastClient.h; sourceTree = "<group>"; };
 		0F7B97832077CB340096438D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				0F7B97D62077E3000096438D /* String+seconds.swift */,
 				0F7B97D82077E40A0096438D /* Sequence+every.swift */,
+				0F442F9620AB461C00303767 /* http.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				0F7B97C02077D4440096438D /* VastImpression.swift in Sources */,
 				0F7B97C22077D4860096438D /* VastLinearCreative.swift in Sources */,
 				0FEDAAC320AA3F9F006850C8 /* TrackingCreative.swift in Sources */,
+				0F442F9720AB461C00303767 /* http.swift in Sources */,
 				0F7B97DD20782FF90096438D /* VastTracker.swift in Sources */,
 				0F7B97C82077D78F0096438D /* VastMediaFile.swift in Sources */,
 				0F7B97D32077E0DC0096438D /* VastClient.swift in Sources */,

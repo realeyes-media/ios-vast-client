@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TrackingError: Error {
+public enum TrackingError: Error {
     case UnableToUpdateProgress(msg: String)
     case UnableToProvideCreativeClickThroughUrls
     case InternalError(msg: String)

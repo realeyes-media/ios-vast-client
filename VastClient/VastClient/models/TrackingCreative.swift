@@ -15,7 +15,7 @@ struct TrackingCreative {
     let midpoint: Double
     let thirdQuartile: Double
     let duration: Double
-    var trackedStarted = false
+    var trackedStart = false
     var trackedFirstQuartile = false
     var trackedMidpoint = false
     var trackedThirdQuartile = false
@@ -28,11 +28,14 @@ extension TrackingCreative {
         self.vastAd = vastAd
         self.duration = creative.duration
         self.firstQuartile = duration * 0.25
-        self.midpoint = duration * 0.25
+        self.midpoint = duration * 0.5
         self.thirdQuartile = duration * 0.75
     }
 
-    func callTrackingUrls(_ url: [URL]) {
-
+    func callTrackingUrls(_ urls: [URL]) {
+        print("Calling \(urls.count) urls")
+        urls.forEach { url in
+            makeRequest(withUrl: url)
+        }
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol VastTrackerDelegate: class {
+public protocol VastTrackerDelegate {
     func adBreakStart(_ vastModel: VastModel)
     func adStart(_ ad: VastAd)
     func adFirstQuatile(_ ad: VastAd)
@@ -35,18 +35,19 @@ public class VastTracker {
     private var completedAdAccumulatedDuration = 0.0
     private var currentTrackingCreative: TrackingCreative?
 
-    public init(vastModel: VastModel, startTime: Double) {
+    public init(vastModel: VastModel, startTime: Double, delegate: VastTrackerDelegate? = nil) {
         self.startTime = startTime
         self.vastModel = vastModel
         self.vastAds = vastModel.ads
         self.trackingStatus = .tracking
+        self.delegate = delegate
 
         delegate?.adBreakStart(vastModel)
     }
 
     public func updateProgress(time: Double) throws {
         var message = "Cannot update tracking progress."
-        guard trackingStatus == .tracking, trackingStatus == .paused else {
+        guard trackingStatus == .tracking || trackingStatus == .paused else {
             switch trackingStatus {
             case .errored:
                 message += "Status is errored"
@@ -81,8 +82,8 @@ public class VastTracker {
         }
 
         if playhead < creative.duration {
-            if !creative.trackedStarted {
-                creative.trackedStarted = true
+            if !creative.trackedStart {
+                creative.trackedStart = true
 
                 let impressions = creative.vastAd.impressions.filter { $0.url != nil }.map { $0.url! }
                 creative.callTrackingUrls(impressions)
@@ -118,6 +119,8 @@ public class VastTracker {
                     delegate?.adThirdQuartile(creative.vastAd)
                 }
             }
+
+            currentTrackingCreative = creative
         } else {
             if !creative.trackedComplete {
                 creative.trackedComplete = true

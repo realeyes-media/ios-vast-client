@@ -10,12 +10,11 @@ import Foundation
 
 public class VastClient {
 
-    private let vastParser = VastParser()
-
     public init() {}
 
     public func parse(contentsOf url: URL) throws -> VastModel {
-        return try vastParser.parse(url: url)
+        let parser = VastParser()
+        return try parser.parse(url: url)
     }
 
 }

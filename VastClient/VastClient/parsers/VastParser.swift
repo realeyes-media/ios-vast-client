@@ -38,8 +38,6 @@ class VastParser: NSObject {
     var currentContent = ""
 
     func parse(url: URL) throws -> VastModel {
-        reset()
-
         xmlParser = XMLParser(contentsOf: url)
         guard let parser = xmlParser else {
             throw VastError.unableToCreateXMLParser
@@ -64,34 +62,6 @@ class VastParser: NSObject {
         }
 
         return vm
-    }
-
-    private func reset() {
-        xmlParser = nil
-        parsedFirstElement = false
-        fatalError = nil
-
-        vastModel = nil
-
-        vastAds = [VastAd]()
-        currentVastAd = nil
-
-        vastImpression = [VastImpression]()
-        currentVastImpression = nil
-
-        vastLinearCreatives = [VastLinearCreative]()
-        currentLinearCreative = nil
-
-        vastTrackingEvents = [VastTrackingEvent]()
-        currentTrackingEvent = nil
-
-        vastVideoClicks = [VastVideoClick]()
-        currentVideoClick = nil
-
-        vastMediaFiles = [VastMediaFile]()
-        currentMediaFile = nil
-
-        currentContent = ""
     }
 
 }

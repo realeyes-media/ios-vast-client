@@ -9,19 +9,20 @@
 import Foundation
 
 public protocol VastTrackerDelegate {
-    func adBreakStart(_ vastModel: VastModel)
-    func adStart(_ ad: VastAd)
-    func adFirstQuatile(_ ad: VastAd)
-    func adMidpoint(_ ad: VastAd)
-    func adThirdQuartile(_ ad: VastAd)
-    func adComplete(_ ad: VastAd)
-    func adBreakComplete(_ vastModel: VastModel)
+    func adBreakStart(_ id: String, _ vastModel: VastModel)
+    func adStart(_ id: String, _ ad: VastAd)
+    func adFirstQuatile(_ id: String, _ ad: VastAd)
+    func adMidpoint(_ id: String, _ ad: VastAd)
+    func adThirdQuartile(_ id: String, _ ad: VastAd)
+    func adComplete(_ id: String, _ ad: VastAd)
+    func adBreakComplete(_ id: String, _ vastModel: VastModel)
 }
 
 public class VastTracker {
 
     public var delegate: VastTrackerDelegate?
 
+    private let id: String
     private var trackingStatus: TrackingStatus = .unknown
     private let vastModel: VastModel
     private let startTime: Double
@@ -35,14 +36,15 @@ public class VastTracker {
     private var completedAdAccumulatedDuration = 0.0
     private var currentTrackingCreative: TrackingCreative?
 
-    public init(vastModel: VastModel, startTime: Double, delegate: VastTrackerDelegate? = nil) {
+    public init(id: String, vastModel: VastModel, startTime: Double, delegate: VastTrackerDelegate? = nil) {
+        self.id = id
         self.startTime = startTime
         self.vastModel = vastModel
         self.vastAds = vastModel.ads
         self.trackingStatus = .tracking
         self.delegate = delegate
 
-        delegate?.adBreakStart(vastModel)
+        delegate?.adBreakStart(id, vastModel)
     }
 
     public func updateProgress(time: Double) throws {
@@ -69,7 +71,7 @@ public class VastTracker {
             guard let vastAd = vastAds.first,
                 let creative = vastAd.linearCreatives.first else {
                     trackingStatus = .complete
-                    delegate?.adBreakComplete(vastModel)
+                    delegate?.adBreakComplete(id, vastModel)
                     return
             }
 
@@ -87,7 +89,7 @@ public class VastTracker {
 
                 let impressions = creative.vastAd.impressions.filter { $0.url != nil }.map { $0.url! }
                 creative.callTrackingUrls(impressions)
-                delegate?.adStart(creative.vastAd)
+                delegate?.adStart(id, creative.vastAd)
             }
 
             // TODO: make the http calls for the quartile events
@@ -98,7 +100,7 @@ public class VastTracker {
                             .filter { $0.type == .firstQuartile && $0.url != nil }
                         .map { $0.url! }
                     creative.callTrackingUrls(trackingUrls)
-                    delegate?.adFirstQuatile(creative.vastAd)
+                    delegate?.adFirstQuatile(id, creative.vastAd)
                 }
             } else if playhead > creative.midpoint && playhead < creative.thirdQuartile {
                 if !creative.trackedMidpoint {
@@ -107,7 +109,7 @@ public class VastTracker {
                         .filter { $0.type == .midpoint && $0.url != nil }
                         .map { $0.url! }
                     creative.callTrackingUrls(trackingUrls)
-                    delegate?.adMidpoint(creative.vastAd)
+                    delegate?.adMidpoint(id, creative.vastAd)
                 }
             } else if playhead > creative.thirdQuartile && playhead < creative.duration {
                 if !creative.trackedThirdQuartile {
@@ -116,7 +118,7 @@ public class VastTracker {
                         .filter { $0.type == .thirdQuartile && $0.url != nil }
                         .map { $0.url! }
                     creative.callTrackingUrls(trackingUrls)
-                    delegate?.adThirdQuartile(creative.vastAd)
+                    delegate?.adThirdQuartile(id, creative.vastAd)
                 }
             }
 
@@ -128,7 +130,7 @@ public class VastTracker {
                     .filter { $0.type == .complete && $0.url != nil }
                     .map { $0.url! }
                 creative.callTrackingUrls(trackingUrls)
-                delegate?.adComplete(creative.vastAd)
+                delegate?.adComplete(id, creative.vastAd)
                 completedAdAccumulatedDuration += creative.duration
             }
 
@@ -138,7 +140,7 @@ public class VastTracker {
                 try? updateProgress(time: time)
             } else {
                 trackingStatus = .complete
-                delegate?.adBreakComplete(vastModel)
+                delegate?.adBreakComplete(id, vastModel)
             }
         }
     }

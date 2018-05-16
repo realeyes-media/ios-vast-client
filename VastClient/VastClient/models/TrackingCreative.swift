@@ -33,7 +33,6 @@ extension TrackingCreative {
     }
 
     func callTrackingUrls(_ urls: [URL]) {
-        print("Calling \(urls.count) urls")
         urls.forEach { url in
             makeRequest(withUrl: url)
         }

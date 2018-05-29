@@ -61,6 +61,10 @@ class VastParser: NSObject {
             throw VastError.internalError
         }
 
+        if let err = vm.error, vm.ads.count == 0 {
+            makeRequest(withUrl: err.withErrorCode(VastErrorCodes.noAdsVastResponse))
+        }
+
         return vm
     }
 
@@ -87,8 +91,9 @@ extension VastParser: XMLParserDelegate {
                 currentLinearCreative = VastLinearCreative(attrDict: attributeDict)
             case TrackingEventElements.tracking:
                 currentTrackingEvent = VastTrackingEvent(attrDict: attributeDict)
-            case VideoClickElements.clickthrough:
-               currentVideoClick = VastVideoClick(attrDict: attributeDict)
+            case VideoClickElements.clickthrough, VideoClickElements.clicktracking, VideoClickElements.customclick:
+                guard let type = ClickType(rawValue: elementName) else { break }
+                currentVideoClick = VastVideoClick(type: type, attrDict: attributeDict)
             case MediaFileElements.mediafile:
                 currentMediaFile = VastMediaFile(attrDict: attributeDict)
             default:
@@ -106,6 +111,8 @@ extension VastParser: XMLParserDelegate {
             switch elementName {
             case VastElements.vast:
                 vastModel?.ads = vastAds.sorted(by: { $0.sequence < $1.sequence })
+            case VastElements.error:
+                vastModel?.error =  URL(string: currentContent)
             case AdElements.ad:
                 if let vastAd = currentVastAd {
                     vastAds.append(vastAd)
@@ -124,7 +131,7 @@ extension VastParser: XMLParserDelegate {
                     currentVastImpression = nil
                 }
             case LinearCreativeElements.duration:
-                currentLinearCreative?.duration = currentContent.convertToSeconds() ?? -1.0
+                currentLinearCreative?.duration = currentContent.toSeconds ?? -1.0
             case TrackingEventElements.tracking:
                 currentTrackingEvent?.url = URL(string: currentContent)
                 if let event = currentTrackingEvent {

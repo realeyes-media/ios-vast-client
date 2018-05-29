@@ -9,7 +9,7 @@
 import Foundation
 
 struct TrackingCreative {
-    let creative: VastLinearCreative
+    var creative: VastLinearCreative
     let vastAd: VastAd
     let firstQuartile: Double
     let midpoint: Double

@@ -11,25 +11,27 @@ import Foundation
 extension String {
 
     // takes time format hh:mm:ss and converts to seconds
-    func convertToSeconds() -> Double? {
-        let arr = self.split(separator: ":").map { Double($0) ?? -1.0 }
-        if arr.count != 3 && !arr.every(predicate: { $0 >= 0  }) {
-            return nil
-        }
-
-        return arr.enumerated().reduce(0.0, { acc, cur in
-            let acc = acc ?? 0.0
-            let (idx, val) = cur
-            var sec = 0.0
-            if idx == 0 {
-                sec += val * 3600
-            } else if idx == 1 {
-                sec += val * 60
-            } else {
-                sec += val
+    var toSeconds: Double? {
+        get {
+            let arr = self.split(separator: ":").map { Double($0) ?? -1.0 }
+            if arr.count != 3 && !arr.every(predicate: { $0 >= 0  }) {
+                return nil
             }
-            return acc + val
-        })
+
+            return arr.enumerated().reduce(0.0, { acc, cur in
+                let acc = acc ?? 0.0
+                let (idx, val) = cur
+                var sec = 0.0
+                if idx == 0 {
+                    sec += val * 3600
+                } else if idx == 1 {
+                    sec += val * 60
+                } else {
+                    sec += val
+                }
+                return acc + val
+            })
+        }
     }
 
 }

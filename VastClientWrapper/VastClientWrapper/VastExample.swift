@@ -47,7 +47,7 @@ extension VastExample: VastTrackerDelegate {
 
     func trackAd(_ ad: VastModel) {
         let delay = 0.1
-        vastTracker = VastTracker(vastModel: ad, startTime: 123456.0, delegate: self)
+        vastTracker = VastTracker(id: "test", vastModel: ad, startTime: 123456.0, delegate: self)
 
         guard let tracker = vastTracker else { return }
         fakePlayheadProgressTimer = setInterval(delay) { [weak self] _ in
@@ -64,31 +64,31 @@ extension VastExample: VastTrackerDelegate {
         }
     }
 
-    func adBreakStart(_ vastModel: VastModel) {
+    func adBreakStart(_ id: String, _ vastModel: VastModel) {
         print("Ad Break Started > Playhead: \(playhead), Number of Ads: \(vastModel.ads.count), Duration: \(vastModel.ads.reduce(0, { acc, cur in return acc + (cur.linearCreatives.first?.duration ?? 0)}))")
     }
 
-    func adStart(_ ad: VastAd) {
+    func adStart(_ id: String, _ ad: VastAd) {
         print("Ad Started > Playhead: \(playhead), Id: \(ad.id), Sequence Number: \(ad.sequence), Duration: \(ad.linearCreatives.first?.duration ?? -1)")
     }
 
-    func adFirstQuatile(_ ad: VastAd) {
+    func adFirstQuatile(_ id: String, _ ad: VastAd) {
         print("Ad First Quartile > Playhead: \(playhead), Id: \(ad.id)")
     }
 
-    func adMidpoint(_ ad: VastAd) {
+    func adMidpoint(_ id: String, _ ad: VastAd) {
         print("Ad Midpoint > Playhead: \(playhead), Id: \(ad.id)")
     }
 
-    func adThirdQuartile(_ ad: VastAd) {
+    func adThirdQuartile(_ id: String, _ ad: VastAd) {
         print("Ad Third Quartile > Playhead: \(playhead), Id: \(ad.id)")
     }
 
-    func adComplete(_ ad: VastAd) {
+    func adComplete(_ id: String, _ ad: VastAd) {
         print("Ad Complete > Playhead: \(playhead), Id: \(ad.id)")
     }
 
-    func adBreakComplete(_ vastModel: VastModel) {
+    func adBreakComplete(_ id: String, _ vastModel: VastModel) {
         print("Ad Break Complete > Playhead: \(playhead), Number of Ads: \(vastModel.ads.count)")
         fakePlayheadProgressTimer?.invalidate()
         fakePlayheadProgressTimer = nil

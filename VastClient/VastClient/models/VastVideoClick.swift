@@ -10,19 +10,29 @@ import Foundation
 
 struct VideoClickElements {
     static let clickthrough = "ClickThrough"
+    static let clicktracking = "ClickTracking"
+    static let customclick = "CustomClick"
 }
 
 struct VideoClickAttributes {
     static let id = "id"
 }
 
+public enum ClickType: String {
+    case clickThrough
+    case clickTracking
+    case customClick
+}
+
 public struct VastVideoClick {
     public let id: String
+    public let type: ClickType
     public var url: URL?
 }
 
 extension VastVideoClick {
-    public init(attrDict: [String: String]) {
+    public init(type: ClickType, attrDict: [String: String]) {
+        self.type = type
         var id = ""
         for (key, value) in attrDict {
             switch key {

@@ -261,7 +261,7 @@ public class VastTracker {
         creative.callTrackingUrls(trackingUrls)
     }
 
-    public func clicked(withCustomAction custom: Bool) throws -> [URL] {
+    public func clicked(withCustomAction custom: Bool = false) throws -> [URL] {
         guard let trackingCreative = currentTrackingCreative else {
             // TODO: determine if this is an error or complete
             throw TrackingError.UnableToProvideCreativeClickThroughUrls

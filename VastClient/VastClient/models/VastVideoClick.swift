@@ -19,9 +19,9 @@ struct VideoClickAttributes {
 }
 
 public enum ClickType: String {
-    case clickThrough
-    case clickTracking
-    case customClick
+    case clickThrough = "ClickThrough"
+    case clickTracking = "ClickTracking"
+    case customClick = "CustomClick"
 }
 
 public struct VastVideoClick {

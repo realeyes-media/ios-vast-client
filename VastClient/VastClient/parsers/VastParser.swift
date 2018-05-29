@@ -141,7 +141,7 @@ extension VastParser: XMLParserDelegate {
             case LinearCreativeElements.trackingevents:
                 currentLinearCreative?.trackingEvents = vastTrackingEvents
                 vastTrackingEvents = [VastTrackingEvent]()
-            case VideoClickElements.clickthrough:
+            case VideoClickElements.clickthrough, VideoClickElements.clicktracking, VideoClickElements.customclick:
                 currentVideoClick?.url = URL(string: currentContent)
                 if let click = currentVideoClick {
                     vastVideoClicks.append(click)

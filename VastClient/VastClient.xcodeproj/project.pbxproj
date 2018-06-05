@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0F442F9720AB461C00303767 /* http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F442F9620AB461C00303767 /* http.swift */; };
+		0F58AE2E20C6E9F500699B77 /* VastExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F58AE2D20C6E9F500699B77 /* VastExtension.swift */; };
+		0F58AE3020C6EABF00699B77 /* VastCreativeParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F58AE2F20C6EABF00699B77 /* VastCreativeParameter.swift */; };
+		0F58AE3520C7410700699B77 /* VastMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F58AE3420C7410700699B77 /* VastMacros.swift */; };
 		0F71436620BDCD930029BBB6 /* VastErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71436520BDCD930029BBB6 /* VastErrorCodes.swift */; };
 		0F71436820BDD07D0029BBB6 /* URL+replace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71436720BDD07D0029BBB6 /* URL+replace.swift */; };
 		0F71436A20BDD59D0029BBB6 /* String+encode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71436920BDD59D0029BBB6 /* String+encode.swift */; };
@@ -44,6 +47,9 @@
 
 /* Begin PBXFileReference section */
 		0F442F9620AB461C00303767 /* http.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = http.swift; sourceTree = "<group>"; };
+		0F58AE2D20C6E9F500699B77 /* VastExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastExtension.swift; sourceTree = "<group>"; };
+		0F58AE2F20C6EABF00699B77 /* VastCreativeParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastCreativeParameter.swift; sourceTree = "<group>"; };
+		0F58AE3420C7410700699B77 /* VastMacros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastMacros.swift; sourceTree = "<group>"; };
 		0F71436520BDCD930029BBB6 /* VastErrorCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastErrorCodes.swift; sourceTree = "<group>"; };
 		0F71436720BDD07D0029BBB6 /* URL+replace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+replace.swift"; sourceTree = "<group>"; };
 		0F71436920BDD59D0029BBB6 /* String+encode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+encode.swift"; sourceTree = "<group>"; };
@@ -143,6 +149,8 @@
 				0F7B97C52077D7430096438D /* VastVideoClick.swift */,
 				0F7B97C72077D78F0096438D /* VastMediaFile.swift */,
 				0FEDAAC220AA3F9F006850C8 /* TrackingCreative.swift */,
+				0F58AE2D20C6E9F500699B77 /* VastExtension.swift */,
+				0F58AE2F20C6EABF00699B77 /* VastCreativeParameter.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -174,6 +182,7 @@
 				0FEDAABE20AA3A05006850C8 /* TrackingStatus.swift */,
 				0FEDAAC020AA3A62006850C8 /* TrackingError.swift */,
 				0F71436520BDCD930029BBB6 /* VastErrorCodes.swift */,
+				0F58AE3420C7410700699B77 /* VastMacros.swift */,
 			);
 			path = constants;
 			sourceTree = "<group>";
@@ -235,12 +244,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "John Gainfort Jr";
 				TargetAttributes = {
 					0F7B977E2077CB340096438D = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
 					0F7B97872077CB340096438D = {
@@ -298,6 +307,9 @@
 				0F7B97BC2077D3890096438D /* VastModel.swift in Sources */,
 				0F7B97C02077D4440096438D /* VastImpression.swift in Sources */,
 				0F7B97C22077D4860096438D /* VastLinearCreative.swift in Sources */,
+				0F58AE2E20C6E9F500699B77 /* VastExtension.swift in Sources */,
+				0F58AE3520C7410700699B77 /* VastMacros.swift in Sources */,
+				0F58AE3020C6EABF00699B77 /* VastCreativeParameter.swift in Sources */,
 				0FEDAAC320AA3F9F006850C8 /* TrackingCreative.swift in Sources */,
 				0F442F9720AB461C00303767 /* http.swift in Sources */,
 				0F7B97DD20782FF90096438D /* VastTracker.swift in Sources */,
@@ -467,7 +479,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.realeyes.VastClient;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos11.3;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -493,7 +505,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.realeyes.VastClient;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos11.3;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

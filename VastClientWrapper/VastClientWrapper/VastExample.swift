@@ -9,6 +9,9 @@
 import Foundation
 import VastClient
 
+let fw_vast_wrapper = "http://office.realeyes.com/jgainfort/replayer/fw_vast_wrapper.xml"
+let fw_typical = "http://29773.v.fwmrm.net/ad/g/1?flag=+sltp-slcb+qtcb+aeti+emcr&nw=169843&mode=live&prof=nbcsports_adobe_web&csid=nbcsports_nfl_snf_main_cam&sfid=7090576&afid=140315314&caid=nbcs_136401&vdur=600&resp=vast3&metr=7&pvrn=4980890867&vprn=5987497628;_fw_ae=&_fw_vcid2=169843:9cd22d95-7966-4a38-81f5-5de4c5;slid=mid1&tpos=0&slau=midroll&ptgt=a&tpcl=MIDROLL&maxd=120&cpsq=85&mind=120;"
+
 class VastExample {
 
     private var vastClient = VastClient()
@@ -21,13 +24,13 @@ class VastExample {
     }
 
     private func makeVastRequest() {
-        let urlStr = "http://29773.v.fwmrm.net/ad/g/1?flag=+sltp-slcb+qtcb+aeti+emcr&nw=169843&mode=live&prof=nbcsports_adobe_web&csid=nbcsports_nfl_snf_main_cam&sfid=7090576&afid=140315314&caid=nbcs_136401&vdur=600&resp=vast3&metr=7&pvrn=4980890867&vprn=5987497628;_fw_ae=&_fw_vcid2=169843:9cd22d95-7966-4a38-81f5-5de4c5;slid=mid1&tpos=0&slau=midroll&ptgt=a&tpcl=MIDROLL&maxd=120&cpsq=85&mind=120;"
+        let urlStr = fw_vast_wrapper
         guard let url = URL(string: urlStr) else { return }
         do {
             let start = Date()
             let vastModel = try vastClient.parse(contentsOf: url)
             print("Took \(-1 * start.timeIntervalSinceNow) seconds to parse vast document")
-            trackAd(vastModel)
+//            trackAd(vastModel)
         } catch VastError.invalidXMLDocument {
             print("Error: Invalid XML document")
         } catch VastError.invalidVASTDocument {

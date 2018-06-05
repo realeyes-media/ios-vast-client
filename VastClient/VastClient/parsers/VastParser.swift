@@ -10,6 +10,8 @@ import Foundation
 
 class VastParser: NSObject {
 
+    private let options: VastClientOptions
+
     var xmlParser: XMLParser?
     var validVastDocument = false
     var parsedFirstElement = false
@@ -35,7 +37,17 @@ class VastParser: NSObject {
     var vastMediaFiles = [VastMediaFile]()
     var currentMediaFile: VastMediaFile?
 
+    var vastExtensions = [VastExtension]()
+    var currentVastExtension: VastExtension?
+
+    var creativeParameters = [VastCreativeParameter]()
+    var currentCreativeParameter: VastCreativeParameter?
+
     var currentContent = ""
+
+    init(options: VastClientOptions) {
+        self.options = options
+    }
 
     func parse(url: URL) throws -> VastModel {
         xmlParser = XMLParser(contentsOf: url)
@@ -87,6 +99,10 @@ extension VastParser: XMLParserDelegate {
                 currentVastAd = VastAd(attrDict: attributeDict)
             case ImpressionElements.impression:
                 currentVastImpression = VastImpression(attrDict: attributeDict)
+            case ExtensionElements.ext:
+                currentVastExtension = VastExtension(attrDict: attributeDict)
+            case ExtensionElements.creativeparameter:
+                currentCreativeParameter = VastCreativeParameter(attrDict: attributeDict)
             case LinearCreativeElements.creative:
                 currentLinearCreative = VastLinearCreative(attrDict: attributeDict)
             case TrackingEventElements.tracking:
@@ -107,6 +123,8 @@ extension VastParser: XMLParserDelegate {
     }
 
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        currentContent = currentContent.trimmingCharacters(in: .whitespacesAndNewlines)
+
         if validVastDocument && fatalError == nil {
             switch elementName {
             case VastElements.vast:
@@ -118,8 +136,15 @@ extension VastParser: XMLParserDelegate {
                     vastAds.append(vastAd)
                     currentVastAd = nil
                 }
+            case AdElements.inline:
+                currentVastAd?.type = .inline
+            case AdElements.wrapper:
+                currentVastAd?.type = .wrapper
             case AdElements.adsystem:
                 currentVastAd?.adSystem = currentContent
+            case AdElements.vastAdTagUri:
+                // TODO:
+                break
             case AdElements.adtitle:
                 currentVastAd?.adTitle = currentContent
             case AdElements.error:
@@ -167,6 +192,24 @@ extension VastParser: XMLParserDelegate {
             case AdElements.creatives:
                 currentVastAd?.linearCreatives = vastLinearCreatives
                 vastLinearCreatives = [VastLinearCreative]()
+            case ExtensionElements.creativeparameter:
+                currentCreativeParameter?.content = currentContent
+                if let creative = currentCreativeParameter {
+                    creativeParameters.append(creative)
+                    currentCreativeParameter = nil
+                }
+                break
+            case ExtensionElements.creativeparameters:
+                currentVastExtension?.creativeParameters = creativeParameters
+                creativeParameters = [VastCreativeParameter]()
+            case ExtensionElements.ext:
+                if let ext = currentVastExtension {
+                    vastExtensions.append(ext)
+                    currentVastExtension = nil
+                }
+            case AdElements.extensions:
+                currentVastAd?.extensions = vastExtensions
+                vastExtensions = [VastExtension]()
             default:
                 break
             }

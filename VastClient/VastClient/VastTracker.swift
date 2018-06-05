@@ -98,7 +98,6 @@ public class VastTracker {
                 }
                 return false
             }
-
             .map { event -> URL in
                 return event.url!
             }

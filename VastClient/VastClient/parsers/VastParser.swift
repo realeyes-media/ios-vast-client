@@ -11,6 +11,7 @@ import Foundation
 class VastParser: NSObject {
 
     private let options: VastClientOptions
+    private var wrapperCount = 0
 
     var xmlParser: XMLParser?
     var validVastDocument = false
@@ -43,13 +44,23 @@ class VastParser: NSObject {
     var creativeParameters = [VastCreativeParameter]()
     var currentCreativeParameter: VastCreativeParameter?
 
+    var currentCompanionAds: VastCompanionAds?
+    var companions = [VastCompanionCreative]()
+    var currentCompanionCreative: VastCompanionCreative?
+
     var currentContent = ""
 
     init(options: VastClientOptions) {
         self.options = options
     }
 
-    func parse(url: URL) throws -> VastModel {
+    func parse(url: URL, count: Int = 0) throws -> VastModel {
+        self.wrapperCount = count
+
+        guard count < options.wrapperLimit else {
+            throw VastError.wrapperLimitReached
+        }
+
         xmlParser = XMLParser(contentsOf: url)
         guard let parser = xmlParser else {
             throw VastError.unableToCreateXMLParser
@@ -69,13 +80,35 @@ class VastParser: NSObject {
             throw VastError.unableToParseDocument
         }
 
-        guard let vm = vastModel else {
+        guard var vm = vastModel else {
             throw VastError.internalError
         }
 
         if let err = vm.error, vm.ads.count == 0 {
             makeRequest(withUrl: err.withErrorCode(VastErrorCodes.noAdsVastResponse))
         }
+
+        let flattenedVastAds = vm.ads.map { [weak self] ad -> VastAd in
+            var copiedAd = ad
+
+            guard ad.type == .wrapper, let strongSelf = self, let url = ad.wrapperUrl else { return ad }
+            let wrapperParser = VastParser(options: strongSelf.options)
+
+            do {
+                let wrapperModel = try wrapperParser.parse(url: url, count: strongSelf.wrapperCount + 1)
+                wrapperModel.ads.forEach { wrapperAd in
+                    copiedAd.impressions.append(contentsOf: wrapperAd.impressions)
+                    copiedAd.linearCreatives.append(contentsOf: wrapperAd.linearCreatives)
+                    copiedAd.companionAds.append(contentsOf: wrapperAd.companionAds)
+                }
+            } catch {
+                print("Unable to parse wrapper")
+            }
+
+            return copiedAd
+        }
+
+        vm.ads = flattenedVastAds
 
         return vm
     }
@@ -112,6 +145,10 @@ extension VastParser: XMLParserDelegate {
                 currentVideoClick = VastVideoClick(type: type, attrDict: attributeDict)
             case MediaFileElements.mediafile:
                 currentMediaFile = VastMediaFile(attrDict: attributeDict)
+            case CompanionAdsElements.companionads:
+                currentCompanionAds = VastCompanionAds(attrDict: attributeDict)
+            case CompanionAdsElements.companion:
+                currentCompanionCreative = VastCompanionCreative(attrDict: attributeDict)
             default:
                 break
             }
@@ -143,8 +180,7 @@ extension VastParser: XMLParserDelegate {
             case AdElements.adsystem:
                 currentVastAd?.adSystem = currentContent
             case AdElements.vastAdTagUri:
-                // TODO:
-                break
+                currentVastAd?.wrapperUrl = URL(string: currentContent)
             case AdElements.adtitle:
                 currentVastAd?.adTitle = currentContent
             case AdElements.error:
@@ -210,6 +246,32 @@ extension VastParser: XMLParserDelegate {
             case AdElements.extensions:
                 currentVastAd?.extensions = vastExtensions
                 vastExtensions = [VastExtension]()
+            case CompanionResourceType.htmlresource.rawValue, CompanionResourceType.iframeresource.rawValue, CompanionResourceType.staticresource.rawValue:
+                currentCompanionCreative?.type = CompanionResourceType(rawValue: elementName) ?? .unknown
+                currentCompanionCreative?.content = currentContent
+            case CompanionAdsElements.companion:
+                if let companion = currentCompanionCreative {
+                    companions.append(companion)
+                    currentCompanionCreative = nil
+                }
+            case CompanionElements.alttext:
+                currentCompanionCreative?.altText = currentContent
+            case CompanionElements.companionclickthrough:
+                currentCompanionCreative?.clickThrough = URL(string: currentContent)
+            case CompanionElements.companionclicktracking:
+                currentCompanionCreative?.clickTracking = URL(string: currentContent)
+            case CompanionElements.trackingevents:
+                if let _ = currentCompanionCreative {
+                    currentCompanionCreative?.trackingEvents = vastTrackingEvents
+                    vastTrackingEvents = [VastTrackingEvent]()
+                }
+            case CompanionAdsElements.companionads:
+                currentCompanionAds?.companions = companions
+                companions = [VastCompanionCreative]()
+                if let companionAds = currentCompanionAds {
+                    currentVastAd?.companionAds.append(companionAds)
+                    currentCompanionAds = nil
+                }
             default:
                 break
             }

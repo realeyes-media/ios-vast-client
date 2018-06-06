@@ -30,7 +30,7 @@ class VastExample {
             let start = Date()
             let vastModel = try vastClient.parse(contentsOf: url)
             print("Took \(-1 * start.timeIntervalSinceNow) seconds to parse vast document")
-//            trackAd(vastModel)
+            trackAd(vastModel)
         } catch VastError.invalidXMLDocument {
             print("Error: Invalid XML document")
         } catch VastError.invalidVASTDocument {

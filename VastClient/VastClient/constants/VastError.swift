@@ -13,5 +13,6 @@ public enum VastError: Error {
     case invalidVASTDocument
     case unableToParseDocument
     case unableToCreateXMLParser
+    case wrapperLimitReached
     case internalError
 }

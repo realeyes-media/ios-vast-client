@@ -14,7 +14,7 @@ public struct VastClientOptions {
 
 extension VastClientOptions {
     public init() {
-        self.wrapperLimit = 5
+        self.wrapperLimit = 7
     }
 }
 
@@ -30,5 +30,7 @@ public class VastClient {
         let parser = VastParser(options: options)
         return try parser.parse(url: url)
     }
+
+
 
 }

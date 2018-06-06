@@ -37,11 +37,13 @@ public struct VastAd {
     public let sequence: Int
     public var adSystem = ""
     public var adTitle = ""
+    public var wrapperUrl: URL?
     public var error: URL?
     public var type: AdType
     public var impressions = [VastImpression]()
     public var linearCreatives = [VastLinearCreative]()
     public var extensions = [VastExtension]()
+    public var companionAds = [VastCompanionAds]()
 }
 
 extension VastAd {

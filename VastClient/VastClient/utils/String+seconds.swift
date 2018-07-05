@@ -29,7 +29,7 @@ extension String {
                 } else {
                     sec += val
                 }
-                return acc + val
+                return acc + sec
             })
         }
     }

@@ -27,9 +27,9 @@ extension TrackingCreative {
         self.creative = creative
         self.vastAd = vastAd
         self.duration = creative.duration
-        self.firstQuartile = duration * 0.25
-        self.midpoint = duration * 0.5
-        self.thirdQuartile = duration * 0.75
+        self.firstQuartile = ceil(duration * 0.25)
+        self.midpoint = ceil(duration * 0.5)
+        self.thirdQuartile = ceil(duration * 0.75)
     }
 
     func callTrackingUrls(_ urls: [URL]) {

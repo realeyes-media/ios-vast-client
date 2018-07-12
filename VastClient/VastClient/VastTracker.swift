@@ -29,7 +29,7 @@ public class VastTracker {
     private var currentTime = 0.0
     private var playhead: Double {
         get {
-            return max(0.0, currentTime - startTime - completedAdAccumulatedDuration)
+            return max(0.0, floor(currentTime - startTime - completedAdAccumulatedDuration))
         }
     }
     private var vastAds: [VastAd]

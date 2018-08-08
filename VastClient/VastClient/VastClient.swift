@@ -26,11 +26,15 @@ public class VastClient {
         self.options = options
     }
 
-    public func parse(contentsOf url: URL) throws -> VastModel {
+    public func parseVast(withContentsOf url: URL) throws -> VastModel {
         let parser = VastParser(options: options)
         return try parser.parse(url: url)
     }
 
+    public func parseVMAP(withContentsOf url: URL) throws -> VMAPModel {
+        let parser = VMAPParser(options: options)
+        return try parser.parse(url: url)
 
+    }
 
 }

@@ -13,6 +13,9 @@ class VastParser: NSObject {
     private let options: VastClientOptions
     private var wrapperCount = 0
 
+    // allows other xml parsing delegates to use this class's delegate to parse a VastModel out of a much larger XML document
+    var completeClosure: ((_ error: Error?, _ vastModel: VastModel) -> Void)?
+
     var xmlParser: XMLParser?
     var validVastDocument = false
     var parsedFirstElement = false
@@ -166,6 +169,11 @@ extension VastParser: XMLParserDelegate {
             switch elementName {
             case VastElements.vast:
                 vastModel?.ads = vastAds.sorted(by: { $0.sequence < $1.sequence })
+
+                // If another class is using this delegate call complete
+                if let vm = vastModel {
+                    completeClosure?(fatalError, vm)
+                }
             case VastElements.error:
                 vastModel?.error =  URL(string: currentContent)
             case AdElements.ad:

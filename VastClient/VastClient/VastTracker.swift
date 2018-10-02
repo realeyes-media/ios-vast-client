@@ -176,7 +176,6 @@ public class VastTracker {
 
     public func paused(_ val: Bool) throws {
         guard let creative = currentTrackingCreative else {
-            trackingStatus = .errored
             throw TrackingError.InternalError(msg: "Unable to find current creative to track")
         }
         let trackingUrls = creative.creative.trackingEvents
@@ -190,7 +189,6 @@ public class VastTracker {
 
     public func fullscreen(_ val: Bool) throws {
         guard let creative = currentTrackingCreative else {
-            trackingStatus = .errored
             throw TrackingError.InternalError(msg: "Unable to find current creative to track")
         }
         let trackingUrls = creative.creative.trackingEvents
@@ -204,7 +202,6 @@ public class VastTracker {
 
     public func rewind() throws {
         guard let creative = currentTrackingCreative else {
-            trackingStatus = .errored
             throw TrackingError.InternalError(msg: "Unable to find current creative to track")
         }
         let trackingUrls = creative.creative.trackingEvents
@@ -215,7 +212,6 @@ public class VastTracker {
 
     public func muted(_ val: Bool) throws {
         guard let creative = currentTrackingCreative else {
-            trackingStatus = .errored
             throw TrackingError.InternalError(msg: "Unable to find current creative to track")
         }
         let trackingUrls = creative.creative.trackingEvents
@@ -229,7 +225,6 @@ public class VastTracker {
 
     public func skip() throws {
         guard let creative = currentTrackingCreative else {
-            trackingStatus = .errored
             throw TrackingError.InternalError(msg: "Unable to find current creative to track")
         }
         let trackingUrls = creative.creative.trackingEvents
@@ -240,7 +235,6 @@ public class VastTracker {
 
     public func acceptedLinearInvitation() throws {
         guard let creative = currentTrackingCreative else {
-            trackingStatus = .errored
             throw TrackingError.InternalError(msg: "Unable to find current creative to track")
         }
         let trackingUrls = creative.creative.trackingEvents
@@ -251,7 +245,6 @@ public class VastTracker {
 
     public func closed() throws {
         guard let creative = currentTrackingCreative else {
-            trackingStatus = .errored
             throw TrackingError.InternalError(msg: "Unable to find current creative to track")
         }
         let trackingUrls = creative.creative.trackingEvents
@@ -280,7 +273,6 @@ public class VastTracker {
 
     public func error(withReason code: VastErrorCodes?) throws {
         guard let creative = currentTrackingCreative else {
-            trackingStatus = .errored
             throw TrackingError.InternalError(msg: "Unable to find current creative to track")
         }
         if var err = creative.vastAd.error {

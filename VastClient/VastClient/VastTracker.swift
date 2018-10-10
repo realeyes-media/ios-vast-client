@@ -36,11 +36,13 @@ public class VastTracker {
     private var completedAdAccumulatedDuration = 0.0
     private var currentTrackingCreative: TrackingCreative?
 
-    public init(id: String, vastModel: VastModel, startTime: Double, delegate: VastTrackerDelegate? = nil) {
+    public init(id: String, vastModel: VastModel, startTime: Double, supportAdBuffets: Bool = false, delegate: VastTrackerDelegate? = nil) {
         self.id = id
         self.startTime = startTime
         self.vastModel = vastModel
         self.vastAds = vastModel.ads
+            .filter { supportAdBuffets ? true : $0.sequence > 0 }
+            .sorted(by: { $0.sequence < $1.sequence })
         self.trackingStatus = .tracking
         self.delegate = delegate
 
@@ -69,7 +71,7 @@ public class VastTracker {
 
         if currentTrackingCreative == nil {
             guard let vastAd = vastAds.first,
-                let creative = vastAd.linearCreatives.first else {
+                let creative = vastAd.linearCreatives.first, vastAd.sequence > 0 else {
                     trackingStatus = .complete
                     delegate?.adBreakComplete(id, vastModel)
                     return

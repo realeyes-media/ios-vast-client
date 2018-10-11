@@ -36,11 +36,13 @@ public class VastTracker {
     private var completedAdAccumulatedDuration = 0.0
     private var currentTrackingCreative: TrackingCreative?
 
-    public init(id: String, vastModel: VastModel, startTime: Double, delegate: VastTrackerDelegate? = nil) {
+    public init(id: String, vastModel: VastModel, startTime: Double, supportAdBuffets: Bool = false, delegate: VastTrackerDelegate? = nil) {
         self.id = id
         self.startTime = startTime
         self.vastModel = vastModel
         self.vastAds = vastModel.ads
+            .filter { supportAdBuffets ? true : $0.sequence > 0 }
+            .sorted(by: { $0.sequence < $1.sequence })
         self.trackingStatus = .tracking
         self.delegate = delegate
 
@@ -69,7 +71,7 @@ public class VastTracker {
 
         if currentTrackingCreative == nil {
             guard let vastAd = vastAds.first,
-                let creative = vastAd.linearCreatives.first else {
+                let creative = vastAd.linearCreatives.first, vastAd.sequence > 0 else {
                     trackingStatus = .complete
                     delegate?.adBreakComplete(id, vastModel)
                     return
@@ -175,119 +177,120 @@ public class VastTracker {
     }
 
     public func paused(_ val: Bool) throws {
-        guard let creative = currentTrackingCreative else {
-            trackingStatus = .errored
+        if let creative = currentTrackingCreative {
+            let trackingUrls = creative.creative.trackingEvents
+                .filter { event in
+                    let type = val ? event.type == .pause : event.type == .resume
+                    return type && event.url != nil
+                }
+                .map { $0.url! }
+            creative.callTrackingUrls(trackingUrls)
+        } else {
             throw TrackingError.InternalError(msg: "Unable to find current creative to track")
         }
-        let trackingUrls = creative.creative.trackingEvents
-            .filter { event in
-                let type = val ? event.type == .pause : event.type == .resume
-                return type && event.url != nil
-            }
-            .map { $0.url! }
-        creative.callTrackingUrls(trackingUrls)
     }
 
     public func fullscreen(_ val: Bool) throws {
-        guard let creative = currentTrackingCreative else {
-            trackingStatus = .errored
+        if let creative = currentTrackingCreative {
+            let trackingUrls = creative.creative.trackingEvents
+                .filter { event in
+                    let type = val ? event.type == .fullscreen || event.type == .expand : event.type == .resume || event.type == .collapse
+                    return type && event.url != nil
+                }
+                .map { $0.url! }
+            creative.callTrackingUrls(trackingUrls)
+        } else {
             throw TrackingError.InternalError(msg: "Unable to find current creative to track")
         }
-        let trackingUrls = creative.creative.trackingEvents
-            .filter { event in
-                let type = val ? event.type == .fullscreen || event.type == .expand : event.type == .resume || event.type == .collapse
-                return type && event.url != nil
-            }
-            .map { $0.url! }
-        creative.callTrackingUrls(trackingUrls)
     }
 
     public func rewind() throws {
-        guard let creative = currentTrackingCreative else {
-            trackingStatus = .errored
+        if let creative = currentTrackingCreative {
+            let trackingUrls = creative.creative.trackingEvents
+                .filter { $0.type == .rewind && $0.url != nil }
+                .map { $0.url! }
+            creative.callTrackingUrls(trackingUrls)
+        } else {
             throw TrackingError.InternalError(msg: "Unable to find current creative to track")
         }
-        let trackingUrls = creative.creative.trackingEvents
-            .filter { $0.type == .rewind && $0.url != nil }
-            .map { $0.url! }
-        creative.callTrackingUrls(trackingUrls)
     }
 
     public func muted(_ val: Bool) throws {
-        guard let creative = currentTrackingCreative else {
-            trackingStatus = .errored
+        if let creative = currentTrackingCreative {
+            let trackingUrls = creative.creative.trackingEvents
+                .filter { event in
+                    let type = val ? event.type == .mute : event.type == .unmute
+                    return type && event.url != nil
+                }
+                .map { $0.url! }
+            creative.callTrackingUrls(trackingUrls)
+        } else {
             throw TrackingError.InternalError(msg: "Unable to find current creative to track")
         }
-        let trackingUrls = creative.creative.trackingEvents
-            .filter { event in
-                let type = val ? event.type == .mute : event.type == .unmute
-                return type && event.url != nil
-            }
-            .map { $0.url! }
-        creative.callTrackingUrls(trackingUrls)
     }
 
     public func skip() throws {
-        guard let creative = currentTrackingCreative else {
-            trackingStatus = .errored
+        if let creative = currentTrackingCreative {
+            let trackingUrls = creative.creative.trackingEvents
+                .filter { $0.type == .skip && $0.url != nil }
+                .map { $0.url! }
+            creative.callTrackingUrls(trackingUrls)
+        } else {
             throw TrackingError.InternalError(msg: "Unable to find current creative to track")
         }
-        let trackingUrls = creative.creative.trackingEvents
-            .filter { $0.type == .skip && $0.url != nil }
-            .map { $0.url! }
-        creative.callTrackingUrls(trackingUrls)
     }
 
     public func acceptedLinearInvitation() throws {
-        guard let creative = currentTrackingCreative else {
-            trackingStatus = .errored
+        if let creative = currentTrackingCreative {
+            let trackingUrls = creative.creative.trackingEvents
+                .filter { $0.type == .acceptInvitationLinear && $0.url != nil }
+                .map { $0.url! }
+            creative.callTrackingUrls(trackingUrls)
+        } else {
             throw TrackingError.InternalError(msg: "Unable to find current creative to track")
         }
-        let trackingUrls = creative.creative.trackingEvents
-            .filter { $0.type == .acceptInvitationLinear && $0.url != nil }
-            .map { $0.url! }
-        creative.callTrackingUrls(trackingUrls)
     }
 
     public func closed() throws {
-        guard let creative = currentTrackingCreative else {
-            trackingStatus = .errored
+        if let creative = currentTrackingCreative {
+            let trackingUrls = creative.creative.trackingEvents
+                .filter { $0.type == .closeLinear && $0.url != nil }
+                .map { $0.url! }
+            creative.callTrackingUrls(trackingUrls)
+        } else {
             throw TrackingError.InternalError(msg: "Unable to find current creative to track")
         }
-        let trackingUrls = creative.creative.trackingEvents
-            .filter { $0.type == .closeLinear && $0.url != nil }
-            .map { $0.url! }
-        creative.callTrackingUrls(trackingUrls)
     }
 
     public func clicked(withCustomAction custom: Bool = false) throws -> [URL] {
-        guard let trackingCreative = currentTrackingCreative else {
+        if let trackingCreative = currentTrackingCreative {
+            let clickUrls = trackingCreative.creative.videoClicks
+                .filter { $0.type == .clickTracking && $0.url != nil }
+                .map { $0.url! }
+            trackingCreative.callTrackingUrls(clickUrls)
+            
+            return trackingCreative.creative.videoClicks
+                .filter { click in
+                    let typeMatch = custom ? click.type == .customClick : click.type == .clickThrough
+                    return typeMatch && click.url != nil
+                }
+                .map { $0.url! }
+        } else {
             // TODO: determine if this is an error or complete
             throw TrackingError.UnableToProvideCreativeClickThroughUrls
         }
-        let clickUrls = trackingCreative.creative.videoClicks
-            .filter { $0.type == .clickTracking && $0.url != nil }
-            .map { $0.url! }
-        trackingCreative.callTrackingUrls(clickUrls)
-
-        return trackingCreative.creative.videoClicks
-            .filter { click in
-                let typeMatch = custom ? click.type == .customClick : click.type == .clickThrough
-                return typeMatch && click.url != nil
-            }
-            .map { $0.url! }
     }
 
     public func error(withReason code: VastErrorCodes?) throws {
-        guard let creative = currentTrackingCreative else {
-            trackingStatus = .errored
-            throw TrackingError.InternalError(msg: "Unable to find current creative to track")
-        }
-        if var err = creative.vastAd.error {
-            if let c = code {
-                err = err.withErrorCode(c)
+        if let creative = currentTrackingCreative {
+            if var err = creative.vastAd.error {
+                if let c = code {
+                    err = err.withErrorCode(c)
+                }
+                creative.callTrackingUrls([err])
             }
-            creative.callTrackingUrls([err])
+        } else {
+            throw TrackingError.InternalError(msg: "Unable to find current creative to track")
         }
     }
 

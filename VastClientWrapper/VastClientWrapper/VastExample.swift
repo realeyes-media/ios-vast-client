@@ -25,12 +25,11 @@ class VastExample {
     }
 
     private func makeVastRequest() {
-        let urlStr = fw_vast_wrapper
-//        let urlStr = fw_test
+        let urlStr = fw_test
         guard let url = URL(string: urlStr) else { return }
         do {
             let start = Date()
-            let vastModel = try vastClient.parse(contentsOf: url)
+            let vastModel = try vastClient.parseVast(withContentsOf: url)
             print("Took \(-1 * start.timeIntervalSinceNow) seconds to parse vast document")
             trackAd(vastModel)
         } catch VastError.invalidXMLDocument {

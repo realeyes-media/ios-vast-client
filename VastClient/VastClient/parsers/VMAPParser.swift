@@ -57,10 +57,73 @@ class VMAPParser: NSObject {
             throw VMAPError.unableToParseDocument
         }
 
-        guard let vm = vmapModel else {
+        guard var vm = vmapModel else {
             throw VMAPError.internalError
         }
+        
+        let flattenedAdBreaks = vm.adBreaks.map { [weak self] adBreak -> VMAPAdBreak in
+            var copiedAdBreak = adBreak
+            guard let adSource = adBreak.adSource, var vastAdData = adSource.vastAdData else { return adBreak }
+            
+            let flattenedVastAds = vastAdData.ads.map { [weak self] ad -> VastAd in
+                var copiedAd = ad
+                
+                guard ad.type == .wrapper, let strongSelf = self, let url = ad.wrapperUrl else { return ad }
+                let wrapperParser = VastParser(options: strongSelf.options)
+                
+                do {
+                    let wrapperModel = try wrapperParser.parse(url: url, count: 0)
+                    wrapperModel.ads.forEach { wrapperAd in
+                        if !wrapperAd.adSystem.isEmpty {
+                            copiedAd.adSystem = wrapperAd.adSystem
+                        }
+                        
+                        if !wrapperAd.adTitle.isEmpty {
+                            copiedAd.adTitle = wrapperAd.adTitle
+                        }
+                        
+                        if let error = wrapperAd.error {
+                            copiedAd.error = error
+                        }
+                        
+                        if wrapperAd.type != AdType.unknown {
+                            copiedAd.type = wrapperAd.type
+                        }
+                        
+                        copiedAd.impressions.append(contentsOf: wrapperAd.impressions)
+                        
+                        var copiedLinearCreatives = copiedAd.linearCreatives
+                        for (idx, linearCreative) in copiedLinearCreatives.enumerated() {
+                            var lc = linearCreative
+                            if idx < wrapperAd.linearCreatives.count {
+                                let wrapperLinearCreative = wrapperAd.linearCreatives[idx]
+                                lc.duration = wrapperLinearCreative.duration
+                                lc.mediaFiles.append(contentsOf: wrapperLinearCreative.mediaFiles)
+                                lc.trackingEvents.append(contentsOf: wrapperLinearCreative.trackingEvents)
+                            }
+                            copiedLinearCreatives[idx] = lc
+                        }
+                        
+                        copiedAd.linearCreatives = copiedLinearCreatives
+                        copiedAd.extensions.append(contentsOf: wrapperAd.extensions)
+                        copiedAd.companionAds.append(contentsOf: wrapperAd.companionAds)
+                    }
+                } catch {
+                    print("Unable to parse wrapper")
+                }
+                
+                return copiedAd
+            }
+            
+            vastAdData.ads = flattenedVastAds
+            
+            copiedAdBreak.adSource?.vastAdData = vastAdData
 
+            return copiedAdBreak
+        }
+        
+        vm.adBreaks = flattenedAdBreaks
+        
         return vm
     }
 
@@ -89,6 +152,7 @@ extension VMAPParser: XMLParserDelegate {
                 vastParser.completeClosure = { [weak self] error, vastModel in
                     self?.fatalError = error
                     self?.currentVastModel = vastModel
+                    
                     parser.delegate = self
                 }
                 parser.delegate = vastParser

@@ -198,7 +198,7 @@ extension VastParser: XMLParserDelegate {
         if validVastDocument && fatalError == nil {
             switch elementName {
             case VastElements.vast:
-                vastModel?.ads = vastAds.sorted(by: { $0.sequence < $1.sequence })
+                vastModel?.ads = vastAds
 
                 // If another class is using this delegate call complete
                 if let vm = vastModel {

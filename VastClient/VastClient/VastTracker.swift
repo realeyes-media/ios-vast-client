@@ -11,7 +11,7 @@ import Foundation
 public protocol VastTrackerDelegate {
     func adBreakStart(_ id: String, _ vastModel: VastModel)
     func adStart(_ id: String, _ ad: VastAd)
-    func adFirstQuatile(_ id: String, _ ad: VastAd)
+    func adFirstQuartile(_ id: String, _ ad: VastAd)
     func adMidpoint(_ id: String, _ ad: VastAd)
     func adThirdQuartile(_ id: String, _ ad: VastAd)
     func adComplete(_ id: String, _ ad: VastAd)
@@ -131,7 +131,7 @@ public class VastTracker {
                         .filter { $0.type == .firstQuartile && $0.url != nil }
                         .map { $0.url! }
                     creative.callTrackingUrls(trackingUrls)
-                    delegate?.adFirstQuatile(id, creative.vastAd)
+                    delegate?.adFirstQuartile(id, creative.vastAd)
                 }
             } else if playhead > creative.midpoint && playhead < creative.thirdQuartile {
                 if !creative.trackedMidpoint {

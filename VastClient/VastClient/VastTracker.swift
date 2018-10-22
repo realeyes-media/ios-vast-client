@@ -155,7 +155,7 @@ public class VastTracker {
 
             currentTrackingCreative = creative
         } else {
-            if !creative.trackedComplete {
+            if !creative.trackedComplete && creative.trackedStart {
                 creative.trackedComplete = true
                 let trackingUrls = creative.creative.trackingEvents
                     .filter { $0.type == .complete && $0.url != nil }

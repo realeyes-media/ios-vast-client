@@ -74,8 +74,8 @@ class VMAPParser: NSObject {
                 do {
                     let wrapperModel = try wrapperParser.parse(url: url, count: 0)
                     wrapperModel.ads.forEach { wrapperAd in
-                        if !wrapperAd.adSystem.isEmpty {
-                            copiedAd.adSystem = wrapperAd.adSystem
+                        if !wrapperAd.adSystemVersion.isEmpty {
+                            copiedAd.adSystemVersion = wrapperAd.adSystemVersion
                         }
                         
                         if !wrapperAd.adTitle.isEmpty {
@@ -98,7 +98,6 @@ class VMAPParser: NSObject {
                             if idx < wrapperAd.linearCreatives.count {
                                 let wrapperLinearCreative = wrapperAd.linearCreatives[idx]
                                 lc.duration = wrapperLinearCreative.duration
-                                lc.mediaFiles.append(contentsOf: wrapperLinearCreative.mediaFiles)
                                 lc.trackingEvents.append(contentsOf: wrapperLinearCreative.trackingEvents)
                             }
                             copiedLinearCreatives[idx] = lc

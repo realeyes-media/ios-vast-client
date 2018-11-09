@@ -9,7 +9,7 @@
 import Foundation
 
 struct VideoClickElements {
-    static let clickthrough = "ClickThrough"
+    static let clickthrough = "ClickThrough" //InLine only
     static let clicktracking = "ClickTracking"
     static let customclick = "CustomClick"
 }
@@ -19,7 +19,7 @@ struct VideoClickAttributes {
 }
 
 public enum ClickType: String {
-    case clickThrough = "ClickThrough"
+    case clickThrough = "ClickThrough" //InLine only
     case clickTracking = "ClickTracking"
     case customClick = "CustomClick"
 }

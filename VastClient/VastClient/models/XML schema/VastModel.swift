@@ -20,7 +20,7 @@ struct VastAttributes {
 public struct VastModel {
     public let version: String
     public var ads = [VastAd]()
-    public var error: URL?
+    public var errors: [URL] = []
 }
 
 extension VastModel {

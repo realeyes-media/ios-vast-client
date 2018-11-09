@@ -87,8 +87,10 @@ class VastParser: NSObject {
             throw VastError.internalError
         }
 
-        if let err = vm.error, vm.ads.count == 0 {
-            makeRequest(withUrl: err.withErrorCode(VastErrorCodes.noAdsVastResponse))
+        if !vm.errors.isEmpty, vm.ads.count == 0 {
+            vm.errors.forEach { error in
+                makeRequest(withUrl: error.withErrorCode(VastErrorCodes.noAdsVastResponse))
+            }
         }
 
         let flattenedVastAds = vm.ads.map { [weak self] ad -> VastAd in
@@ -100,8 +102,8 @@ class VastParser: NSObject {
             do {
                 let wrapperModel = try wrapperParser.parse(url: url, count: strongSelf.wrapperCount + 1)
                 wrapperModel.ads.forEach { wrapperAd in
-                    if !wrapperAd.adSystem.isEmpty {
-                        copiedAd.adSystem = wrapperAd.adSystem
+                    if !wrapperAd.adSystemVersion.isEmpty {
+                        copiedAd.adSystemVersion = wrapperAd.adSystemVersion
                     }
                     
                     if !wrapperAd.adTitle.isEmpty {
@@ -124,7 +126,9 @@ class VastParser: NSObject {
                         if idx < wrapperAd.linearCreatives.count {
                             let wrapperLinearCreative = wrapperAd.linearCreatives[idx]
                             lc.duration = wrapperLinearCreative.duration
-                            lc.mediaFiles.append(contentsOf: wrapperLinearCreative.mediaFiles)
+                            if let mediaFiles = wrapperLinearCreative.mediaFiles?.mediaFiles {
+                                lc.mediaFiles?.mediaFiles.append(contentsOf: mediaFiles)
+                            }
                             lc.trackingEvents.append(contentsOf: wrapperLinearCreative.trackingEvents)
                         }
                         copiedLinearCreatives[idx] = lc
@@ -205,7 +209,10 @@ extension VastParser: XMLParserDelegate {
                     completeClosure?(fatalError, vm)
                 }
             case VastElements.error:
-                vastModel?.error =  URL(string: currentContent)
+                guard let url = URL(string: currentContent) else {
+                    break
+                }
+                vastModel?.errors.append(url)
             case AdElements.ad:
                 if let vastAd = currentVastAd {
                     vastAds.append(vastAd)
@@ -216,7 +223,7 @@ extension VastParser: XMLParserDelegate {
             case AdElements.wrapper:
                 currentVastAd?.type = .wrapper
             case AdElements.adsystem:
-                currentVastAd?.adSystem = currentContent
+                currentVastAd?.adSystemVersion = currentContent
             case AdElements.vastAdTagUri:
                 currentVastAd?.wrapperUrl = URL(string: currentContent)
             case AdElements.adtitle:
@@ -256,7 +263,10 @@ extension VastParser: XMLParserDelegate {
                     currentMediaFile = nil
                 }
             case LinearCreativeElements.mediafiles:
-                currentLinearCreative?.mediaFiles = vastMediaFiles
+                if currentLinearCreative?.mediaFiles == nil {
+                    currentLinearCreative?.mediaFiles = VastMediaFiles()
+                }
+                currentLinearCreative?.mediaFiles?.mediaFiles = vastMediaFiles
                 vastMediaFiles = [VastMediaFile]()
             case LinearCreativeElements.creative:
                 if let linearCreative = currentLinearCreative {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum VastInteractiveCreativeFileAttributes: String {
+fileprivate enum VastInteractiveCreativeFileAttributes: String {
     case type
     case apiFramework
 }
@@ -20,7 +20,7 @@ public struct VastInteractiveCreativeFile {
 }
 
 extension VastInteractiveCreativeFile {
-    init?(url: URL?, attrDict: [String: String]) {
+    init?(attrDict: [String: String]) {
         var type: String?
         var apiFramework: String?
         

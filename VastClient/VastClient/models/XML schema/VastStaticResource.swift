@@ -13,11 +13,12 @@ enum VastStaticResourceAttribute: String {
 
 public struct VastStaticResource {
     public let creativeType: String
-    public let url: URL
+    
+    public var url: URL?
 }
 
 extension VastStaticResource {
-    init?(url: URL, attrDict: [String: String]) {
+    init?(attrDict: [String: String]) {
         var creativeTypeValue: String?
         attrDict.compactMap { key, value -> (VastIconClickTrackingAttribute, String)? in
             guard let newKey = VastIconClickTrackingAttribute(rawValue: key) else {
@@ -34,14 +35,5 @@ extension VastStaticResource {
             return nil
         }
         self.creativeType = creativeType
-        self.url = url
     }
-}
-
-public struct VastIFrameResource {
-    public let url: URL
-}
-
-public struct VastHtmlResource {
-    public let url: URL
 }

@@ -8,12 +8,6 @@
 
 import Foundation
 
-struct VideoClickElements {
-    static let clickthrough = "ClickThrough" //InLine only
-    static let clicktracking = "ClickTracking"
-    static let customclick = "CustomClick"
-}
-
 struct VideoClickAttributes {
     static let id = "id"
 }
@@ -27,6 +21,7 @@ public enum ClickType: String {
 public struct VastVideoClick {
     public let id: String
     public let type: ClickType
+    
     public var url: URL?
 }
 

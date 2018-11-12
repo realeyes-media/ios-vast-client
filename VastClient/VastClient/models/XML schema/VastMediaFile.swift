@@ -8,27 +8,22 @@
 
 import Foundation
 
-struct MediaFileElements {
-    static let mediafile = "MediaFile"
-}
-
-struct MediaFileAttributes {
-    static let delivery = "delivery"
-    static let height = "height"
-    static let id = "id"
-    static let type = "type"
-    static let width = "width"
-    static let codec = "codec"
-    static let bitrate = "bitrate"
-    static let minBitrate = "minBitrate"
-    static let maxBitrate = "maxBitrate"
-    static let scalable = "scalable"
-    static let maitainAspectRatio = "maitainAspectRatio"
-    static let apiFramework = "apiFramework"
+fileprivate enum MediaFileAttribute: String {
+    case delivery
+    case height
+    case id
+    case type
+    case width
+    case codec
+    case bitrate
+    case minBitrate
+    case maxBitrate
+    case scalable
+    case maitainAspectRatio
+    case apiFramework
 }
 
 public struct VastMediaFile {
-    // attributes
     public let delivery: String
     public let type: String
     public let width: String
@@ -61,35 +56,38 @@ extension VastMediaFile {
         var maitainAspectRatio: String?
         var apiFramework: String?
         
-        for (key, value) in attrDict {
-            switch key {
-            case MediaFileAttributes.delivery:
-                delivery = value
-            case MediaFileAttributes.height:
-                height = value
-            case MediaFileAttributes.id:
-                id = value
-            case MediaFileAttributes.type:
-                type = value
-            case MediaFileAttributes.width:
-                width = value
-            case MediaFileAttributes.codec:
-                codec = value
-            case MediaFileAttributes.bitrate:
-                bitrate = value
-            case MediaFileAttributes.minBitrate:
-                minBitrate = value
-            case MediaFileAttributes.maxBitrate:
-                maxBitrate = value
-            case MediaFileAttributes.scalable:
-                scalable = value
-            case MediaFileAttributes.maitainAspectRatio:
-                maitainAspectRatio = value
-            case MediaFileAttributes.apiFramework:
-                apiFramework = value
-            default:
-                break
+        attrDict.compactMap { key, value -> (MediaFileAttribute, String)? in
+            guard let newKey = MediaFileAttribute(rawValue: key) else {
+                return nil
             }
+            return (newKey, value)
+            }.forEach { (key, value) in
+                switch key {
+                case .delivery:
+                    delivery = value
+                case .height:
+                    height = value
+                case .id:
+                    id = value
+                case .type:
+                    type = value
+                case .width:
+                    width = value
+                case .codec:
+                    codec = value
+                case .bitrate:
+                    bitrate = value
+                case .minBitrate:
+                    minBitrate = value
+                case .maxBitrate:
+                    maxBitrate = value
+                case .scalable:
+                    scalable = value
+                case .maitainAspectRatio:
+                    maitainAspectRatio = value
+                case .apiFramework:
+                    apiFramework = value
+                }
         }
         self.delivery = delivery
         self.height = height

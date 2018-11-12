@@ -9,16 +9,29 @@
 import Foundation
 
 struct AdElements {
-    static let ad = "Ad"
     static let wrapper = "Wrapper"
     static let vastAdTagUri = "VASTAdTagURI"
-    static let inline = "InLine"
-    static let adsystem = "AdSystem"
-    static let adtitle = "AdTitle"
+    
+    static let inLine = "InLine"
+    
+    static let adSystem = "AdSystem"
+    static let adTitle = "AdTitle"
     static let description = "Description"
     static let error = "Error"
+    
+    static let impression = "Impression"
+    static let category = "Category"
+    static let advertiser = "Advertiser"
+    static let pricing = "Pricing"
+    static let survey = "Survey"
+    static let viewableImpression = "ViewableImpression"
+    static let verification = "Verification"
+    
     static let creatives = "Creatives"
+    static let creative = "Creative"
+    
     static let extensions = "Extensions"
+    static let ext = "Extension"
 }
 
 struct AdAttributes {
@@ -33,124 +46,39 @@ public enum AdType {
     case unknown
 }
 
-public typealias NotYetParsed = String
-
 public struct VastAd {
     // Non element type
     public var type: AdType
     
-    // VAST/Ad parameter
+    // attribute
     public let id: String
     public let sequence: Int
     public let conditionalAd: Bool?
     
-    // VAST/Ad/Wrapper and VAST/Ad/InLine parameter
-    public var adSystemVersion = ""
-    public var impressions = [VastImpression]()
-    public var adVerification: AdVerification?
-    public var viewableImpression: ViewableImpression?
-    public var pricing: Pricing?
-    public var error: URL?
-    
-    public var creatives: Creatives? // 1 for inline, 0-1 for wrapper
-    
-    public var linearCreatives = [VastLinearCreative]()
+    // VAST/Ad/Wrapper and VAST/Ad/InLine elements
+    public var adSystem: VastAdSystem?
+    public var impressions: [VastImpression] = []
+    public var adVerifications: [VastVerification] = []
+    public var viewableImpression: VastViewableImpression?
+    public var pricing: VastPricing?
+    public var errors: [URL] = []
+    public var creatives: [VastCreative] = []
     
     // Inline only
     public var adTitle = ""
     public var wrapperUrl: URL?
-    public var adCategories: [AdCategory] = []
-    public var description: NotYetParsed?
-    public var advertiser: NotYetParsed?
-    public var survey: Survey?
-    
+    public var adCategories: [VastAdCategory] = []
+    public var description: String?
+    public var advertiser: String?
+    public var surveys: [VastSurvey] = []
     
     // Wrapper only
+    public var adTagUri: URL?
     public var followAdditionalWrappers: String?
     public var allowMultipleAds: String?
     public var fallbackOnNoAd: String?
     public var extensions = [VastExtension]()
-    public var companionAds = [VastCompanionAds]()
-}
-
-public struct Creatives {
-    
-}
-
-public struct Survey {
-    public let survey: URL
-    
-    // attributes
-    public let mimeType: NotYetParsed
-}
-
-
-// VAST/Ad/Inline/Pricing
-public struct Pricing {
-    public let pricing: Float
-    
-    // attributes
-    public let model: PricingModel
-    public let currency: NotYetParsed
-}
-
-// VAST/Ad/Inline/Pricing/model
-public enum PricingModel {
-    case cpc
-    case cpm
-    case cpe
-    case cpv
-    
-    init?(string: String) {
-        switch string.lowercased() {
-        case "cpc":
-            self = .cpc
-        case "cpm":
-            self = .cpm
-        case "cpe":
-            self = .cpe
-        case "cpv":
-            self = .cpv
-        default:
-            return nil
-        }
-    }
-}
-
-// VAST/Ad/InLine/Category
-public struct AdCategory {
-    // parameter authority
-    public let authority: URL?
-    
-    // content
-    public let category: NotYetParsed
-}
-
-// VAST/Ad/InLine/AdVerifications
-// VAST/Ad/Wrapper/AdVerifications
-public struct AdVerification {
-    // Inline and Wrapper
-    // /Verification parameter vendor
-    public let vendor: NotYetParsed?
-    
-    // /Verification/ViewableImpression: id
-    public let viewableImpressionId: NotYetParsed?
-}
-
-// VAST/Ad/InLine//ViewableImpression
-// VAST/Ad/Wrapper/ViewableImpression
-public struct ViewableImpression {
-    // parameter id
-    public let id: NotYetParsed //String?
-    
-    // /Viewable
-    public let viewable: NotYetParsed // URI?
-    
-    // /NotViewable
-    public let notViewable: NotYetParsed // URI?
-    
-    // /ViewUndetermined
-    public let viewUndetermined: NotYetParsed // URI?
+//    public var companionAds = [VastCompanionAds]()
 }
 
 extension VastAd {

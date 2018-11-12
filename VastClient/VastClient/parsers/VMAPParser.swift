@@ -74,16 +74,16 @@ class VMAPParser: NSObject {
                 do {
                     let wrapperModel = try wrapperParser.parse(url: url, count: 0)
                     wrapperModel.ads.forEach { wrapperAd in
-                        if !wrapperAd.adSystemVersion.isEmpty {
-                            copiedAd.adSystemVersion = wrapperAd.adSystemVersion
+                        if let adSystem = wrapperAd.adSystem {
+                            copiedAd.adSystem = adSystem
                         }
                         
                         if !wrapperAd.adTitle.isEmpty {
                             copiedAd.adTitle = wrapperAd.adTitle
                         }
                         
-                        if let error = wrapperAd.error {
-                            copiedAd.error = error
+                        if !wrapperAd.errors.isEmpty {
+                            copiedAd.errors = wrapperAd.errors
                         }
                         
                         if wrapperAd.type != AdType.unknown {
@@ -92,20 +92,22 @@ class VMAPParser: NSObject {
                         
                         copiedAd.impressions.append(contentsOf: wrapperAd.impressions)
                         
-                        var copiedLinearCreatives = copiedAd.linearCreatives
-                        for (idx, linearCreative) in copiedLinearCreatives.enumerated() {
-                            var lc = linearCreative
-                            if idx < wrapperAd.linearCreatives.count {
-                                let wrapperLinearCreative = wrapperAd.linearCreatives[idx]
-                                lc.duration = wrapperLinearCreative.duration
-                                lc.trackingEvents.append(contentsOf: wrapperLinearCreative.trackingEvents)
+                        var copiedCreatives = copiedAd.creatives
+                        for (idx, creative) in copiedCreatives.enumerated() {
+                            var creative = creative
+                            if idx < wrapperAd.creatives.count {
+                                let wrapperLinearCreative = wrapperAd.creatives[idx]
+                                creative.linear?.duration = wrapperLinearCreative.linear?.duration
+                                if let events = wrapperLinearCreative.linear?.trackingEvents {
+                                    creative.linear?.trackingEvents.append(contentsOf: events)
+                                }
                             }
-                            copiedLinearCreatives[idx] = lc
+                            copiedCreatives[idx] = creative
                         }
                         
-                        copiedAd.linearCreatives = copiedLinearCreatives
+                        copiedAd.creatives = copiedCreatives
                         copiedAd.extensions.append(contentsOf: wrapperAd.extensions)
-                        copiedAd.companionAds.append(contentsOf: wrapperAd.companionAds)
+//                        copiedAd.companionAds.append(contentsOf: wrapperAd.companionAds)
                     }
                 } catch {
                     print("Unable to parse wrapper")

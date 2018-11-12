@@ -13,13 +13,12 @@ struct ExtensionAttributes {
 }
 
 struct ExtensionElements {
-    static let ext = "Extension" // extension is an invalid identifier
     static let creativeparameters = "CreativeParameters" // TODO: this needs to be defined outside the library
     static let creativeparameter = "CreativeParameter" // TODO: this needs to be defined outside the library
 }
 
 public struct VastExtension {
-    public var type: String
+    public let type: String
     public var creativeParameters = [VastCreativeParameter]()
 }
 

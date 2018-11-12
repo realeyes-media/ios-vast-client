@@ -13,11 +13,12 @@ enum VastCreativeExtensionAttribute: String {
 
 public struct VastCreativeExtension {
     public let mimeType: String?
-    public var content: String //XML
+    
+    public var content: String? //XML
 }
 
 extension VastCreativeExtension {
-    public init?(content: String, attrDict: [String: String]) {
+    public init?(attrDict: [String: String]) {
         var type: String?
         attrDict.forEach({ key, value in
             guard let attribute = VastCreativeExtensionAttribute(rawValue: key) else {
@@ -29,6 +30,5 @@ extension VastCreativeExtension {
             }
         })
         self.mimeType = type
-        self.content = content
     }
 }

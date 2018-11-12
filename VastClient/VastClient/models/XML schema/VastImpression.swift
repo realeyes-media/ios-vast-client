@@ -8,16 +8,13 @@
 
 import Foundation
 
-struct ImpressionElements {
-    static let impression = "Impression"
-}
-
 struct ImpressionAttributes {
     static let id = "id"
 }
 
 public struct VastImpression {
     public let id: String
+    
     public var url: URL?
 }
 

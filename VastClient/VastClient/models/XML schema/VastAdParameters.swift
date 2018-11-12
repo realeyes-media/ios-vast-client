@@ -13,11 +13,12 @@ enum VastAdParametersAttribute: String {
 
 public struct VastAdParameters {
     public let xmlEncoded: String?
-    public var content: String
+    
+    public var content: String?
 }
 
 extension VastAdParameters {
-    init(content: String, attrDict: [String: String]) {
+    init(attrDict: [String: String]) {
         var xmlEncoded: String?
         attrDict.compactMap( {key, value -> (VastAdParametersAttribute, String)? in
             guard let newKey = VastAdParametersAttribute(rawValue: key) else {
@@ -31,6 +32,5 @@ extension VastAdParameters {
             }
         }
         self.xmlEncoded = xmlEncoded
-        self.content = content
     }
 }

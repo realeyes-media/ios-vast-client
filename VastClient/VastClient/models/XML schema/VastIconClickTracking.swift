@@ -13,11 +13,12 @@ enum VastIconClickTrackingAttribute: String {
 
 public struct VastIconClickTracking {
     public let id: String?
-    public let url: URL
+    
+    public var url: URL?
 }
 
 extension VastIconClickTracking {
-    init?(url: URL, attrDict: [String: String]) {
+    init?(attrDict: [String: String]) {
         var id: String?
         attrDict.compactMap{ key, value -> (VastIconClickTrackingAttribute, String)? in
             guard let newKey = VastIconClickTrackingAttribute(rawValue: key) else {
@@ -31,6 +32,5 @@ extension VastIconClickTracking {
                 }
         }
         self.id = id
-        self.url = url
     }
 }

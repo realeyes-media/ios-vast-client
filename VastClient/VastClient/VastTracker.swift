@@ -71,13 +71,13 @@ public class VastTracker {
 
         if currentTrackingCreative == nil {
             guard let vastAd = vastAds.first,
-                let creative = vastAd.linearCreatives.first, vastAd.sequence > 0 else {
+                let linearCreative = vastAd.creatives.first?.linear, vastAd.sequence > 0 else {
                     trackingStatus = .complete
                     delegate?.adBreakComplete(id, vastModel)
                     return
             }
 
-            currentTrackingCreative = TrackingCreative(creative: creative, vastAd: vastAd)
+            currentTrackingCreative = TrackingCreative(creative: linearCreative, vastAd: vastAd)
         }
 
         guard var creative = currentTrackingCreative else {
@@ -283,12 +283,13 @@ public class VastTracker {
 
     public func error(withReason code: VastErrorCodes?) throws {
         if let creative = currentTrackingCreative {
-            if var err = creative.vastAd.error {
+            let urls = creative.vastAd.errors.map { error -> URL in
                 if let c = code {
-                    err = err.withErrorCode(c)
+                    return error.withErrorCode(c)
                 }
-                creative.callTrackingUrls([err])
+                return error
             }
+            creative.callTrackingUrls(urls)
         } else {
             throw TrackingError.InternalError(msg: "Unable to find current creative to track")
         }

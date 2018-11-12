@@ -15,6 +15,8 @@ enum VastUniversalAdIdAttribute: String {
 public struct VastUniversalAdId {
     public let idRegistry: String
     public let idValue: String
+    
+    public var uniqueCreativeId: String?
 }
 
 extension VastUniversalAdId {

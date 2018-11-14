@@ -8,42 +8,94 @@
 
 /* Begin PBXBuildFile section */
 		0F442F9720AB461C00303767 /* http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F442F9620AB461C00303767 /* http.swift */; };
-		0F58AE2E20C6E9F500699B77 /* VastExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F58AE2D20C6E9F500699B77 /* VastExtension.swift */; };
-		0F58AE3020C6EABF00699B77 /* VastCreativeParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F58AE2F20C6EABF00699B77 /* VastCreativeParameter.swift */; };
 		0F58AE3520C7410700699B77 /* VastMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F58AE3420C7410700699B77 /* VastMacros.swift */; };
 		0F71436620BDCD930029BBB6 /* VastErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71436520BDCD930029BBB6 /* VastErrorCodes.swift */; };
 		0F71436820BDD07D0029BBB6 /* URL+replace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71436720BDD07D0029BBB6 /* URL+replace.swift */; };
 		0F71436A20BDD59D0029BBB6 /* String+encode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71436920BDD59D0029BBB6 /* String+encode.swift */; };
-		0F7AF073211B565B000AD5BB /* VMAPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF072211B565B000AD5BB /* VMAPModel.swift */; };
-		0F7AF076211B57B7000AD5BB /* VMAPAdBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF075211B57B7000AD5BB /* VMAPAdBreak.swift */; };
-		0F7AF078211B58E3000AD5BB /* VMAPAdSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF077211B58E3000AD5BB /* VMAPAdSource.swift */; };
-		0F7AF07A211B58FD000AD5BB /* VMAPTrackingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF079211B58FD000AD5BB /* VMAPTrackingEvent.swift */; };
 		0F7AF07C211B60A6000AD5BB /* VMAPParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF07B211B60A6000AD5BB /* VMAPParser.swift */; };
 		0F7AF07E211B616A000AD5BB /* VMAPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF07D211B616A000AD5BB /* VMAPError.swift */; };
-		0F7AF080211B68F2000AD5BB /* VMAPExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF07F211B68F2000AD5BB /* VMAPExtension.swift */; };
 		0F7AF082211B6B2E000AD5BB /* VMAPErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF081211B6B2E000AD5BB /* VMAPErrorCodes.swift */; };
-		0F7AF084211B9A94000AD5BB /* VMAPVastAdData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF083211B9A94000AD5BB /* VMAPVastAdData.swift */; };
 		0F7B97892077CB340096438D /* VastClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7B977F2077CB340096438D /* VastClient.framework */; };
 		0F7B978E2077CB340096438D /* VastClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B978D2077CB340096438D /* VastClientTests.swift */; };
 		0F7B97902077CB340096438D /* VastClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7B97822077CB340096438D /* VastClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F7B97BC2077D3890096438D /* VastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97BB2077D3890096438D /* VastModel.swift */; };
-		0F7B97BE2077D3CC0096438D /* VastAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97BD2077D3CC0096438D /* VastAd.swift */; };
-		0F7B97C02077D4440096438D /* VastImpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97BF2077D4440096438D /* VastImpression.swift */; };
-		0F7B97C22077D4860096438D /* VastLinearCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97C12077D4860096438D /* VastLinearCreative.swift */; };
-		0F7B97C42077D4BF0096438D /* VastTrackingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97C32077D4BF0096438D /* VastTrackingEvent.swift */; };
-		0F7B97C62077D7430096438D /* VastVideoClick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97C52077D7430096438D /* VastVideoClick.swift */; };
-		0F7B97C82077D78F0096438D /* VastMediaFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97C72077D78F0096438D /* VastMediaFile.swift */; };
 		0F7B97CB2077D83B0096438D /* VastError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97CA2077D83B0096438D /* VastError.swift */; };
 		0F7B97D12077DB4C0096438D /* VastParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D02077DB4C0096438D /* VastParser.swift */; };
 		0F7B97D32077E0DC0096438D /* VastClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D22077E0DC0096438D /* VastClient.swift */; };
 		0F7B97D72077E3000096438D /* String+seconds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D62077E3000096438D /* String+seconds.swift */; };
 		0F7B97D92077E40A0096438D /* Sequence+every.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D82077E40A0096438D /* Sequence+every.swift */; };
 		0F7B97DD20782FF90096438D /* VastTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97DC20782FF90096438D /* VastTracker.swift */; };
-		0FB92CF720C831A100310FCF /* VastCompanionCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB92CF620C831A100310FCF /* VastCompanionCreative.swift */; };
-		0FB92CF920C843B400310FCF /* VastCompanionAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB92CF820C843B400310FCF /* VastCompanionAds.swift */; };
 		0FEDAABF20AA3A05006850C8 /* TrackingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAABE20AA3A05006850C8 /* TrackingStatus.swift */; };
 		0FEDAAC120AA3A62006850C8 /* TrackingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAAC020AA3A62006850C8 /* TrackingError.swift */; };
-		0FEDAAC320AA3F9F006850C8 /* TrackingCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAAC220AA3F9F006850C8 /* TrackingCreative.swift */; };
+		A945EE0E219C5C100007A079 /* VastCreativeParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDE8219C5C100007A079 /* VastCreativeParameter.swift */; };
+		A945EE0F219C5C100007A079 /* VastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDEA219C5C100007A079 /* VastModel.swift */; };
+		A945EE10219C5C100007A079 /* VastSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDEB219C5C100007A079 /* VastSurvey.swift */; };
+		A945EE11219C5C100007A079 /* VastAdParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDEC219C5C100007A079 /* VastAdParameters.swift */; };
+		A945EE12219C5C100007A079 /* VastIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDED219C5C100007A079 /* VastIcon.swift */; };
+		A945EE13219C5C100007A079 /* VastCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDEE219C5C100007A079 /* VastCreative.swift */; };
+		A945EE14219C5C100007A079 /* VastMediaFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDEF219C5C100007A079 /* VastMediaFiles.swift */; };
+		A945EE15219C5C100007A079 /* IconClicks.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDF0219C5C100007A079 /* IconClicks.swift */; };
+		A945EE16219C5C100007A079 /* VastTrackingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDF1219C5C100007A079 /* VastTrackingEvent.swift */; };
+		A945EE17219C5C100007A079 /* VastCompanionAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDF2219C5C100007A079 /* VastCompanionAds.swift */; };
+		A945EE18219C5C100007A079 /* VastAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDF3219C5C100007A079 /* VastAd.swift */; };
+		A945EE19219C5C100007A079 /* VastInteractiveCreativeFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDF4219C5C100007A079 /* VastInteractiveCreativeFile.swift */; };
+		A945EE1A219C5C100007A079 /* VastVideoClicks.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDF5219C5C100007A079 /* VastVideoClicks.swift */; };
+		A945EE1B219C5C100007A079 /* VastWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDF6219C5C100007A079 /* VastWrapper.swift */; };
+		A945EE1C219C5C100007A079 /* VastCompanionCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDF7219C5C100007A079 /* VastCompanionCreative.swift */; };
+		A945EE1D219C5C100007A079 /* VastMediaFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDF8219C5C100007A079 /* VastMediaFile.swift */; };
+		A945EE1E219C5C100007A079 /* VastLinearCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDF9219C5C100007A079 /* VastLinearCreative.swift */; };
+		A945EE1F219C5C100007A079 /* VastViewableImpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDFA219C5C100007A079 /* VastViewableImpression.swift */; };
+		A945EE20219C5C100007A079 /* VastAdSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDFB219C5C100007A079 /* VastAdSystem.swift */; };
+		A945EE21219C5C100007A079 /* VastExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDFC219C5C100007A079 /* VastExtension.swift */; };
+		A945EE22219C5C100007A079 /* VastCreativeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDFD219C5C100007A079 /* VastCreativeExtension.swift */; };
+		A945EE23219C5C100007A079 /* VastIconClickTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDFE219C5C100007A079 /* VastIconClickTracking.swift */; };
+		A945EE24219C5C100007A079 /* VastPricing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDFF219C5C100007A079 /* VastPricing.swift */; };
+		A945EE25219C5C100007A079 /* VastResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE00219C5C100007A079 /* VastResource.swift */; };
+		A945EE26219C5C100007A079 /* VastUniversalAdId.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE01219C5C100007A079 /* VastUniversalAdId.swift */; };
+		A945EE27219C5C100007A079 /* VastAdCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE02219C5C100007A079 /* VastAdCategory.swift */; };
+		A945EE28219C5C100007A079 /* VastImpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE03219C5C100007A079 /* VastImpression.swift */; };
+		A945EE29219C5C100007A079 /* VastStaticResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE04219C5C100007A079 /* VastStaticResource.swift */; };
+		A945EE2A219C5C100007A079 /* VastVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE05219C5C100007A079 /* VastVerification.swift */; };
+		A945EE2B219C5C100007A079 /* VMAPVastAdData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE07219C5C100007A079 /* VMAPVastAdData.swift */; };
+		A945EE2C219C5C100007A079 /* VMAPExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE08219C5C100007A079 /* VMAPExtension.swift */; };
+		A945EE2D219C5C100007A079 /* VMAPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE09219C5C100007A079 /* VMAPModel.swift */; };
+		A945EE2E219C5C100007A079 /* VMAPAdSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE0A219C5C100007A079 /* VMAPAdSource.swift */; };
+		A945EE2F219C5C100007A079 /* VMAPTrackingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE0B219C5C100007A079 /* VMAPTrackingEvent.swift */; };
+		A945EE30219C5C100007A079 /* VMAPAdBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE0C219C5C100007A079 /* VMAPAdBreak.swift */; };
+		A945EE31219C5C100007A079 /* TrackingCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE0D219C5C100007A079 /* TrackingCreative.swift */; };
+		A945EE33219C5C560007A079 /* String+value.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE32219C5C560007A079 /* String+value.swift */; };
+		A945EE35219C5C990007A079 /* VastParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE34219C5C990007A079 /* VastParserSpec.swift */; };
+		A945EE59219C5C9F0007A079 /* Category-test.xml in Resources */ = {isa = PBXBuildFile; fileRef = A945EE38219C5C9E0007A079 /* Category-test.xml */; };
+		A945EE5A219C5C9F0007A079 /* AdVerification-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE39219C5C9E0007A079 /* AdVerification-test.swift */; };
+		A945EE5B219C5C9F0007A079 /* Event_Tracking-test.xml in Resources */ = {isa = PBXBuildFile; fileRef = A945EE3A219C5C9E0007A079 /* Event_Tracking-test.xml */; };
+		A945EE5C219C5C9F0007A079 /* ViewableImpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE3B219C5C9E0007A079 /* ViewableImpression.swift */; };
+		A945EE5D219C5C9F0007A079 /* Video_Clicks_and_click_tracking-Inline-test.xml in Resources */ = {isa = PBXBuildFile; fileRef = A945EE3C219C5C9E0007A079 /* Video_Clicks_and_click_tracking-Inline-test.xml */; };
+		A945EE5E219C5C9F0007A079 /* NoWrapperTag-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE3D219C5C9E0007A079 /* NoWrapperTag-test.swift */; };
+		A945EE5F219C5C9F0007A079 /* Wrapper_Tag-test.xml in Resources */ = {isa = PBXBuildFile; fileRef = A945EE3E219C5C9E0007A079 /* Wrapper_Tag-test.xml */; };
+		A945EE60219C5C9F0007A079 /* Category-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE3F219C5C9E0007A079 /* Category-test.swift */; };
+		A945EE61219C5C9F0007A079 /* Ad_Verification-test.xml in Resources */ = {isa = PBXBuildFile; fileRef = A945EE40219C5C9E0007A079 /* Ad_Verification-test.xml */; };
+		A945EE62219C5C9F0007A079 /* UniversalAdId-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE41219C5C9E0007A079 /* UniversalAdId-test.swift */; };
+		A945EE63219C5C9F0007A079 /* Universal_Ad_ID-test.xml in Resources */ = {isa = PBXBuildFile; fileRef = A945EE42219C5C9E0007A079 /* Universal_Ad_ID-test.xml */; };
+		A945EE64219C5C9F0007A079 /* ReadyToServerMediaFilesCheck-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE43219C5C9E0007A079 /* ReadyToServerMediaFilesCheck-test.swift */; };
+		A945EE65219C5C9F0007A079 /* No_Wrapper_Tag-test.xml in Resources */ = {isa = PBXBuildFile; fileRef = A945EE44219C5C9E0007A079 /* No_Wrapper_Tag-test.xml */; };
+		A945EE66219C5C9F0007A079 /* VideoClicksAndClickTracking-Inline-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE45219C5C9E0007A079 /* VideoClicksAndClickTracking-Inline-test.swift */; };
+		A945EE67219C5C9F0007A079 /* Inline_Simple-test.xml in Resources */ = {isa = PBXBuildFile; fileRef = A945EE46219C5C9E0007A079 /* Inline_Simple-test.xml */; };
+		A945EE68219C5C9F0007A079 /* Inline_Linear_Tag-test.xml in Resources */ = {isa = PBXBuildFile; fileRef = A945EE47219C5C9E0007A079 /* Inline_Linear_Tag-test.xml */; };
+		A945EE69219C5C9F0007A079 /* WrapperTag-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE48219C5C9E0007A079 /* WrapperTag-test.swift */; };
+		A945EE6A219C5C9F0007A079 /* InlineSimple-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE49219C5C9E0007A079 /* InlineSimple-test.swift */; };
+		A945EE6B219C5C9F0007A079 /* Viewable_Impression-test.xml in Resources */ = {isa = PBXBuildFile; fileRef = A945EE4A219C5C9E0007A079 /* Viewable_Impression-test.xml */; };
+		A945EE6C219C5C9F0007A079 /* EventTracking-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE4B219C5C9E0007A079 /* EventTracking-test.swift */; };
+		A945EE6D219C5C9F0007A079 /* Ready_to_serve_Media_Files_check-test.xml in Resources */ = {isa = PBXBuildFile; fileRef = A945EE4C219C5C9E0007A079 /* Ready_to_serve_Media_Files_check-test.xml */; };
+		A945EE6E219C5C9F0007A079 /* InlineLinearTag-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE4D219C5C9E0007A079 /* InlineLinearTag-test.swift */; };
+		A945EE6F219C5C9F0007A079 /* EventTracking-test3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE4F219C5C9E0007A079 /* EventTracking-test3.swift */; };
+		A945EE70219C5C9F0007A079 /* InlineLinearTag-test3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE50219C5C9E0007A079 /* InlineLinearTag-test3.swift */; };
+		A945EE71219C5C9F0007A079 /* WrapperTag-test3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE51219C5C9E0007A079 /* WrapperTag-test3.swift */; };
+		A945EE72219C5C9F0007A079 /* Wrapper_Tag-test3.xml in Resources */ = {isa = PBXBuildFile; fileRef = A945EE52219C5C9E0007A079 /* Wrapper_Tag-test3.xml */; };
+		A945EE73219C5C9F0007A079 /* Event_Tracking-test3.xml in Resources */ = {isa = PBXBuildFile; fileRef = A945EE53219C5C9E0007A079 /* Event_Tracking-test3.xml */; };
+		A945EE74219C5C9F0007A079 /* VideoClicksAndClickTrackingInline-test3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE54219C5C9E0007A079 /* VideoClicksAndClickTrackingInline-test3.swift */; };
+		A945EE75219C5C9F0007A079 /* Video_Clicks_and_click_tracking-Inline-test3.xml in Resources */ = {isa = PBXBuildFile; fileRef = A945EE55219C5C9E0007A079 /* Video_Clicks_and_click_tracking-Inline-test3.xml */; };
+		A945EE76219C5C9F0007A079 /* Inline_Linear_Tag-test3.xml in Resources */ = {isa = PBXBuildFile; fileRef = A945EE56219C5C9E0007A079 /* Inline_Linear_Tag-test3.xml */; };
+		A945EE77219C5C9F0007A079 /* vast3.xsd in Resources */ = {isa = PBXBuildFile; fileRef = A945EE57219C5C9E0007A079 /* vast3.xsd */; };
+		A945EE78219C5C9F0007A079 /* vast4.xsd in Resources */ = {isa = PBXBuildFile; fileRef = A945EE58219C5C9E0007A079 /* vast4.xsd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,45 +110,97 @@
 
 /* Begin PBXFileReference section */
 		0F442F9620AB461C00303767 /* http.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = http.swift; sourceTree = "<group>"; };
-		0F58AE2D20C6E9F500699B77 /* VastExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastExtension.swift; sourceTree = "<group>"; };
-		0F58AE2F20C6EABF00699B77 /* VastCreativeParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastCreativeParameter.swift; sourceTree = "<group>"; };
 		0F58AE3420C7410700699B77 /* VastMacros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastMacros.swift; sourceTree = "<group>"; };
 		0F71436520BDCD930029BBB6 /* VastErrorCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastErrorCodes.swift; sourceTree = "<group>"; };
 		0F71436720BDD07D0029BBB6 /* URL+replace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+replace.swift"; sourceTree = "<group>"; };
 		0F71436920BDD59D0029BBB6 /* String+encode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+encode.swift"; sourceTree = "<group>"; };
-		0F7AF072211B565B000AD5BB /* VMAPModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMAPModel.swift; sourceTree = "<group>"; };
-		0F7AF075211B57B7000AD5BB /* VMAPAdBreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMAPAdBreak.swift; sourceTree = "<group>"; };
-		0F7AF077211B58E3000AD5BB /* VMAPAdSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMAPAdSource.swift; sourceTree = "<group>"; };
-		0F7AF079211B58FD000AD5BB /* VMAPTrackingEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMAPTrackingEvent.swift; sourceTree = "<group>"; };
 		0F7AF07B211B60A6000AD5BB /* VMAPParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMAPParser.swift; sourceTree = "<group>"; };
 		0F7AF07D211B616A000AD5BB /* VMAPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMAPError.swift; sourceTree = "<group>"; };
-		0F7AF07F211B68F2000AD5BB /* VMAPExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMAPExtension.swift; sourceTree = "<group>"; };
 		0F7AF081211B6B2E000AD5BB /* VMAPErrorCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMAPErrorCodes.swift; sourceTree = "<group>"; };
-		0F7AF083211B9A94000AD5BB /* VMAPVastAdData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMAPVastAdData.swift; sourceTree = "<group>"; };
 		0F7B977F2077CB340096438D /* VastClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VastClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F7B97822077CB340096438D /* VastClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VastClient.h; sourceTree = "<group>"; };
 		0F7B97832077CB340096438D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F7B97882077CB340096438D /* VastClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VastClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F7B978D2077CB340096438D /* VastClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastClientTests.swift; sourceTree = "<group>"; };
 		0F7B978F2077CB340096438D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0F7B97BB2077D3890096438D /* VastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastModel.swift; sourceTree = "<group>"; };
-		0F7B97BD2077D3CC0096438D /* VastAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastAd.swift; sourceTree = "<group>"; };
-		0F7B97BF2077D4440096438D /* VastImpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastImpression.swift; sourceTree = "<group>"; };
-		0F7B97C12077D4860096438D /* VastLinearCreative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastLinearCreative.swift; sourceTree = "<group>"; };
-		0F7B97C32077D4BF0096438D /* VastTrackingEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastTrackingEvent.swift; sourceTree = "<group>"; };
-		0F7B97C52077D7430096438D /* VastVideoClick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastVideoClick.swift; sourceTree = "<group>"; };
-		0F7B97C72077D78F0096438D /* VastMediaFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastMediaFile.swift; sourceTree = "<group>"; };
 		0F7B97CA2077D83B0096438D /* VastError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastError.swift; sourceTree = "<group>"; };
 		0F7B97D02077DB4C0096438D /* VastParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastParser.swift; sourceTree = "<group>"; };
 		0F7B97D22077E0DC0096438D /* VastClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastClient.swift; sourceTree = "<group>"; };
 		0F7B97D62077E3000096438D /* String+seconds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+seconds.swift"; sourceTree = "<group>"; };
 		0F7B97D82077E40A0096438D /* Sequence+every.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+every.swift"; sourceTree = "<group>"; };
 		0F7B97DC20782FF90096438D /* VastTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastTracker.swift; sourceTree = "<group>"; };
-		0FB92CF620C831A100310FCF /* VastCompanionCreative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastCompanionCreative.swift; sourceTree = "<group>"; };
-		0FB92CF820C843B400310FCF /* VastCompanionAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastCompanionAds.swift; sourceTree = "<group>"; };
 		0FEDAABE20AA3A05006850C8 /* TrackingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingStatus.swift; sourceTree = "<group>"; };
 		0FEDAAC020AA3A62006850C8 /* TrackingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingError.swift; sourceTree = "<group>"; };
-		0FEDAAC220AA3F9F006850C8 /* TrackingCreative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingCreative.swift; sourceTree = "<group>"; };
+		A945EDE8219C5C100007A079 /* VastCreativeParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastCreativeParameter.swift; sourceTree = "<group>"; };
+		A945EDEA219C5C100007A079 /* VastModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastModel.swift; sourceTree = "<group>"; };
+		A945EDEB219C5C100007A079 /* VastSurvey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastSurvey.swift; sourceTree = "<group>"; };
+		A945EDEC219C5C100007A079 /* VastAdParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastAdParameters.swift; sourceTree = "<group>"; };
+		A945EDED219C5C100007A079 /* VastIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastIcon.swift; sourceTree = "<group>"; };
+		A945EDEE219C5C100007A079 /* VastCreative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastCreative.swift; sourceTree = "<group>"; };
+		A945EDEF219C5C100007A079 /* VastMediaFiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastMediaFiles.swift; sourceTree = "<group>"; };
+		A945EDF0219C5C100007A079 /* IconClicks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconClicks.swift; sourceTree = "<group>"; };
+		A945EDF1219C5C100007A079 /* VastTrackingEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastTrackingEvent.swift; sourceTree = "<group>"; };
+		A945EDF2219C5C100007A079 /* VastCompanionAds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastCompanionAds.swift; sourceTree = "<group>"; };
+		A945EDF3219C5C100007A079 /* VastAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastAd.swift; sourceTree = "<group>"; };
+		A945EDF4219C5C100007A079 /* VastInteractiveCreativeFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastInteractiveCreativeFile.swift; sourceTree = "<group>"; };
+		A945EDF5219C5C100007A079 /* VastVideoClicks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastVideoClicks.swift; sourceTree = "<group>"; };
+		A945EDF6219C5C100007A079 /* VastWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastWrapper.swift; sourceTree = "<group>"; };
+		A945EDF7219C5C100007A079 /* VastCompanionCreative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastCompanionCreative.swift; sourceTree = "<group>"; };
+		A945EDF8219C5C100007A079 /* VastMediaFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastMediaFile.swift; sourceTree = "<group>"; };
+		A945EDF9219C5C100007A079 /* VastLinearCreative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastLinearCreative.swift; sourceTree = "<group>"; };
+		A945EDFA219C5C100007A079 /* VastViewableImpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastViewableImpression.swift; sourceTree = "<group>"; };
+		A945EDFB219C5C100007A079 /* VastAdSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastAdSystem.swift; sourceTree = "<group>"; };
+		A945EDFC219C5C100007A079 /* VastExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastExtension.swift; sourceTree = "<group>"; };
+		A945EDFD219C5C100007A079 /* VastCreativeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastCreativeExtension.swift; sourceTree = "<group>"; };
+		A945EDFE219C5C100007A079 /* VastIconClickTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastIconClickTracking.swift; sourceTree = "<group>"; };
+		A945EDFF219C5C100007A079 /* VastPricing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastPricing.swift; sourceTree = "<group>"; };
+		A945EE00219C5C100007A079 /* VastResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastResource.swift; sourceTree = "<group>"; };
+		A945EE01219C5C100007A079 /* VastUniversalAdId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastUniversalAdId.swift; sourceTree = "<group>"; };
+		A945EE02219C5C100007A079 /* VastAdCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastAdCategory.swift; sourceTree = "<group>"; };
+		A945EE03219C5C100007A079 /* VastImpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastImpression.swift; sourceTree = "<group>"; };
+		A945EE04219C5C100007A079 /* VastStaticResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastStaticResource.swift; sourceTree = "<group>"; };
+		A945EE05219C5C100007A079 /* VastVerification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastVerification.swift; sourceTree = "<group>"; };
+		A945EE07219C5C100007A079 /* VMAPVastAdData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VMAPVastAdData.swift; sourceTree = "<group>"; };
+		A945EE08219C5C100007A079 /* VMAPExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VMAPExtension.swift; sourceTree = "<group>"; };
+		A945EE09219C5C100007A079 /* VMAPModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VMAPModel.swift; sourceTree = "<group>"; };
+		A945EE0A219C5C100007A079 /* VMAPAdSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VMAPAdSource.swift; sourceTree = "<group>"; };
+		A945EE0B219C5C100007A079 /* VMAPTrackingEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VMAPTrackingEvent.swift; sourceTree = "<group>"; };
+		A945EE0C219C5C100007A079 /* VMAPAdBreak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VMAPAdBreak.swift; sourceTree = "<group>"; };
+		A945EE0D219C5C100007A079 /* TrackingCreative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingCreative.swift; sourceTree = "<group>"; };
+		A945EE32219C5C560007A079 /* String+value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+value.swift"; sourceTree = "<group>"; };
+		A945EE34219C5C990007A079 /* VastParserSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastParserSpec.swift; sourceTree = "<group>"; };
+		A945EE38219C5C9E0007A079 /* Category-test.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Category-test.xml"; sourceTree = "<group>"; };
+		A945EE39219C5C9E0007A079 /* AdVerification-test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AdVerification-test.swift"; sourceTree = "<group>"; };
+		A945EE3A219C5C9E0007A079 /* Event_Tracking-test.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Event_Tracking-test.xml"; sourceTree = "<group>"; };
+		A945EE3B219C5C9E0007A079 /* ViewableImpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewableImpression.swift; sourceTree = "<group>"; };
+		A945EE3C219C5C9E0007A079 /* Video_Clicks_and_click_tracking-Inline-test.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Video_Clicks_and_click_tracking-Inline-test.xml"; sourceTree = "<group>"; };
+		A945EE3D219C5C9E0007A079 /* NoWrapperTag-test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoWrapperTag-test.swift"; sourceTree = "<group>"; };
+		A945EE3E219C5C9E0007A079 /* Wrapper_Tag-test.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Wrapper_Tag-test.xml"; sourceTree = "<group>"; };
+		A945EE3F219C5C9E0007A079 /* Category-test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category-test.swift"; sourceTree = "<group>"; };
+		A945EE40219C5C9E0007A079 /* Ad_Verification-test.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Ad_Verification-test.xml"; sourceTree = "<group>"; };
+		A945EE41219C5C9E0007A079 /* UniversalAdId-test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UniversalAdId-test.swift"; sourceTree = "<group>"; };
+		A945EE42219C5C9E0007A079 /* Universal_Ad_ID-test.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Universal_Ad_ID-test.xml"; sourceTree = "<group>"; };
+		A945EE43219C5C9E0007A079 /* ReadyToServerMediaFilesCheck-test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReadyToServerMediaFilesCheck-test.swift"; sourceTree = "<group>"; };
+		A945EE44219C5C9E0007A079 /* No_Wrapper_Tag-test.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "No_Wrapper_Tag-test.xml"; sourceTree = "<group>"; };
+		A945EE45219C5C9E0007A079 /* VideoClicksAndClickTracking-Inline-test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VideoClicksAndClickTracking-Inline-test.swift"; sourceTree = "<group>"; };
+		A945EE46219C5C9E0007A079 /* Inline_Simple-test.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Inline_Simple-test.xml"; sourceTree = "<group>"; };
+		A945EE47219C5C9E0007A079 /* Inline_Linear_Tag-test.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Inline_Linear_Tag-test.xml"; sourceTree = "<group>"; };
+		A945EE48219C5C9E0007A079 /* WrapperTag-test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WrapperTag-test.swift"; sourceTree = "<group>"; };
+		A945EE49219C5C9E0007A079 /* InlineSimple-test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "InlineSimple-test.swift"; sourceTree = "<group>"; };
+		A945EE4A219C5C9E0007A079 /* Viewable_Impression-test.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Viewable_Impression-test.xml"; sourceTree = "<group>"; };
+		A945EE4B219C5C9E0007A079 /* EventTracking-test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EventTracking-test.swift"; sourceTree = "<group>"; };
+		A945EE4C219C5C9E0007A079 /* Ready_to_serve_Media_Files_check-test.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Ready_to_serve_Media_Files_check-test.xml"; sourceTree = "<group>"; };
+		A945EE4D219C5C9E0007A079 /* InlineLinearTag-test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "InlineLinearTag-test.swift"; sourceTree = "<group>"; };
+		A945EE4F219C5C9E0007A079 /* EventTracking-test3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EventTracking-test3.swift"; sourceTree = "<group>"; };
+		A945EE50219C5C9E0007A079 /* InlineLinearTag-test3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "InlineLinearTag-test3.swift"; sourceTree = "<group>"; };
+		A945EE51219C5C9E0007A079 /* WrapperTag-test3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WrapperTag-test3.swift"; sourceTree = "<group>"; };
+		A945EE52219C5C9E0007A079 /* Wrapper_Tag-test3.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Wrapper_Tag-test3.xml"; sourceTree = "<group>"; };
+		A945EE53219C5C9E0007A079 /* Event_Tracking-test3.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Event_Tracking-test3.xml"; sourceTree = "<group>"; };
+		A945EE54219C5C9E0007A079 /* VideoClicksAndClickTrackingInline-test3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VideoClicksAndClickTrackingInline-test3.swift"; sourceTree = "<group>"; };
+		A945EE55219C5C9E0007A079 /* Video_Clicks_and_click_tracking-Inline-test3.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Video_Clicks_and_click_tracking-Inline-test3.xml"; sourceTree = "<group>"; };
+		A945EE56219C5C9E0007A079 /* Inline_Linear_Tag-test3.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Inline_Linear_Tag-test3.xml"; sourceTree = "<group>"; };
+		A945EE57219C5C9E0007A079 /* vast3.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = vast3.xsd; sourceTree = "<group>"; };
+		A945EE58219C5C9E0007A079 /* vast4.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = vast4.xsd; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,19 +222,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0F7AF074211B57A2000AD5BB /* VMAP */ = {
-			isa = PBXGroup;
-			children = (
-				0F7AF072211B565B000AD5BB /* VMAPModel.swift */,
-				0F7AF075211B57B7000AD5BB /* VMAPAdBreak.swift */,
-				0F7AF077211B58E3000AD5BB /* VMAPAdSource.swift */,
-				0F7AF079211B58FD000AD5BB /* VMAPTrackingEvent.swift */,
-				0F7AF07F211B68F2000AD5BB /* VMAPExtension.swift */,
-				0F7AF083211B9A94000AD5BB /* VMAPVastAdData.swift */,
-			);
-			path = VMAP;
-			sourceTree = "<group>";
-		};
 		0F7B97752077CB340096438D = {
 			isa = PBXGroup;
 			children = (
@@ -154,8 +245,8 @@
 			children = (
 				0FEDAABD20AA39F7006850C8 /* constants */,
 				0F7B97D52077E2F10096438D /* utils */,
+				A945EDE7219C5C100007A079 /* models */,
 				0F7B97CE2077DB310096438D /* parsers */,
-				0F7B97BA2077D3770096438D /* models */,
 				0F7B97822077CB340096438D /* VastClient.h */,
 				0F7B97832077CB340096438D /* Info.plist */,
 				0F7B97D22077E0DC0096438D /* VastClient.swift */,
@@ -167,30 +258,12 @@
 		0F7B978C2077CB340096438D /* VastClientTests */ = {
 			isa = PBXGroup;
 			children = (
+				A945EE36219C5C9E0007A079 /* Assets */,
+				A945EE34219C5C990007A079 /* VastParserSpec.swift */,
 				0F7B978D2077CB340096438D /* VastClientTests.swift */,
 				0F7B978F2077CB340096438D /* Info.plist */,
 			);
 			path = VastClientTests;
-			sourceTree = "<group>";
-		};
-		0F7B97BA2077D3770096438D /* models */ = {
-			isa = PBXGroup;
-			children = (
-				0F7AF074211B57A2000AD5BB /* VMAP */,
-				0F7B97BB2077D3890096438D /* VastModel.swift */,
-				0F7B97BD2077D3CC0096438D /* VastAd.swift */,
-				0F7B97BF2077D4440096438D /* VastImpression.swift */,
-				0F7B97C12077D4860096438D /* VastLinearCreative.swift */,
-				0F7B97C32077D4BF0096438D /* VastTrackingEvent.swift */,
-				0F7B97C52077D7430096438D /* VastVideoClick.swift */,
-				0F7B97C72077D78F0096438D /* VastMediaFile.swift */,
-				0FEDAAC220AA3F9F006850C8 /* TrackingCreative.swift */,
-				0F58AE2D20C6E9F500699B77 /* VastExtension.swift */,
-				0F58AE2F20C6EABF00699B77 /* VastCreativeParameter.swift */,
-				0FB92CF620C831A100310FCF /* VastCompanionCreative.swift */,
-				0FB92CF820C843B400310FCF /* VastCompanionAds.swift */,
-			);
-			path = models;
 			sourceTree = "<group>";
 		};
 		0F7B97CE2077DB310096438D /* parsers */ = {
@@ -209,6 +282,7 @@
 				0F7B97D82077E40A0096438D /* Sequence+every.swift */,
 				0F442F9620AB461C00303767 /* http.swift */,
 				0F71436720BDD07D0029BBB6 /* URL+replace.swift */,
+				A945EE32219C5C560007A079 /* String+value.swift */,
 				0F71436920BDD59D0029BBB6 /* String+encode.swift */,
 			);
 			path = utils;
@@ -226,6 +300,120 @@
 				0F7AF081211B6B2E000AD5BB /* VMAPErrorCodes.swift */,
 			);
 			path = constants;
+			sourceTree = "<group>";
+		};
+		A945EDE7219C5C100007A079 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				A945EDE8219C5C100007A079 /* VastCreativeParameter.swift */,
+				A945EDE9219C5C100007A079 /* XML schema */,
+				A945EE06219C5C100007A079 /* VMAP */,
+				A945EE0D219C5C100007A079 /* TrackingCreative.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		A945EDE9219C5C100007A079 /* XML schema */ = {
+			isa = PBXGroup;
+			children = (
+				A945EDEA219C5C100007A079 /* VastModel.swift */,
+				A945EDEB219C5C100007A079 /* VastSurvey.swift */,
+				A945EDEC219C5C100007A079 /* VastAdParameters.swift */,
+				A945EDED219C5C100007A079 /* VastIcon.swift */,
+				A945EDEE219C5C100007A079 /* VastCreative.swift */,
+				A945EDEF219C5C100007A079 /* VastMediaFiles.swift */,
+				A945EDF0219C5C100007A079 /* IconClicks.swift */,
+				A945EDF1219C5C100007A079 /* VastTrackingEvent.swift */,
+				A945EDF2219C5C100007A079 /* VastCompanionAds.swift */,
+				A945EDF3219C5C100007A079 /* VastAd.swift */,
+				A945EDF4219C5C100007A079 /* VastInteractiveCreativeFile.swift */,
+				A945EDF5219C5C100007A079 /* VastVideoClicks.swift */,
+				A945EDF6219C5C100007A079 /* VastWrapper.swift */,
+				A945EDF7219C5C100007A079 /* VastCompanionCreative.swift */,
+				A945EDF8219C5C100007A079 /* VastMediaFile.swift */,
+				A945EDF9219C5C100007A079 /* VastLinearCreative.swift */,
+				A945EDFA219C5C100007A079 /* VastViewableImpression.swift */,
+				A945EDFB219C5C100007A079 /* VastAdSystem.swift */,
+				A945EDFC219C5C100007A079 /* VastExtension.swift */,
+				A945EDFD219C5C100007A079 /* VastCreativeExtension.swift */,
+				A945EDFE219C5C100007A079 /* VastIconClickTracking.swift */,
+				A945EDFF219C5C100007A079 /* VastPricing.swift */,
+				A945EE00219C5C100007A079 /* VastResource.swift */,
+				A945EE01219C5C100007A079 /* VastUniversalAdId.swift */,
+				A945EE02219C5C100007A079 /* VastAdCategory.swift */,
+				A945EE03219C5C100007A079 /* VastImpression.swift */,
+				A945EE04219C5C100007A079 /* VastStaticResource.swift */,
+				A945EE05219C5C100007A079 /* VastVerification.swift */,
+			);
+			path = "XML schema";
+			sourceTree = "<group>";
+		};
+		A945EE06219C5C100007A079 /* VMAP */ = {
+			isa = PBXGroup;
+			children = (
+				A945EE07219C5C100007A079 /* VMAPVastAdData.swift */,
+				A945EE08219C5C100007A079 /* VMAPExtension.swift */,
+				A945EE09219C5C100007A079 /* VMAPModel.swift */,
+				A945EE0A219C5C100007A079 /* VMAPAdSource.swift */,
+				A945EE0B219C5C100007A079 /* VMAPTrackingEvent.swift */,
+				A945EE0C219C5C100007A079 /* VMAPAdBreak.swift */,
+			);
+			path = VMAP;
+			sourceTree = "<group>";
+		};
+		A945EE36219C5C9E0007A079 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				A945EE37219C5C9E0007A079 /* Vast4 */,
+				A945EE4E219C5C9E0007A079 /* Vast3 */,
+				A945EE57219C5C9E0007A079 /* vast3.xsd */,
+				A945EE58219C5C9E0007A079 /* vast4.xsd */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		A945EE37219C5C9E0007A079 /* Vast4 */ = {
+			isa = PBXGroup;
+			children = (
+				A945EE38219C5C9E0007A079 /* Category-test.xml */,
+				A945EE39219C5C9E0007A079 /* AdVerification-test.swift */,
+				A945EE3A219C5C9E0007A079 /* Event_Tracking-test.xml */,
+				A945EE3B219C5C9E0007A079 /* ViewableImpression.swift */,
+				A945EE3C219C5C9E0007A079 /* Video_Clicks_and_click_tracking-Inline-test.xml */,
+				A945EE3D219C5C9E0007A079 /* NoWrapperTag-test.swift */,
+				A945EE3E219C5C9E0007A079 /* Wrapper_Tag-test.xml */,
+				A945EE3F219C5C9E0007A079 /* Category-test.swift */,
+				A945EE40219C5C9E0007A079 /* Ad_Verification-test.xml */,
+				A945EE41219C5C9E0007A079 /* UniversalAdId-test.swift */,
+				A945EE42219C5C9E0007A079 /* Universal_Ad_ID-test.xml */,
+				A945EE43219C5C9E0007A079 /* ReadyToServerMediaFilesCheck-test.swift */,
+				A945EE44219C5C9E0007A079 /* No_Wrapper_Tag-test.xml */,
+				A945EE45219C5C9E0007A079 /* VideoClicksAndClickTracking-Inline-test.swift */,
+				A945EE46219C5C9E0007A079 /* Inline_Simple-test.xml */,
+				A945EE47219C5C9E0007A079 /* Inline_Linear_Tag-test.xml */,
+				A945EE48219C5C9E0007A079 /* WrapperTag-test.swift */,
+				A945EE49219C5C9E0007A079 /* InlineSimple-test.swift */,
+				A945EE4A219C5C9E0007A079 /* Viewable_Impression-test.xml */,
+				A945EE4B219C5C9E0007A079 /* EventTracking-test.swift */,
+				A945EE4C219C5C9E0007A079 /* Ready_to_serve_Media_Files_check-test.xml */,
+				A945EE4D219C5C9E0007A079 /* InlineLinearTag-test.swift */,
+			);
+			path = Vast4;
+			sourceTree = "<group>";
+		};
+		A945EE4E219C5C9E0007A079 /* Vast3 */ = {
+			isa = PBXGroup;
+			children = (
+				A945EE4F219C5C9E0007A079 /* EventTracking-test3.swift */,
+				A945EE50219C5C9E0007A079 /* InlineLinearTag-test3.swift */,
+				A945EE51219C5C9E0007A079 /* WrapperTag-test3.swift */,
+				A945EE52219C5C9E0007A079 /* Wrapper_Tag-test3.xml */,
+				A945EE53219C5C9E0007A079 /* Event_Tracking-test3.xml */,
+				A945EE54219C5C9E0007A079 /* VideoClicksAndClickTrackingInline-test3.swift */,
+				A945EE55219C5C9E0007A079 /* Video_Clicks_and_click_tracking-Inline-test3.xml */,
+				A945EE56219C5C9E0007A079 /* Inline_Linear_Tag-test3.xml */,
+			);
+			path = Vast3;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,6 +517,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A945EE72219C5C9F0007A079 /* Wrapper_Tag-test3.xml in Resources */,
+				A945EE75219C5C9F0007A079 /* Video_Clicks_and_click_tracking-Inline-test3.xml in Resources */,
+				A945EE5F219C5C9F0007A079 /* Wrapper_Tag-test.xml in Resources */,
+				A945EE6D219C5C9F0007A079 /* Ready_to_serve_Media_Files_check-test.xml in Resources */,
+				A945EE6B219C5C9F0007A079 /* Viewable_Impression-test.xml in Resources */,
+				A945EE65219C5C9F0007A079 /* No_Wrapper_Tag-test.xml in Resources */,
+				A945EE67219C5C9F0007A079 /* Inline_Simple-test.xml in Resources */,
+				A945EE77219C5C9F0007A079 /* vast3.xsd in Resources */,
+				A945EE59219C5C9F0007A079 /* Category-test.xml in Resources */,
+				A945EE68219C5C9F0007A079 /* Inline_Linear_Tag-test.xml in Resources */,
+				A945EE61219C5C9F0007A079 /* Ad_Verification-test.xml in Resources */,
+				A945EE63219C5C9F0007A079 /* Universal_Ad_ID-test.xml in Resources */,
+				A945EE78219C5C9F0007A079 /* vast4.xsd in Resources */,
+				A945EE76219C5C9F0007A079 /* Inline_Linear_Tag-test3.xml in Resources */,
+				A945EE5D219C5C9F0007A079 /* Video_Clicks_and_click_tracking-Inline-test.xml in Resources */,
+				A945EE73219C5C9F0007A079 /* Event_Tracking-test3.xml in Resources */,
+				A945EE5B219C5C9F0007A079 /* Event_Tracking-test.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,40 +544,59 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A945EE11219C5C100007A079 /* VastAdParameters.swift in Sources */,
+				A945EE19219C5C100007A079 /* VastInteractiveCreativeFile.swift in Sources */,
 				0F7B97D12077DB4C0096438D /* VastParser.swift in Sources */,
-				0F7B97BE2077D3CC0096438D /* VastAd.swift in Sources */,
+				A945EE1B219C5C100007A079 /* VastWrapper.swift in Sources */,
+				A945EE0F219C5C100007A079 /* VastModel.swift in Sources */,
 				0F7B97D92077E40A0096438D /* Sequence+every.swift in Sources */,
-				0FB92CF720C831A100310FCF /* VastCompanionCreative.swift in Sources */,
 				0F71436A20BDD59D0029BBB6 /* String+encode.swift in Sources */,
+				A945EE22219C5C100007A079 /* VastCreativeExtension.swift in Sources */,
+				A945EE2E219C5C100007A079 /* VMAPAdSource.swift in Sources */,
+				A945EE15219C5C100007A079 /* IconClicks.swift in Sources */,
 				0FEDAAC120AA3A62006850C8 /* TrackingError.swift in Sources */,
+				A945EE30219C5C100007A079 /* VMAPAdBreak.swift in Sources */,
 				0F71436820BDD07D0029BBB6 /* URL+replace.swift in Sources */,
-				0F7B97BC2077D3890096438D /* VastModel.swift in Sources */,
-				0F7B97C02077D4440096438D /* VastImpression.swift in Sources */,
-				0F7B97C22077D4860096438D /* VastLinearCreative.swift in Sources */,
-				0F58AE2E20C6E9F500699B77 /* VastExtension.swift in Sources */,
 				0F58AE3520C7410700699B77 /* VastMacros.swift in Sources */,
-				0F58AE3020C6EABF00699B77 /* VastCreativeParameter.swift in Sources */,
-				0FEDAAC320AA3F9F006850C8 /* TrackingCreative.swift in Sources */,
-				0F7AF076211B57B7000AD5BB /* VMAPAdBreak.swift in Sources */,
+				A945EE1A219C5C100007A079 /* VastVideoClicks.swift in Sources */,
+				A945EE1D219C5C100007A079 /* VastMediaFile.swift in Sources */,
 				0F7AF07E211B616A000AD5BB /* VMAPError.swift in Sources */,
-				0F7AF078211B58E3000AD5BB /* VMAPAdSource.swift in Sources */,
+				A945EE2D219C5C100007A079 /* VMAPModel.swift in Sources */,
 				0F442F9720AB461C00303767 /* http.swift in Sources */,
+				A945EE13219C5C100007A079 /* VastCreative.swift in Sources */,
 				0F7B97DD20782FF90096438D /* VastTracker.swift in Sources */,
-				0F7B97C82077D78F0096438D /* VastMediaFile.swift in Sources */,
 				0F71436620BDCD930029BBB6 /* VastErrorCodes.swift in Sources */,
+				A945EE28219C5C100007A079 /* VastImpression.swift in Sources */,
+				A945EE33219C5C560007A079 /* String+value.swift in Sources */,
+				A945EE25219C5C100007A079 /* VastResource.swift in Sources */,
+				A945EE24219C5C100007A079 /* VastPricing.swift in Sources */,
+				A945EE2B219C5C100007A079 /* VMAPVastAdData.swift in Sources */,
+				A945EE16219C5C100007A079 /* VastTrackingEvent.swift in Sources */,
+				A945EE2C219C5C100007A079 /* VMAPExtension.swift in Sources */,
+				A945EE23219C5C100007A079 /* VastIconClickTracking.swift in Sources */,
 				0F7B97D32077E0DC0096438D /* VastClient.swift in Sources */,
-				0F7B97C62077D7430096438D /* VastVideoClick.swift in Sources */,
-				0FB92CF920C843B400310FCF /* VastCompanionAds.swift in Sources */,
-				0F7AF07A211B58FD000AD5BB /* VMAPTrackingEvent.swift in Sources */,
+				A945EE2A219C5C100007A079 /* VastVerification.swift in Sources */,
+				A945EE26219C5C100007A079 /* VastUniversalAdId.swift in Sources */,
+				A945EE10219C5C100007A079 /* VastSurvey.swift in Sources */,
+				A945EE27219C5C100007A079 /* VastAdCategory.swift in Sources */,
 				0F7B97D72077E3000096438D /* String+seconds.swift in Sources */,
+				A945EE29219C5C100007A079 /* VastStaticResource.swift in Sources */,
 				0F7B97CB2077D83B0096438D /* VastError.swift in Sources */,
-				0F7AF073211B565B000AD5BB /* VMAPModel.swift in Sources */,
-				0F7AF084211B9A94000AD5BB /* VMAPVastAdData.swift in Sources */,
+				A945EE1F219C5C100007A079 /* VastViewableImpression.swift in Sources */,
 				0FEDAABF20AA3A05006850C8 /* TrackingStatus.swift in Sources */,
 				0F7AF07C211B60A6000AD5BB /* VMAPParser.swift in Sources */,
-				0F7B97C42077D4BF0096438D /* VastTrackingEvent.swift in Sources */,
+				A945EE18219C5C100007A079 /* VastAd.swift in Sources */,
+				A945EE1E219C5C100007A079 /* VastLinearCreative.swift in Sources */,
+				A945EE0E219C5C100007A079 /* VastCreativeParameter.swift in Sources */,
+				A945EE12219C5C100007A079 /* VastIcon.swift in Sources */,
+				A945EE2F219C5C100007A079 /* VMAPTrackingEvent.swift in Sources */,
+				A945EE14219C5C100007A079 /* VastMediaFiles.swift in Sources */,
+				A945EE20219C5C100007A079 /* VastAdSystem.swift in Sources */,
+				A945EE31219C5C100007A079 /* TrackingCreative.swift in Sources */,
 				0F7AF082211B6B2E000AD5BB /* VMAPErrorCodes.swift in Sources */,
-				0F7AF080211B68F2000AD5BB /* VMAPExtension.swift in Sources */,
+				A945EE21219C5C100007A079 /* VastExtension.swift in Sources */,
+				A945EE17219C5C100007A079 /* VastCompanionAds.swift in Sources */,
+				A945EE1C219C5C100007A079 /* VastCompanionCreative.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +605,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F7B978E2077CB340096438D /* VastClientTests.swift in Sources */,
+				A945EE6C219C5C9F0007A079 /* EventTracking-test.swift in Sources */,
+				A945EE6A219C5C9F0007A079 /* InlineSimple-test.swift in Sources */,
+				A945EE70219C5C9F0007A079 /* InlineLinearTag-test3.swift in Sources */,
+				A945EE60219C5C9F0007A079 /* Category-test.swift in Sources */,
+				A945EE62219C5C9F0007A079 /* UniversalAdId-test.swift in Sources */,
+				A945EE5E219C5C9F0007A079 /* NoWrapperTag-test.swift in Sources */,
+				A945EE6E219C5C9F0007A079 /* InlineLinearTag-test.swift in Sources */,
+				A945EE35219C5C990007A079 /* VastParserSpec.swift in Sources */,
+				A945EE5A219C5C9F0007A079 /* AdVerification-test.swift in Sources */,
+				A945EE69219C5C9F0007A079 /* WrapperTag-test.swift in Sources */,
+				A945EE66219C5C9F0007A079 /* VideoClicksAndClickTracking-Inline-test.swift in Sources */,
+				A945EE6F219C5C9F0007A079 /* EventTracking-test3.swift in Sources */,
+				A945EE5C219C5C9F0007A079 /* ViewableImpression.swift in Sources */,
+				A945EE74219C5C9F0007A079 /* VideoClicksAndClickTrackingInline-test3.swift in Sources */,
+				A945EE71219C5C9F0007A079 /* WrapperTag-test3.swift in Sources */,
+				A945EE64219C5C9F0007A079 /* ReadyToServerMediaFilesCheck-test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,7 +761,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = W2DL3PWML7;
+				DEVELOPMENT_TEAM = 8UNGG86G59;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -529,7 +769,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.realeyes.VastClient;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.npo.VastClient;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -547,7 +787,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = W2DL3PWML7;
+				DEVELOPMENT_TEAM = 8UNGG86G59;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -555,7 +795,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.realeyes.VastClient;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.npo.VastClient;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -570,7 +810,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W2DL3PWML7;
+				DEVELOPMENT_TEAM = 8UNGG86G59;
 				INFOPLIST_FILE = VastClientTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.realeyes.VastClientTests;
@@ -585,7 +825,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W2DL3PWML7;
+				DEVELOPMENT_TEAM = 8UNGG86G59;
 				INFOPLIST_FILE = VastClientTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.realeyes.VastClientTests;

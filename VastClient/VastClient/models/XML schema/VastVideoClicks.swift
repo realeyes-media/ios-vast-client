@@ -8,32 +8,27 @@
 
 import Foundation
 
-struct VideoClickElements {
-    static let clickthrough = "ClickThrough"
-    static let clicktracking = "ClickTracking"
-    static let customclick = "CustomClick"
-}
-
 struct VideoClickAttributes {
     static let id = "id"
 }
 
 public enum ClickType: String {
-    case clickThrough = "ClickThrough"
+    case clickThrough = "ClickThrough" //InLine only
     case clickTracking = "ClickTracking"
     case customClick = "CustomClick"
 }
 
 public struct VastVideoClick {
-    public let id: String
+    public let id: String?
     public let type: ClickType
+    
     public var url: URL?
 }
 
 extension VastVideoClick {
     public init(type: ClickType, attrDict: [String: String]) {
         self.type = type
-        var id = ""
+        var id: String?
         for (key, value) in attrDict {
             switch key {
             case VideoClickAttributes.id:
@@ -44,4 +39,7 @@ extension VastVideoClick {
         }
         self.id = id
     }
+}
+
+extension VastVideoClick: Equatable {
 }

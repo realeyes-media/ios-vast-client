@@ -10,7 +10,9 @@ import Foundation
 
 struct VastElements {
     static let vast = "VAST"
+    
     static let error = "Error"
+    static let ad = "Ad"
 }
 
 struct VastAttributes {
@@ -19,8 +21,8 @@ struct VastAttributes {
 
 public struct VastModel {
     public let version: String
-    public var ads = [VastAd]()
-    public var error: URL?
+    public var ads: [VastAd] = []
+    public var errors: [URL] = []
 }
 
 extension VastModel {
@@ -36,4 +38,7 @@ extension VastModel {
         }
         self.version = version
     }
+}
+
+extension VastModel: Equatable {
 }

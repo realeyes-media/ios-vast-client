@@ -31,10 +31,6 @@ public enum TrackingEventType: String {
     case unknown
 }
 
-struct TrackingEventElements {
-    static let tracking = "Tracking"
-}
-
 struct TrackingEventAttributes {
     static let event = "event"
     static let offset = "offset"
@@ -42,14 +38,16 @@ struct TrackingEventAttributes {
 
 public struct VastTrackingEvent {
     public let type: TrackingEventType
+    public let offset: Double?
+    
     public var url: URL?
-    public var offset: Double?
     public var tracked = false
 }
 
 extension VastTrackingEvent {
     public init(attrDict: [String: String]) {
         var event = TrackingEventType.unknown
+        var offset: Double?
         for (key, value) in attrDict {
             if key == TrackingEventAttributes.event {
                 if let evt = TrackingEventType(rawValue: value) {
@@ -59,10 +57,14 @@ extension VastTrackingEvent {
 
             if key == TrackingEventAttributes.offset {
                 // format is either (HH:MM:SS or HH:MM:SS.mmm) or n%
-                self.offset = value.index(of: ":") != nil ? value.toSeconds : Double(value) ?? 0 / 100
+                offset = value.index(of: ":") != nil ? value.toSeconds : Double(value) ?? 0 / 100
             }
         }
 
         self.type = event
+        self.offset = offset
     }
+}
+
+extension VastTrackingEvent: Equatable {
 }

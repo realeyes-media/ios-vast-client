@@ -9,7 +9,7 @@
 import XCTest
 @testable import VastClient
 
-class VastParserSpec: XCTestCase {
+class VastParserTests: XCTestCase {
     
     func test_inlineLinearTag3() {
         let model = self.loadVastFile(named: "Inline_Linear_Tag-test3")

@@ -78,8 +78,8 @@ class VMAPParser: NSObject {
                             copiedAd.adSystem = adSystem
                         }
                         
-                        if !wrapperAd.adTitle.isEmpty {
-                            copiedAd.adTitle = wrapperAd.adTitle
+                        if let title = wrapperAd.adTitle, !title.isEmpty {
+                            copiedAd.adTitle = title
                         }
                         
                         if !wrapperAd.errors.isEmpty {

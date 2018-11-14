@@ -28,7 +28,7 @@ public struct VastVideoClick {
 extension VastVideoClick {
     public init(type: ClickType, attrDict: [String: String]) {
         self.type = type
-        var id = ""
+        var id: String?
         for (key, value) in attrDict {
             switch key {
             case VideoClickAttributes.id:

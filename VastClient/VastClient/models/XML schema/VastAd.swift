@@ -65,7 +65,7 @@ public struct VastAd {
     public var creatives: [VastCreative] = []
     
     // Inline only
-    public var adTitle = ""
+    public var adTitle: String?
     public var wrapperUrl: URL?
     public var adCategories: [VastAdCategory] = []
     public var description: String?

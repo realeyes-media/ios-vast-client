@@ -19,7 +19,7 @@ fileprivate enum MediaFileAttribute: String {
     case minBitrate
     case maxBitrate
     case scalable
-    case maitainAspectRatio
+    case maintainAspectRatio
     case apiFramework
 }
 
@@ -34,7 +34,7 @@ public struct VastMediaFile {
     public let minBitrate: Int?
     public let maxBitrate: Int?
     public let scalable: Bool?
-    public let maitainAspectRatio: Bool?
+    public let maintainAspectRatio: Bool?
     public let apiFramework: String?
     
     // content
@@ -53,7 +53,7 @@ extension VastMediaFile {
         var minBitrate: String?
         var maxBitrate: String?
         var scalable: String?
-        var maitainAspectRatio: String?
+        var maintainAspectRatio: String?
         var apiFramework: String?
         
         attrDict.compactMap { key, value -> (MediaFileAttribute, String)? in
@@ -83,8 +83,8 @@ extension VastMediaFile {
                     maxBitrate = value
                 case .scalable:
                     scalable = value
-                case .maitainAspectRatio:
-                    maitainAspectRatio = value
+                case .maintainAspectRatio:
+                    maintainAspectRatio = value
                 case .apiFramework:
                     apiFramework = value
                 }
@@ -99,7 +99,7 @@ extension VastMediaFile {
         self.minBitrate = minBitrate?.intValue
         self.maxBitrate = maxBitrate?.intValue
         self.scalable = scalable?.boolValue
-        self.maitainAspectRatio = maitainAspectRatio?.boolValue
+        self.maintainAspectRatio = maintainAspectRatio?.boolValue
         self.apiFramework = apiFramework
     }
 }

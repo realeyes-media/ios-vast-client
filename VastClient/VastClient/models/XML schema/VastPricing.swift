@@ -40,7 +40,7 @@ public struct VastPricing {
     public let model: PricingModel
     public let currency: String
     
-    public var pricing: Float?
+    public var pricing: Double?
 }
 
 extension VastPricing {

@@ -110,8 +110,8 @@ class VastParser: NSObject {
                         copiedAd.adSystem = adSystem
                     }
                     
-                    if !wrapperAd.adTitle.isEmpty {
-                        copiedAd.adTitle = wrapperAd.adTitle
+                    if let title = wrapperAd.adTitle, !title.isEmpty {
+                        copiedAd.adTitle = title
                     }
                     
                     if !wrapperAd.errors.isEmpty {
@@ -130,11 +130,11 @@ class VastParser: NSObject {
                         if idx < wrapperAd.creatives.count {
                             let wrapperLinearCreative = wrapperAd.creatives[idx]
                             creative.linear?.duration = wrapperLinearCreative.linear?.duration
-                            if let mediaFiles = wrapperLinearCreative.linear?.mediaFiles?.mediaFiles {
-                                creative.linear?.mediaFiles?.mediaFiles.append(contentsOf: mediaFiles)
+                            if let mediaFiles = wrapperLinearCreative.linear?.mediaFiles.mediaFiles {
+                                creative.linear?.mediaFiles.mediaFiles.append(contentsOf: mediaFiles)
                             }
-                            if let interactiveFiles = wrapperLinearCreative.linear?.mediaFiles?.interactiveCreativeFile {
-                                creative.linear?.mediaFiles?.interactiveCreativeFile.append(contentsOf: interactiveFiles)
+                            if let interactiveFiles = wrapperLinearCreative.linear?.mediaFiles.interactiveCreativeFile {
+                                creative.linear?.mediaFiles.interactiveCreativeFile.append(contentsOf: interactiveFiles)
                             }
                             if let events = wrapperLinearCreative.linear?.trackingEvents {
                                 creative.linear?.trackingEvents.append(contentsOf: events)
@@ -239,6 +239,9 @@ extension VastParser: XMLParserDelegate {
     
     func parser(_ parser: XMLParser, foundCDATA CDATABlock: Data) {
         NSLog("XMLParser found CDATA block: \(CDATABlock.description)")
+        if let content = String(data: CDATABlock, encoding: .utf8) {
+            currentContent += content
+        }
     }
 
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
@@ -255,7 +258,11 @@ extension VastParser: XMLParserDelegate {
                 guard let url = URL(string: currentContent) else {
                     break
                 }
-                vastModel?.errors.append(url)
+                if currentVastAd != nil {
+                    currentVastAd?.errors.append(url)
+                } else {
+                    vastModel?.errors.append(url)
+                }
             case VastElements.ad:
                 if let vastAd = currentVastAd {
                     vastModel?.ads.append(vastAd)
@@ -287,11 +294,19 @@ extension VastParser: XMLParserDelegate {
                     currentVastCategory = nil
                 }
             case AdElements.description:
-                break
+                currentVastAd?.description = currentContent
             case AdElements.pricing:
-                break
+                currentVastPricing?.pricing = currentContent.doubleValue
+                if let pricing = currentVastPricing {
+                    currentVastAd?.pricing = pricing
+                    currentVastPricing = nil
+                }
             case AdElements.survey:
-                break
+                currentSurvey?.survey = URL(string: currentContent)
+                if let survey = currentSurvey {
+                    currentVastAd?.surveys.append(survey)
+                    currentSurvey = nil
+                }
             case AdElements.error:
                 if let url = URL(string: currentContent) {
                     currentVastAd?.errors.append(url)
@@ -324,7 +339,7 @@ extension VastParser: XMLParserDelegate {
                     currentVerification = nil
                 }
             case AdElements.vastAdTagUri:
-                currentVastAd?.wrapperUrl = URL(string: currentContent)
+                currentVastAd?.adTagUri = URL(string: currentContent)
             case AdElements.ext:
                 if let vastExtension = currentVastExtension {
                     currentVastAd?.extensions.append(vastExtension)
@@ -360,13 +375,13 @@ extension VastParser: XMLParserDelegate {
             case CreativeLinearElements.mediafile:
                 currentMediaFile?.url = URL(string: currentContent)
                 if let mediaFile = currentMediaFile {
-                    currentLinearCreative?.mediaFiles?.mediaFiles.append(mediaFile)
+                    currentLinearCreative?.mediaFiles.mediaFiles.append(mediaFile)
                     currentMediaFile = nil
                 }
             case CreativeLinearElements.interactiveCreativeFile:
                 currentInteractiveCreativeFile?.url = URL(string: currentContent)
                 if let interactiveCreativeFile = currentInteractiveCreativeFile {
-                    currentLinearCreative?.mediaFiles?.interactiveCreativeFile.append(interactiveCreativeFile)
+                    currentLinearCreative?.mediaFiles.interactiveCreativeFile.append(interactiveCreativeFile)
                     currentInteractiveCreativeFile = nil
                 }
             case CreativeLinearElements.clickthrough, CreativeLinearElements.clicktracking, CreativeLinearElements.customclick:

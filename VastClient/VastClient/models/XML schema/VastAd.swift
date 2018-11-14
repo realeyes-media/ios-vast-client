@@ -10,8 +10,6 @@ import Foundation
 
 struct AdElements {
     static let wrapper = "Wrapper"
-    static let vastAdTagUri = "VASTAdTagURI"
-    
     static let inLine = "InLine"
     
     static let adSystem = "AdSystem"
@@ -38,6 +36,9 @@ struct AdAttributes {
     static let id = "id"
     static let sequence = "sequence"
     static let conditionalAd = "conditionalAd"
+    static let followAdditionalWrappers = "followAdditionalWrappers"
+    static let allowMultipleAds = "allowMultipleAds"
+    static let fallbackOnNoAd = "fallbackOnNoAd"
 }
 
 public enum AdType {
@@ -63,6 +64,7 @@ public struct VastAd {
     public var pricing: VastPricing?
     public var errors: [URL] = []
     public var creatives: [VastCreative] = []
+    public var extensions = [VastExtension]()
     
     // Inline only
     public var adTitle: String?
@@ -72,12 +74,8 @@ public struct VastAd {
     public var advertiser: String?
     public var surveys: [VastSurvey] = []
     
-    // Wrapper only
-    public var adTagUri: URL?
-    public var followAdditionalWrappers: String?
-    public var allowMultipleAds: String?
-    public var fallbackOnNoAd: String?
-    public var extensions = [VastExtension]()
+    public var wrapper: VastWrapper?
+    
 // TODO: uncomments and fix parsing for /CompanionAds
 //    public var companionAds = [VastCompanionAds]()
 }

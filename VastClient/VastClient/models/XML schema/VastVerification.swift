@@ -13,14 +13,17 @@ enum VastAdVerificationAttribute: String {
 
 struct VastAdVerificationElements {
     static let viewableImpression = "ViewableImpression"
+    static let javaScriptResource = "JavaScriptResource"
+    static let flashResource = "FlashResource"
 }
 
 // VAST/Ad/InLine/AdVerifications/Verification
 // VAST/Ad/Wrapper/AdVerifications/Verification
 public struct VastVerification {
-    public let vendor: URL
-    
+    public let vendor: URL?
     public var viewableImpression: VastViewableImpression?
+    public var javaScriptResource: [VastResource] = []
+    public var flashResources: [VastResource] = []
 }
 
 extension VastVerification {
@@ -37,10 +40,7 @@ extension VastVerification {
                     vendorValue = value
                 }
         }
-        guard let vendor = vendorValue, let vendorUrl = URL(string: vendor) else {
-            return nil
-        }
-        self.vendor = vendorUrl
+        self.vendor = URL(string: vendorValue ?? "")
     }
 }
 

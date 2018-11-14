@@ -24,6 +24,7 @@ class VastParser: NSObject {
     var vastModel: VastModel?
 
     var currentVastAd: VastAd?
+    var currentWrapper: VastWrapper?
     var currentAdSystem: VastAdSystem?
     var currentVastImpression: VastImpression?
     
@@ -32,6 +33,7 @@ class VastParser: NSObject {
     var currentSurvey: VastSurvey?
     var currentViewableImpression: VastViewableImpression?
     var currentVerification: VastVerification?
+    var currentResource: VastResource?
     var currentVerificationViewableImpression: VastViewableImpression?
     
     var currentCreative: VastCreative?
@@ -177,6 +179,8 @@ extension VastParser: XMLParserDelegate {
             switch elementName {
             case VastElements.ad:
                 currentVastAd = VastAd(attrDict: attributeDict)
+            case AdElements.wrapper:
+                currentWrapper = VastWrapper(attrDict: attributeDict)
             case AdElements.adSystem:
                 currentAdSystem = VastAdSystem(attrDict: attributeDict)
             case AdElements.impression:
@@ -195,6 +199,8 @@ extension VastParser: XMLParserDelegate {
                 }
             case AdElements.verification:
                 currentVerification = VastVerification(attrDict: attributeDict)
+            case VastAdVerificationElements.flashResource, VastAdVerificationElements.javaScriptResource:
+                currentResource = VastResource(attrDict: attributeDict)
             case AdElements.ext:
                 currentVastExtension = VastExtension(attrDict: attributeDict)
             case AdElements.creative:
@@ -272,6 +278,10 @@ extension VastParser: XMLParserDelegate {
                 currentVastAd?.viewableImpression = currentViewableImpression
                 currentVastAd?.type = .inline
             case AdElements.wrapper:
+                if let wrapper = currentWrapper {
+                    currentVastAd?.wrapper = wrapper
+                    currentWrapper = nil
+                }
                 currentVastAd?.type = .wrapper
             case AdElements.adSystem:
                 currentAdSystem?.system = currentContent
@@ -288,7 +298,7 @@ extension VastParser: XMLParserDelegate {
                     currentVastImpression = nil
                 }
             case AdElements.category:
-                currentVastCategory?.category = currentContent
+                currentVastCategory?.category = currentContent.isEmpty ? nil : currentContent
                 if let category = currentVastCategory {
                     currentVastAd?.adCategories.append(category)
                     currentVastCategory = nil
@@ -338,8 +348,20 @@ extension VastParser: XMLParserDelegate {
                     currentVastAd?.adVerifications.append(verification)
                     currentVerification = nil
                 }
-            case AdElements.vastAdTagUri:
-                currentVastAd?.adTagUri = URL(string: currentContent)
+            case VastAdVerificationElements.flashResource:
+                currentResource?.url = URL(string: currentContent)
+                if let resource = currentResource {
+                    currentVerification?.flashResources.append(resource)
+                    currentResource = nil
+                }
+            case VastAdVerificationElements.javaScriptResource:
+                currentResource?.url = URL(string: currentContent)
+                if let resource = currentResource {
+                    currentVerification?.javaScriptResource.append(resource)
+                    currentResource = nil
+                }
+            case VastWrapperElements.vastAdTagUri:
+                currentWrapper?.adTagUri = URL(string: currentContent)
             case AdElements.ext:
                 if let vastExtension = currentVastExtension {
                     currentVastAd?.extensions.append(vastExtension)

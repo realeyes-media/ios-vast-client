@@ -95,3 +95,6 @@ extension VastIcon {
         self.pxratio = pxratio.doubleValue ?? 1
     }
 }
+
+extension VastIcon: Equatable {
+}

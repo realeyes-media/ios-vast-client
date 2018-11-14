@@ -62,3 +62,6 @@ extension VastLinearCreative {
         self.skipOffset = skipOffset
     }
 }
+
+extension VastLinearCreative: Equatable {
+}

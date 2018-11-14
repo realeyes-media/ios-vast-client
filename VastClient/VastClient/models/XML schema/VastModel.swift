@@ -39,3 +39,6 @@ extension VastModel {
         self.version = version
     }
 }
+
+extension VastModel: Equatable {
+}

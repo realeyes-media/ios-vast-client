@@ -34,3 +34,6 @@ extension VastAdParameters {
         self.xmlEncoded = xmlEncoded
     }
 }
+
+extension VastAdParameters: Equatable {
+}

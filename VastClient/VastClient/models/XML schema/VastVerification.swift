@@ -43,3 +43,6 @@ extension VastVerification {
         self.vendor = vendorUrl
     }
 }
+
+extension VastVerification: Equatable {
+}

@@ -37,3 +37,6 @@ extension VastStaticResource {
         self.creativeType = creativeType
     }
 }
+
+extension VastStaticResource: Equatable {
+}

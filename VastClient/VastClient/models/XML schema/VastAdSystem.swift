@@ -33,3 +33,6 @@ extension VastAdSystem {
         self.version = versionValue
     }
 }
+
+extension VastAdSystem: Equatable {
+}

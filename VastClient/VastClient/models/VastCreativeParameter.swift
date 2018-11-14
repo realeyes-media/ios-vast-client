@@ -47,4 +47,7 @@ extension VastCreativeParameter {
     }
 }
 
+extension VastCreativeParameter: Equatable {
+}
+
 

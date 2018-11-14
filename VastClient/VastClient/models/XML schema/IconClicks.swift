@@ -16,3 +16,6 @@ public struct IconClicks {
     public var iconClickThrough: URL?
     public var iconClickTracking: [VastIconClickTracking] = []
 }
+
+extension IconClicks: Equatable {
+}

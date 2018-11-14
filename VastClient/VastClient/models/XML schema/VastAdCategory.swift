@@ -38,3 +38,6 @@ extension VastAdCategory {
         self.authority = authorityUrl
     }
 }
+
+extension VastAdCategory: Equatable {
+}

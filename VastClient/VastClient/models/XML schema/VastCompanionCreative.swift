@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+// TODO: uncomments and fix parsing for /CompanionAds
 //public enum CompanionResourceType: String {
 //    /**
 //     Describes non-html creative where an attribute for creativeType is used to identify the creative resource platform.

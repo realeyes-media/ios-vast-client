@@ -41,3 +41,6 @@ extension VastInteractiveCreativeFile {
         self.apiFramework = apiFramework
     }
 }
+
+extension VastInteractiveCreativeFile: Equatable {
+}

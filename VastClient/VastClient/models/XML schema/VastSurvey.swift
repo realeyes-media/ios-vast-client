@@ -34,3 +34,6 @@ extension VastSurvey {
         self.type = typeValue
     }
 }
+
+extension VastSurvey: Equatable {
+}

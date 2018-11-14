@@ -32,3 +32,6 @@ extension VastCreativeExtension {
         self.mimeType = type
     }
 }
+
+extension VastCreativeExtension: Equatable {
+}

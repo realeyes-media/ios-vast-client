@@ -13,14 +13,14 @@ struct ImpressionAttributes {
 }
 
 public struct VastImpression {
-    public let id: String
+    public let id: String?
     
     public var url: URL?
 }
 
 extension VastImpression {
     public init(attrDict: [String: String]) {
-        var id = ""
+        var id: String?
         for (key, value) in attrDict {
             switch key {
             case ImpressionAttributes.id:
@@ -31,4 +31,7 @@ extension VastImpression {
         }
         self.id = id
     }
+}
+
+extension VastImpression: Equatable {
 }

@@ -36,3 +36,9 @@ extension VastExtension {
         self.type = type
     }
 }
+
+extension VastExtension: Equatable {
+    public static func == (lhs: VastExtension, rhs: VastExtension) -> Bool {
+        return lhs.type == rhs.type
+    }
+}

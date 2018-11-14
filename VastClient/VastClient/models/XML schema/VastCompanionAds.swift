@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+// TODO: uncomments and fix parsing for /CompanionAds
 //struct CompanionAdsAttributes {
 //    static let required = "required"
 //}

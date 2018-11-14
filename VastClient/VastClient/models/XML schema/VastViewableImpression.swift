@@ -49,3 +49,6 @@ extension VastViewableImpression {
         self.id = id
     }
 }
+
+extension VastViewableImpression: Equatable {
+}

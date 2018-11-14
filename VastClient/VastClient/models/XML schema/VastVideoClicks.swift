@@ -19,7 +19,7 @@ public enum ClickType: String {
 }
 
 public struct VastVideoClick {
-    public let id: String
+    public let id: String?
     public let type: ClickType
     
     public var url: URL?
@@ -39,4 +39,7 @@ extension VastVideoClick {
         }
         self.id = id
     }
+}
+
+extension VastVideoClick: Equatable {
 }

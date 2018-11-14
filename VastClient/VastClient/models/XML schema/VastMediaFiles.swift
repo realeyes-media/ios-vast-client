@@ -11,3 +11,6 @@ public struct VastMediaFiles {
     public var mediaFiles: [VastMediaFile] = []
     public var interactiveCreativeFile: [VastInteractiveCreativeFile] = []
 }
+
+extension VastMediaFiles: Equatable {
+}

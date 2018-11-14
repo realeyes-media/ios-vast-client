@@ -61,3 +61,6 @@ extension VastCreative {
         self.apiFramework = apiFramework
     }
 }
+
+extension VastCreative: Equatable {
+}

@@ -67,3 +67,6 @@ extension VastPricing {
         self.currency = currency
     }
 }
+
+extension VastPricing: Equatable {
+}

@@ -65,3 +65,6 @@ extension VastTrackingEvent {
         self.offset = offset
     }
 }
+
+extension VastTrackingEvent: Equatable {
+}

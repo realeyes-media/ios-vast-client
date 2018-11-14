@@ -103,3 +103,6 @@ extension VastMediaFile {
         self.apiFramework = apiFramework
     }
 }
+
+extension VastMediaFile: Equatable {
+}

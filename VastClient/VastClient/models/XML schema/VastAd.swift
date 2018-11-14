@@ -78,6 +78,7 @@ public struct VastAd {
     public var allowMultipleAds: String?
     public var fallbackOnNoAd: String?
     public var extensions = [VastExtension]()
+// TODO: uncomments and fix parsing for /CompanionAds
 //    public var companionAds = [VastCompanionAds]()
 }
 
@@ -103,4 +104,7 @@ extension VastAd {
         self.conditionalAd = conditionalAd.boolValue
         self.type = .unknown
     }
+}
+
+extension VastAd: Equatable {
 }

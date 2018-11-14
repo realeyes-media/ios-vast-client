@@ -34,3 +34,6 @@ extension VastIconClickTracking {
         self.id = id
     }
 }
+
+extension VastIconClickTracking: Equatable {
+}

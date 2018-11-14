@@ -41,3 +41,6 @@ extension VastUniversalAdId {
         self.idValue = value
     }
 }
+
+extension VastUniversalAdId: Equatable {
+}

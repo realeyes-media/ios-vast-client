@@ -9,6 +9,7 @@
 import Foundation
 
 public enum TrackingError: Error {
+    case MissingAdBreak
     case UnableToUpdateProgress(msg: String)
     case UnableToProvideCreativeClickThroughUrls
     case InternalError(msg: String)

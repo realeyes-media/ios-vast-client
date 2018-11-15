@@ -9,13 +9,13 @@
 import Foundation
 
 public protocol VastTrackerDelegate {
-    func adBreakStart(_ id: String, _ vastModel: VastModel)
+    func adBreakStart(_ id: String, _ vastModel: VastModel, _ vmapAdBreak: VMAPAdBreak?)
     func adStart(_ id: String, _ ad: VastAd)
     func adFirstQuartile(_ id: String, _ ad: VastAd)
     func adMidpoint(_ id: String, _ ad: VastAd)
     func adThirdQuartile(_ id: String, _ ad: VastAd)
     func adComplete(_ id: String, _ ad: VastAd)
-    func adBreakComplete(_ id: String, _ vastModel: VastModel)
+    func adBreakComplete(_ id: String, _ vastModel: VastModel, _ vmapAdBreak: VMAPAdBreak?)
 }
 
 public class VastTracker {
@@ -25,6 +25,8 @@ public class VastTracker {
     private let id: String
     private var trackingStatus: TrackingStatus = .unknown
     private let vastModel: VastModel
+    private var vmapModel: VMAPModel?
+    private var vmapAdBreak: VMAPAdBreak?
     private let startTime: Double
     private var currentTime = 0.0
     private var playhead: Double {
@@ -46,7 +48,28 @@ public class VastTracker {
         self.trackingStatus = .tracking
         self.delegate = delegate
 
-        delegate?.adBreakStart(id, vastModel)
+        delegate?.adBreakStart(id, vastModel, nil)
+    }
+    
+    public init(id: String, vmapModel: VMAPModel, breakId: String, startTime: Double, supportAdBuffets: Bool = false, delegate: VastTrackerDelegate? = nil) throws {
+        self.id = id
+        self.startTime = startTime
+        self.vmapModel = vmapModel
+        
+        guard let adBreak = vmapModel.adBreaks.first(where: { $0.breakId == breakId }), let vastModel = adBreak.adSource?.vastAdData else {
+            /// error
+            throw TrackingError.MissingAdBreak
+        }
+        
+        self.vmapAdBreak = adBreak
+        self.vastModel = vastModel
+        self.vastAds = vastModel.ads
+            .filter { supportAdBuffets ? true : $0.sequence > 0 }
+            .sorted(by: { $0.sequence < $1.sequence })
+        self.trackingStatus = .tracking
+        self.delegate = delegate
+        
+        delegate?.adBreakStart(id, vastModel, adBreak)
     }
 
     public func updateProgress(time: Double) throws {
@@ -73,7 +96,7 @@ public class VastTracker {
             guard let vastAd = vastAds.first,
                 let creative = vastAd.linearCreatives.first, vastAd.sequence > 0 else {
                     trackingStatus = .complete
-                    delegate?.adBreakComplete(id, vastModel)
+                    delegate?.adBreakComplete(id, vastModel, vmapAdBreak)
                     return
             }
 
@@ -171,7 +194,7 @@ public class VastTracker {
                 try? updateProgress(time: time)
             } else {
                 trackingStatus = .complete
-                delegate?.adBreakComplete(id, vastModel)
+                delegate?.adBreakComplete(id, vastModel, vmapAdBreak)
             }
         }
     }

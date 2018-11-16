@@ -271,6 +271,7 @@ extension VastParser: XMLParserDelegate {
                 currentCreativeParameter?.content = currentContent
                 if let creative = currentCreativeParameter {
                     creativeParameters.append(creative)
+                    currentVastAd?.creativeParameters.append(creative)
                     currentCreativeParameter = nil
                 }
                 break

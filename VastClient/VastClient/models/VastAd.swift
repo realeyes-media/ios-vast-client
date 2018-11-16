@@ -44,6 +44,7 @@ public struct VastAd {
     public var linearCreatives = [VastLinearCreative]()
     public var extensions = [VastExtension]()
     public var companionAds = [VastCompanionAds]()
+    public var creativeParameters = [VastCreativeParameter]()
 }
 
 extension VastAd {

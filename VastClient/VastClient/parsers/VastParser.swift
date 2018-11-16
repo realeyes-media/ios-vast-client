@@ -130,6 +130,7 @@ class VastParser: NSObject {
                         copiedLinearCreatives[idx] = lc
                     }
                     
+                    copiedAd.creativeParameters.append(contentsOf: wrapperAd.creativeParameters)
                     copiedAd.linearCreatives = copiedLinearCreatives
                     copiedAd.extensions.append(contentsOf: wrapperAd.extensions)
                     copiedAd.companionAds.append(contentsOf: wrapperAd.companionAds)

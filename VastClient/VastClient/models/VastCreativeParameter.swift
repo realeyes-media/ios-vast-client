@@ -18,24 +18,15 @@ struct CreativeParameterAttributes {
     static let type = "type"
 }
 
-@objc public class VastCreativeParameter: NSObject {
-    
-    @objc public var creativeId: String
-    @objc public var name: String
-    @objc public var type: String // TODO: enum
-    @objc public var content: String?
-    
-    public init(creativeId: String, name: String, type: String, content: String? = nil) {
-        self.creativeId = creativeId
-        self.name = name
-        self.type = type
-        self.content = content
-    }
-  
+public struct VastCreativeParameter {
+    public var creativeId: String
+    public var name: String
+    public var type: String // TODO: enum
+    public var content: String?
 }
 
 extension VastCreativeParameter {
-    public convenience init(attrDict: [String: String]) {
+    public init(attrDict: [String: String]) {
         var creativeId = ""
         var name = ""
         var type = ""
@@ -51,8 +42,8 @@ extension VastCreativeParameter {
                 break
             }
         }
-        
-        self.init(creativeId: creativeId, name: name, type: type)
-        
+        self.creativeId = creativeId
+        self.name = name
+        self.type = type
     }
 }

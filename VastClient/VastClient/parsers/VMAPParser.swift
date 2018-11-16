@@ -106,6 +106,7 @@ class VMAPParser: NSObject {
                         
                         copiedAd.linearCreatives = copiedLinearCreatives
                         copiedAd.extensions.append(contentsOf: wrapperAd.extensions)
+                        copiedAd.creativeParameters.append(contentsOf: wrapperAd.creativeParameters)
                         copiedAd.companionAds.append(contentsOf: wrapperAd.companionAds)
                     }
                 } catch {

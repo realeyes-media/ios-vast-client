@@ -130,6 +130,7 @@ class VastParser: NSObject {
                         copiedLinearCreatives[idx] = lc
                     }
                     
+                    copiedAd.creativeParameters.append(contentsOf: wrapperAd.creativeParameters)
                     copiedAd.linearCreatives = copiedLinearCreatives
                     copiedAd.extensions.append(contentsOf: wrapperAd.extensions)
                     copiedAd.companionAds.append(contentsOf: wrapperAd.companionAds)
@@ -270,6 +271,7 @@ extension VastParser: XMLParserDelegate {
                 currentCreativeParameter?.content = currentContent
                 if let creative = currentCreativeParameter {
                     creativeParameters.append(creative)
+                    currentVastAd?.creativeParameters.append(creative)
                     currentCreativeParameter = nil
                 }
                 break

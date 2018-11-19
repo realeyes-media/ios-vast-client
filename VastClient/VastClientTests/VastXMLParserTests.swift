@@ -9,7 +9,14 @@
 import XCTest
 @testable import VastClient
 
-class VastParserTests: XCTestCase {
+class VastXMLParserTests: XCTestCase {
+    
+    func test_online_file() {
+        let url = URL(string: "https://raw.githubusercontent.com/InteractiveAdvertisingBureau/VAST_Samples/master/VAST%204.0%20Samples/Ad_Verification-test.xml")!
+        let parser = VastXMLParser()
+        let model = try! parser.parse(url: url)
+        XCTAssertTrue(!model.ads.isEmpty)
+    }
     
     func test_inlineLinearTag3() {
         let model = self.loadVastFile(named: "Inline_Linear_Tag-test3")
@@ -87,7 +94,7 @@ class VastParserTests: XCTestCase {
     }
     
     private func loadVastFile(named filename: String) -> VastModel {
-        let parser = VastParser(options: VastClientOptions())
+        let parser = VastXMLParser()
         let bundle = Bundle(for: type(of: self))
         let filepath = bundle.path(forResource: filename, ofType: "xml")!
         let url = URL(fileURLWithPath: filepath)

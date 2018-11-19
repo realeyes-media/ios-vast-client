@@ -36,9 +36,6 @@ struct AdAttributes {
     static let id = "id"
     static let sequence = "sequence"
     static let conditionalAd = "conditionalAd"
-    static let followAdditionalWrappers = "followAdditionalWrappers"
-    static let allowMultipleAds = "allowMultipleAds"
-    static let fallbackOnNoAd = "fallbackOnNoAd"
 }
 
 public enum AdType {
@@ -68,7 +65,6 @@ public struct VastAd {
     
     // Inline only
     public var adTitle: String?
-    public var wrapperUrl: URL?
     public var adCategories: [VastAdCategory] = []
     public var description: String?
     public var advertiser: String?

@@ -29,7 +29,7 @@ public enum VastErrorCodes: Int {
     case problemDisplayingMediaFile = 405
     case conditionalAdRejected = 408
     case interactiveUnitInNodeNotExecuted = 409
-    case verificationUniInNodeNotExecuted = 410
+    case verificationUnitInNodeNotExecuted = 410
     case generalNonLinearAdsError = 500
     case creativeDimensionTooLarge = 501
     case unableToFetchResource = 502

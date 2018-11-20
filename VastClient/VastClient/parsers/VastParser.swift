@@ -19,8 +19,12 @@ class VastParser {
     
     let options: VastClientOptions
     
-    init(options: VastClientOptions) {
+    // for testing of local files only
+    private let testFileBundle: Bundle?
+    
+    init(options: VastClientOptions, testFileBundle: Bundle? = nil) {
         self.options = options
+        self.testFileBundle = testFileBundle
     }
     
     func parse(url: URL, count: Int = 0) throws -> VastModel {
@@ -28,7 +32,16 @@ class VastParser {
             throw VastError.wrapperLimitReached
         }
         let parser = VastXMLParser()
-        var vm = try parser.parse(url: url)
+        
+        var vm: VastModel
+        if url.scheme?.contains("test") ?? false, let bundle = testFileBundle {
+            let filename = url.absoluteString.replacingOccurrences(of: "test://", with: "")
+            let filepath = bundle.path(forResource: filename, ofType: "xml")!
+            let url = URL(fileURLWithPath: filepath)
+            vm = try parse(url: url)
+        } else {
+            vm = try parser.parse(url: url)
+        }
         
         let flattenedVastAds = unwrap(vm: vm, count: count)
         vm.ads = flattenedVastAds

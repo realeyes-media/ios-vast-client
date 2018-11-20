@@ -11,6 +11,7 @@ import Foundation
 class VMAPParser: NSObject {
 
     private let options: VastClientOptions
+    private let vastXMLParser: VastXMLParser
     private let vastParser: VastParser
 
     var xmlParser: XMLParser?
@@ -34,6 +35,7 @@ class VMAPParser: NSObject {
 
     init(options: VastClientOptions) {
         self.options = options
+        self.vastXMLParser = VastXMLParser()
         self.vastParser = VastParser(options: options)
     }
 
@@ -61,63 +63,12 @@ class VMAPParser: NSObject {
             throw VMAPError.internalError
         }
         
-        let flattenedAdBreaks = vm.adBreaks.map { [weak self] adBreak -> VMAPAdBreak in
+        let flattenedAdBreaks = vm.adBreaks.map { adBreak -> VMAPAdBreak in
             var copiedAdBreak = adBreak
             guard let adSource = adBreak.adSource, var vastAdData = adSource.vastAdData else { return adBreak }
             
-            let flattenedVastAds = vastAdData.ads.map { [weak self] ad -> VastAd in
-                var copiedAd = ad
-                
-                guard ad.type == .wrapper, let strongSelf = self, let url = ad.wrapperUrl else { return ad }
-                let wrapperParser = VastParser(options: strongSelf.options)
-                
-                do {
-                    let wrapperModel = try wrapperParser.parse(url: url, count: 0)
-                    wrapperModel.ads.forEach { wrapperAd in
-                        if let adSystem = wrapperAd.adSystem {
-                            copiedAd.adSystem = adSystem
-                        }
-                        
-                        if let title = wrapperAd.adTitle, !title.isEmpty {
-                            copiedAd.adTitle = title
-                        }
-                        
-                        if !wrapperAd.errors.isEmpty {
-                            copiedAd.errors = wrapperAd.errors
-                        }
-                        
-                        if wrapperAd.type != AdType.unknown {
-                            copiedAd.type = wrapperAd.type
-                        }
-                        
-                        copiedAd.impressions.append(contentsOf: wrapperAd.impressions)
-                        
-                        var copiedCreatives = copiedAd.creatives
-                        for (idx, creative) in copiedCreatives.enumerated() {
-                            var creative = creative
-                            if idx < wrapperAd.creatives.count {
-                                let wrapperLinearCreative = wrapperAd.creatives[idx]
-                                creative.linear?.duration = wrapperLinearCreative.linear?.duration
-                                if let events = wrapperLinearCreative.linear?.trackingEvents {
-                                    creative.linear?.trackingEvents.append(contentsOf: events)
-                                }
-                            }
-                            copiedCreatives[idx] = creative
-                        }
-                        
-                        copiedAd.creatives = copiedCreatives
-                        copiedAd.extensions.append(contentsOf: wrapperAd.extensions)
-//                        copiedAd.companionAds.append(contentsOf: wrapperAd.companionAds)
-                    }
-                } catch {
-                    print("Unable to parse wrapper")
-                }
-                
-                return copiedAd
-            }
-            
+            let flattenedVastAds = vastParser.unwrap(vm: vastAdData, count: 0)
             vastAdData.ads = flattenedVastAds
-            
             copiedAdBreak.adSource?.vastAdData = vastAdData
 
             return copiedAdBreak
@@ -150,13 +101,13 @@ extension VMAPParser: XMLParserDelegate {
             case VMAPAdSourceElements.adSource:
                 currentVMAPAdSource = VMAPAdSource(attrDict: attributeDict)
             case VMAPAdSourceElements.vastAdData:
-                vastParser.completeClosure = { [weak self] error, vastModel in
+                vastXMLParser.completeClosure = { [weak self] error, vastModel in
                     self?.fatalError = error
                     self?.currentVastModel = vastModel
                     
                     parser.delegate = self
                 }
-                parser.delegate = vastParser
+                parser.delegate = vastXMLParser
             default:
                 break
             }

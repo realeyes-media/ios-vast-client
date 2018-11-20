@@ -60,7 +60,7 @@ public class VastTracker {
             default:
                 message += "Status is unknown"
             }
-            throw TrackingError.UnableToUpdateProgress(msg: message)
+            throw TrackingError.unableToUpdateProgress(msg: message)
         }
         currentTime = time
 
@@ -82,7 +82,7 @@ public class VastTracker {
 
         guard var creative = currentTrackingCreative else {
             trackingStatus = .errored
-            throw TrackingError.InternalError(msg: "Unable to find current creative to track")
+            throw TrackingError.internalError(msg: "Unable to find current creative to track")
         }
 
         let progressUrls = creative.creative.trackingEvents
@@ -186,7 +186,7 @@ public class VastTracker {
                 .map { $0.url! }
             creative.callTrackingUrls(trackingUrls)
         } else {
-            throw TrackingError.InternalError(msg: "Unable to find current creative to track")
+            throw TrackingError.internalError(msg: "Unable to find current creative to track")
         }
     }
 
@@ -200,7 +200,7 @@ public class VastTracker {
                 .map { $0.url! }
             creative.callTrackingUrls(trackingUrls)
         } else {
-            throw TrackingError.InternalError(msg: "Unable to find current creative to track")
+            throw TrackingError.internalError(msg: "Unable to find current creative to track")
         }
     }
 
@@ -211,7 +211,7 @@ public class VastTracker {
                 .map { $0.url! }
             creative.callTrackingUrls(trackingUrls)
         } else {
-            throw TrackingError.InternalError(msg: "Unable to find current creative to track")
+            throw TrackingError.internalError(msg: "Unable to find current creative to track")
         }
     }
 
@@ -225,7 +225,7 @@ public class VastTracker {
                 .map { $0.url! }
             creative.callTrackingUrls(trackingUrls)
         } else {
-            throw TrackingError.InternalError(msg: "Unable to find current creative to track")
+            throw TrackingError.internalError(msg: "Unable to find current creative to track")
         }
     }
 
@@ -236,7 +236,7 @@ public class VastTracker {
                 .map { $0.url! }
             creative.callTrackingUrls(trackingUrls)
         } else {
-            throw TrackingError.InternalError(msg: "Unable to find current creative to track")
+            throw TrackingError.internalError(msg: "Unable to find current creative to track")
         }
     }
 
@@ -247,7 +247,7 @@ public class VastTracker {
                 .map { $0.url! }
             creative.callTrackingUrls(trackingUrls)
         } else {
-            throw TrackingError.InternalError(msg: "Unable to find current creative to track")
+            throw TrackingError.internalError(msg: "Unable to find current creative to track")
         }
     }
 
@@ -258,7 +258,7 @@ public class VastTracker {
                 .map { $0.url! }
             creative.callTrackingUrls(trackingUrls)
         } else {
-            throw TrackingError.InternalError(msg: "Unable to find current creative to track")
+            throw TrackingError.internalError(msg: "Unable to find current creative to track")
         }
     }
 
@@ -277,7 +277,7 @@ public class VastTracker {
                 .map { $0.url! }
         } else {
             // TODO: determine if this is an error or complete
-            throw TrackingError.UnableToProvideCreativeClickThroughUrls
+            throw TrackingError.unableToProvideCreativeClickThroughUrls
         }
     }
 
@@ -291,7 +291,7 @@ public class VastTracker {
             }
             creative.callTrackingUrls(urls)
         } else {
-            throw TrackingError.InternalError(msg: "Unable to find current creative to track")
+            throw TrackingError.internalError(msg: "Unable to find current creative to track")
         }
     }
 

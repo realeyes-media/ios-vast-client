@@ -30,11 +30,10 @@ public class VastClient {
         let parser = VastParser(options: options)
         return try parser.parse(url: url)
     }
-
+    
     public func parseVMAP(withContentsOf url: URL) throws -> VMAPModel {
         let parser = VMAPParser(options: options)
         return try parser.parse(url: url)
-
+        
     }
-
 }

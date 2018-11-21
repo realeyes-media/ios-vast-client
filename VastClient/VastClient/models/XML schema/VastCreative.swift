@@ -13,11 +13,19 @@ struct VastCreativeElements {
     static let creativeExtension = "CreativeExtension"
 }
 
-fileprivate enum VastCreativeAttribute: String {
+fileprivate enum VastCreativeAttribute: String, CaseIterable {
     case id
     case adId
     case sequence
     case apiFramework
+    
+    // Vast 2.0 adId tag is "AdID" instead of adId
+    init?(rawValue: String) {
+        guard let value = VastCreativeAttribute.allCases.first(where: { $0.rawValue.lowercased() == rawValue.lowercased() }) else {
+            return nil
+        }
+        self = value
+    }
 }
 
 public struct VastCreative {

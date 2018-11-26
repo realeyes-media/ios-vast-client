@@ -68,7 +68,7 @@ extension VastExample: VastTrackerDelegate {
         }
     }
 
-    func adBreakStart(_ id: String, _ vastModel: VastModel) {
+    func adBreakStart(_ id: String, _ vastModel: VastModel, _ vmapAdBreak: VMAPAdBreak?) {
         print("Ad Break Started > Playhead: \(playhead), Number of Ads: \(vastModel.ads.count), Duration: \(vastModel.ads.reduce(0, { acc, cur in return acc + (cur.linearCreatives.first?.duration ?? 0)}))")
     }
 
@@ -76,7 +76,7 @@ extension VastExample: VastTrackerDelegate {
         print("Ad Started > Playhead: \(playhead), Id: \(ad.id), Sequence Number: \(ad.sequence), Duration: \(ad.linearCreatives.first?.duration ?? -1)")
     }
 
-    func adFirstQuatile(_ id: String, _ ad: VastAd) {
+    func adFirstQuartile(_ id: String, _ ad: VastAd) {
         print("Ad First Quartile > Playhead: \(playhead), Id: \(ad.id)")
     }
 
@@ -92,7 +92,7 @@ extension VastExample: VastTrackerDelegate {
         print("Ad Complete > Playhead: \(playhead), Id: \(ad.id)")
     }
 
-    func adBreakComplete(_ id: String, _ vastModel: VastModel) {
+    func adBreakComplete(_ id: String, _ vastModel: VastModel, _ vmapAdBreak: VMAPAdBreak?) {
         print("Ad Break Complete > Playhead: \(playhead), Number of Ads: \(vastModel.ads.count)")
         fakePlayheadProgressTimer?.invalidate()
         fakePlayheadProgressTimer = nil

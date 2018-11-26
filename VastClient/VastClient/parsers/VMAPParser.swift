@@ -11,7 +11,7 @@ import Foundation
 class VMAPParser: NSObject {
 
     private let options: VastClientOptions
-    private let vastParser: VastParser
+    private var vastParser: VastParser
 
     var xmlParser: XMLParser?
     var validVMAPDocument = false
@@ -38,6 +38,7 @@ class VMAPParser: NSObject {
     }
 
     func parse(url: URL) throws -> VMAPModel {
+        let date = Date()
         xmlParser = XMLParser(contentsOf: url)
         guard let parser = xmlParser else {
             throw VMAPError.unableToCreateXMLParser
@@ -64,34 +65,35 @@ class VMAPParser: NSObject {
         let flattenedAdBreaks = vm.adBreaks.map { [weak self] adBreak -> VMAPAdBreak in
             var copiedAdBreak = adBreak
             guard let adSource = adBreak.adSource, var vastAdData = adSource.vastAdData else { return adBreak }
-            
+
             let flattenedVastAds = vastAdData.ads.map { [weak self] ad -> VastAd in
                 var copiedAd = ad
-                
+
                 guard ad.type == .wrapper, let strongSelf = self, let url = ad.wrapperUrl else { return ad }
+
                 let wrapperParser = VastParser(options: strongSelf.options)
-                
+
                 do {
                     let wrapperModel = try wrapperParser.parse(url: url, count: 0)
                     wrapperModel.ads.forEach { wrapperAd in
                         if !wrapperAd.adSystem.isEmpty {
                             copiedAd.adSystem = wrapperAd.adSystem
                         }
-                        
+
                         if !wrapperAd.adTitle.isEmpty {
                             copiedAd.adTitle = wrapperAd.adTitle
                         }
-                        
+
                         if let error = wrapperAd.error {
                             copiedAd.error = error
                         }
-                        
+
                         if wrapperAd.type != AdType.unknown {
                             copiedAd.type = wrapperAd.type
                         }
-                        
+
                         copiedAd.impressions.append(contentsOf: wrapperAd.impressions)
-                        
+
                         var copiedLinearCreatives = copiedAd.linearCreatives
                         for (idx, linearCreative) in copiedLinearCreatives.enumerated() {
                             var lc = linearCreative
@@ -103,7 +105,7 @@ class VMAPParser: NSObject {
                             }
                             copiedLinearCreatives[idx] = lc
                         }
-                        
+
                         copiedAd.linearCreatives = copiedLinearCreatives
                         copiedAd.extensions.append(contentsOf: wrapperAd.extensions)
                         copiedAd.creativeParameters.append(contentsOf: wrapperAd.creativeParameters)
@@ -112,17 +114,17 @@ class VMAPParser: NSObject {
                 } catch {
                     print("Unable to parse wrapper")
                 }
-                
+
                 return copiedAd
             }
-            
+
             vastAdData.ads = flattenedVastAds
-            
+
             copiedAdBreak.adSource?.vastAdData = vastAdData
 
             return copiedAdBreak
         }
-        
+
         vm.adBreaks = flattenedAdBreaks
         
         return vm
@@ -150,6 +152,7 @@ extension VMAPParser: XMLParserDelegate {
             case VMAPAdSourceElements.adSource:
                 currentVMAPAdSource = VMAPAdSource(attrDict: attributeDict)
             case VMAPAdSourceElements.vastAdData:
+                self.vastParser = VastParser(options: options)
                 vastParser.completeClosure = { [weak self] error, vastModel in
                     self?.fatalError = error
                     self?.currentVastModel = vastModel
@@ -177,6 +180,7 @@ extension VMAPParser: XMLParserDelegate {
             case VMAPAdBreakElements.adbreak:
                 if let adBreak = currentAdBreak {
                     adBreaks.append(adBreak)
+                    print("appending adBreak with id: \(adBreak.breakId)")
                     currentAdBreak = nil
                 }
             case VMAPTrackingEventElements.tracking:

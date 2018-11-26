@@ -38,7 +38,6 @@ class VMAPParser: NSObject {
     }
 
     func parse(url: URL) throws -> VMAPModel {
-        let date = Date()
         xmlParser = XMLParser(contentsOf: url)
         guard let parser = xmlParser else {
             throw VMAPError.unableToCreateXMLParser
@@ -180,7 +179,6 @@ extension VMAPParser: XMLParserDelegate {
             case VMAPAdBreakElements.adbreak:
                 if let adBreak = currentAdBreak {
                     adBreaks.append(adBreak)
-                    print("appending adBreak with id: \(adBreak.breakId)")
                     currentAdBreak = nil
                 }
             case VMAPTrackingEventElements.tracking:

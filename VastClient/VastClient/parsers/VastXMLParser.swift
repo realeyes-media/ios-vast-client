@@ -255,6 +255,9 @@ extension VastXMLParser: XMLParserDelegate {
                     currentVastAd?.errors.append(url)
                 }
             case AdElements.viewableImpression, VastAdVerificationElements.viewableImpression:
+                if let url = URL(string: currentContent) {
+                    currentVerificationViewableImpression?.url = url
+                }
                 if currentVerification != nil {
                     currentVerification?.viewableImpression = currentVerificationViewableImpression
                     currentVerificationViewableImpression = nil

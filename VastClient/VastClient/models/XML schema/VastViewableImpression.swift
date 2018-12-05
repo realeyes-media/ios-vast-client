@@ -24,6 +24,8 @@ struct VastViewableImpressionElements {
 public struct VastViewableImpression {
     public let id: String
     
+    public var url: URL? = nil //for verification only
+    
     public var viewable: [URL] = []
     public var notViewable: [URL] = []
     public var viewUndetermined: [URL] = []

@@ -93,6 +93,13 @@ class VastXMLParserTests: XCTestCase {
         XCTAssertEqual(model, VastModel.readyToServerMediaFilesCheck)
     }
     
+    func test_fullVast4File_doesNotFail() {
+        let model = self.loadVastFile(named: "TestFullVast4")
+        XCTAssertEqual(model.ads.count, 2)
+        XCTAssertEqual(model.version, "4.0")
+        XCTAssertEqual(model.errors.count, 0)
+    }
+    
     private func loadVastFile(named filename: String) -> VastModel {
         let parser = VastXMLParser()
         let bundle = Bundle(for: type(of: self))

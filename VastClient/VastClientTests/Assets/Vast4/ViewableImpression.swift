@@ -32,8 +32,7 @@ extension VastModel {
         
         let adTagUri = URL(string: "https://raw.githubusercontent.com/InteractiveAdvertisingBureau/VAST_Samples/master/VAST%204.0%20Samples/Inline_Companion_Tag-test.xml")
         
-        
-        let viewableImpression = VastViewableImpression(id: "1543", viewable: [URL(string: "http://search.iabtechlab.com/error?errcode=102&imprid=s5-ea2f7f298e28c0c98374491aec3dfeb1&ts=1243")!], notViewable: [URL(string: "http://search.iabtechlab.com/error?errcode=102&imprid=s5-ea2f7f298e28c0c98374491aec3dfeb1&ts=1243")!], viewUndetermined: [URL(string: "http://search.iabtechlab.com/error?errcode=102&imprid=s5-ea2f7f298e28c0c98374491aec3dfeb1&ts=1243")!])
+        let viewableImpression = VastViewableImpression(id: "1543", url: nil, viewable: [URL(string: "http://search.iabtechlab.com/error?errcode=102&imprid=s5-ea2f7f298e28c0c98374491aec3dfeb1&ts=1243")!], notViewable: [URL(string: "http://search.iabtechlab.com/error?errcode=102&imprid=s5-ea2f7f298e28c0c98374491aec3dfeb1&ts=1243")!], viewUndetermined: [URL(string: "http://search.iabtechlab.com/error?errcode=102&imprid=s5-ea2f7f298e28c0c98374491aec3dfeb1&ts=1243")!])
         
         let wrapper = VastWrapper(followAdditionalWrappers: false, allowMultipleAds: true, fallbackOnNoAd: false, adTagUri: adTagUri)
         

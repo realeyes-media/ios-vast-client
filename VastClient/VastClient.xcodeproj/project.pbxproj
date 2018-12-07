@@ -102,6 +102,8 @@
 		A945EE76219C5C9F0007A079 /* Inline_Linear_Tag-test3.xml in Resources */ = {isa = PBXBuildFile; fileRef = A945EE56219C5C9E0007A079 /* Inline_Linear_Tag-test3.xml */; };
 		A945EE77219C5C9F0007A079 /* vast3.xsd in Resources */ = {isa = PBXBuildFile; fileRef = A945EE57219C5C9E0007A079 /* vast3.xsd */; };
 		A945EE78219C5C9F0007A079 /* vast4.xsd in Resources */ = {isa = PBXBuildFile; fileRef = A945EE58219C5C9E0007A079 /* vast4.xsd */; };
+		A9A3FFB621BA5B4C008DB5D6 /* TestFullVast4.xml in Resources */ = {isa = PBXBuildFile; fileRef = A9A3FFB521BA5B4C008DB5D6 /* TestFullVast4.xml */; };
+		A9A3FFB821BA5CBE008DB5D6 /* FullVast4-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A3FFB721BA5CBE008DB5D6 /* FullVast4-test.swift */; };
 		A9A84FEC21A3053200949C4B /* VastParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A84FEB21A3053200949C4B /* VastParser.swift */; };
 /* End PBXBuildFile section */
 
@@ -214,6 +216,8 @@
 		A945EE56219C5C9E0007A079 /* Inline_Linear_Tag-test3.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Inline_Linear_Tag-test3.xml"; sourceTree = "<group>"; };
 		A945EE57219C5C9E0007A079 /* vast3.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = vast3.xsd; sourceTree = "<group>"; };
 		A945EE58219C5C9E0007A079 /* vast4.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = vast4.xsd; sourceTree = "<group>"; };
+		A9A3FFB521BA5B4C008DB5D6 /* TestFullVast4.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TestFullVast4.xml; sourceTree = "<group>"; };
+		A9A3FFB721BA5CBE008DB5D6 /* FullVast4-test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FullVast4-test.swift"; sourceTree = "<group>"; };
 		A9A84FEB21A3053200949C4B /* VastParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -426,6 +430,8 @@
 				A945EE4B219C5C9E0007A079 /* EventTracking-test.swift */,
 				A945EE4C219C5C9E0007A079 /* Ready_to_serve_Media_Files_check-test.xml */,
 				A945EE4D219C5C9E0007A079 /* InlineLinearTag-test.swift */,
+				A9A3FFB521BA5B4C008DB5D6 /* TestFullVast4.xml */,
+				A9A3FFB721BA5CBE008DB5D6 /* FullVast4-test.swift */,
 			);
 			path = Vast4;
 			sourceTree = "<group>";
@@ -548,6 +554,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A945EE72219C5C9F0007A079 /* Wrapper_Tag-test3.xml in Resources */,
+				A9A3FFB621BA5B4C008DB5D6 /* TestFullVast4.xml in Resources */,
 				A945EE75219C5C9F0007A079 /* Video_Clicks_and_click_tracking-Inline-test3.xml in Resources */,
 				A945EE5F219C5C9F0007A079 /* Wrapper_Tag-test.xml in Resources */,
 				A945EE6D219C5C9F0007A079 /* Ready_to_serve_Media_Files_check-test.xml in Resources */,
@@ -650,6 +657,7 @@
 				A91F507821A432750062198F /* PubadsModel-test.swift in Sources */,
 				A945EE35219C5C990007A079 /* VastXMLParserTests.swift in Sources */,
 				A91F508221A437EB0062198F /* VastXMLParserPubadsWrapperTests.swift in Sources */,
+				A9A3FFB821BA5CBE008DB5D6 /* FullVast4-test.swift in Sources */,
 				A945EE5A219C5C9F0007A079 /* AdVerification-test.swift in Sources */,
 				A945EE69219C5C9F0007A079 /* WrapperTag-test.swift in Sources */,
 				A945EE66219C5C9F0007A079 /* VideoClicksAndClickTracking-Inline-test.swift in Sources */,

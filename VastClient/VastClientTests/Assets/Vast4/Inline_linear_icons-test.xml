@@ -17,12 +17,12 @@
             </ViewableImpression>
             <AdVerifications>
                 <Verification vendor="VendorURL">
-                    <JavascriptResource apiFramework="frameworkname">
+                    <JavaScriptResource apiFramework="frameworkname">
                         <![CDATA[https://iabtechlab.com/wp-content/uploads/2017/12/VAST-4.0-Short-Intro-mid-resolution.mp4]]>
-                    </JavascriptResource>
-                    <JavascriptResource apiFramework="frameworkname">
+                    </JavaScriptResource>
+                    <JavaScriptResource apiFramework="frameworkname">
                         <![CDATA[https://iabtechlab.com/wp-content/uploads/2017/12/VAST-4.0-Short-Intro-mid-resolution.mp4]]>
-                    </JavascriptResource>
+                    </JavaScriptResource>
                 </Verification>
                 <Verification vendor="VendorURL">
                     <FlashResource apiFramework="frameworkname">

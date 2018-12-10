@@ -34,7 +34,7 @@ extension VastModel {
             VastMediaFile(delivery: "progressive", type: "video/mp4", width: "640", height: "360", codec: "0", id: "5246", bitrate: 600, minBitrate: 500, maxBitrate: 700, scalable: true, maintainAspectRatio: true, apiFramework: nil, url: URL(string: "https://iabtechlab.com/wp-content/uploads/2017/12/VAST-4.0-Short-Intro-low-resolution.mp4"))
         ]
         
-        let interactiveMediaFiles: [VastInteractiveCreativeFile] = [VastInteractiveCreativeFile(type: "interactive/mp", apiFramework: "frameworkurl", url: URL(string: "https://iabtechlab.com/wp-content/uploads/2017/12/VAST-4.0-Short-Intro-low-resolution.mp4"))]
+        let interactiveMediaFiles: [VastInteractiveCreativeFile] = [VastInteractiveCreativeFile(type: "interactive/mp4", apiFramework: "frameworkurl", url: URL(string: "https://iabtechlab.com/wp-content/uploads/2017/12/VAST-4.0-Short-Intro-low-resolution.mp4"))]
         
         let icon1Clicks = IconClicks(iconClickThrough: URL(string: "https://iabtechlab.com")!, iconClickTracking: [VastIconClickTracking(id: "iconclick", url: URL(string: "https://iabtechlab.com")!)])
         let icon1StaticResources: [VastStaticResource] = [VastStaticResource(creativeType: "image/jpg", url: URL(string: "https://images-nl.ott.kaltura.com/Service.svc/GetImage/p/436/entry_id/422ec4ffe19d4435aaca092dc83bae0c_12/version/0/quality/85/width/118/height/15/"))]
@@ -53,7 +53,7 @@ extension VastModel {
             VastExtension(type: "iab-Count", creativeParameters: [])
         ]
         
-        let vastVerification1 = VastVerification(vendor: URL(string: "VendorURL"), viewableImpression: nil, javaScriptResource: [VastResource(apiFramework: "frameworkname", url: URL(string: "https://iabtechlab.com/wp-content/uploads/2017/12/VAST-4.0-Short-Intro-mid-resolution.mp4"))], flashResources: [])
+        let vastVerification1 = VastVerification(vendor: URL(string: "VendorURL"), viewableImpression: nil, javaScriptResource: [VastResource(apiFramework: "frameworkname", url: URL(string: "https://iabtechlab.com/wp-content/uploads/2017/12/VAST-4.0-Short-Intro-mid-resolution.mp4")), VastResource(apiFramework: "frameworkname", url: URL(string: "https://iabtechlab.com/wp-content/uploads/2017/12/VAST-4.0-Short-Intro-mid-resolution.mp4"))], flashResources: [])
         
         let vastVerification2 = VastVerification(vendor: URL(string: "VendorURL"), viewableImpression: VastViewableImpression(id: "verificationViewableImpressionID", url: URL(string: "https://iabtechlab.com/wp-content/uploads/2017/12/VAST-4.0-Short-Intro-mid-resolution.mp4"), viewable: [], notViewable: [], viewUndetermined: []), javaScriptResource: [], flashResources: [VastResource(apiFramework: "frameworkname", url: URL(string: "https://iabtechlab.com/wp-content/uploads/2017/12/VAST-4.0-Short-Intro-mid-resolution.mp4"))])
         

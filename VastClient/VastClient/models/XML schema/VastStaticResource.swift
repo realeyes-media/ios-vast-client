@@ -20,14 +20,14 @@ public struct VastStaticResource {
 extension VastStaticResource {
     init?(attrDict: [String: String]) {
         var creativeTypeValue: String?
-        attrDict.compactMap { key, value -> (VastIconClickTrackingAttribute, String)? in
-            guard let newKey = VastIconClickTrackingAttribute(rawValue: key) else {
+        attrDict.compactMap { key, value -> (VastStaticResourceAttribute, String)? in
+            guard let newKey = VastStaticResourceAttribute(rawValue: key) else {
                 return nil
             }
             return (newKey, value)
             }.forEach { (key, value) in
                 switch key {
-                case .id:
+                case .creativeType:
                     creativeTypeValue = value
                 }
         }

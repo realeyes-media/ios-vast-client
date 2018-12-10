@@ -262,23 +262,35 @@ public class VastTracker {
         }
     }
 
-    public func clicked(withCustomAction custom: Bool = false) throws -> [URL] {
+    public func clicked(withCustomAction custom: Bool = false) throws -> URL? {
         if let trackingCreative = currentTrackingCreative {
-            let clickUrls = trackingCreative.creative.videoClicks
-                .filter { $0.type == .clickTracking && $0.url != nil }
-                .map { $0.url! }
-            trackingCreative.callTrackingUrls(clickUrls)
+            trackClicks(for: trackingCreative)
             
-            return trackingCreative.creative.videoClicks
-                .filter { click in
-                    let typeMatch = custom ? click.type == .customClick : click.type == .clickThrough
-                    return typeMatch && click.url != nil
-                }
-                .map { $0.url! }
+            return trackingCreative.creative.videoClicks.first(where: { $0.type == .clickThrough })?.url
         } else {
             // TODO: determine if this is an error or complete
             throw TrackingError.unableToProvideCreativeClickThroughUrls
         }
+    }
+    
+    public func clickedWithCustomAction() throws -> [URL] {
+        if let trackingCreative = currentTrackingCreative {
+            trackClicks(for: trackingCreative)
+            
+            return trackingCreative.creative.videoClicks
+                .filter { $0.type == .customClick }
+                .compactMap { $0.url }
+        } else {
+            // TODO: determine if this is an error or complete
+            throw TrackingError.unableToProvideCreativeClickThroughUrls
+        }
+    }
+    
+    private func trackClicks(for creative: TrackingCreative) {
+        let clickUrls = creative.creative.videoClicks
+            .filter { $0.type == .clickTracking }
+            .compactMap { $0.url }
+        creative.callTrackingUrls(clickUrls)
     }
 
     public func error(withReason code: VastErrorCodes?) throws {

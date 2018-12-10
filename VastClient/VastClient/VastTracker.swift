@@ -112,67 +112,75 @@ public class VastTracker {
             creative.callTrackingUrls(progressUrls)
         }
 
-        if playhead < creative.duration {
-            if !creative.trackedStart {
-                creative.trackedStart = true
-
-                let impressions = creative.vastAd.impressions.filter { $0.url != nil }.map { $0.url! }
+        guard playhead < creative.duration else {
+            return
+        }
+        if !creative.trackedStart {
+            creative.trackedStart = true
+            
+            let impressions = creative.vastAd.impressions.filter { $0.url != nil }.map { $0.url! }
+            let trackingUrls = creative.creative.trackingEvents
+                .filter { ($0.type == .creativeView || $0.type == .start) && $0.url != nil }
+                .map { $0.url! }
+            creative.callTrackingUrls(impressions + trackingUrls)
+            delegate?.adStart(vastTracker: self, ad: creative.vastAd)
+        }
+        
+        if playhead > creative.firstQuartile && playhead < creative.midpoint {
+            if !creative.trackedFirstQuartile {
+                creative.trackedFirstQuartile = true
                 let trackingUrls = creative.creative.trackingEvents
-                    .filter { ($0.type == .creativeView || $0.type == .start) && $0.url != nil }
-                    .map { $0.url! }
-                creative.callTrackingUrls(impressions + trackingUrls)
-                delegate?.adStart(vastTracker: self, ad: creative.vastAd)
-            }
-
-            if playhead > creative.firstQuartile && playhead < creative.midpoint {
-                if !creative.trackedFirstQuartile {
-                    creative.trackedFirstQuartile = true
-                    let trackingUrls = creative.creative.trackingEvents
-                        .filter { $0.type == .firstQuartile && $0.url != nil }
-                        .map { $0.url! }
-                    creative.callTrackingUrls(trackingUrls)
-                    delegate?.adFirstQuartile(vastTracker: self, ad: creative.vastAd)
-                }
-            } else if playhead > creative.midpoint && playhead < creative.thirdQuartile {
-                if !creative.trackedMidpoint {
-                    creative.trackedMidpoint = true
-                    let trackingUrls = creative.creative.trackingEvents
-                        .filter { $0.type == .midpoint && $0.url != nil }
-                        .map { $0.url! }
-                    creative.callTrackingUrls(trackingUrls)
-                    delegate?.adMidpoint(vastTracker: self, ad: creative.vastAd)
-                }
-            } else if playhead > creative.thirdQuartile && playhead < creative.duration {
-                if !creative.trackedThirdQuartile {
-                    creative.trackedThirdQuartile = true
-                    let trackingUrls = creative.creative.trackingEvents
-                        .filter { $0.type == .thirdQuartile && $0.url != nil }
-                        .map { $0.url! }
-                    creative.callTrackingUrls(trackingUrls)
-                    delegate?.adThirdQuartile(vastTracker: self, ad: creative.vastAd)
-                }
-            }
-
-            currentTrackingCreative = creative
-        } else {
-            if !creative.trackedComplete && creative.trackedStart {
-                creative.trackedComplete = true
-                let trackingUrls = creative.creative.trackingEvents
-                    .filter { $0.type == .complete && $0.url != nil }
+                    .filter { $0.type == .firstQuartile && $0.url != nil }
                     .map { $0.url! }
                 creative.callTrackingUrls(trackingUrls)
-                delegate?.adComplete(vastTracker: self, ad: creative.vastAd)
-                completedAdAccumulatedDuration += creative.duration
+                delegate?.adFirstQuartile(vastTracker: self, ad: creative.vastAd)
             }
-
-            vastAds.removeFirst()
-            currentTrackingCreative = nil
-            if vastAds.count > 0 {
-                try? updateProgress(time: time)
-            } else {
-                trackingStatus = .complete
-                delegate?.adBreakComplete(vastTracker: self, vastModel: vastModel)
+        } else if playhead > creative.midpoint && playhead < creative.thirdQuartile {
+            if !creative.trackedMidpoint {
+                creative.trackedMidpoint = true
+                let trackingUrls = creative.creative.trackingEvents
+                    .filter { $0.type == .midpoint && $0.url != nil }
+                    .map { $0.url! }
+                creative.callTrackingUrls(trackingUrls)
+                delegate?.adMidpoint(vastTracker: self, ad: creative.vastAd)
             }
+        } else if playhead > creative.thirdQuartile && playhead < creative.duration {
+            if !creative.trackedThirdQuartile {
+                creative.trackedThirdQuartile = true
+                let trackingUrls = creative.creative.trackingEvents
+                    .filter { $0.type == .thirdQuartile && $0.url != nil }
+                    .map { $0.url! }
+                creative.callTrackingUrls(trackingUrls)
+                delegate?.adThirdQuartile(vastTracker: self, ad: creative.vastAd)
+            }
+        }
+        
+        currentTrackingCreative = creative
+    }
+    
+    public func finishedPlayback() throws {
+        guard var creative = currentTrackingCreative else {
+            trackingStatus = .errored
+            throw TrackingError.internalError(msg: "Unable to find current creative to track")
+        }
+        
+        if !creative.trackedComplete && creative.trackedStart {
+            creative.trackedComplete = true
+            let trackingUrls = creative.creative.trackingEvents
+                .filter { $0.type == .complete && $0.url != nil }
+                .map { $0.url! }
+            creative.callTrackingUrls(trackingUrls)
+            delegate?.adComplete(vastTracker: self, ad: creative.vastAd)
+            completedAdAccumulatedDuration += creative.duration
+        }
+        
+        vastAds.removeFirst()
+        currentTrackingCreative = nil
+        if vastAds.count > 0 {
+            try? updateProgress(time: 0.0)
+        } else {
+            trackingStatus = .complete
+            delegate?.adBreakComplete(vastTracker: self, vastModel: vastModel)
         }
     }
 
@@ -262,7 +270,7 @@ public class VastTracker {
         }
     }
 
-    public func clicked(withCustomAction custom: Bool = false) throws -> URL? {
+    public func clicked() throws -> URL? {
         if let trackingCreative = currentTrackingCreative {
             trackClicks(for: trackingCreative)
             

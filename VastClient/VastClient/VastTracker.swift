@@ -167,21 +167,14 @@ public class VastTracker {
         if !creative.trackedComplete && creative.trackedStart {
             creative.trackedComplete = true
             let trackingUrls = creative.creative.trackingEvents
-                .filter { $0.type == .complete && $0.url != nil }
-                .map { $0.url! }
+                .filter { $0.type == .complete }
+                .compactMap { $0.url }
             creative.callTrackingUrls(trackingUrls)
             delegate?.adComplete(vastTracker: self, ad: creative.vastAd)
             completedAdAccumulatedDuration += creative.duration
         }
         
-        vastAds.removeFirst()
-        currentTrackingCreative = nil
-        if vastAds.count > 0 {
-            try? updateProgress(time: 0.0)
-        } else {
-            trackingStatus = .complete
-            delegate?.adBreakComplete(vastTracker: self, vastModel: vastModel)
-        }
+        tryToPlayNext()
     }
 
     public func paused(_ val: Bool) throws {
@@ -236,13 +229,29 @@ public class VastTracker {
             throw TrackingError.internalError(msg: "Unable to find current creative to track")
         }
     }
+    
+    private func tryToPlayNext() {
+        vastAds.removeFirst()
+        currentTrackingCreative = nil
+        if vastAds.count > 0 {
+            try? updateProgress(time: 0.0)
+        } else {
+            trackingStatus = .complete
+            delegate?.adBreakComplete(vastTracker: self, vastModel: vastModel)
+        }
+    }
 
     public func skip() throws {
         if let creative = currentTrackingCreative {
+            guard creative.vastAd.creatives.first?.linear?.skipOffset != nil else {
+                return
+            }
+            
             let trackingUrls = creative.creative.trackingEvents
                 .filter { $0.type == .skip && $0.url != nil }
                 .map { $0.url! }
             creative.callTrackingUrls(trackingUrls)
+            tryToPlayNext()
         } else {
             throw TrackingError.internalError(msg: "Unable to find current creative to track")
         }

@@ -28,8 +28,15 @@ struct CreativeLinearElements {
     static let icon = "Icon"
 }
 
-fileprivate enum LinearCreativeAttribute: String {
-    case skipOffset
+fileprivate enum LinearCreativeAttribute: String, CaseIterable {
+    case skipoffset
+    
+    init?(rawValue: String) {
+        guard let value = LinearCreativeAttribute.allCases.first(where: { $0.rawValue.lowercased() == rawValue.lowercased() }) else {
+            return nil
+        }
+        self = value
+    }
 }
 
 // VAST/Ad/InLine/Creatives/Creative
@@ -55,7 +62,7 @@ extension VastLinearCreative {
             return (newKey, value)
             }.forEach { (key, value) in
                 switch key {
-                case .skipOffset:
+                case .skipoffset:
                     skipOffset = value
                 }
         }

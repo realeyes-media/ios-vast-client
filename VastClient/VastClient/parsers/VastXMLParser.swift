@@ -158,6 +158,8 @@ extension VastXMLParser: XMLParserDelegate {
                 currentIcon = VastIcon(attrDict: attributeDict)
             case VastIconElements.staticResource:
                 currentStaticResource = VastStaticResource(attrDict: attributeDict)
+            case VastIconElements.iconClicks:
+                currentIcon?.iconClicks = IconClicks()
             case IconClicksElements.iconClickTracking:
                 currentIconClickTracking = VastIconClickTracking(attrDict: attributeDict)
 // TODO: uncomments and fix parsing for /CompanionAds
@@ -278,8 +280,6 @@ extension VastXMLParser: XMLParserDelegate {
                     currentViewableImpression?.viewUndetermined.append(url)
                 }
             case AdElements.verification:
-                currentVerification?.viewableImpression = currentVerificationViewableImpression
-                currentVerificationViewableImpression = nil
                 if let verification = currentVerification {
                     currentVastAd?.adVerifications.append(verification)
                     currentVerification = nil
@@ -354,6 +354,26 @@ extension VastXMLParser: XMLParserDelegate {
                     currentLinearCreative?.trackingEvents.append(trackingEvent)
                     currentTrackingEvent = nil
                 }
+            case CreativeLinearElements.icon:
+                if let currentIcon = currentIcon {
+                    currentLinearCreative?.icons.append(currentIcon)
+                    
+                }
+                currentIcon = nil
+            case VastIconElements.staticResource:
+                currentStaticResource?.url = URL(string: currentContent)
+                if let staticResource = currentStaticResource {
+                    currentIcon?.staticResource.append(staticResource)
+                }
+                currentStaticResource = nil
+            case IconClicksElements.iconClickThrough:
+                currentIcon?.iconClicks?.iconClickThrough = URL(string: currentContent)
+            case IconClicksElements.iconClickTracking:
+                currentIconClickTracking?.url = URL(string: currentContent)
+                if let currentIconClickTracking = currentIconClickTracking {
+                    currentIcon?.iconClicks?.iconClickTracking.append(currentIconClickTracking)
+                }
+                currentIconClickTracking = nil
                 
 // TODO: uncomments and fix parsing for /CompanionAds
 //            case ExtensionElements.creativeparameter:

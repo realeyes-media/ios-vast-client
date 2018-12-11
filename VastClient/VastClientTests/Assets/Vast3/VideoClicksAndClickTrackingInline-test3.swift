@@ -46,7 +46,7 @@ extension VastModel {
             // TODO: this is not part of the current model
         ]
         
-        let ad = VastAd(type: .inline, id: "20009", sequence: 0, conditionalAd: nil, adSystem: adSystem, impressions: [impressions], adVerifications: [], viewableImpression: nil, pricing: pricing, errors: errors, creatives: [creative], extensions: extensions, adTitle: adTitle, adCategories: [], description: nil, advertiser: nil, surveys: [], wrapper: nil)
+        let ad = VastAd(type: .inline, id: "20009", sequence: nil, conditionalAd: nil, adSystem: adSystem, impressions: [impressions], adVerifications: [], viewableImpression: nil, pricing: pricing, errors: errors, creatives: [creative], extensions: extensions, adTitle: adTitle, adCategories: [], description: nil, advertiser: nil, surveys: [], wrapper: nil)
         
         return VastModel(version: "3.0", ads: [ad], errors: [])
     }()

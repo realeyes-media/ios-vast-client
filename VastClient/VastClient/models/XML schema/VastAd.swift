@@ -50,7 +50,7 @@ public struct VastAd {
     
     // attribute
     public let id: String
-    public let sequence: Int
+    public let sequence: Int?
     public let conditionalAd: Bool?
     
     // VAST/Ad/Wrapper and VAST/Ad/InLine elements
@@ -94,7 +94,7 @@ extension VastAd {
             }
         }
         self.id = id
-        self.sequence = Int(sequence) ?? 0
+        self.sequence = Int(sequence)
         self.conditionalAd = conditionalAd.boolValue
         self.type = .unknown
     }

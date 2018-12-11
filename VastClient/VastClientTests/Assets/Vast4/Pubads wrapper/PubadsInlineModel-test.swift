@@ -38,7 +38,7 @@ extension VastModel {
         
         let extensions: [VastExtension] = []
         
-        let ad = VastAd(type: .inline, id: "29619", sequence: 0, conditionalAd: nil, adSystem: adSystem, impressions: impressions, adVerifications: [], viewableImpression: nil, pricing: pricing, errors: errors, creatives: [creative], extensions: extensions, adTitle: "Ster en Cultuur (weekpak. volwas)ONLINE", adCategories: categories, description: "Ster en Cultuur (weekpak. volwas)ONLINE", advertiser: nil, surveys: [], wrapper: nil)
+        let ad = VastAd(type: .inline, id: "29619", sequence: nil, conditionalAd: nil, adSystem: adSystem, impressions: impressions, adVerifications: [], viewableImpression: nil, pricing: pricing, errors: errors, creatives: [creative], extensions: extensions, adTitle: "Ster en Cultuur (weekpak. volwas)ONLINE", adCategories: categories, description: "Ster en Cultuur (weekpak. volwas)ONLINE", advertiser: nil, surveys: [], wrapper: nil)
         
         return VastModel(version: "2.0", ads: [ad], errors: [])
     }()

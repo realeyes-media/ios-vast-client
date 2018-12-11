@@ -27,7 +27,7 @@ extension VastModel {
         
         let wrapper = VastWrapper(followAdditionalWrappers: nil, allowMultipleAds: nil, fallbackOnNoAd: nil, adTagUri: adTagUri)
         
-        let ad = VastAd(type: .wrapper, id: "20011", sequence: 0, conditionalAd: nil, adSystem: adSystem, impressions: impressions, adVerifications: [], viewableImpression: nil, pricing: nil, errors: errors, creatives: [creative], extensions: extensions, adTitle: nil, adCategories: [], description: nil, advertiser: nil, surveys: [], wrapper: wrapper)
+        let ad = VastAd(type: .wrapper, id: "20011", sequence: nil, conditionalAd: nil, adSystem: adSystem, impressions: impressions, adVerifications: [], viewableImpression: nil, pricing: nil, errors: errors, creatives: [creative], extensions: extensions, adTitle: nil, adCategories: [], description: nil, advertiser: nil, surveys: [], wrapper: wrapper)
         
         return VastModel(version: "3.0", ads: [ad], errors: [])
     }()

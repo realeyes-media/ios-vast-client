@@ -41,7 +41,7 @@ public class VastTracker {
         self.startTime = startTime
         self.vastModel = vastModel
         self.vastAds = vastModel.ads
-            .filter { supportAdBuffets ? true : $0.sequence != nil }
+            .filter { supportAdBuffets ? true : $0.sequence == nil || $0.sequence == 0 }
             .sorted(by: { $0.sequence ?? 0 < $1.sequence ?? 0 })
         self.trackingStatus = .tracking
         self.delegate = delegate

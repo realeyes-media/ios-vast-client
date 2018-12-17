@@ -9,13 +9,24 @@
 import Foundation
 
 public protocol VastTrackerDelegate {
-    func adBreakStart(vastTracker: VastTracker, vastModel: VastModel)
+    func adBreakStart(vastTracker: VastTracker, totalAds: Int)
     func adStart(vastTracker: VastTracker, ad: VastAd)
     func adFirstQuartile(vastTracker: VastTracker, ad: VastAd)
     func adMidpoint(vastTracker: VastTracker, ad: VastAd)
     func adThirdQuartile(vastTracker: VastTracker, ad: VastAd)
     func adComplete(vastTracker: VastTracker, ad: VastAd)
     func adBreakComplete(vastTracker: VastTracker, vastModel: VastModel)
+}
+
+enum TrackerModelType {
+    case standAlone
+    case adPod
+    case adBuffet
+}
+
+public struct TrackerModel {
+    let type: TrackerModelType
+    let vastModel: VastModel
 }
 
 public class VastTracker {
@@ -33,6 +44,7 @@ public class VastTracker {
         }
     }
     private var vastAds: [VastAd]
+    private let trackerModel: TrackerModel
     private var completedAdAccumulatedDuration = 0.0
     private var currentTrackingCreative: TrackingCreative?
 
@@ -40,13 +52,50 @@ public class VastTracker {
         self.id = id
         self.startTime = startTime
         self.vastModel = vastModel
-        self.vastAds = vastModel.ads
-            .filter { supportAdBuffets ? true : $0.sequence == nil || $0.sequence == 0 }
-            .sorted(by: { $0.sequence ?? 0 < $1.sequence ?? 0 })
+        self.trackerModel = VastTracker.getTrackerModel(from: vastModel)
+        self.vastAds = VastTracker.getAds(from: trackerModel)
         self.trackingStatus = .tracking
         self.delegate = delegate
 
-        delegate?.adBreakStart(vastTracker: self, vastModel: vastModel)
+        delegate?.adBreakStart(vastTracker: self, totalAds: self.vastAds.count)
+    }
+    
+    private static func getTrackerModel(from vastModel: VastModel) -> TrackerModel {
+        var includesStandAlone = false
+        var includesPod = false
+        
+        vastModel.ads.forEach { ad in
+            if ad.sequence != nil {
+                includesPod = true
+            } else {
+                includesStandAlone = true
+            }
+        }
+        let type: TrackerModelType
+        switch (includesStandAlone, includesPod) {
+        case (true, true):
+            type = .adBuffet
+        case (_ , true):
+            type = .adPod
+        default:
+            type = .standAlone
+        }
+        return TrackerModel(type: type, vastModel: vastModel)
+    }
+    
+    private static func getAds(from trackerModel: TrackerModel) -> [VastAd] {
+        switch trackerModel.type {
+        case .standAlone, .adBuffet:
+            guard let ad = trackerModel.vastModel.ads.first(where: { $0.creatives.contains(where: { $0.linear != nil }) }) else {
+                return []
+            }
+            return [ad]
+        case .adPod:
+            return trackerModel.vastModel.ads
+                .filter { $0.sequence != nil }
+                .filter { $0.creatives.contains(where: { $0.linear != nil })}
+                .sorted(by: { $0.sequence ?? 0 < $1.sequence ?? 0 })
+        }
     }
 
     public func updateProgress(time: Double) throws {

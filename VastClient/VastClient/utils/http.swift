@@ -14,13 +14,15 @@ func makeRequest(withUrl url: URL) {
     let session = URLSession(configuration: config)
 
     let task = session.dataTask(with: request) {(data, response, error) in
-        #if DEBUG
-        NSLog("Completed request: \(request.debugDescription)")
-        if let error = error {
-            NSLog("Request \(request.debugDescription), finished with error: \(error)")
-            return
+        DispatchQueue.global().async {
+            #if DEBUG
+            NSLog("Completed request: \(request.debugDescription)")
+            if let error = error {
+                NSLog("Request \(request.debugDescription), finished with error: \(error)")
+                return
+            }
+            #endif
         }
-        #endif
     }
 
     task.resume()

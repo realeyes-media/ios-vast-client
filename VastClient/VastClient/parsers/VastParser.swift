@@ -21,13 +21,44 @@ class VastParser {
     
     // for testing of local files only
     private let testFileBundle: Bundle?
+    private let queue: DispatchQueue
     
-    init(options: VastClientOptions, testFileBundle: Bundle? = nil) {
+    init(options: VastClientOptions, queue: DispatchQueue = DispatchQueue.init(label: "parser", qos: .userInitiated), testFileBundle: Bundle? = nil) {
         self.options = options
+        self.queue = queue
         self.testFileBundle = testFileBundle
     }
     
-    func parse(url: URL, count: Int = 0) throws -> VastModel {
+    private var completion: ((VastModel?, Error?) -> ())?
+    
+    private func finish(vastModel: VastModel?, error: Error?) {
+        DispatchQueue.main.async {
+            self.completion?(vastModel, error)
+            self.completion = nil
+        }
+    }
+    
+    func parse(url: URL, completion: @escaping (VastModel?, Error?) -> ()) {
+        self.completion = completion
+        NSLog("JAN: Parsing started!")
+        let timer = Timer.scheduledTimer(withTimeInterval: options.timeLimit, repeats: false) { [weak self] _ in
+            NSLog("JAN: Parsing timer triggered!")
+            self?.finish(vastModel: nil, error: VastError.wrapperTimeLimitReached)
+        }
+        queue.async {
+            do {
+                let vastModel = try self.internalParse(url: url)
+                NSLog("JAN: Parsing finished!")
+                timer.invalidate()
+                self.finish(vastModel: vastModel, error: nil)
+            } catch {
+                timer.invalidate()
+                self.finish(vastModel: nil, error: error)
+            }
+        }
+    }
+    
+    private func internalParse(url: URL, count: Int = 0) throws -> VastModel {
         guard count < options.wrapperLimit else {
             throw VastError.wrapperLimitReached
         }
@@ -38,7 +69,7 @@ class VastParser {
             let filename = url.absoluteString.replacingOccurrences(of: "test://", with: "")
             let filepath = bundle.path(forResource: filename, ofType: "xml")!
             let url = URL(fileURLWithPath: filepath)
-            vm = try parse(url: url)
+            vm = try internalParse(url: url)
         } else {
             vm = try parser.parse(url: url)
         }
@@ -55,7 +86,7 @@ class VastParser {
             guard ad.type == .wrapper, let wrapperUrl = ad.wrapper?.adTagUri else { return ad }
             
             do {
-                let wrapperModel = try parse(url: wrapperUrl, count: count + 1)
+                let wrapperModel = try internalParse(url: wrapperUrl, count: count + 1)
                 wrapperModel.ads.forEach { wrapperAd in
                     if let adSystem = wrapperAd.adSystem {
                         copiedAd.adSystem = adSystem

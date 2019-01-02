@@ -13,7 +13,7 @@ This project is ongoing and in very early stages of development. As this project
 
 ## API docs
 
-iOS Vast Client containts 2 interfaces for public use.
+iOS Vast Client contains 2 interfaces for public use.
 
 ### VastClient
 
@@ -27,7 +27,7 @@ Handels tracking of ad break progress and errors. Notifies state updates via del
 
 #### Initialization
 
-Init `VastTracker` with `VastModel` structure but always make sure to use the actuall `VastAd` and other information provided via delegate function calls - do not keep the `VastModel` as not all information from the `VastModel` might be valid for playback etc.
+Init `VastTracker` with `VastModel` structure but always make sure to use the actual `VastAd` and other information provided via delegate function calls - do not keep the `VastModel` as not all information from the `VastModel` might be valid for playback etc.
 
 If you initialize `VastTracker` with delegate - `func adBreakStart(vastTracker: VastTracker, totalAds: Int)` will be called immediately. 
 
@@ -50,7 +50,7 @@ func adThirdQuartile(vastTracker: VastTracker, ad: VastAd)
 When ad playback ends your app is responsible for calling `finishedPlayback()`.
 Delegate function `func adComplete(vastTracker: VastTracker, ad: VastAd)` will be called.
 
-If there are more ads, next one will be played and your app will receive `func adStart(vastTracker: VastTracker, ad: VastAd)` again. There is no need to call update progress with `time = 0` anymore, this is handeled by the `VastTracker`
+If there are more ads, next one will be played and your app will receive `func adStart(vastTracker: VastTracker, ad: VastAd)` again. There is no need to call update progress with `time = 0` anymore, this is handled by the `VastTracker`
 
 If there are no more ads to be played, ad break is finished and delegate `func adBreakComplete(vastTracker: VastTracker, vastModel: VastModel)` will be called.
 

@@ -220,6 +220,7 @@
 		A945EE58219C5C9E0007A079 /* vast4.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = vast4.xsd; sourceTree = "<group>"; };
 		A981D9FA21BEAEF100018FD8 /* Inline_linear_icons-test.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Inline_linear_icons-test.xml"; sourceTree = "<group>"; };
 		A981D9FC21BEB01800018FD8 /* InlineLinearIcons-test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InlineLinearIcons-test.swift"; sourceTree = "<group>"; };
+		A98767AA21DCC3FB0079EFE3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		A9A3FFB521BA5B4C008DB5D6 /* TestFullVast4.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TestFullVast4.xml; sourceTree = "<group>"; };
 		A9A3FFB721BA5CBE008DB5D6 /* FullVast4-test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FullVast4-test.swift"; sourceTree = "<group>"; };
 		A9A84FEB21A3053200949C4B /* VastParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastParser.swift; sourceTree = "<group>"; };
@@ -247,6 +248,7 @@
 		0F7B97752077CB340096438D = {
 			isa = PBXGroup;
 			children = (
+				A98767AA21DCC3FB0079EFE3 /* README.md */,
 				0F7B97812077CB340096438D /* VastClient */,
 				0F7B978C2077CB340096438D /* VastClientTests */,
 				0F7B97802077CB340096438D /* Products */,

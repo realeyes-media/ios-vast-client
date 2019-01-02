@@ -55,7 +55,9 @@ extension VastModel {
             VastVerification(vendor: nil, viewableImpression: nil, javaScriptResource: [VastResource(apiFramework: nil, url: URL(string: "https://verificationcompany.com/untrusted.js"))], flashResources: [])
         ]
         
-        let ad = VastAd(type: .inline, id: "20001", sequence: 1, conditionalAd: false, adSystem: adSystem, impressions: [impressions], adVerifications: adVerifications, viewableImpression: nil, pricing: pricing, errors: errors, creatives: [creative], extensions: extensions, adTitle: "iabtechlab video ad", adCategories: categories, description: nil, advertiser: nil, surveys: [], wrapper: nil)
+        let advertiser = "IAB Sample Company"
+        
+        let ad = VastAd(type: .inline, id: "20001", sequence: 1, conditionalAd: false, adSystem: adSystem, impressions: [impressions], adVerifications: adVerifications, viewableImpression: nil, pricing: pricing, errors: errors, creatives: [creative], extensions: extensions, adTitle: "iabtechlab video ad", adCategories: categories, description: nil, advertiser: advertiser, surveys: [], wrapper: nil)
         
         return VastModel(version: "4.0", ads: [ad], errors: [])
     }()

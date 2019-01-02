@@ -13,4 +13,5 @@ public enum TrackingError: Error {
     case unableToUpdateProgress(msg: String)
     case unableToProvideCreativeClickThroughUrls
     case internalError(msg: String)
+    case unableToSkipAdAtThisTime
 }

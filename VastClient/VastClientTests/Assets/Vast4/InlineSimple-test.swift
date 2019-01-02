@@ -48,7 +48,9 @@ extension VastModel {
         
         let extensions: [VastExtension] = []
         
-        let ad = VastAd(type: .inline, id: "20001", sequence: 1, conditionalAd: false, adSystem: adSystem, impressions: [impressions], adVerifications: [], viewableImpression: nil, pricing: pricing, errors: errors, creatives: [creative], extensions: extensions, adTitle: "Inline Simple Ad", adCategories: categories, description: nil, advertiser: nil, surveys: [], wrapper: nil)
+        let advertiser = "IAB Sample Company"
+        
+        let ad = VastAd(type: .inline, id: "20001", sequence: 1, conditionalAd: false, adSystem: adSystem, impressions: [impressions], adVerifications: [], viewableImpression: nil, pricing: pricing, errors: errors, creatives: [creative], extensions: extensions, adTitle: "Inline Simple Ad", adCategories: categories, description: nil, advertiser: advertiser, surveys: [], wrapper: nil)
         
         return VastModel(version: "4.0", ads: [ad], errors: [])
     }()

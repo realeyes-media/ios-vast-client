@@ -240,6 +240,8 @@ extension VastXMLParser: XMLParserDelegate {
                 }
             case AdElements.description:
                 currentVastAd?.description = currentContent
+            case AdElements.advertiser:
+                currentVastAd?.advertiser = currentContent
             case AdElements.pricing:
                 currentVastPricing?.pricing = currentContent.doubleValue
                 if let pricing = currentVastPricing {

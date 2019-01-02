@@ -32,6 +32,7 @@ public struct TrackerModel {
 public class VastTracker {
 
     public var delegate: VastTrackerDelegate?
+    public let totalAds: Int
 
     let id: String
     private var trackingStatus: TrackingStatus = .unknown
@@ -56,8 +57,9 @@ public class VastTracker {
         self.vastAds = VastTracker.getAds(from: trackerModel)
         self.trackingStatus = .tracking
         self.delegate = delegate
+        self.totalAds = self.vastAds.count
 
-        delegate?.adBreakStart(vastTracker: self, totalAds: self.vastAds.count)
+        delegate?.adBreakStart(vastTracker: self, totalAds: totalAds)
     }
     
     private static func getTrackerModel(from vastModel: VastModel) -> TrackerModel {
@@ -223,7 +225,7 @@ public class VastTracker {
             completedAdAccumulatedDuration += creative.duration
         }
         
-        tryToPlayNext()
+        try tryToPlayNext()
     }
 
     public func paused(_ val: Bool) throws {
@@ -279,11 +281,11 @@ public class VastTracker {
         }
     }
     
-    private func tryToPlayNext() {
+    private func tryToPlayNext() throws {
         vastAds.removeFirst()
         currentTrackingCreative = nil
         if vastAds.count > 0 {
-            try? updateProgress(time: 0.0)
+            try updateProgress(time: 0.0)
         } else {
             trackingStatus = .complete
             delegate?.adBreakComplete(vastTracker: self, vastModel: vastModel)
@@ -292,15 +294,15 @@ public class VastTracker {
 
     public func skip() throws {
         if let creative = currentTrackingCreative {
-            guard creative.vastAd.creatives.first?.linear?.skipOffset != nil else {
-                return
+            guard let skipOffset = creative.vastAd.creatives.first?.linear?.skipOffset?.toSeconds, skipOffset < currentTime else {
+                throw TrackingError.unableToSkipAdAtThisTime
             }
             
             let trackingUrls = creative.creative.trackingEvents
                 .filter { $0.type == .skip && $0.url != nil }
                 .map { $0.url! }
             creative.callTrackingUrls(trackingUrls)
-            tryToPlayNext()
+            try tryToPlayNext()
         } else {
             throw TrackingError.internalError(msg: "Unable to find current creative to track")
         }

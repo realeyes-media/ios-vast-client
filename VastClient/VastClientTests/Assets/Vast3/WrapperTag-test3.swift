@@ -20,10 +20,12 @@ extension VastModel {
         let mediaFiles: [VastMediaFile] = []
         let interactiveMediaFiles: [VastInteractiveCreativeFile] = []
         let icons: [VastIcon] = []
-        let creative = VastCreative(id: "5480", adId: nil, sequence: 1, apiFramework: nil, universalAdId: nil, creativeExtensions: [], linear: nil, companionAds: nil)
+        
+        let companion1 = VastCompanionCreative(width: 100, height: 150, id: "1232", assetWidth: 250, assetHeight: 200, expandedWidth: 350, expandedHeight: 250, apiFramework: nil, adSlotId: nil, pxRatio: nil, staticResource: [VastStaticResource(creativeType: "image/png", url: URL(string: "https://www.iab.com/wp-content/uploads/2014/09/iab-tech-lab-6-644x290.png"))], iFrameResource: [], htmlResource: [], altText: nil, companionClickThrough: URL(string: "https://iabtechlab.com"), companionClickTracking: [], trackingEvents: [], adParameters: nil)
+        let companionAds = VastCompanionAds(required: .none, companions: [companion1])
+        let creative = VastCreative(id: "5480", adId: nil, sequence: 1, apiFramework: nil, universalAdId: nil, creativeExtensions: [], linear: nil, companionAds: companionAds)
         let extensions: [VastExtension] = []
         let adTagUri = URL(string: "https://raw.githubusercontent.com/InteractiveAdvertisingBureau/VAST_Samples/master/VAST%203.0%20Samples/Inline_Companion_Tag-test.xml")!
-        // TODO: add companionAds from the file
         
         let wrapper = VastWrapper(followAdditionalWrappers: nil, allowMultipleAds: nil, fallbackOnNoAd: nil, adTagUri: adTagUri)
         

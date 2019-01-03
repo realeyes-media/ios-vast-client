@@ -29,6 +29,12 @@ struct CompanionAttributes {
     static let expandedheight = "expandedHeight"
     static let apiframework = "apiFramework"
     static let adslotid = "adSlotId"
+    static let adslotid4 = "adSlotID"
+    static let pxRatio = "pxratio"
+}
+
+public struct VastCompanionClickTracking {
+    public let id: String?
 }
 
 public struct VastCompanionCreative {
@@ -42,6 +48,7 @@ public struct VastCompanionCreative {
     public let expandedHeight: Int?
     public let apiFramework: String?
     public let adSlotId: String?
+    public let pxRatio: Double?
     
     // Sub Elements
     public var staticResource: [VastStaticResource] = []
@@ -65,6 +72,7 @@ extension VastCompanionCreative {
         var expandedHeight: Int?
         var apiFramework: String?
         var adSlotId: String?
+        var pxRatio: Double?
 
         for (key, value) in attrDict {
             switch key {
@@ -84,8 +92,10 @@ extension VastCompanionCreative {
                 expandedHeight = Int(value)
             case CompanionAttributes.apiframework:
                 apiFramework = value
-            case CompanionAttributes.adslotid:
+            case CompanionAttributes.adslotid, CompanionAttributes.adslotid4:
                 adSlotId = value
+            case CompanionAttributes.pxRatio:
+                pxRatio = Double(value)
             default:
                 break
             }
@@ -100,6 +110,7 @@ extension VastCompanionCreative {
         self.expandedHeight = expandedHeight
         self.apiFramework = apiFramework
         self.adSlotId = adSlotId
+        self.pxRatio = pxRatio
     }
 }
 

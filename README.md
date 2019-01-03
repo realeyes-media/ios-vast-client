@@ -125,6 +125,8 @@ status:
 |CompanionAds|not parsed|no sub-elemets supported|
 |Wrapper|full||
 |VASTAdTagURI|parsed||
+|CompanionAds|parsed||
+|Companion|parsed|all subelements parsed but CompanionClickTracking does not support `id` attribute|
 
 
 ## Getting Started

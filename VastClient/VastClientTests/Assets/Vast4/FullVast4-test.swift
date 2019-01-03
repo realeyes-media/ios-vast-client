@@ -75,7 +75,7 @@ extension VastModel {
             tracking(hour: 1, minute: 1, second: 2, type: .firstQuartile, url: "http://example.com/track/firstQuartile1"),
             tracking(hour: 1, minute: 1, second: 3, type: .midpoint, url: "http://example.com/track/midpoint1"),
             tracking(hour: 1, minute: 1, second: 4, type: .thirdQuartile, url: "http://example.com/track/thirdQuartile1"),
-            tracking(hour: 1, minute: 1, second: 5, type: .complete, url: "http://example.com/track/complete1"),
+            tracking(hour: 1, minute: 1, second: 5, type: .complete, url: "http://example.com/track/complete1")
         ]
         let iconViewTracking: [URL] = [URL(string: "http://example.com/track/IconViewTracking3")!, URL(string: "http://example.com/track/IconViewTracking4")!]
         let iconClicks: IconClicks? = IconClicks(iconClickThrough: URL(string: "http://example.com/track/IconClickThrough1"), iconClickTracking: [VastIconClickTracking(id: "IconClickTrackingId3", url: URL(string: "http://example.com/track/IconClickTracking3")), VastIconClickTracking(id: "IconClickTrackingId4", url: URL(string: "http://example.com/track/IconClickTracking4"))])
@@ -88,7 +88,46 @@ extension VastModel {
         let icons: [VastIcon] = [VastIcon(program: "program", width: 11, height: 10, xPosition: "20", yPosition: "21", duration: 5, offset: 6, apiFramework: "IconApiFramework1", pxratio: 1.1, iconViewTracking: iconViewTracking, iconClicks: iconClicks, staticResource: staticResource)]
         let firstLinear = VastLinearCreative(skipOffset: "00:00:10", duration: nil, adParameters: nil, videoClicks: videoClicks, trackingEvents: trackingEvents, mediaFiles: mediaFiles, icons: icons)
         
-        let firstCreative = VastCreative(id: "CreativeId1", adId: "CreativeAdId1", sequence: 1, apiFramework: "CreativeApiFramework1", universalAdId: nil, creativeExtensions: [], linear: firstLinear, companionAds: nil)
+        
+        let companion1staticResources: [VastStaticResource] = [
+            VastStaticResource(creativeType: "StaticResourceCreativeType1", url: URL(string: "http://example.com/StaticResource1")),
+            VastStaticResource(creativeType: "StaticResourceCreativeType2", url: URL(string: "http://example.com/StaticResource2"))]
+        let companion1iFrameResources: [URL] = [URL(string: "http://example.com/IFrameResource1")!, URL(string: "http://example.com/IFrameResource2")!]
+        let companion1htmlResources: [URL] = [URL(string: "http://example.com/HTMLResource1")!, URL(string: "http://example.com/HTMLResource2")!]
+        let companion1trackingEvents: [VastTrackingEvent] = [
+            tracking(hour: 0, minute: 0, second: 1, type: .mute, url: "http://example.com/track/mute"),
+            tracking(hour: 0, minute: 0, second: 2, type: .unmute, url: "http://example.com/track/unmute"),
+            tracking(hour: 0, minute: 0, second: 3, type: .pause, url: "http://example.com/track/pause"),
+            tracking(hour: 0, minute: 0, second: 4, type: .resume, url: "http://example.com/track/resume"),
+            tracking(hour: 0, minute: 0, second: 5, type: .rewind, url: "http://example.com/track/rewind"),
+            tracking(hour: 0, minute: 0, second: 6, type: .skip, url: "http://example.com/track/skip"),
+            tracking(hour: 0, minute: 0, second: 7, type: .playerExpand, url: "http://example.com/track/playerExpand"),
+            tracking(hour: 0, minute: 0, second: 8, type: .playerCollapse, url: "http://example.com/track/playerCollapse"),
+            tracking(hour: 0, minute: 0, second: 9, type: .acceptInvitationLinear, url: "http://example.com/track/acceptInvitationLinear"),
+            tracking(hour: 0, minute: 0, second: 10, type: .unknown, url: "http://example.com/track/timeSpentViewing"),
+            tracking(hour: 0, minute: 0, second: 11, type: .progress, url: "http://example.com/track/progress"),
+            tracking(hour: 0, minute: 0, second: 12, type: .creativeView, url: "http://example.com/track/creativeView"),
+            tracking(hour: 0, minute: 0, second: 13, type: .unknown, url: "http://example.com/track/acceptInvitation"),
+            tracking(hour: 0, minute: 0, second: 14, type: .unknown, url: "http://example.com/track/adExpand"),
+            tracking(hour: 0, minute: 0, second: 15, type: .unknown, url: "http://example.com/track/adCollapse"),
+            tracking(hour: 0, minute: 0, second: 16, type: .unknown, url: "http://example.com/track/minimize"),
+            tracking(hour: 0, minute: 0, second: 17, type: .unknown, url: "http://example.com/track/close"),
+            tracking(hour: 0, minute: 0, second: 18, type: .unknown, url: "http://example.com/track/overlayViewDuration"),
+            tracking(hour: 0, minute: 0, second: 19, type: .unknown, url: "http://example.com/track/otherAdInteraction"),
+            tracking(hour: 0, minute: 1, second: 1, type: .start, url: "http://example.com/track/start"),
+            tracking(hour: 0, minute: 1, second: 2, type: .firstQuartile, url: "http://example.com/track/firstQuartile"),
+            tracking(hour: 0, minute: 1, second: 3, type: .midpoint, url: "http://example.com/track/midpoint"),
+            tracking(hour: 0, minute: 1, second: 4, type: .thirdQuartile, url: "http://example.com/track/thirdQuartile"),
+            tracking(hour: 0, minute: 1, second: 5, type: .complete, url: "http://example.com/track/complete")
+            ]
+        let companion1adParameters = VastAdParameters(xmlEncoded: "true", content: "http://example.com/AdParameters1")
+        
+        let companion1 = VastCompanionCreative(width: 200, height: 50, id: "CompanionId1", assetWidth: 201, assetHeight: 51, expandedWidth: 202, expandedHeight: 52, apiFramework: "CompanionApiFramework1", adSlotId: "AdSlot1", pxRatio: 1, staticResource: companion1staticResources, iFrameResource: companion1iFrameResources, htmlResource: companion1htmlResources, altText: "AltText1", companionClickThrough: URL(string: "http://example.com/track/CompanionClickThrough1"), companionClickTracking: [URL(string: "http://example.com/track/CompanionClickTracking1")!, URL(string: "http://example.com/track/CompanionClickTracking2")!], trackingEvents: companion1trackingEvents, adParameters: companion1adParameters)
+        
+        let companion2 = VastCompanionCreative(width: 55, height: 205, id: "CompanionId2", assetWidth: nil, assetHeight: nil, expandedWidth: nil, expandedHeight: nil, apiFramework: nil, adSlotId: nil, pxRatio: nil, staticResource: [], iFrameResource: [], htmlResource: [], altText: nil, companionClickThrough: nil, companionClickTracking: [], trackingEvents: [], adParameters: nil)
+        let companionAds = VastCompanionAds(required: .none, companions: [companion1, companion2])
+        
+        let firstCreative = VastCreative(id: "CreativeId1", adId: "CreativeAdId1", sequence: 1, apiFramework: "CreativeApiFramework1", universalAdId: nil, creativeExtensions: [], linear: firstLinear, companionAds: companionAds)
         let secondCreative = VastCreative(id: "CreativeId2", adId: "CreativeAdId2", sequence: 2, apiFramework: "CreativeApiFramework2", universalAdId: nil, creativeExtensions: [], linear: nil, companionAds: nil)
         
         let creatives: [VastCreative] = [firstCreative ,secondCreative]
@@ -167,8 +206,8 @@ extension VastModel {
             tracking(hour: 4, minute: 1, second: 2, type: .firstQuartile, url: "http://example.com/track/firstQuartile4"),
             tracking(hour: 4, minute: 1, second: 3, type: .midpoint, url: "http://example.com/track/midpoint4"),
             tracking(hour: 4, minute: 1, second: 4, type: .thirdQuartile, url: "http://example.com/track/thirdQuartile4"),
-            tracking(hour: 4, minute: 1, second: 5, type: .complete, url: "http://example.com/track/complete4"),
-            ]
+            tracking(hour: 4, minute: 1, second: 5, type: .complete, url: "http://example.com/track/complete4")
+        ]
         let iconViewTracking: [URL] = [URL(string: "http://example.com/track/IconViewTracking5")!, URL(string: "http://example.com/track/IconViewTracking6")!]
         let iconClicks: IconClicks? = IconClicks(iconClickThrough: URL(string: "http://example.com/track/IconClickThrough2"), iconClickTracking: [VastIconClickTracking(id: "IconClickTrackingId5", url: URL(string: "http://example.com/track/IconClickTracking5")), VastIconClickTracking(id: "IconClickTrackingId6", url: URL(string: "http://example.com/track/IconClickTracking6"))])
         let staticResource: [VastStaticResource] = [VastStaticResource(creativeType: "StaticResourceCreativeType7", url: URL(string: "http://example.com/StaticResource7")!), VastStaticResource(creativeType: "StaticResourceCreativeType8", url: URL(string: "http://example.com/StaticResource8"))]
@@ -189,7 +228,45 @@ extension VastModel {
         
         let creativeExtensions: [VastCreativeExtension] = [VastCreativeExtension(mimeType: "CreativeExtensionType5", content: ""), VastCreativeExtension(mimeType: "CreativeExtensionType6", content: "")]
         
-        let firstCreative = VastCreative(id: "CreativeId3", adId: "CreativeAdId3", sequence: 3, apiFramework: "CreativeApiFramework3", universalAdId: VastUniversalAdId(idRegistry: "unknown", idValue: "unknown", uniqueCreativeId: "UniversalAdId1"), creativeExtensions: creativeExtensions, linear: nil, companionAds: nil)
+        let companion1staticResources: [VastStaticResource] = [
+            VastStaticResource(creativeType: "StaticResourceCreativeType5", url: URL(string: "http://example.com/StaticResource5")),
+            VastStaticResource(creativeType: "StaticResourceCreativeType6", url: URL(string: "http://example.com/StaticResource6"))]
+        let companion1iFrameResources: [URL] = [URL(string: "http://example.com/IFrameResource5")!, URL(string: "http://example.com/IFrameResource6")!]
+        let companion1htmlResources: [URL] = [URL(string: "http://example.com/HTMLResource5")!, URL(string: "http://example.com/HTMLResource6")!]
+        let companion1trackingEvents: [VastTrackingEvent] = [
+            tracking(hour: 3, minute: 0, second: 1, type: .mute, url: "http://example.com/track/mute3"),
+            tracking(hour: 3, minute: 0, second: 2, type: .unmute, url: "http://example.com/track/unmute3"),
+            tracking(hour: 3, minute: 0, second: 3, type: .pause, url: "http://example.com/track/pause3"),
+            tracking(hour: 3, minute: 0, second: 4, type: .resume, url: "http://example.com/track/resume3"),
+            tracking(hour: 3, minute: 0, second: 5, type: .rewind, url: "http://example.com/track/rewind3"),
+            tracking(hour: 3, minute: 0, second: 6, type: .skip, url: "http://example.com/track/skip3"),
+            tracking(hour: 3, minute: 0, second: 7, type: .playerExpand, url: "http://example.com/track/playerExpand3"),
+            tracking(hour: 3, minute: 0, second: 8, type: .playerCollapse, url: "http://example.com/track/playerCollapse3"),
+            tracking(hour: 3, minute: 0, second: 9, type: .acceptInvitationLinear, url: "http://example.com/track/acceptInvitationLinear3"),
+            tracking(hour: 3, minute: 0, second: 10, type: .unknown, url: "http://example.com/track/timeSpentViewing3"),
+            tracking(hour: 3, minute: 0, second: 11, type: .progress, url: "http://example.com/track/progress3"),
+            tracking(hour: 3, minute: 0, second: 12, type: .creativeView, url: "http://example.com/track/creativeView3"),
+            tracking(hour: 3, minute: 0, second: 13, type: .unknown, url: "http://example.com/track/acceptInvitation3"),
+            tracking(hour: 3, minute: 0, second: 14, type: .unknown, url: "http://example.com/track/adExpand3"),
+            tracking(hour: 3, minute: 0, second: 15, type: .unknown, url: "http://example.com/track/adCollapse3"),
+            tracking(hour: 3, minute: 0, second: 16, type: .unknown, url: "http://example.com/track/minimize3"),
+            tracking(hour: 3, minute: 0, second: 17, type: .unknown, url: "http://example.com/track/close3"),
+            tracking(hour: 3, minute: 0, second: 18, type: .unknown, url: "http://example.com/track/overlayViewDuration3"),
+            tracking(hour: 3, minute: 0, second: 19, type: .unknown, url: "http://example.com/track/otherAdInteraction3"),
+            tracking(hour: 3, minute: 1, second: 1, type: .start, url: "http://example.com/track/start3"),
+            tracking(hour: 3, minute: 1, second: 2, type: .firstQuartile, url: "http://example.com/track/firstQuartile3"),
+            tracking(hour: 3, minute: 1, second: 3, type: .midpoint, url: "http://example.com/track/midpoint3"),
+            tracking(hour: 3, minute: 1, second: 4, type: .thirdQuartile, url: "http://example.com/track/thirdQuartile3"),
+            tracking(hour: 3, minute: 1, second: 5, type: .complete, url: "http://example.com/track/complete3"),
+        ]
+        let companion1adParameters = VastAdParameters(xmlEncoded: "true", content: "http://example.com/AdParameters2")
+        
+        let companion1 = VastCompanionCreative(width: 3200, height: 350, id: "CompanionId3", assetWidth: 3201, assetHeight: 351, expandedWidth: 3202, expandedHeight: 352, apiFramework: "CompanionApiFramework3", adSlotId: "AdSlot3", pxRatio: 1.3, staticResource: companion1staticResources, iFrameResource: companion1iFrameResources, htmlResource: companion1htmlResources, altText: "AltText2", companionClickThrough: URL(string: "http://example.com/track/CompanionClickThrough2"), companionClickTracking: [URL(string: "http://example.com/track/CompanionClickTracking3")!, URL(string: "http://example.com/track/CompanionClickTracking4")!], trackingEvents: companion1trackingEvents, adParameters: companion1adParameters)
+        
+        let companion2 = VastCompanionCreative(width: 455, height: 4205, id: "CompanionId4", assetWidth: nil, assetHeight: nil, expandedWidth: nil, expandedHeight: nil, apiFramework: nil, adSlotId: nil, pxRatio: nil, staticResource: [], iFrameResource: [], htmlResource: [], altText: nil, companionClickThrough: nil, companionClickTracking: [], trackingEvents: [], adParameters: nil)
+        let companionAds = VastCompanionAds(required: .any, companions: [companion1, companion2])
+        
+        let firstCreative = VastCreative(id: "CreativeId3", adId: "CreativeAdId3", sequence: 3, apiFramework: "CreativeApiFramework3", universalAdId: VastUniversalAdId(idRegistry: "unknown", idValue: "unknown", uniqueCreativeId: "UniversalAdId1"), creativeExtensions: creativeExtensions, linear: nil, companionAds: companionAds)
         let secondCreative = VastCreative(id: "CreativeId4", adId: "CreativeAdId4", sequence: 4, apiFramework: "CreativeApiFramework4", universalAdId: VastUniversalAdId(idRegistry: "unknown", idValue: "unknown", uniqueCreativeId: "UniversalAdId2"), creativeExtensions: [], linear: firstLinear, companionAds: nil)
         
         let creatives: [VastCreative] = [firstCreative ,secondCreative]

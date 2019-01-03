@@ -11,7 +11,7 @@ import VastClient
 
 class ViewController: UIViewController {
 
-//    private let vastExample = VastExample()
-    private let vmapExample = VMAPExample()
+    private let vastExample = VastExample()
+//    private let vmapExample = VMAPExample()
 
 }

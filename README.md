@@ -115,7 +115,7 @@ status:
 |ClickThrough|full||
 ||ClickTracking|full|
 |CustomClick|partial|host app can track custom clicks via tracker, but the functionality is not specified|
-|Icons|full||
+|Icons|partial|iFrame and HTML resources not parsed|
 |Icon|full|host app has to handle icon placement, visibility and icon clicks|
 |IconViewTracking|parsed|View action tracking not implemented|
 |IconClicks|full||
@@ -129,7 +129,7 @@ status:
 
 ## Getting Started
 
-TODO
+Check out the VastClientWrapper project for example implementation
 
 ## Contributing
 

@@ -22,8 +22,8 @@ public enum TrackingEventType: String {
     case resume
     case fullscreen
     case exitFullscreen
-    case expand
-    case collapse
+    case playerExpand
+    case playerCollapse
     case acceptInvitationLinear
     case closeLinear
     case skip

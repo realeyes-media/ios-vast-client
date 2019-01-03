@@ -16,9 +16,9 @@ func makeRequest(withUrl url: URL) {
     let task = session.dataTask(with: request) {(data, response, error) in
         DispatchQueue.global().async {
             #if DEBUG
-            NSLog("Completed request: \(request.debugDescription)")
+            print("Completed request: \(request.debugDescription)")
             if let error = error {
-                NSLog("Request \(request.debugDescription), finished with error: \(error)")
+                print("Request \(request.debugDescription), finished with error: \(error)")
                 return
             }
             #endif

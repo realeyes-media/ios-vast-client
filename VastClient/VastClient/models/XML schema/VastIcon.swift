@@ -38,11 +38,9 @@ public struct VastIcon {
     public let apiFramework: String
     public let pxratio: Double
     
-    public var iconViewTracking: URL?
+    public var iconViewTracking: [URL] = []
     public var iconClicks: IconClicks?
     public var staticResource: [VastStaticResource] = []
-    public var iFrameResources: [URL] = []
-    public var htmlResources: [URL] = []
 }
 
 extension VastIcon {

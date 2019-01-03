@@ -56,16 +56,6 @@
                             <CompanionClickThrough>http://example.com/track/CompanionClickThrough1</CompanionClickThrough>
                             <CompanionClickTracking id="CompanionClickTrackingId1">http://example.com/track/CompanionClickTracking1</CompanionClickTracking>
                             <CompanionClickTracking id="CompanionClickTrackingId2"><![CDATA[http://example.com/track/CompanionClickTracking2]]></CompanionClickTracking>
-                            <CreativeExtensions>
-                                <CreativeExtension type="CreativeExtensionType1">
-                                    <any>any31</any>
-                                    <any>any32</any>
-                                </CreativeExtension>
-                                <CreativeExtension type="CreativeExtensionType2">
-                                    <any>any41</any>
-                                    <any>any42</any>
-                                </CreativeExtension>
-                            </CreativeExtensions>
                             <TrackingEvents>
                                 <Tracking offset="00:00:01" event="mute">http://example.com/track/mute</Tracking>
                                 <Tracking offset="00:00:02" event="unmute">http://example.com/track/unmute</Tracking>
@@ -265,16 +255,6 @@
                             <CompanionClickThrough>http://example.com/track/CompanionClickThrough2</CompanionClickThrough>
                             <CompanionClickTracking id="CompanionClickTrackingId3">http://example.com/track/CompanionClickTracking3</CompanionClickTracking>
                             <CompanionClickTracking id="CompanionClickTrackingId4"><![CDATA[http://example.com/track/CompanionClickTracking4]]></CompanionClickTracking>
-                            <CreativeExtensions>
-                                <CreativeExtension type="CreativeExtensionType3">
-                                    <any>any71</any>
-                                    <any>any72</any>
-                                </CreativeExtension>
-                                <CreativeExtension type="CreativeExtensionType4">
-                                    <any>any81</any>
-                                    <any>any82</any>
-                                </CreativeExtension>
-                            </CreativeExtensions>
                             <TrackingEvents>
                                 <Tracking offset="03:00:01" event="mute">http://example.com/track/mute3</Tracking>
                                 <Tracking offset="03:00:02" event="unmute">http://example.com/track/unmute3</Tracking>

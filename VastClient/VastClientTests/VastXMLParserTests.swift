@@ -100,6 +100,11 @@ class VastXMLParserTests: XCTestCase {
         XCTAssertEqual(model.errors.count, 0)
     }
     
+    func test_fullVast4File() {
+        let model = self.loadVastFile(named: "TestFullVast4")
+        XCTAssertEqual(model, VastModel.fullVast4)
+    }
+    
     func test_inlineLinearIcons() {
         let model = self.loadVastFile(named: "Inline_linear_icons-test")
         XCTAssertEqual(model, VastModel.inlineLinearIcons)

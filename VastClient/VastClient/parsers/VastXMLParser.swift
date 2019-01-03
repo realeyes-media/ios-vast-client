@@ -58,12 +58,6 @@ class VastXMLParser: NSObject {
 //    var currentCompanionCreative: VastCompanionCreative?
 
     var currentContent = ""
-
-    func parseTestFile(named filename: String, bundle: Bundle) throws -> VastModel {
-        let filepath = bundle.path(forResource: filename, ofType: "xml")!
-        let url = URL(fileURLWithPath: filepath)
-        return try parse(url: url)
-    }
     
     func parse(url: URL) throws -> VastModel {
         xmlParser = XMLParser(contentsOf: url)
@@ -150,6 +144,8 @@ extension VastXMLParser: XMLParserDelegate {
             case CreativeLinearElements.clickthrough, CreativeLinearElements.clicktracking, CreativeLinearElements.customclick:
                 guard let type = ClickType(rawValue: elementName) else { break }
                 currentVideoClick = VastVideoClick(type: type, attrDict: attributeDict)
+            case CreativeLinearElements.adParameters:
+                currentLinearCreative?.adParameters = VastAdParameters(attrDict: attributeDict)
             case CreativeLinearElements.mediafile:
                 currentMediaFile = VastMediaFile(attrDict: attributeDict)
             case CreativeLinearElements.interactiveCreativeFile:
@@ -210,7 +206,6 @@ extension VastXMLParser: XMLParserDelegate {
                     currentVastAd = nil
                 }
             case AdElements.inLine:
-                currentVastAd?.viewableImpression = currentViewableImpression
                 currentVastAd?.type = .inline
             case AdElements.wrapper:
                 if let wrapper = currentWrapper {
@@ -310,6 +305,8 @@ extension VastXMLParser: XMLParserDelegate {
                     currentVastAd?.creatives.append(creative)
                     currentCreative = nil
                 }
+                currentUniversalAdId = nil
+                currentCreativeExtension = nil
             case VastCreativeElements.universalAdId:
                 currentUniversalAdId?.uniqueCreativeId = currentContent
                 if let universalAdId = currentUniversalAdId {
@@ -368,6 +365,10 @@ extension VastXMLParser: XMLParserDelegate {
                     currentIcon?.staticResource.append(staticResource)
                 }
                 currentStaticResource = nil
+            case VastIconElements.iconViewTracking:
+                if let url = URL(string: currentContent) {
+                    currentIcon?.iconViewTracking.append(url)
+                }
             case IconClicksElements.iconClickThrough:
                 currentIcon?.iconClicks?.iconClickThrough = URL(string: currentContent)
             case IconClicksElements.iconClickTracking:

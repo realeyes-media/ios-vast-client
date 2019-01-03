@@ -51,8 +51,8 @@ class VastXMLParser: NSObject {
     var currentVastExtension: VastExtension?
 
     // TODO: uncomments and fix parsing for /CompanionAds
-//    var creativeParameters = [VastCreativeParameter]()
-//    var currentCreativeParameter: VastCreativeParameter?
+    var creativeParameters = [VastCreativeParameter]()
+    var currentCreativeParameter: VastCreativeParameter?
 //    var currentCompanionAds: VastCompanionAds?
 //    var companions = [VastCompanionCreative]()
 //    var currentCompanionCreative: VastCompanionCreative?
@@ -159,8 +159,8 @@ extension VastXMLParser: XMLParserDelegate {
             case IconClicksElements.iconClickTracking:
                 currentIconClickTracking = VastIconClickTracking(attrDict: attributeDict)
 // TODO: uncomments and fix parsing for /CompanionAds
-//            case ExtensionElements.creativeparameter:
-//                currentCreativeParameter = VastCreativeParameter(attrDict: attributeDict)
+            case ExtensionElements.creativeparameter:
+                currentCreativeParameter = VastCreativeParameter(attrDict: attributeDict)
 //            case CompanionAdsElements.companionads:
 //                currentCompanionAds = VastCompanionAds(attrDict: attributeDict)
 //            case CompanionAdsElements.companion:
@@ -377,25 +377,17 @@ extension VastXMLParser: XMLParserDelegate {
                     currentIcon?.iconClicks?.iconClickTracking.append(currentIconClickTracking)
                 }
                 currentIconClickTracking = nil
-                
+            // TODO: external parameter - this needs to be defined outside the library
+            case ExtensionElements.creativeparameter:
+                currentCreativeParameter?.content = currentContent
+                if let creative = currentCreativeParameter {
+                    creativeParameters.append(creative)
+                    currentCreativeParameter = nil
+                }
+            case ExtensionElements.creativeparameters:
+                currentVastExtension?.creativeParameters = creativeParameters
+                creativeParameters = [VastCreativeParameter]()
 // TODO: uncomments and fix parsing for /CompanionAds
-//            case ExtensionElements.creativeparameter:
-//                currentCreativeParameter?.content = currentContent
-//                if let creative = currentCreativeParameter {
-//                    creativeParameters.append(creative)
-//                    currentCreativeParameter = nil
-//                }
-//            case ExtensionElements.creativeparameters:
-//                currentVastExtension?.creativeParameters = creativeParameters
-//                creativeParameters = [VastCreativeParameter]()
-//            case ExtensionElements.ext:
-//                if let ext = currentVastExtension {
-//                    vastExtensions.append(ext)
-//                    currentVastExtension = nil
-//                }
-//            case AdElements.extensions:
-//                currentVastAd?.extensions = vastExtensions
-//                vastExtensions = [VastExtension]()
 //            case CompanionResourceType.htmlresource.rawValue, CompanionResourceType.iframeresource.rawValue, CompanionResourceType.staticresource.rawValue:
 //                currentCompanionCreative?.type = CompanionResourceType(rawValue: elementName) ?? .unknown
 //                currentCompanionCreative?.content = currentContent

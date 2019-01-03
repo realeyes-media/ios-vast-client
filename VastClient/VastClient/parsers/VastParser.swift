@@ -110,16 +110,20 @@ class VastParser {
                     for (idx, creative) in copiedCreatives.enumerated() {
                         var creative = creative
                         if idx < wrapperAd.creatives.count {
-                            let wrapperLinearCreative = wrapperAd.creatives[idx]
-                            creative.linear?.duration = wrapperLinearCreative.linear?.duration
-                            if let mediaFiles = wrapperLinearCreative.linear?.mediaFiles.mediaFiles {
-                                creative.linear?.mediaFiles.mediaFiles.append(contentsOf: mediaFiles)
+                            let wrapperCreative = wrapperAd.creatives[idx]
+                            
+                            // Copy values from previous wrappers
+                            if let linear = wrapperCreative.linear {
+                                creative.linear?.duration = linear.duration
+                                creative.linear?.mediaFiles.mediaFiles.append(contentsOf: linear.mediaFiles.mediaFiles)
+                                creative.linear?.mediaFiles.interactiveCreativeFile.append(contentsOf: linear.mediaFiles.interactiveCreativeFile)
+                                creative.linear?.trackingEvents.append(contentsOf: linear.trackingEvents)
+                                creative.linear?.icons.append(contentsOf: linear.icons)
+                                creative.linear?.videoClicks.append(contentsOf: linear.videoClicks)
                             }
-                            if let interactiveFiles = wrapperLinearCreative.linear?.mediaFiles.interactiveCreativeFile {
-                                creative.linear?.mediaFiles.interactiveCreativeFile.append(contentsOf: interactiveFiles)
-                            }
-                            if let events = wrapperLinearCreative.linear?.trackingEvents {
-                                creative.linear?.trackingEvents.append(contentsOf: events)
+                            
+                            if let companions = wrapperCreative.companionAds?.companions {
+                                creative.companionAds?.companions.append(contentsOf: companions)
                             }
                         }
                         copiedCreatives[idx] = creative
@@ -127,8 +131,6 @@ class VastParser {
                     
                     copiedAd.creatives = copiedCreatives
                     copiedAd.extensions.append(contentsOf: wrapperAd.extensions)
-                    // TODO: uncomments and fix parsing for /CompanionAds
-                    //                    copiedAd.companionAds.append(contentsOf: wrapperAd.companionAds)
                 }
             } catch {
                 print("Unable to unwrap wrapper")

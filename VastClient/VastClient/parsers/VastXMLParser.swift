@@ -49,13 +49,11 @@ class VastXMLParser: NSObject {
     var currentStaticResource: VastStaticResource?
     var currentIconClickTracking: VastIconClickTracking?
     var currentVastExtension: VastExtension?
-
-    // TODO: uncomments and fix parsing for /CompanionAds
-//    var creativeParameters = [VastCreativeParameter]()
-//    var currentCreativeParameter: VastCreativeParameter?
-//    var currentCompanionAds: VastCompanionAds?
-//    var companions = [VastCompanionCreative]()
-//    var currentCompanionCreative: VastCompanionCreative?
+    var currentAdParameters: VastAdParameters?
+    var creativeParameters = [VastCreativeParameter]()
+    var currentCreativeParameter: VastCreativeParameter?
+    
+    var currentCompanionCreative: VastCompanionCreative?
 
     var currentContent = ""
     
@@ -144,8 +142,8 @@ extension VastXMLParser: XMLParserDelegate {
             case CreativeLinearElements.clickthrough, CreativeLinearElements.clicktracking, CreativeLinearElements.customclick:
                 guard let type = ClickType(rawValue: elementName) else { break }
                 currentVideoClick = VastVideoClick(type: type, attrDict: attributeDict)
-            case CreativeLinearElements.adParameters:
-                currentLinearCreative?.adParameters = VastAdParameters(attrDict: attributeDict)
+            case CreativeLinearElements.adParameters, CompanionElements.adparameters:
+                currentAdParameters = VastAdParameters(attrDict: attributeDict)
             case CreativeLinearElements.mediafile:
                 currentMediaFile = VastMediaFile(attrDict: attributeDict)
             case CreativeLinearElements.interactiveCreativeFile:
@@ -158,13 +156,12 @@ extension VastXMLParser: XMLParserDelegate {
                 currentIcon?.iconClicks = IconClicks()
             case IconClicksElements.iconClickTracking:
                 currentIconClickTracking = VastIconClickTracking(attrDict: attributeDict)
-// TODO: uncomments and fix parsing for /CompanionAds
-//            case ExtensionElements.creativeparameter:
-//                currentCreativeParameter = VastCreativeParameter(attrDict: attributeDict)
-//            case CompanionAdsElements.companionads:
-//                currentCompanionAds = VastCompanionAds(attrDict: attributeDict)
-//            case CompanionAdsElements.companion:
-//                currentCompanionCreative = VastCompanionCreative(attrDict: attributeDict)
+            case ExtensionElements.creativeparameter:
+                currentCreativeParameter = VastCreativeParameter(attrDict: attributeDict)
+            case VastCreativeElements.companionAds:
+                currentCreative?.companionAds = VastCompanionAds(attrDict: attributeDict)
+            case CompanionAdsElements.companion:
+                currentCompanionCreative = VastCompanionCreative(attrDict: attributeDict)
             default:
                 break
             }
@@ -324,11 +321,19 @@ extension VastXMLParser: XMLParserDelegate {
                     currentCreative?.linear = linear
                     currentLinearCreative = nil
                 }
-                
             case CreativeLinearElements.duration:
                 currentLinearCreative?.duration = currentContent.toSeconds ?? -1.0
-            case CreativeLinearElements.adParameters:
-                currentLinearCreative?.adParameters?.content = currentContent // TODO this might be XML encoded content that will need better parsing
+            case CreativeLinearElements.adParameters, CompanionElements.adparameters:
+                // TODO this might be XML encoded content that will need better parsing
+                currentAdParameters?.content = currentContent
+                if let adParameters = currentAdParameters {
+                    if currentCompanionCreative != nil {
+                        currentCompanionCreative?.adParameters = adParameters
+                    } else {
+                        currentLinearCreative?.adParameters = adParameters
+                    }
+                }
+                currentAdParameters = nil
             case CreativeLinearElements.mediafile:
                 currentMediaFile?.url = URL(string: currentContent)
                 if let mediaFile = currentMediaFile {
@@ -347,10 +352,14 @@ extension VastXMLParser: XMLParserDelegate {
                     currentLinearCreative?.videoClicks.append(click)
                     currentVideoClick = nil
                 }
-            case CreativeLinearElements.tracking:
+            case CreativeLinearElements.tracking, CompanionElements.trackingevents:
                 currentTrackingEvent?.url = URL(string: currentContent)
                 if let trackingEvent = currentTrackingEvent {
-                    currentLinearCreative?.trackingEvents.append(trackingEvent)
+                    if currentCompanionCreative != nil {
+                        currentCompanionCreative?.trackingEvents.append(trackingEvent)
+                    } else {
+                        currentLinearCreative?.trackingEvents.append(trackingEvent)
+                    }
                     currentTrackingEvent = nil
                 }
             case CreativeLinearElements.icon:
@@ -359,12 +368,25 @@ extension VastXMLParser: XMLParserDelegate {
                     
                 }
                 currentIcon = nil
-            case VastIconElements.staticResource:
+            case VastIconElements.staticResource, CompanionElements.staticResource:
                 currentStaticResource?.url = URL(string: currentContent)
+                
                 if let staticResource = currentStaticResource {
-                    currentIcon?.staticResource.append(staticResource)
+                    if currentCompanionCreative != nil {
+                        currentCompanionCreative?.staticResource.append(staticResource)
+                    } else {
+                        currentIcon?.staticResource.append(staticResource)
+                    }
                 }
                 currentStaticResource = nil
+            case CompanionElements.iframeResource: // TODO: add icon iFrameResource check if necessary
+                if let url = URL(string: currentContent) {
+                    currentCompanionCreative?.iFrameResource.append(url)
+                }
+            case CompanionElements.htmlResource: // TODO: add icon htmlResource check if necessary
+                if let url = URL(string: currentContent) {
+                    currentCompanionCreative?.htmlResource.append(url)
+                }
             case VastIconElements.iconViewTracking:
                 if let url = URL(string: currentContent) {
                     currentIcon?.iconViewTracking.append(url)
@@ -377,46 +399,29 @@ extension VastXMLParser: XMLParserDelegate {
                     currentIcon?.iconClicks?.iconClickTracking.append(currentIconClickTracking)
                 }
                 currentIconClickTracking = nil
-                
-// TODO: uncomments and fix parsing for /CompanionAds
-//            case ExtensionElements.creativeparameter:
-//                currentCreativeParameter?.content = currentContent
-//                if let creative = currentCreativeParameter {
-//                    creativeParameters.append(creative)
-//                    currentCreativeParameter = nil
-//                }
-//            case ExtensionElements.creativeparameters:
-//                currentVastExtension?.creativeParameters = creativeParameters
-//                creativeParameters = [VastCreativeParameter]()
-//            case ExtensionElements.ext:
-//                if let ext = currentVastExtension {
-//                    vastExtensions.append(ext)
-//                    currentVastExtension = nil
-//                }
-//            case AdElements.extensions:
-//                currentVastAd?.extensions = vastExtensions
-//                vastExtensions = [VastExtension]()
-//            case CompanionResourceType.htmlresource.rawValue, CompanionResourceType.iframeresource.rawValue, CompanionResourceType.staticresource.rawValue:
-//                currentCompanionCreative?.type = CompanionResourceType(rawValue: elementName) ?? .unknown
-//                currentCompanionCreative?.content = currentContent
-//            case CompanionAdsElements.companion:
-//                if let companion = currentCompanionCreative {
-//                    companions.append(companion)
-//                    currentCompanionCreative = nil
-//                }
-//            case CompanionElements.alttext:
-//                currentCompanionCreative?.altText = currentContent
-//            case CompanionElements.companionclickthrough:
-//                currentCompanionCreative?.clickThrough = URL(string: currentContent)
-//            case CompanionElements.companionclicktracking:
-//                currentCompanionCreative?.clickTracking = URL(string: currentContent)
-//            case CompanionAdsElements.companionads:
-//                currentCompanionAds?.companions = companions
-//                companions = [VastCompanionCreative]()
-//                if let companionAds = currentCompanionAds {
-//                    currentVastAd?.companionAds.append(companionAds)
-//                    currentCompanionAds = nil
-//                }
+            case CompanionAdsElements.companion:
+                if let companion = currentCompanionCreative {
+                    currentCreative?.companionAds?.companions.append(companion)
+                    currentCompanionCreative = nil
+                }
+            case CompanionElements.alttext:
+                currentCompanionCreative?.altText = currentContent
+            case CompanionElements.companionclickthrough:
+                currentCompanionCreative?.companionClickThrough = URL(string: currentContent)
+            case CompanionElements.companionclicktracking:
+                if let url = URL(string: currentContent) {
+                    currentCompanionCreative?.companionClickTracking.append(url)
+                }
+            // TODO: external parameter - this needs to be defined outside the library
+            case ExtensionElements.creativeparameter:
+                currentCreativeParameter?.content = currentContent
+                if let creative = currentCreativeParameter {
+                    creativeParameters.append(creative)
+                    currentCreativeParameter = nil
+                }
+            case ExtensionElements.creativeparameters:
+                currentVastExtension?.creativeParameters = creativeParameters
+                creativeParameters = [VastCreativeParameter]()
             default:
                 break
             }

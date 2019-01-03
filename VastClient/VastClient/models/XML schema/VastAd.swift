@@ -61,7 +61,7 @@ public struct VastAd {
     public var pricing: VastPricing?
     public var errors: [URL] = []
     public var creatives: [VastCreative] = []
-    public var extensions = [VastExtension]()
+    public var extensions: [VastExtension] = []
     
     // Inline only
     public var adTitle: String?
@@ -71,9 +71,6 @@ public struct VastAd {
     public var surveys: [VastSurvey] = []
     
     public var wrapper: VastWrapper?
-    
-// TODO: uncomments and fix parsing for /CompanionAds
-//    public var companionAds = [VastCompanionAds]()
 }
 
 extension VastAd {

@@ -36,6 +36,9 @@ extension VastModel {
         if let trackingEvents = linear?.trackingEvents {
             model.ads[0].creatives[0].linear?.trackingEvents.append(contentsOf: trackingEvents)
         }
+        if let videoClicks = linear?.videoClicks {
+            model.ads[0].creatives[0].linear?.videoClicks.append(contentsOf: videoClicks)
+        }
         
         return model
     }()

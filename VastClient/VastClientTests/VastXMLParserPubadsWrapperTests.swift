@@ -42,7 +42,7 @@ class VastXMLParserPubadsWrapperTests: XCTestCase {
             expect.fulfill()
         }
         
-        waitForExpectations(timeout: 15, handler: { _ in
+        waitForExpectations(timeout: 1, handler: { _ in
             XCTAssertTrue(model != nil)
             XCTAssertEqual(model, VastModel.pubadsModel)
         })

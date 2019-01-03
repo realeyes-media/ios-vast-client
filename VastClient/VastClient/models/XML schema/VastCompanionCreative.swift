@@ -28,8 +28,8 @@ struct CompanionAttributes {
     static let expandedwidth = "expandedWidth"
     static let expandedheight = "expandedHeight"
     static let apiframework = "apiFramework"
-    static let adslotid = "adSlotId"
-    static let adslotid4 = "adSlotID"
+    static let adslotid = "adSlotId" //vast 3
+    static let adslotid4 = "adSlotID" //vast 4
     static let pxRatio = "pxratio"
 }
 

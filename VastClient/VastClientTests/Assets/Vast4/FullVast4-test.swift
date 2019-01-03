@@ -58,15 +58,15 @@ extension VastModel {
             tracking(hour: 1, minute: 0, second: 4, type: .resume, url: "http://example.com/track/resume1"),
             tracking(hour: 1, minute: 0, second: 5, type: .rewind, url: "http://example.com/track/rewind1"),
             tracking(hour: 1, minute: 0, second: 6, type: .skip, url: "http://example.com/track/skip1"),
-            tracking(hour: 1, minute: 0, second: 7, type: .unknown, url: "http://example.com/track/playerExpand1"),
-            tracking(hour: 1, minute: 0, second: 8, type: .unknown, url: "http://example.com/track/playerCollapse1"),
+            tracking(hour: 1, minute: 0, second: 7, type: .playerExpand, url: "http://example.com/track/playerExpand1"),
+            tracking(hour: 1, minute: 0, second: 8, type: .playerCollapse, url: "http://example.com/track/playerCollapse1"),
             tracking(hour: 1, minute: 0, second: 9, type: .acceptInvitationLinear, url: "http://example.com/track/acceptInvitationLinear1"),
             tracking(hour: 1, minute: 0, second: 10, type: .unknown, url: "http://example.com/track/timeSpentViewing1"),
             tracking(hour: 1, minute: 0, second: 11, type: .progress, url: "http://example.com/track/progress1"),
             tracking(hour: 1, minute: 0, second: 12, type: .creativeView, url: "http://example.com/track/creativeView1"),
             tracking(hour: 1, minute: 0, second: 13, type: .unknown, url: "http://example.com/track/acceptInvitation1"),
-            tracking(hour: 1, minute: 0, second: 14, type: .expand, url: "http://example.com/track/adExpand1"),
-            tracking(hour: 1, minute: 0, second: 15, type: .collapse, url: "http://example.com/track/adCollapse1"),
+            tracking(hour: 1, minute: 0, second: 14, type: .unknown, url: "http://example.com/track/adExpand1"),
+            tracking(hour: 1, minute: 0, second: 15, type: .unknown, url: "http://example.com/track/adCollapse1"),
             tracking(hour: 1, minute: 0, second: 16, type: .unknown, url: "http://example.com/track/minimize1"),
             tracking(hour: 1, minute: 0, second: 17, type: .unknown, url: "http://example.com/track/close1"),
             tracking(hour: 1, minute: 0, second: 18, type: .unknown, url: "http://example.com/track/overlayViewDuration1"),
@@ -150,15 +150,15 @@ extension VastModel {
             tracking(hour: 4, minute: 0, second: 4, type: .resume, url: "http://example.com/track/resume4"),
             tracking(hour: 4, minute: 0, second: 5, type: .rewind, url: "http://example.com/track/rewind4"),
             tracking(hour: 4, minute: 0, second: 6, type: .skip, url: "http://example.com/track/skip4"),
-            tracking(hour: 4, minute: 0, second: 7, type: .unknown, url: "http://example.com/track/playerExpand4"),
-            tracking(hour: 4, minute: 0, second: 8, type: .unknown, url: "http://example.com/track/playerCollapse4"),
+            tracking(hour: 4, minute: 0, second: 7, type: .playerExpand, url: "http://example.com/track/playerExpand4"),
+            tracking(hour: 4, minute: 0, second: 8, type: .playerCollapse, url: "http://example.com/track/playerCollapse4"),
             tracking(hour: 4, minute: 0, second: 9, type: .acceptInvitationLinear, url: "http://example.com/track/acceptInvitationLinear4"),
             tracking(hour: 4, minute: 0, second: 10, type: .unknown, url: "http://example.com/track/timeSpentViewing4"),
             tracking(hour: 4, minute: 0, second: 11, type: .progress, url: "http://example.com/track/progress4"),
             tracking(hour: 4, minute: 0, second: 12, type: .creativeView, url: "http://example.com/track/creativeView4"),
             tracking(hour: 4, minute: 0, second: 13, type: .unknown, url: "http://example.com/track/acceptInvitation4"),
-            tracking(hour: 4, minute: 0, second: 14, type: .expand, url: "http://example.com/track/adExpand4"),
-            tracking(hour: 4, minute: 0, second: 15, type: .collapse, url: "http://example.com/track/adCollapse4"),
+            tracking(hour: 4, minute: 0, second: 14, type: .unknown, url: "http://example.com/track/adExpand4"),
+            tracking(hour: 4, minute: 0, second: 15, type: .unknown, url: "http://example.com/track/adCollapse4"),
             tracking(hour: 4, minute: 0, second: 16, type: .unknown, url: "http://example.com/track/minimize4"),
             tracking(hour: 4, minute: 0, second: 17, type: .unknown, url: "http://example.com/track/close4"),
             tracking(hour: 4, minute: 0, second: 18, type: .unknown, url: "http://example.com/track/overlayViewDuration4"),
@@ -169,7 +169,7 @@ extension VastModel {
             tracking(hour: 4, minute: 1, second: 4, type: .thirdQuartile, url: "http://example.com/track/thirdQuartile4"),
             tracking(hour: 4, minute: 1, second: 5, type: .complete, url: "http://example.com/track/complete4"),
             ]
-        let iconViewTracking: [URL] = [URL(string: "http://example.com/track/IconViewTracking3")!, URL(string: "http://example.com/track/IconViewTracking4")!]
+        let iconViewTracking: [URL] = [URL(string: "http://example.com/track/IconViewTracking5")!, URL(string: "http://example.com/track/IconViewTracking6")!]
         let iconClicks: IconClicks? = IconClicks(iconClickThrough: URL(string: "http://example.com/track/IconClickThrough2"), iconClickTracking: [VastIconClickTracking(id: "IconClickTrackingId5", url: URL(string: "http://example.com/track/IconClickTracking5")), VastIconClickTracking(id: "IconClickTrackingId6", url: URL(string: "http://example.com/track/IconClickTracking6"))])
         let staticResource: [VastStaticResource] = [VastStaticResource(creativeType: "StaticResourceCreativeType7", url: URL(string: "http://example.com/StaticResource7")!), VastStaticResource(creativeType: "StaticResourceCreativeType8", url: URL(string: "http://example.com/StaticResource8"))]
         
@@ -189,8 +189,8 @@ extension VastModel {
         
         let creativeExtensions: [VastCreativeExtension] = [VastCreativeExtension(mimeType: "CreativeExtensionType5", content: ""), VastCreativeExtension(mimeType: "CreativeExtensionType6", content: "")]
         
-        let firstCreative = VastCreative(id: "CreativeId3", adId: "CreativeAdId3", sequence: 3, apiFramework: "CreativeApiFramework3", universalAdId: nil, creativeExtensions: creativeExtensions, linear: nil)
-        let secondCreative = VastCreative(id: "CreativeId4", adId: "CreativeAdId4", sequence: 4, apiFramework: "CreativeApiFramework4", universalAdId: nil, creativeExtensions: [], linear: firstLinear)
+        let firstCreative = VastCreative(id: "CreativeId3", adId: "CreativeAdId3", sequence: 3, apiFramework: "CreativeApiFramework3", universalAdId: VastUniversalAdId(idRegistry: "unknown", idValue: "unknown", uniqueCreativeId: "UniversalAdId1"), creativeExtensions: creativeExtensions, linear: nil)
+        let secondCreative = VastCreative(id: "CreativeId4", adId: "CreativeAdId4", sequence: 4, apiFramework: "CreativeApiFramework4", universalAdId: VastUniversalAdId(idRegistry: "unknown", idValue: "unknown", uniqueCreativeId: "UniversalAdId2"), creativeExtensions: [], linear: firstLinear)
         
         let creatives: [VastCreative] = [firstCreative ,secondCreative]
         let extensions: [VastExtension] = [VastExtension(type: "ExtensionType3", creativeParameters: []), VastExtension(type: "ExtensionType4", creativeParameters: [])]
@@ -199,6 +199,7 @@ extension VastModel {
         let description: String? = "Description"
         let advertiser: String? = "Advertiser"
         let surveys: [VastSurvey] = [VastSurvey(type: "text/html", survey: URL(string: "http://example.com/survey"))]
+        
         
         let wrapper: VastWrapper? = nil
         

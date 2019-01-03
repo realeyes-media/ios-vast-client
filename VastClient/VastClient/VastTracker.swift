@@ -246,7 +246,7 @@ public class VastTracker {
         if let creative = currentTrackingCreative {
             let trackingUrls = creative.creative.trackingEvents
                 .filter { event in
-                    let type = val ? event.type == .fullscreen || event.type == .expand : event.type == .resume || event.type == .collapse
+                    let type = val ? event.type == .fullscreen || event.type == .playerExpand : event.type == .resume || event.type == .playerCollapse
                     return type && event.url != nil
                 }
                 .map { $0.url! }

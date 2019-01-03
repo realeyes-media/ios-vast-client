@@ -294,7 +294,7 @@ public class VastTracker {
 
     public func skip() throws {
         if let creative = currentTrackingCreative {
-            guard let skipOffset = creative.vastAd.creatives.first?.linear?.skipOffset?.toSeconds, skipOffset < currentTime else {
+            guard let skipOffset = creative.vastAd.creatives.first?.linear?.skipOffset?.toSeconds, skipOffset < playhead else {
                 throw TrackingError.unableToSkipAdAtThisTime
             }
             
@@ -302,6 +302,8 @@ public class VastTracker {
                 .filter { $0.type == .skip && $0.url != nil }
                 .map { $0.url! }
             creative.callTrackingUrls(trackingUrls)
+            
+            completedAdAccumulatedDuration += creative.duration
             try tryToPlayNext()
         } else {
             throw TrackingError.internalError(msg: "Unable to find current creative to track")

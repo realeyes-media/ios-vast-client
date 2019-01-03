@@ -58,12 +58,6 @@ class VastXMLParser: NSObject {
 //    var currentCompanionCreative: VastCompanionCreative?
 
     var currentContent = ""
-
-    func parseTestFile(named filename: String, bundle: Bundle) throws -> VastModel {
-        let filepath = bundle.path(forResource: filename, ofType: "xml")!
-        let url = URL(fileURLWithPath: filepath)
-        return try parse(url: url)
-    }
     
     func parse(url: URL) throws -> VastModel {
         xmlParser = XMLParser(contentsOf: url)

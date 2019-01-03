@@ -129,7 +129,7 @@ status:
 
 ## Getting Started
 
-TODO
+Check out the VastClientWrapper project for example implementation
 
 ## Contributing
 

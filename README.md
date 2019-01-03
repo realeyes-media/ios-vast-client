@@ -121,8 +121,8 @@ status:
 |IconClicks|full||
 |IconClickThrough|full||
 |IconClickTracking|full||
-|NonLinearAds|not parsed|no sub-elemets supported|
-|CompanionAds|not parsed|no sub-elemets supported|
+|NonLinearAds|not parsed|no sub-elements supported|
+|CompanionAds|not parsed|no sub-elements supported|
 |Wrapper|full||
 |VASTAdTagURI|parsed||
 |CompanionAds|parsed||

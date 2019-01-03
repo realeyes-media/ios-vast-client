@@ -80,14 +80,12 @@ extension VastModel {
         let iconViewTracking: [URL] = [URL(string: "http://example.com/track/IconViewTracking3")!, URL(string: "http://example.com/track/IconViewTracking4")!]
         let iconClicks: IconClicks? = IconClicks(iconClickThrough: URL(string: "http://example.com/track/IconClickThrough1"), iconClickTracking: [VastIconClickTracking(id: "IconClickTrackingId3", url: URL(string: "http://example.com/track/IconClickTracking3")), VastIconClickTracking(id: "IconClickTrackingId4", url: URL(string: "http://example.com/track/IconClickTracking4"))])
         let staticResource: [VastStaticResource] = [VastStaticResource(creativeType: "StaticResourceCreativeType3", url: URL(string: "http://example.com/StaticResource3")!), VastStaticResource(creativeType: "StaticResourceCreativeType4", url: URL(string: "http://example.com/StaticResource4"))]
-        let iFrameResources: [URL] = [URL(string: "http://example.com/IFrameResource3")!, URL(string: "http://example.com/IFrameResource4")!]
-        let htmlResources: [URL] = [URL(string: "http://example.com/HTMLResource3")!, URL(string: "http://example.com/HTMLResource4")!]
         
         let mediaFile: [VastMediaFile] = []
         let interactiveCreativeFile: [VastInteractiveCreativeFile] = []
         let mediaFiles = VastMediaFiles(mediaFiles: mediaFile, interactiveCreativeFile: interactiveCreativeFile)
         
-        let icons: [VastIcon] = [VastIcon(program: "program", width: 11, height: 10, xPosition: "20", yPosition: "21", duration: 5, offset: 6, apiFramework: "IconApiFramework1", pxratio: 1.1, iconViewTracking: iconViewTracking, iconClicks: iconClicks, staticResource: staticResource, iFrameResources: iFrameResources, htmlResources: htmlResources)]
+        let icons: [VastIcon] = [VastIcon(program: "program", width: 11, height: 10, xPosition: "20", yPosition: "21", duration: 5, offset: 6, apiFramework: "IconApiFramework1", pxratio: 1.1, iconViewTracking: iconViewTracking, iconClicks: iconClicks, staticResource: staticResource)]
         let firstLinear = VastLinearCreative(skipOffset: "00:00:10", duration: nil, adParameters: nil, videoClicks: videoClicks, trackingEvents: trackingEvents, mediaFiles: mediaFiles, icons: icons)
         
         let firstCreative = VastCreative(id: "CreativeId1", adId: "CreativeAdId1", sequence: 1, apiFramework: "CreativeApiFramework1", universalAdId: nil, creativeExtensions: [], linear: firstLinear)
@@ -174,8 +172,6 @@ extension VastModel {
         let iconViewTracking: [URL] = [URL(string: "http://example.com/track/IconViewTracking3")!, URL(string: "http://example.com/track/IconViewTracking4")!]
         let iconClicks: IconClicks? = IconClicks(iconClickThrough: URL(string: "http://example.com/track/IconClickThrough2"), iconClickTracking: [VastIconClickTracking(id: "IconClickTrackingId5", url: URL(string: "http://example.com/track/IconClickTracking5")), VastIconClickTracking(id: "IconClickTrackingId6", url: URL(string: "http://example.com/track/IconClickTracking6"))])
         let staticResource: [VastStaticResource] = [VastStaticResource(creativeType: "StaticResourceCreativeType7", url: URL(string: "http://example.com/StaticResource7")!), VastStaticResource(creativeType: "StaticResourceCreativeType8", url: URL(string: "http://example.com/StaticResource8"))]
-        let iFrameResources: [URL] = [URL(string: "http://example.com/IFrameResource7")!, URL(string: "http://example.com/IFrameResource8")!]
-        let htmlResources: [URL] = [URL(string: "http://example.com/HTMLResource7")!, URL(string: "http://example.com/HTMLResource8")!]
         
         let mediaFile1 = VastMediaFile(delivery: "progressive", type: "video/mp4", width: "100", height: "50", codec: "H.246", id: "1", bitrate: 100, minBitrate: 50, maxBitrate: 200, scalable: true, maintainAspectRatio: true, apiFramework: "MediaFileApiFramework1", url: URL(string: "http://example.com/video.mp4"))
         let mediaFile2 = VastMediaFile(delivery: "streaming", type: "video/mp4", width: "101", height: "51", codec: "H.247", id: "2", bitrate: 101, minBitrate: 51, maxBitrate: 201, scalable: false, maintainAspectRatio: false, apiFramework: "MediaFileApiFramework2", url: URL(string: "http://example.com/video1.mp4"))
@@ -186,7 +182,7 @@ extension VastModel {
         let interactiveCreativeFile: [VastInteractiveCreativeFile] = [interactiveCreativeFile1, interactiveCreativeFile2]
         let mediaFiles = VastMediaFiles(mediaFiles: mediaFile, interactiveCreativeFile: interactiveCreativeFile)
         
-        let icons: [VastIcon] = [VastIcon(program: "program2", width: 211, height: 210, xPosition: "220", yPosition: "221", duration: 125, offset: 126, apiFramework: "IconApiFramework2", pxratio: 1.2, iconViewTracking: iconViewTracking, iconClicks: iconClicks, staticResource: staticResource, iFrameResources: iFrameResources, htmlResources: htmlResources)]
+        let icons: [VastIcon] = [VastIcon(program: "program2", width: 211, height: 210, xPosition: "220", yPosition: "221", duration: 125, offset: 126, apiFramework: "IconApiFramework2", pxratio: 1.2, iconViewTracking: iconViewTracking, iconClicks: iconClicks, staticResource: staticResource)]
         let adParameters = VastAdParameters(xmlEncoded: "true", content: "http://example.com/AdParameters3")
         let firstLinear = VastLinearCreative(skipOffset: "00:00:08", duration: 70, adParameters: adParameters, videoClicks: videoClicks, trackingEvents: trackingEvents, mediaFiles: mediaFiles, icons: icons)
         

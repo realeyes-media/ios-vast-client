@@ -41,8 +41,6 @@ public struct VastIcon {
     public var iconViewTracking: [URL] = []
     public var iconClicks: IconClicks?
     public var staticResource: [VastStaticResource] = []
-    public var iFrameResources: [URL] = []
-    public var htmlResources: [URL] = []
 }
 
 extension VastIcon {

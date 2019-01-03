@@ -38,9 +38,9 @@ extension VastModel {
         
         let icon1Clicks = IconClicks(iconClickThrough: URL(string: "https://iabtechlab.com")!, iconClickTracking: [VastIconClickTracking(id: "iconclick", url: URL(string: "https://iabtechlab.com")!)])
         let icon1StaticResources: [VastStaticResource] = [VastStaticResource(creativeType: "image/jpg", url: URL(string: "https://images-nl.ott.kaltura.com/Service.svc/GetImage/p/436/entry_id/422ec4ffe19d4435aaca092dc83bae0c_12/version/0/quality/85/width/118/height/15/"))]
-        let icon1 = VastIcon(program: "programName", width: 118, height: 15, xPosition: "left", yPosition: "top", duration: 0, offset: 5, apiFramework: "", pxratio: 1, iconViewTracking: nil, iconClicks: icon1Clicks, staticResource: icon1StaticResources, iFrameResources: [], htmlResources: [])
+        let icon1 = VastIcon(program: "programName", width: 118, height: 15, xPosition: "left", yPosition: "top", duration: 0, offset: 5, apiFramework: "", pxratio: 1, iconViewTracking: [], iconClicks: icon1Clicks, staticResource: icon1StaticResources, iFrameResources: [], htmlResources: [])
         
-        let icon2 = VastIcon(program: "programName2", width: 118, height: 15, xPosition: "100", yPosition: "100", duration: 0, offset: 0, apiFramework: "", pxratio: 1, iconViewTracking: nil, iconClicks: icon1Clicks, staticResource: icon1StaticResources, iFrameResources: [], htmlResources: [])
+        let icon2 = VastIcon(program: "programName2", width: 118, height: 15, xPosition: "100", yPosition: "100", duration: 0, offset: 0, apiFramework: "", pxratio: 1, iconViewTracking: [], iconClicks: icon1Clicks, staticResource: icon1StaticResources, iFrameResources: [], htmlResources: [])
         
         let icons: [VastIcon] = [icon1, icon2]
         

@@ -42,7 +42,7 @@ fileprivate enum LinearCreativeAttribute: String, CaseIterable {
 // VAST/Ad/InLine/Creatives/Creative
 // VAST/Ad/Wrapper/Creatives/Creative
 public struct VastLinearCreative {
-    public let skipOffset: String?
+    public let skipOffset: String? // TODO: Consider changing to Int
     
     public var duration: Double? // Inline only
     public var adParameters: VastAdParameters? // Inline only

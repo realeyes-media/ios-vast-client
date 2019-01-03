@@ -11,6 +11,7 @@ struct VastCreativeElements {
     static let universalAdId = "UniversalAdId"
     static let linear = "Linear"
     static let creativeExtension = "CreativeExtension"
+    static let companionAds = "CompanionAds"
 }
 
 fileprivate enum VastCreativeAttribute: String, CaseIterable {
@@ -37,6 +38,7 @@ public struct VastCreative {
     public var universalAdId: VastUniversalAdId?
     public var creativeExtensions: [VastCreativeExtension] = []
     public var linear: VastLinearCreative?
+    public var companionAds: VastCompanionAds?
 }
 
 extension VastCreative {
@@ -70,5 +72,4 @@ extension VastCreative {
     }
 }
 
-extension VastCreative: Equatable {
-}
+extension VastCreative: Equatable {}

@@ -22,7 +22,7 @@ extension VastModel {
         let linear: VastLinearCreative? = nil
         let universalAdId: VastUniversalAdId? = nil
         
-        let creative = VastCreative(id: "5480", adId: "2447226", sequence: 1, apiFramework: nil, universalAdId: universalAdId, creativeExtensions: [], linear: linear)
+        let creative = VastCreative(id: "5480", adId: "2447226", sequence: 1, apiFramework: nil, universalAdId: universalAdId, creativeExtensions: [], linear: linear, companionAds: nil)
         
         let extensions: [VastExtension] = []
         

@@ -53,9 +53,9 @@ class VastXMLParser: NSObject {
     // TODO: uncomments and fix parsing for /CompanionAds
     var creativeParameters = [VastCreativeParameter]()
     var currentCreativeParameter: VastCreativeParameter?
-//    var currentCompanionAds: VastCompanionAds?
-//    var companions = [VastCompanionCreative]()
-//    var currentCompanionCreative: VastCompanionCreative?
+    
+    var currentCompanionAds: VastCompanionAds?
+    var currentCompanionCreative: VastCompanionCreative?
 
     var currentContent = ""
     
@@ -158,13 +158,12 @@ extension VastXMLParser: XMLParserDelegate {
                 currentIcon?.iconClicks = IconClicks()
             case IconClicksElements.iconClickTracking:
                 currentIconClickTracking = VastIconClickTracking(attrDict: attributeDict)
-// TODO: uncomments and fix parsing for /CompanionAds
             case ExtensionElements.creativeparameter:
                 currentCreativeParameter = VastCreativeParameter(attrDict: attributeDict)
-//            case CompanionAdsElements.companionads:
-//                currentCompanionAds = VastCompanionAds(attrDict: attributeDict)
-//            case CompanionAdsElements.companion:
-//                currentCompanionCreative = VastCompanionCreative(attrDict: attributeDict)
+            case VastCreativeElements.companionAds:
+                currentCompanionAds = VastCompanionAds(attrDict: attributeDict)
+            case CompanionAdsElements.companion:
+                currentCompanionCreative = VastCompanionCreative(attrDict: attributeDict)
             default:
                 break
             }

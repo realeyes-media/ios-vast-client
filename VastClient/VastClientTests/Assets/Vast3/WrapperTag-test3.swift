@@ -20,7 +20,7 @@ extension VastModel {
         let mediaFiles: [VastMediaFile] = []
         let interactiveMediaFiles: [VastInteractiveCreativeFile] = []
         let icons: [VastIcon] = []
-        let creative = VastCreative(id: "5480", adId: nil, sequence: 1, apiFramework: nil, universalAdId: nil, creativeExtensions: [], linear: nil)
+        let creative = VastCreative(id: "5480", adId: nil, sequence: 1, apiFramework: nil, universalAdId: nil, creativeExtensions: [], linear: nil, companionAds: nil)
         let extensions: [VastExtension] = []
         let adTagUri = URL(string: "https://raw.githubusercontent.com/InteractiveAdvertisingBureau/VAST_Samples/master/VAST%203.0%20Samples/Inline_Companion_Tag-test.xml")!
         // TODO: add companionAds from the file

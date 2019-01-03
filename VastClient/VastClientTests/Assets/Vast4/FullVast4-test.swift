@@ -88,8 +88,8 @@ extension VastModel {
         let icons: [VastIcon] = [VastIcon(program: "program", width: 11, height: 10, xPosition: "20", yPosition: "21", duration: 5, offset: 6, apiFramework: "IconApiFramework1", pxratio: 1.1, iconViewTracking: iconViewTracking, iconClicks: iconClicks, staticResource: staticResource)]
         let firstLinear = VastLinearCreative(skipOffset: "00:00:10", duration: nil, adParameters: nil, videoClicks: videoClicks, trackingEvents: trackingEvents, mediaFiles: mediaFiles, icons: icons)
         
-        let firstCreative = VastCreative(id: "CreativeId1", adId: "CreativeAdId1", sequence: 1, apiFramework: "CreativeApiFramework1", universalAdId: nil, creativeExtensions: [], linear: firstLinear)
-        let secondCreative = VastCreative(id: "CreativeId2", adId: "CreativeAdId2", sequence: 2, apiFramework: "CreativeApiFramework2", universalAdId: nil, creativeExtensions: [], linear: nil)
+        let firstCreative = VastCreative(id: "CreativeId1", adId: "CreativeAdId1", sequence: 1, apiFramework: "CreativeApiFramework1", universalAdId: nil, creativeExtensions: [], linear: firstLinear, companionAds: nil)
+        let secondCreative = VastCreative(id: "CreativeId2", adId: "CreativeAdId2", sequence: 2, apiFramework: "CreativeApiFramework2", universalAdId: nil, creativeExtensions: [], linear: nil, companionAds: nil)
         
         let creatives: [VastCreative] = [firstCreative ,secondCreative]
         let extensions: [VastExtension] = [VastExtension(type: "ExtensionType1", creativeParameters: []), VastExtension(type: "ExtensionType2", creativeParameters: [])]
@@ -189,8 +189,8 @@ extension VastModel {
         
         let creativeExtensions: [VastCreativeExtension] = [VastCreativeExtension(mimeType: "CreativeExtensionType5", content: ""), VastCreativeExtension(mimeType: "CreativeExtensionType6", content: "")]
         
-        let firstCreative = VastCreative(id: "CreativeId3", adId: "CreativeAdId3", sequence: 3, apiFramework: "CreativeApiFramework3", universalAdId: VastUniversalAdId(idRegistry: "unknown", idValue: "unknown", uniqueCreativeId: "UniversalAdId1"), creativeExtensions: creativeExtensions, linear: nil)
-        let secondCreative = VastCreative(id: "CreativeId4", adId: "CreativeAdId4", sequence: 4, apiFramework: "CreativeApiFramework4", universalAdId: VastUniversalAdId(idRegistry: "unknown", idValue: "unknown", uniqueCreativeId: "UniversalAdId2"), creativeExtensions: [], linear: firstLinear)
+        let firstCreative = VastCreative(id: "CreativeId3", adId: "CreativeAdId3", sequence: 3, apiFramework: "CreativeApiFramework3", universalAdId: VastUniversalAdId(idRegistry: "unknown", idValue: "unknown", uniqueCreativeId: "UniversalAdId1"), creativeExtensions: creativeExtensions, linear: nil, companionAds: nil)
+        let secondCreative = VastCreative(id: "CreativeId4", adId: "CreativeAdId4", sequence: 4, apiFramework: "CreativeApiFramework4", universalAdId: VastUniversalAdId(idRegistry: "unknown", idValue: "unknown", uniqueCreativeId: "UniversalAdId2"), creativeExtensions: [], linear: firstLinear, companionAds: nil)
         
         let creatives: [VastCreative] = [firstCreative ,secondCreative]
         let extensions: [VastExtension] = [VastExtension(type: "ExtensionType3", creativeParameters: []), VastExtension(type: "ExtensionType4", creativeParameters: [])]

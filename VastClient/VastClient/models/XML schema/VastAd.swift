@@ -71,9 +71,6 @@ public struct VastAd {
     public var surveys: [VastSurvey] = []
     
     public var wrapper: VastWrapper?
-    
-// TODO: uncomments and fix parsing for /CompanionAds
-//    public var companionAds = [VastCompanionAds]()
 }
 
 extension VastAd {

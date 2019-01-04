@@ -17,6 +17,12 @@ struct VastViewableImpressionElements {
     static let viewUndetermined = "ViewUndetermined"
 }
 
+public enum VastViewableImpressionType {
+    case viewable
+    case notViewable
+    case viewUndetermined
+}
+
 // VAST/Ad/InLine/ViewableImpression
 // VAST/Ad/Wrapper/ViewableImpression
 // VAST/Ad/InLine/AdVerifications/Verification/ViewableImpression

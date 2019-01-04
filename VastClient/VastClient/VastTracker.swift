@@ -376,5 +376,31 @@ public class VastTracker {
             throw TrackingError.internalError(msg: "Unable to find current creative to track")
         }
     }
-
+    
+    /*
+     Call ViewableImpression urls depending on type of viewability
+     
+     Host app has to decide on when to call this function.
+ 
+     The point at which these tracking resource files are pinged depends on the viewability standards against which the publisher is certified or any alternate standards document for the transaction between the publisher and advertiser. At the time of this Vast 4.0 specification release, the Media Ratings Council (MRC) had published video viewability recommendations for counting a video ad view after 50% of the ad's pixels are in view for at least two seconds. Publishers should disclose their process for tracking viewable video impressions.
+     */
+    public func trackViewability(type: VastViewableImpressionType) throws {
+        func viewableImpressionUrls(type: VastViewableImpressionType, viewableImpression: VastViewableImpression) -> [URL] {
+            switch type {
+            case .viewable:
+                return viewableImpression.viewable
+            case .notViewable:
+                return viewableImpression.notViewable
+            case .viewUndetermined:
+                return viewableImpression.viewUndetermined
+            }
+        }
+        
+        if let creative = currentTrackingCreative, let viewableImpression = creative.vastAd.viewableImpression {
+            let urls = viewableImpressionUrls(type: type, viewableImpression: viewableImpression)
+            creative.callTrackingUrls(urls)
+        } else {
+            throw TrackingError.internalError(msg: "Unable to find current creative to track")
+        }
+    }
 }

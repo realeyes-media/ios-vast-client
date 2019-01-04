@@ -98,7 +98,7 @@ status:
 |Pricing|parsed||
 |Survey|parsed||
 |Error|full|host app needs to initiate the error tracking|
-|ViewableImpression|parsed|missing tracker method|
+|ViewableImpression|full|host app needs to call tracking function with appropriate type at appropriate time|
 |Creatives|full||
 |Creative|full||
 |UniversalAdId|parsed||

@@ -6,7 +6,7 @@ This project is ongoing and in very early stages of development. As this project
 
 ## Features
 
-* VAST 4.0 Spec Complient
+* VAST 4.0 Spec Complient, backwards compatible with Vast 3.0
 * Vast XML Parser and Validator
 * VAST Impression and Ad Tracking
 * VAST Error Tracking
@@ -34,7 +34,9 @@ If you initialize `VastTracker` with delegate - `func adBreakStart(vastTracker: 
 #### Progress
 
 `func updateProgress(time: Double) throws`
-After you initialize `VastTracker` you should call this function with `time = 0` parameter to start tracking ad playback. `VastTracker` will select linear ad to play and will notify you via delegate call `func adStart(vastTracker: VastTracker, ad: VastAd)`
+After you initialize `VastTracker` you should call this function with `time = playhead` parameter to start tracking process. Playhead should match the playhead value used in intialization of `VastTracker`.  (If you simply want to play pre-roll ads before your content, initialize `VastTracker` with `playhead = 0` and call `updateProgress(time:)` with `time = 0`)
+
+`VastTracker` will select linear ad to play and will notify you via delegate call `func adStart(vastTracker: VastTracker, ad: VastAd)`
 
 You have to call this function periodically during ad playback.
 These delegate function will be called during normal ad playback and you do not have to react to them - they are only informative

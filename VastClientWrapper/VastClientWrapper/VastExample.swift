@@ -81,8 +81,8 @@ class VastExample {
 }
 
 extension VastExample: VastTrackerDelegate {
-    func adBreakStart(vastTracker: VastTracker, totalAds: Int) {
-        print("Ad Break Started > Playhead: \(playhead), Number of Ads: \(totalAds)")
+    func adBreakStart(vastTracker: VastTracker) {
+        print("Ad Break Started > Playhead: \(playhead), Number of Ads: \(vastTracker.totalAds)")
     }
     
     func adStart(vastTracker: VastTracker, ad: VastAd) {

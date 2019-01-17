@@ -8,14 +8,14 @@
 
 import Foundation
 
-public protocol VastTrackerDelegate {
-    func adBreakStart(vastTracker: VastTracker, totalAds: Int)
+public protocol VastTrackerDelegate: AnyObject {
+    func adBreakStart(vastTracker: VastTracker)
     func adStart(vastTracker: VastTracker, ad: VastAd)
     func adFirstQuartile(vastTracker: VastTracker, ad: VastAd)
     func adMidpoint(vastTracker: VastTracker, ad: VastAd)
     func adThirdQuartile(vastTracker: VastTracker, ad: VastAd)
     func adComplete(vastTracker: VastTracker, ad: VastAd)
-    func adBreakComplete(vastTracker: VastTracker, vastModel: VastModel)
+    func adBreakComplete(vastTracker: VastTracker)
 }
 
 enum TrackerModelType {
@@ -30,13 +30,13 @@ public struct TrackerModel {
 }
 
 public class VastTracker {
-
-    public var delegate: VastTrackerDelegate?
+    public weak var delegate: VastTrackerDelegate?
+    
+    public let id: String
+    public let vastModel: VastModel
     public let totalAds: Int
-
-    let id: String
+    
     private var trackingStatus: TrackingStatus = .unknown
-    private let vastModel: VastModel
     private let startTime: Double
     private var currentTime = 0.0
     private var playhead: Double {
@@ -59,7 +59,7 @@ public class VastTracker {
         self.delegate = delegate
         self.totalAds = self.vastAds.count
 
-        delegate?.adBreakStart(vastTracker: self, totalAds: totalAds)
+        delegate?.adBreakStart(vastTracker: self)
     }
     
     private static func getTrackerModel(from vastModel: VastModel) -> TrackerModel {
@@ -124,7 +124,7 @@ public class VastTracker {
             guard let vastAd = vastAds.first,
                 let linearCreative = vastAd.creatives.first?.linear, vastAd.sequence ?? 1 > 0 else {
                     trackingStatus = .complete
-                    delegate?.adBreakComplete(vastTracker: self, vastModel: vastModel)
+                    delegate?.adBreakComplete(vastTracker: self)
                     return
             }
 
@@ -288,7 +288,7 @@ public class VastTracker {
             try updateProgress(time: 0.0)
         } else {
             trackingStatus = .complete
-            delegate?.adBreakComplete(vastTracker: self, vastModel: vastModel)
+            delegate?.adBreakComplete(vastTracker: self)
         }
     }
 
@@ -400,7 +400,7 @@ public class VastTracker {
             let urls = viewableImpressionUrls(type: type, viewableImpression: viewableImpression)
             creative.callTrackingUrls(urls)
         } else {
-            throw TrackingError.internalError(msg: "Unable to find current creative to track")
+            throw TrackingError.internalError(msg: "Unable to find viewableImpression to track")
         }
     }
 }

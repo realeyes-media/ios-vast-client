@@ -40,15 +40,12 @@ class VastParser {
     
     func parse(url: URL, completion: @escaping (VastModel?, Error?) -> ()) {
         self.completion = completion
-        NSLog("JAN: Parsing started!")
         let timer = Timer.scheduledTimer(withTimeInterval: options.timeLimit, repeats: false) { [weak self] _ in
-            NSLog("JAN: Parsing timer triggered!")
             self?.finish(vastModel: nil, error: VastError.wrapperTimeLimitReached)
         }
         queue.async {
             do {
                 let vastModel = try self.internalParse(url: url)
-                NSLog("JAN: Parsing finished!")
                 timer.invalidate()
                 self.finish(vastModel: vastModel, error: nil)
             } catch {

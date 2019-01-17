@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.name             = 'VastClient'
   s.version          = '0.2.9-alpha'
   s.summary          = 'Swift Vast Client'
-  s.description      = 'iOS Vast Client is a Swift Framework which implements the VAST 3.0 spec.'
+  s.description      = 'iOS Vast Client is a Swift Framework which implements the VAST 4.0 spec and is backwards compatible with VAST 3.0.'
   s.homepage         = 'https://github.com/realeyes-media/ios-vast-client'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { "John G. Gainfort, Jr." => "john@realeyes.com" }

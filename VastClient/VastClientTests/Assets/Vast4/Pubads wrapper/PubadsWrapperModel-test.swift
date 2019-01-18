@@ -38,10 +38,10 @@ extension VastModel {
         ]
         let mediaFilesArray: [VastMediaFile] = []
         let interactiveMediaFiles: [VastInteractiveCreativeFile] = []
-        let mediaFiles = VastMediaFiles(mediaFiles: mediaFilesArray, interactiveCreativeFile: interactiveMediaFiles)
+        let mediaFiles = VastMediaFiles(mediaFiles: mediaFilesArray, interactiveCreativeFiles: interactiveMediaFiles)
         let icons: [VastIcon] = []
         
-        let linear: VastLinearCreative? = VastLinearCreative(skipOffset: nil, duration: nil, adParameters: nil, videoClicks:videoClicks, trackingEvents: trackingEvents, mediaFiles: mediaFiles, icons: icons)
+        let linear: VastLinearCreative? = VastLinearCreative(skipOffset: nil, duration: nil, adParameters: nil, videoClicks:videoClicks, trackingEvents: trackingEvents, files: mediaFiles, icons: icons)
         let universalAdId: VastUniversalAdId? = nil
         
         let creative = VastCreative(id: "138249517389", adId: nil, sequence: 1, apiFramework: nil, universalAdId: universalAdId, creativeExtensions: [], linear: linear, companionAds: nil)

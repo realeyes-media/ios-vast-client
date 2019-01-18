@@ -107,8 +107,8 @@ extension VastExample: VastTrackerDelegate {
         print("Ad Complete > Playhead: \(playhead), Id: \(ad.id)")
     }
     
-    func adBreakComplete(vastTracker: VastTracker, vastModel: VastModel) {
-        print("Ad Break Complete > Playhead: \(playhead), Number of Ads: \(vastModel.ads.count)")
+    func adBreakComplete(vastTracker: VastTracker) {
+        print("Ad Break Complete > Playhead: \(playhead), Number of Ads: \(vastTracker.totalAds)")
         fakePlayheadProgressTimer?.invalidate()
         fakePlayheadProgressTimer = nil
     }

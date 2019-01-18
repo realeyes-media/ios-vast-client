@@ -337,13 +337,13 @@ extension VastXMLParser: XMLParserDelegate {
             case CreativeLinearElements.mediafile:
                 currentMediaFile?.url = URL(string: currentContent)
                 if let mediaFile = currentMediaFile {
-                    currentLinearCreative?.mediaFiles.mediaFiles.append(mediaFile)
+                    currentLinearCreative?.files.mediaFiles.append(mediaFile)
                     currentMediaFile = nil
                 }
             case CreativeLinearElements.interactiveCreativeFile:
                 currentInteractiveCreativeFile?.url = URL(string: currentContent)
                 if let interactiveCreativeFile = currentInteractiveCreativeFile {
-                    currentLinearCreative?.mediaFiles.interactiveCreativeFile.append(interactiveCreativeFile)
+                    currentLinearCreative?.files.interactiveCreativeFiles.append(interactiveCreativeFile)
                     currentInteractiveCreativeFile = nil
                 }
             case CreativeLinearElements.clickthrough, CreativeLinearElements.clicktracking, CreativeLinearElements.customclick:

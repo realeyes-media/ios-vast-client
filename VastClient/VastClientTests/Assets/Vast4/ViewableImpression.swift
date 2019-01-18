@@ -23,7 +23,7 @@ extension VastModel {
         let trackingEvents: [VastTrackingEvent] = [
             VastTrackingEvent(type: .start, offset: 32410, url: URL(string: "http://example.com/tracking/start"), tracked: false)
         ]
-        let linear: VastLinearCreative? = VastLinearCreative(skipOffset: nil, duration: nil, adParameters: nil, videoClicks: [], trackingEvents: trackingEvents, mediaFiles: VastMediaFiles(), icons: [])
+        let linear: VastLinearCreative? = VastLinearCreative(skipOffset: nil, duration: nil, adParameters: nil, videoClicks: [], trackingEvents: trackingEvents, files: VastMediaFiles(), icons: [])
         let universalAdId: VastUniversalAdId? = nil
         
         let creative = VastCreative(id: "5480", adId: "2447226", sequence: 1, apiFramework: nil, universalAdId: universalAdId, creativeExtensions: [], linear: linear, companionAds: nil)

@@ -9,7 +9,7 @@ import Foundation
 
 public struct VastMediaFiles {
     public var mediaFiles: [VastMediaFile] = []
-    public var interactiveCreativeFile: [VastInteractiveCreativeFile] = []
+    public var interactiveCreativeFiles: [VastInteractiveCreativeFile] = []
 }
 
 extension VastMediaFiles: Equatable {

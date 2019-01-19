@@ -81,8 +81,8 @@ class VastExample {
 }
 
 extension VastExample: VastTrackerDelegate {
-    func adBreakStart(vastTracker: VastTracker, totalAds: Int) {
-        print("Ad Break Started > Playhead: \(playhead), Number of Ads: \(totalAds)")
+    func adBreakStart(vastTracker: VastTracker) {
+        print("Ad Break Started > Playhead: \(playhead), Number of Ads: \(vastTracker.totalAds)")
     }
     
     func adStart(vastTracker: VastTracker, ad: VastAd) {
@@ -107,8 +107,8 @@ extension VastExample: VastTrackerDelegate {
         print("Ad Complete > Playhead: \(playhead), Id: \(ad.id)")
     }
     
-    func adBreakComplete(vastTracker: VastTracker, vastModel: VastModel) {
-        print("Ad Break Complete > Playhead: \(playhead), Number of Ads: \(vastModel.ads.count)")
+    func adBreakComplete(vastTracker: VastTracker) {
+        print("Ad Break Complete > Playhead: \(playhead), Number of Ads: \(vastTracker.totalAds)")
         fakePlayheadProgressTimer?.invalidate()
         fakePlayheadProgressTimer = nil
     }

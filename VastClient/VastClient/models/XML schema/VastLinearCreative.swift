@@ -48,7 +48,7 @@ public struct VastLinearCreative {
     public var adParameters: VastAdParameters? // Inline only
     public var videoClicks: [VastVideoClick] = []
     public var trackingEvents: [VastTrackingEvent] = []
-    public var mediaFiles = VastMediaFiles()
+    public var files = VastMediaFiles()
     public var icons = [VastIcon]()
 }
 

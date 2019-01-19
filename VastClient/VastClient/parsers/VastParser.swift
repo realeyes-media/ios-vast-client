@@ -2,7 +2,7 @@
 //  VastParser.swift
 //  VastClient
 //
-//  Created by Jan Bednar on 19/11/2018.
+//  Created by John Gainfort Jr on 4/6/18.
 //  Copyright © 2018 John Gainfort Jr. All rights reserved.
 //
 
@@ -40,15 +40,12 @@ class VastParser {
     
     func parse(url: URL, completion: @escaping (VastModel?, Error?) -> ()) {
         self.completion = completion
-        NSLog("JAN: Parsing started!")
         let timer = Timer.scheduledTimer(withTimeInterval: options.timeLimit, repeats: false) { [weak self] _ in
-            NSLog("JAN: Parsing timer triggered!")
             self?.finish(vastModel: nil, error: VastError.wrapperTimeLimitReached)
         }
         queue.async {
             do {
                 let vastModel = try self.internalParse(url: url)
-                NSLog("JAN: Parsing finished!")
                 timer.invalidate()
                 self.finish(vastModel: vastModel, error: nil)
             } catch {
@@ -115,15 +112,19 @@ class VastParser {
                             // Copy values from previous wrappers
                             if let linear = wrapperCreative.linear {
                                 creative.linear?.duration = linear.duration
-                                creative.linear?.mediaFiles.mediaFiles.append(contentsOf: linear.mediaFiles.mediaFiles)
-                                creative.linear?.mediaFiles.interactiveCreativeFile.append(contentsOf: linear.mediaFiles.interactiveCreativeFile)
+                                creative.linear?.files.mediaFiles.append(contentsOf: linear.files.mediaFiles)
+                                creative.linear?.files.interactiveCreativeFiles.append(contentsOf: linear.files.interactiveCreativeFiles)
                                 creative.linear?.trackingEvents.append(contentsOf: linear.trackingEvents)
                                 creative.linear?.icons.append(contentsOf: linear.icons)
                                 creative.linear?.videoClicks.append(contentsOf: linear.videoClicks)
                             }
                             
-                            if let companions = wrapperCreative.companionAds?.companions {
-                                creative.companionAds?.companions.append(contentsOf: companions)
+                            if let companionAds = wrapperCreative.companionAds {
+                                if creative.companionAds == nil {
+                                    creative.companionAds = companionAds
+                                } else {
+                                    creative.companionAds?.companions.append(contentsOf: companionAds.companions)
+                                }
                             }
                         }
                         copiedCreatives[idx] = creative

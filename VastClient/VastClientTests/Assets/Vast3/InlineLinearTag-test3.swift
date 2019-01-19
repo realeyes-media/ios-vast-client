@@ -37,7 +37,7 @@ extension VastModel {
         
         let icons: [VastIcon] = []
         
-        let linear = VastLinearCreative(skipOffset: nil, duration: 16, adParameters: nil, videoClicks: videoClicks, trackingEvents: trackingEvents, mediaFiles: VastMediaFiles(mediaFiles: mediaFiles, interactiveCreativeFile: interactiveMediaFiles), icons: icons)
+        let linear = VastLinearCreative(skipOffset: nil, duration: 16, adParameters: nil, videoClicks: videoClicks, trackingEvents: trackingEvents, files: VastMediaFiles(mediaFiles: mediaFiles, interactiveCreativeFiles: interactiveMediaFiles), icons: icons)
         let creative = VastCreative(id: "5480", adId: nil, sequence: 1, apiFramework: nil, universalAdId: nil, creativeExtensions: [], linear: linear, companionAds: nil)
         
         let extensions: [VastExtension] = [

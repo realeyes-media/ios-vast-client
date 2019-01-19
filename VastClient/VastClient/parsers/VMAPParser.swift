@@ -73,7 +73,7 @@ class VMAPParser: NSObject {
 
             return copiedAdBreak
         }
-        
+
         vm.adBreaks = flattenedAdBreaks
         
         return vm

@@ -83,10 +83,10 @@ extension VastModel {
         
         let mediaFile: [VastMediaFile] = []
         let interactiveCreativeFile: [VastInteractiveCreativeFile] = []
-        let mediaFiles = VastMediaFiles(mediaFiles: mediaFile, interactiveCreativeFile: interactiveCreativeFile)
+        let mediaFiles = VastMediaFiles(mediaFiles: mediaFile, interactiveCreativeFiles: interactiveCreativeFile)
         
         let icons: [VastIcon] = [VastIcon(program: "program", width: 11, height: 10, xPosition: "20", yPosition: "21", duration: 5, offset: 6, apiFramework: "IconApiFramework1", pxratio: 1.1, iconViewTracking: iconViewTracking, iconClicks: iconClicks, staticResource: staticResource)]
-        let firstLinear = VastLinearCreative(skipOffset: "00:00:10", duration: nil, adParameters: nil, videoClicks: videoClicks, trackingEvents: trackingEvents, mediaFiles: mediaFiles, icons: icons)
+        let firstLinear = VastLinearCreative(skipOffset: "00:00:10", duration: nil, adParameters: nil, videoClicks: videoClicks, trackingEvents: trackingEvents, files: mediaFiles, icons: icons)
         
         
         let companion1staticResources: [VastStaticResource] = [
@@ -219,11 +219,11 @@ extension VastModel {
         let interactiveCreativeFile1 = VastInteractiveCreativeFile(type: "text/html", apiFramework: "InteractiveCreativeFileApiFramework1", url: URL(string: "http://example.com/InteractiveCreativeFile1"))
         let interactiveCreativeFile2 = VastInteractiveCreativeFile(type: "text/text", apiFramework: "InteractiveCreativeFileApiFramework2", url: URL(string: "http://example.com/InteractiveCreativeFile2"))
         let interactiveCreativeFile: [VastInteractiveCreativeFile] = [interactiveCreativeFile1, interactiveCreativeFile2]
-        let mediaFiles = VastMediaFiles(mediaFiles: mediaFile, interactiveCreativeFile: interactiveCreativeFile)
+        let mediaFiles = VastMediaFiles(mediaFiles: mediaFile, interactiveCreativeFiles: interactiveCreativeFile)
         
         let icons: [VastIcon] = [VastIcon(program: "program2", width: 211, height: 210, xPosition: "220", yPosition: "221", duration: 125, offset: 126, apiFramework: "IconApiFramework2", pxratio: 1.2, iconViewTracking: iconViewTracking, iconClicks: iconClicks, staticResource: staticResource)]
         let adParameters = VastAdParameters(xmlEncoded: "true", content: "http://example.com/AdParameters3")
-        let firstLinear = VastLinearCreative(skipOffset: "00:00:08", duration: 70, adParameters: adParameters, videoClicks: videoClicks, trackingEvents: trackingEvents, mediaFiles: mediaFiles, icons: icons)
+        let firstLinear = VastLinearCreative(skipOffset: "00:00:08", duration: 70, adParameters: adParameters, videoClicks: videoClicks, trackingEvents: trackingEvents, files: mediaFiles, icons: icons)
         
         
         let creativeExtensions: [VastCreativeExtension] = [VastCreativeExtension(mimeType: "CreativeExtensionType5", content: ""), VastCreativeExtension(mimeType: "CreativeExtensionType6", content: "")]

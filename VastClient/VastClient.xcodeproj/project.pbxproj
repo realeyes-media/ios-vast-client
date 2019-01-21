@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F33D2F821F62DB500708217 /* VastClient_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F33D2F621F62DB500708217 /* VastClient_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F442F9720AB461C00303767 /* http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F442F9620AB461C00303767 /* http.swift */; };
 		0F58AE2E20C6E9F500699B77 /* VastExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F58AE2D20C6E9F500699B77 /* VastExtension.swift */; };
 		0F58AE3020C6EABF00699B77 /* VastCreativeParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F58AE2F20C6EABF00699B77 /* VastCreativeParameter.swift */; };
@@ -57,6 +58,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F33D2F421F62DB500708217 /* VastClient_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VastClient_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F33D2F621F62DB500708217 /* VastClient_tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VastClient_tvOS.h; sourceTree = "<group>"; };
+		0F33D2F721F62DB500708217 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F442F9620AB461C00303767 /* http.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = http.swift; sourceTree = "<group>"; };
 		0F58AE2D20C6E9F500699B77 /* VastExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastExtension.swift; sourceTree = "<group>"; };
 		0F58AE2F20C6EABF00699B77 /* VastCreativeParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastCreativeParameter.swift; sourceTree = "<group>"; };
@@ -100,6 +104,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0F33D2F121F62DB500708217 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0F7B977B2077CB340096438D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -118,6 +129,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F33D2F521F62DB500708217 /* VastClient tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				0F33D2F621F62DB500708217 /* VastClient_tvOS.h */,
+				0F33D2F721F62DB500708217 /* Info.plist */,
+			);
+			path = "VastClient tvOS";
+			sourceTree = "<group>";
+		};
 		0F7AF074211B57A2000AD5BB /* VMAP */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +156,7 @@
 			children = (
 				0F7B97812077CB340096438D /* VastClient */,
 				0F7B978C2077CB340096438D /* VastClientTests */,
+				0F33D2F521F62DB500708217 /* VastClient tvOS */,
 				0F7B97802077CB340096438D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -145,6 +166,7 @@
 			children = (
 				0F7B977F2077CB340096438D /* VastClient.framework */,
 				0F7B97882077CB340096438D /* VastClientTests.xctest */,
+				0F33D2F421F62DB500708217 /* VastClient_tvOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -231,6 +253,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		0F33D2EF21F62DB500708217 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F33D2F821F62DB500708217 /* VastClient_tvOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0F7B977C2077CB340096438D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -242,6 +272,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		0F33D2F321F62DB500708217 /* VastClient tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F33D2FB21F62DB500708217 /* Build configuration list for PBXNativeTarget "VastClient tvOS" */;
+			buildPhases = (
+				0F33D2EF21F62DB500708217 /* Headers */,
+				0F33D2F021F62DB500708217 /* Sources */,
+				0F33D2F121F62DB500708217 /* Frameworks */,
+				0F33D2F221F62DB500708217 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "VastClient tvOS";
+			productName = "VastClient tvOS";
+			productReference = 0F33D2F421F62DB500708217 /* VastClient_tvOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		0F7B977E2077CB340096438D /* VastClient */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F7B97932077CB340096438D /* Build configuration list for PBXNativeTarget "VastClient" */;
@@ -288,6 +336,10 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "John Gainfort Jr";
 				TargetAttributes = {
+					0F33D2F321F62DB500708217 = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
+					};
 					0F7B977E2077CB340096438D = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 1000;
@@ -314,11 +366,19 @@
 			targets = (
 				0F7B977E2077CB340096438D /* VastClient */,
 				0F7B97872077CB340096438D /* VastClientTests */,
+				0F33D2F321F62DB500708217 /* VastClient tvOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0F33D2F221F62DB500708217 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0F7B977D2077CB340096438D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -336,6 +396,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0F33D2F021F62DB500708217 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0F7B977A2077CB340096438D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -396,6 +463,57 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0F33D2F921F62DB500708217 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = W2DL3PWML7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "VastClient tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.realeyes.VastClient-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 12.1;
+			};
+			name = Debug;
+		};
+		0F33D2FA21F62DB500708217 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = W2DL3PWML7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "VastClient tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.realeyes.VastClient-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 12.1;
+			};
+			name = Release;
+		};
 		0F7B97912077CB340096438D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -604,6 +722,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0F33D2FB21F62DB500708217 /* Build configuration list for PBXNativeTarget "VastClient tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F33D2F921F62DB500708217 /* Debug */,
+				0F33D2FA21F62DB500708217 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0F7B97792077CB340096438D /* Build configuration list for PBXProject "VastClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

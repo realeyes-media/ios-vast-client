@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F33D2F821F62DB500708217 /* VastClient_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F33D2F621F62DB500708217 /* VastClient_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F442F9720AB461C00303767 /* http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F442F9620AB461C00303767 /* http.swift */; };
 		0F58AE2E20C6E9F500699B77 /* VastExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F58AE2D20C6E9F500699B77 /* VastExtension.swift */; };
 		0F58AE3020C6EABF00699B77 /* VastCreativeParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F58AE2F20C6EABF00699B77 /* VastCreativeParameter.swift */; };
@@ -40,6 +39,41 @@
 		0F7B97D72077E3000096438D /* String+seconds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D62077E3000096438D /* String+seconds.swift */; };
 		0F7B97D92077E40A0096438D /* Sequence+every.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D82077E40A0096438D /* Sequence+every.swift */; };
 		0F7B97DD20782FF90096438D /* VastTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97DC20782FF90096438D /* VastTracker.swift */; };
+		0F94FB7621F7890900F61F60 /* VastClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7B97822077CB340096438D /* VastClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F94FB7721F7891100F61F60 /* VastClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D22077E0DC0096438D /* VastClient.swift */; };
+		0F94FB7821F7891100F61F60 /* VastTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97DC20782FF90096438D /* VastTracker.swift */; };
+		0F94FB7921F7891B00F61F60 /* VastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97BB2077D3890096438D /* VastModel.swift */; };
+		0F94FB7A21F7891B00F61F60 /* VastAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97BD2077D3CC0096438D /* VastAd.swift */; };
+		0F94FB7B21F7891B00F61F60 /* VastImpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97BF2077D4440096438D /* VastImpression.swift */; };
+		0F94FB7C21F7891B00F61F60 /* VastLinearCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97C12077D4860096438D /* VastLinearCreative.swift */; };
+		0F94FB7D21F7891B00F61F60 /* VastTrackingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97C32077D4BF0096438D /* VastTrackingEvent.swift */; };
+		0F94FB7E21F7891B00F61F60 /* VastVideoClick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97C52077D7430096438D /* VastVideoClick.swift */; };
+		0F94FB7F21F7891B00F61F60 /* VastMediaFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97C72077D78F0096438D /* VastMediaFile.swift */; };
+		0F94FB8021F7891B00F61F60 /* TrackingCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAAC220AA3F9F006850C8 /* TrackingCreative.swift */; };
+		0F94FB8121F7891B00F61F60 /* VastExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F58AE2D20C6E9F500699B77 /* VastExtension.swift */; };
+		0F94FB8221F7891B00F61F60 /* VastCreativeParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F58AE2F20C6EABF00699B77 /* VastCreativeParameter.swift */; };
+		0F94FB8321F7891B00F61F60 /* VastCompanionCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB92CF620C831A100310FCF /* VastCompanionCreative.swift */; };
+		0F94FB8421F7891B00F61F60 /* VastCompanionAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB92CF820C843B400310FCF /* VastCompanionAds.swift */; };
+		0F94FB8521F7892300F61F60 /* VMAPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF072211B565B000AD5BB /* VMAPModel.swift */; };
+		0F94FB8621F7892300F61F60 /* VMAPAdBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF075211B57B7000AD5BB /* VMAPAdBreak.swift */; };
+		0F94FB8721F7892300F61F60 /* VMAPAdSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF077211B58E3000AD5BB /* VMAPAdSource.swift */; };
+		0F94FB8821F7892300F61F60 /* VMAPTrackingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF079211B58FD000AD5BB /* VMAPTrackingEvent.swift */; };
+		0F94FB8921F7892300F61F60 /* VMAPExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF07F211B68F2000AD5BB /* VMAPExtension.swift */; };
+		0F94FB8A21F7892300F61F60 /* VMAPVastAdData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF083211B9A94000AD5BB /* VMAPVastAdData.swift */; };
+		0F94FB8B21F7892900F61F60 /* VastParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D02077DB4C0096438D /* VastParser.swift */; };
+		0F94FB8C21F7892900F61F60 /* VMAPParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF07B211B60A6000AD5BB /* VMAPParser.swift */; };
+		0F94FB8D21F7893100F61F60 /* String+seconds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D62077E3000096438D /* String+seconds.swift */; };
+		0F94FB8E21F7893100F61F60 /* Sequence+every.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D82077E40A0096438D /* Sequence+every.swift */; };
+		0F94FB8F21F7893100F61F60 /* http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F442F9620AB461C00303767 /* http.swift */; };
+		0F94FB9021F7893100F61F60 /* URL+replace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71436720BDD07D0029BBB6 /* URL+replace.swift */; };
+		0F94FB9121F7893100F61F60 /* String+encode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71436920BDD59D0029BBB6 /* String+encode.swift */; };
+		0F94FB9221F7893900F61F60 /* VastError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97CA2077D83B0096438D /* VastError.swift */; };
+		0F94FB9321F7893900F61F60 /* TrackingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAABE20AA3A05006850C8 /* TrackingStatus.swift */; };
+		0F94FB9421F7893900F61F60 /* TrackingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAAC020AA3A62006850C8 /* TrackingError.swift */; };
+		0F94FB9521F7893900F61F60 /* VastErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71436520BDCD930029BBB6 /* VastErrorCodes.swift */; };
+		0F94FB9621F7893900F61F60 /* VastMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F58AE3420C7410700699B77 /* VastMacros.swift */; };
+		0F94FB9721F7893900F61F60 /* VMAPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF07D211B616A000AD5BB /* VMAPError.swift */; };
+		0F94FB9821F7893900F61F60 /* VMAPErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF081211B6B2E000AD5BB /* VMAPErrorCodes.swift */; };
 		0FB92CF720C831A100310FCF /* VastCompanionCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB92CF620C831A100310FCF /* VastCompanionCreative.swift */; };
 		0FB92CF920C843B400310FCF /* VastCompanionAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB92CF820C843B400310FCF /* VastCompanionAds.swift */; };
 		0FEDAABF20AA3A05006850C8 /* TrackingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAABE20AA3A05006850C8 /* TrackingStatus.swift */; };
@@ -59,8 +93,6 @@
 
 /* Begin PBXFileReference section */
 		0F33D2F421F62DB500708217 /* VastClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VastClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F33D2F621F62DB500708217 /* VastClient_tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VastClient_tvOS.h; sourceTree = "<group>"; };
-		0F33D2F721F62DB500708217 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F442F9620AB461C00303767 /* http.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = http.swift; sourceTree = "<group>"; };
 		0F58AE2D20C6E9F500699B77 /* VastExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastExtension.swift; sourceTree = "<group>"; };
 		0F58AE2F20C6EABF00699B77 /* VastCreativeParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastCreativeParameter.swift; sourceTree = "<group>"; };
@@ -129,15 +161,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0F33D2F521F62DB500708217 /* VastClient tvOS */ = {
-			isa = PBXGroup;
-			children = (
-				0F33D2F621F62DB500708217 /* VastClient_tvOS.h */,
-				0F33D2F721F62DB500708217 /* Info.plist */,
-			);
-			path = "VastClient tvOS";
-			sourceTree = "<group>";
-		};
 		0F7AF074211B57A2000AD5BB /* VMAP */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,7 +179,6 @@
 			children = (
 				0F7B97812077CB340096438D /* VastClient */,
 				0F7B978C2077CB340096438D /* VastClientTests */,
-				0F33D2F521F62DB500708217 /* VastClient tvOS */,
 				0F7B97802077CB340096438D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -257,7 +279,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F33D2F821F62DB500708217 /* VastClient_tvOS.h in Headers */,
+				0F94FB7621F7890900F61F60 /* VastClient.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +422,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F94FB8521F7892300F61F60 /* VMAPModel.swift in Sources */,
+				0F94FB8221F7891B00F61F60 /* VastCreativeParameter.swift in Sources */,
+				0F94FB9221F7893900F61F60 /* VastError.swift in Sources */,
+				0F94FB8421F7891B00F61F60 /* VastCompanionAds.swift in Sources */,
+				0F94FB9721F7893900F61F60 /* VMAPError.swift in Sources */,
+				0F94FB7D21F7891B00F61F60 /* VastTrackingEvent.swift in Sources */,
+				0F94FB7821F7891100F61F60 /* VastTracker.swift in Sources */,
+				0F94FB9821F7893900F61F60 /* VMAPErrorCodes.swift in Sources */,
+				0F94FB9121F7893100F61F60 /* String+encode.swift in Sources */,
+				0F94FB7E21F7891B00F61F60 /* VastVideoClick.swift in Sources */,
+				0F94FB8F21F7893100F61F60 /* http.swift in Sources */,
+				0F94FB9421F7893900F61F60 /* TrackingError.swift in Sources */,
+				0F94FB8121F7891B00F61F60 /* VastExtension.swift in Sources */,
+				0F94FB8321F7891B00F61F60 /* VastCompanionCreative.swift in Sources */,
+				0F94FB7921F7891B00F61F60 /* VastModel.swift in Sources */,
+				0F94FB8821F7892300F61F60 /* VMAPTrackingEvent.swift in Sources */,
+				0F94FB9621F7893900F61F60 /* VastMacros.swift in Sources */,
+				0F94FB7F21F7891B00F61F60 /* VastMediaFile.swift in Sources */,
+				0F94FB8621F7892300F61F60 /* VMAPAdBreak.swift in Sources */,
+				0F94FB8721F7892300F61F60 /* VMAPAdSource.swift in Sources */,
+				0F94FB9021F7893100F61F60 /* URL+replace.swift in Sources */,
+				0F94FB7A21F7891B00F61F60 /* VastAd.swift in Sources */,
+				0F94FB9521F7893900F61F60 /* VastErrorCodes.swift in Sources */,
+				0F94FB8E21F7893100F61F60 /* Sequence+every.swift in Sources */,
+				0F94FB8D21F7893100F61F60 /* String+seconds.swift in Sources */,
+				0F94FB7B21F7891B00F61F60 /* VastImpression.swift in Sources */,
+				0F94FB8B21F7892900F61F60 /* VastParser.swift in Sources */,
+				0F94FB9321F7893900F61F60 /* TrackingStatus.swift in Sources */,
+				0F94FB8021F7891B00F61F60 /* TrackingCreative.swift in Sources */,
+				0F94FB8A21F7892300F61F60 /* VMAPVastAdData.swift in Sources */,
+				0F94FB7721F7891100F61F60 /* VastClient.swift in Sources */,
+				0F94FB7C21F7891B00F61F60 /* VastLinearCreative.swift in Sources */,
+				0F94FB8C21F7892900F61F60 /* VMAPParser.swift in Sources */,
+				0F94FB8921F7892300F61F60 /* VMAPExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,7 +530,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "VastClient tvOS/Info.plist";
+				INFOPLIST_FILE = VastClient/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -502,7 +558,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "VastClient tvOS/Info.plist";
+				INFOPLIST_FILE = VastClient/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;

@@ -39,43 +39,43 @@
 		0F7B97D72077E3000096438D /* String+seconds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D62077E3000096438D /* String+seconds.swift */; };
 		0F7B97D92077E40A0096438D /* Sequence+every.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D82077E40A0096438D /* Sequence+every.swift */; };
 		0F7B97DD20782FF90096438D /* VastTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97DC20782FF90096438D /* VastTracker.swift */; };
-		0F94FB7621F7890900F61F60 /* VastClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7B97822077CB340096438D /* VastClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F94FB7721F7891100F61F60 /* VastClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D22077E0DC0096438D /* VastClient.swift */; };
-		0F94FB7821F7891100F61F60 /* VastTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97DC20782FF90096438D /* VastTracker.swift */; };
-		0F94FB7921F7891B00F61F60 /* VastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97BB2077D3890096438D /* VastModel.swift */; };
-		0F94FB7A21F7891B00F61F60 /* VastAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97BD2077D3CC0096438D /* VastAd.swift */; };
-		0F94FB7B21F7891B00F61F60 /* VastImpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97BF2077D4440096438D /* VastImpression.swift */; };
-		0F94FB7C21F7891B00F61F60 /* VastLinearCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97C12077D4860096438D /* VastLinearCreative.swift */; };
-		0F94FB7D21F7891B00F61F60 /* VastTrackingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97C32077D4BF0096438D /* VastTrackingEvent.swift */; };
-		0F94FB7E21F7891B00F61F60 /* VastVideoClick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97C52077D7430096438D /* VastVideoClick.swift */; };
-		0F94FB7F21F7891B00F61F60 /* VastMediaFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97C72077D78F0096438D /* VastMediaFile.swift */; };
-		0F94FB8021F7891B00F61F60 /* TrackingCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAAC220AA3F9F006850C8 /* TrackingCreative.swift */; };
-		0F94FB8121F7891B00F61F60 /* VastExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F58AE2D20C6E9F500699B77 /* VastExtension.swift */; };
-		0F94FB8221F7891B00F61F60 /* VastCreativeParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F58AE2F20C6EABF00699B77 /* VastCreativeParameter.swift */; };
-		0F94FB8321F7891B00F61F60 /* VastCompanionCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB92CF620C831A100310FCF /* VastCompanionCreative.swift */; };
-		0F94FB8421F7891B00F61F60 /* VastCompanionAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB92CF820C843B400310FCF /* VastCompanionAds.swift */; };
-		0F94FB8521F7892300F61F60 /* VMAPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF072211B565B000AD5BB /* VMAPModel.swift */; };
-		0F94FB8621F7892300F61F60 /* VMAPAdBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF075211B57B7000AD5BB /* VMAPAdBreak.swift */; };
-		0F94FB8721F7892300F61F60 /* VMAPAdSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF077211B58E3000AD5BB /* VMAPAdSource.swift */; };
-		0F94FB8821F7892300F61F60 /* VMAPTrackingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF079211B58FD000AD5BB /* VMAPTrackingEvent.swift */; };
-		0F94FB8921F7892300F61F60 /* VMAPExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF07F211B68F2000AD5BB /* VMAPExtension.swift */; };
-		0F94FB8A21F7892300F61F60 /* VMAPVastAdData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF083211B9A94000AD5BB /* VMAPVastAdData.swift */; };
-		0F94FB8B21F7892900F61F60 /* VastParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D02077DB4C0096438D /* VastParser.swift */; };
-		0F94FB8C21F7892900F61F60 /* VMAPParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF07B211B60A6000AD5BB /* VMAPParser.swift */; };
-		0F94FB8D21F7893100F61F60 /* String+seconds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D62077E3000096438D /* String+seconds.swift */; };
-		0F94FB8E21F7893100F61F60 /* Sequence+every.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D82077E40A0096438D /* Sequence+every.swift */; };
-		0F94FB8F21F7893100F61F60 /* http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F442F9620AB461C00303767 /* http.swift */; };
-		0F94FB9021F7893100F61F60 /* URL+replace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71436720BDD07D0029BBB6 /* URL+replace.swift */; };
-		0F94FB9121F7893100F61F60 /* String+encode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71436920BDD59D0029BBB6 /* String+encode.swift */; };
-		0F94FB9221F7893900F61F60 /* VastError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97CA2077D83B0096438D /* VastError.swift */; };
-		0F94FB9321F7893900F61F60 /* TrackingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAABE20AA3A05006850C8 /* TrackingStatus.swift */; };
-		0F94FB9421F7893900F61F60 /* TrackingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAAC020AA3A62006850C8 /* TrackingError.swift */; };
-		0F94FB9521F7893900F61F60 /* VastErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71436520BDCD930029BBB6 /* VastErrorCodes.swift */; };
-		0F94FB9621F7893900F61F60 /* VastMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F58AE3420C7410700699B77 /* VastMacros.swift */; };
-		0F94FB9721F7893900F61F60 /* VMAPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF07D211B616A000AD5BB /* VMAPError.swift */; };
-		0F94FB9821F7893900F61F60 /* VMAPErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF081211B6B2E000AD5BB /* VMAPErrorCodes.swift */; };
 		0FB92CF720C831A100310FCF /* VastCompanionCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB92CF620C831A100310FCF /* VastCompanionCreative.swift */; };
 		0FB92CF920C843B400310FCF /* VastCompanionAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB92CF820C843B400310FCF /* VastCompanionAds.swift */; };
+		0FCD6F3021FF58B9008F42AA /* VastClient_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCD6F2E21FF58B9008F42AA /* VastClient_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FCD6F3421FF598E008F42AA /* VastTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97DC20782FF90096438D /* VastTracker.swift */; };
+		0FCD6F3521FF5992008F42AA /* VastClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D22077E0DC0096438D /* VastClient.swift */; };
+		0FCD6F3721FF599A008F42AA /* VastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97BB2077D3890096438D /* VastModel.swift */; };
+		0FCD6F3821FF599A008F42AA /* VastAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97BD2077D3CC0096438D /* VastAd.swift */; };
+		0FCD6F3921FF599A008F42AA /* VastImpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97BF2077D4440096438D /* VastImpression.swift */; };
+		0FCD6F3A21FF599A008F42AA /* VastLinearCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97C12077D4860096438D /* VastLinearCreative.swift */; };
+		0FCD6F3B21FF599A008F42AA /* VastTrackingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97C32077D4BF0096438D /* VastTrackingEvent.swift */; };
+		0FCD6F3C21FF599A008F42AA /* VastVideoClick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97C52077D7430096438D /* VastVideoClick.swift */; };
+		0FCD6F3D21FF599A008F42AA /* VastMediaFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97C72077D78F0096438D /* VastMediaFile.swift */; };
+		0FCD6F3E21FF599A008F42AA /* TrackingCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAAC220AA3F9F006850C8 /* TrackingCreative.swift */; };
+		0FCD6F3F21FF599A008F42AA /* VastExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F58AE2D20C6E9F500699B77 /* VastExtension.swift */; };
+		0FCD6F4021FF599A008F42AA /* VastCreativeParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F58AE2F20C6EABF00699B77 /* VastCreativeParameter.swift */; };
+		0FCD6F4121FF599A008F42AA /* VastCompanionCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB92CF620C831A100310FCF /* VastCompanionCreative.swift */; };
+		0FCD6F4221FF599A008F42AA /* VastCompanionAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB92CF820C843B400310FCF /* VastCompanionAds.swift */; };
+		0FCD6F4321FF599F008F42AA /* VMAPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF072211B565B000AD5BB /* VMAPModel.swift */; };
+		0FCD6F4421FF599F008F42AA /* VMAPAdBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF075211B57B7000AD5BB /* VMAPAdBreak.swift */; };
+		0FCD6F4521FF599F008F42AA /* VMAPAdSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF077211B58E3000AD5BB /* VMAPAdSource.swift */; };
+		0FCD6F4621FF599F008F42AA /* VMAPTrackingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF079211B58FD000AD5BB /* VMAPTrackingEvent.swift */; };
+		0FCD6F4721FF599F008F42AA /* VMAPExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF07F211B68F2000AD5BB /* VMAPExtension.swift */; };
+		0FCD6F4821FF599F008F42AA /* VMAPVastAdData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF083211B9A94000AD5BB /* VMAPVastAdData.swift */; };
+		0FCD6F4921FF59A4008F42AA /* VastParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D02077DB4C0096438D /* VastParser.swift */; };
+		0FCD6F4A21FF59A4008F42AA /* VMAPParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF07B211B60A6000AD5BB /* VMAPParser.swift */; };
+		0FCD6F4B21FF59A9008F42AA /* String+seconds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D62077E3000096438D /* String+seconds.swift */; };
+		0FCD6F4C21FF59A9008F42AA /* Sequence+every.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D82077E40A0096438D /* Sequence+every.swift */; };
+		0FCD6F4D21FF59A9008F42AA /* http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F442F9620AB461C00303767 /* http.swift */; };
+		0FCD6F4E21FF59A9008F42AA /* URL+replace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71436720BDD07D0029BBB6 /* URL+replace.swift */; };
+		0FCD6F4F21FF59A9008F42AA /* String+encode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71436920BDD59D0029BBB6 /* String+encode.swift */; };
+		0FCD6F5021FF59AE008F42AA /* VastError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97CA2077D83B0096438D /* VastError.swift */; };
+		0FCD6F5121FF59AE008F42AA /* TrackingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAABE20AA3A05006850C8 /* TrackingStatus.swift */; };
+		0FCD6F5221FF59AE008F42AA /* TrackingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAAC020AA3A62006850C8 /* TrackingError.swift */; };
+		0FCD6F5321FF59AE008F42AA /* VastErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71436520BDCD930029BBB6 /* VastErrorCodes.swift */; };
+		0FCD6F5421FF59AE008F42AA /* VastMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F58AE3420C7410700699B77 /* VastMacros.swift */; };
+		0FCD6F5521FF59AE008F42AA /* VMAPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF07D211B616A000AD5BB /* VMAPError.swift */; };
+		0FCD6F5621FF59AE008F42AA /* VMAPErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF081211B6B2E000AD5BB /* VMAPErrorCodes.swift */; };
 		0FEDAABF20AA3A05006850C8 /* TrackingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAABE20AA3A05006850C8 /* TrackingStatus.swift */; };
 		0FEDAAC120AA3A62006850C8 /* TrackingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAAC020AA3A62006850C8 /* TrackingError.swift */; };
 		0FEDAAC320AA3F9F006850C8 /* TrackingCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAAC220AA3F9F006850C8 /* TrackingCreative.swift */; };
@@ -92,7 +92,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0F33D2F421F62DB500708217 /* VastClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VastClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F442F9620AB461C00303767 /* http.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = http.swift; sourceTree = "<group>"; };
 		0F58AE2D20C6E9F500699B77 /* VastExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastExtension.swift; sourceTree = "<group>"; };
 		0F58AE2F20C6EABF00699B77 /* VastCreativeParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastCreativeParameter.swift; sourceTree = "<group>"; };
@@ -130,19 +129,15 @@
 		0F7B97DC20782FF90096438D /* VastTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastTracker.swift; sourceTree = "<group>"; };
 		0FB92CF620C831A100310FCF /* VastCompanionCreative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastCompanionCreative.swift; sourceTree = "<group>"; };
 		0FB92CF820C843B400310FCF /* VastCompanionAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastCompanionAds.swift; sourceTree = "<group>"; };
+		0FCD6F2C21FF58B9008F42AA /* VastClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VastClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FCD6F2E21FF58B9008F42AA /* VastClient_tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VastClient_tvOS.h; sourceTree = "<group>"; };
+		0FCD6F2F21FF58B9008F42AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FEDAABE20AA3A05006850C8 /* TrackingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingStatus.swift; sourceTree = "<group>"; };
 		0FEDAAC020AA3A62006850C8 /* TrackingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingError.swift; sourceTree = "<group>"; };
 		0FEDAAC220AA3F9F006850C8 /* TrackingCreative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingCreative.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0F33D2F121F62DB500708217 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0F7B977B2077CB340096438D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -155,6 +150,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F7B97892077CB340096438D /* VastClient.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FCD6F2921FF58B9008F42AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +181,7 @@
 			children = (
 				0F7B97812077CB340096438D /* VastClient */,
 				0F7B978C2077CB340096438D /* VastClientTests */,
+				0FCD6F2D21FF58B9008F42AA /* VastClient tvOS */,
 				0F7B97802077CB340096438D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -188,7 +191,7 @@
 			children = (
 				0F7B977F2077CB340096438D /* VastClient.framework */,
 				0F7B97882077CB340096438D /* VastClientTests.xctest */,
-				0F33D2F421F62DB500708217 /* VastClient.framework */,
+				0FCD6F2C21FF58B9008F42AA /* VastClient.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -258,6 +261,15 @@
 			path = utils;
 			sourceTree = "<group>";
 		};
+		0FCD6F2D21FF58B9008F42AA /* VastClient tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				0FCD6F2E21FF58B9008F42AA /* VastClient_tvOS.h */,
+				0FCD6F2F21FF58B9008F42AA /* Info.plist */,
+			);
+			path = "VastClient tvOS";
+			sourceTree = "<group>";
+		};
 		0FEDAABD20AA39F7006850C8 /* constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,14 +287,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		0F33D2EF21F62DB500708217 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0F94FB7621F7890900F61F60 /* VastClient.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0F7B977C2077CB340096438D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -291,27 +295,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0FCD6F2721FF58B9008F42AA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FCD6F3021FF58B9008F42AA /* VastClient_tvOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0F33D2F321F62DB500708217 /* VastClient tvOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0F33D2FB21F62DB500708217 /* Build configuration list for PBXNativeTarget "VastClient tvOS" */;
-			buildPhases = (
-				0F33D2EF21F62DB500708217 /* Headers */,
-				0F33D2F021F62DB500708217 /* Sources */,
-				0F33D2F121F62DB500708217 /* Frameworks */,
-				0F33D2F221F62DB500708217 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "VastClient tvOS";
-			productName = "VastClient tvOS";
-			productReference = 0F33D2F421F62DB500708217 /* VastClient.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		0F7B977E2077CB340096438D /* VastClient */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F7B97932077CB340096438D /* Build configuration list for PBXNativeTarget "VastClient" */;
@@ -348,6 +342,24 @@
 			productReference = 0F7B97882077CB340096438D /* VastClientTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		0FCD6F2B21FF58B9008F42AA /* VastClient tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0FCD6F3121FF58B9008F42AA /* Build configuration list for PBXNativeTarget "VastClient tvOS" */;
+			buildPhases = (
+				0FCD6F2721FF58B9008F42AA /* Headers */,
+				0FCD6F2821FF58B9008F42AA /* Sources */,
+				0FCD6F2921FF58B9008F42AA /* Frameworks */,
+				0FCD6F2A21FF58B9008F42AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "VastClient tvOS";
+			productName = "VastClient tvOS";
+			productReference = 0FCD6F2C21FF58B9008F42AA /* VastClient.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -358,10 +370,6 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "John Gainfort Jr";
 				TargetAttributes = {
-					0F33D2F321F62DB500708217 = {
-						CreatedOnToolsVersion = 10.1;
-						ProvisioningStyle = Automatic;
-					};
 					0F7B977E2077CB340096438D = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 1000;
@@ -370,6 +378,10 @@
 					0F7B97872077CB340096438D = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 1000;
+						ProvisioningStyle = Automatic;
+					};
+					0FCD6F2B21FF58B9008F42AA = {
+						CreatedOnToolsVersion = 10.1;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -388,19 +400,12 @@
 			targets = (
 				0F7B977E2077CB340096438D /* VastClient */,
 				0F7B97872077CB340096438D /* VastClientTests */,
-				0F33D2F321F62DB500708217 /* VastClient tvOS */,
+				0FCD6F2B21FF58B9008F42AA /* VastClient tvOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0F33D2F221F62DB500708217 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0F7B977D2077CB340096438D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -415,50 +420,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		0F33D2F021F62DB500708217 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+		0FCD6F2A21FF58B9008F42AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F94FB8521F7892300F61F60 /* VMAPModel.swift in Sources */,
-				0F94FB8221F7891B00F61F60 /* VastCreativeParameter.swift in Sources */,
-				0F94FB9221F7893900F61F60 /* VastError.swift in Sources */,
-				0F94FB8421F7891B00F61F60 /* VastCompanionAds.swift in Sources */,
-				0F94FB9721F7893900F61F60 /* VMAPError.swift in Sources */,
-				0F94FB7D21F7891B00F61F60 /* VastTrackingEvent.swift in Sources */,
-				0F94FB7821F7891100F61F60 /* VastTracker.swift in Sources */,
-				0F94FB9821F7893900F61F60 /* VMAPErrorCodes.swift in Sources */,
-				0F94FB9121F7893100F61F60 /* String+encode.swift in Sources */,
-				0F94FB7E21F7891B00F61F60 /* VastVideoClick.swift in Sources */,
-				0F94FB8F21F7893100F61F60 /* http.swift in Sources */,
-				0F94FB9421F7893900F61F60 /* TrackingError.swift in Sources */,
-				0F94FB8121F7891B00F61F60 /* VastExtension.swift in Sources */,
-				0F94FB8321F7891B00F61F60 /* VastCompanionCreative.swift in Sources */,
-				0F94FB7921F7891B00F61F60 /* VastModel.swift in Sources */,
-				0F94FB8821F7892300F61F60 /* VMAPTrackingEvent.swift in Sources */,
-				0F94FB9621F7893900F61F60 /* VastMacros.swift in Sources */,
-				0F94FB7F21F7891B00F61F60 /* VastMediaFile.swift in Sources */,
-				0F94FB8621F7892300F61F60 /* VMAPAdBreak.swift in Sources */,
-				0F94FB8721F7892300F61F60 /* VMAPAdSource.swift in Sources */,
-				0F94FB9021F7893100F61F60 /* URL+replace.swift in Sources */,
-				0F94FB7A21F7891B00F61F60 /* VastAd.swift in Sources */,
-				0F94FB9521F7893900F61F60 /* VastErrorCodes.swift in Sources */,
-				0F94FB8E21F7893100F61F60 /* Sequence+every.swift in Sources */,
-				0F94FB8D21F7893100F61F60 /* String+seconds.swift in Sources */,
-				0F94FB7B21F7891B00F61F60 /* VastImpression.swift in Sources */,
-				0F94FB8B21F7892900F61F60 /* VastParser.swift in Sources */,
-				0F94FB9321F7893900F61F60 /* TrackingStatus.swift in Sources */,
-				0F94FB8021F7891B00F61F60 /* TrackingCreative.swift in Sources */,
-				0F94FB8A21F7892300F61F60 /* VMAPVastAdData.swift in Sources */,
-				0F94FB7721F7891100F61F60 /* VastClient.swift in Sources */,
-				0F94FB7C21F7891B00F61F60 /* VastLinearCreative.swift in Sources */,
-				0F94FB8C21F7892900F61F60 /* VMAPParser.swift in Sources */,
-				0F94FB8921F7892300F61F60 /* VMAPExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
 		0F7B977A2077CB340096438D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -508,6 +479,47 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0FCD6F2821FF58B9008F42AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FCD6F4321FF599F008F42AA /* VMAPModel.swift in Sources */,
+				0FCD6F4021FF599A008F42AA /* VastCreativeParameter.swift in Sources */,
+				0FCD6F5021FF59AE008F42AA /* VastError.swift in Sources */,
+				0FCD6F4221FF599A008F42AA /* VastCompanionAds.swift in Sources */,
+				0FCD6F5521FF59AE008F42AA /* VMAPError.swift in Sources */,
+				0FCD6F3B21FF599A008F42AA /* VastTrackingEvent.swift in Sources */,
+				0FCD6F3521FF5992008F42AA /* VastClient.swift in Sources */,
+				0FCD6F5621FF59AE008F42AA /* VMAPErrorCodes.swift in Sources */,
+				0FCD6F4F21FF59A9008F42AA /* String+encode.swift in Sources */,
+				0FCD6F3C21FF599A008F42AA /* VastVideoClick.swift in Sources */,
+				0FCD6F4D21FF59A9008F42AA /* http.swift in Sources */,
+				0FCD6F5221FF59AE008F42AA /* TrackingError.swift in Sources */,
+				0FCD6F3F21FF599A008F42AA /* VastExtension.swift in Sources */,
+				0FCD6F4121FF599A008F42AA /* VastCompanionCreative.swift in Sources */,
+				0FCD6F3721FF599A008F42AA /* VastModel.swift in Sources */,
+				0FCD6F4621FF599F008F42AA /* VMAPTrackingEvent.swift in Sources */,
+				0FCD6F5421FF59AE008F42AA /* VastMacros.swift in Sources */,
+				0FCD6F3D21FF599A008F42AA /* VastMediaFile.swift in Sources */,
+				0FCD6F4421FF599F008F42AA /* VMAPAdBreak.swift in Sources */,
+				0FCD6F4521FF599F008F42AA /* VMAPAdSource.swift in Sources */,
+				0FCD6F4E21FF59A9008F42AA /* URL+replace.swift in Sources */,
+				0FCD6F3821FF599A008F42AA /* VastAd.swift in Sources */,
+				0FCD6F5321FF59AE008F42AA /* VastErrorCodes.swift in Sources */,
+				0FCD6F4C21FF59A9008F42AA /* Sequence+every.swift in Sources */,
+				0FCD6F4B21FF59A9008F42AA /* String+seconds.swift in Sources */,
+				0FCD6F3921FF599A008F42AA /* VastImpression.swift in Sources */,
+				0FCD6F4921FF59A4008F42AA /* VastParser.swift in Sources */,
+				0FCD6F5121FF59AE008F42AA /* TrackingStatus.swift in Sources */,
+				0FCD6F3E21FF599A008F42AA /* TrackingCreative.swift in Sources */,
+				0FCD6F4821FF599F008F42AA /* VMAPVastAdData.swift in Sources */,
+				0FCD6F3421FF598E008F42AA /* VastTracker.swift in Sources */,
+				0FCD6F3A21FF599A008F42AA /* VastLinearCreative.swift in Sources */,
+				0FCD6F4A21FF59A4008F42AA /* VMAPParser.swift in Sources */,
+				0FCD6F4721FF599F008F42AA /* VMAPExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -519,62 +531,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0F33D2F921F62DB500708217 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = VastClient/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.realeyes.VastClient;
-				PRODUCT_NAME = VastClient;
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 10.0;
-			};
-			name = Debug;
-		};
-		0F33D2FA21F62DB500708217 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = VastClient/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.realeyes.VastClient;
-				PRODUCT_NAME = VastClient;
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 10.0;
-			};
-			name = Release;
-		};
 		0F7B97912077CB340096438D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -785,18 +741,63 @@
 			};
 			name = Release;
 		};
+		0FCD6F3221FF58B9008F42AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "VastClient tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.realeyes.VastClient;
+				PRODUCT_NAME = VastClient;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		0FCD6F3321FF58B9008F42AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "VastClient tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.realeyes.VastClient;
+				PRODUCT_NAME = VastClient;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0F33D2FB21F62DB500708217 /* Build configuration list for PBXNativeTarget "VastClient tvOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0F33D2F921F62DB500708217 /* Debug */,
-				0F33D2FA21F62DB500708217 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		0F7B97792077CB340096438D /* Build configuration list for PBXProject "VastClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -820,6 +821,15 @@
 			buildConfigurations = (
 				0F7B97972077CB340096438D /* Debug */,
 				0F7B97982077CB340096438D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0FCD6F3121FF58B9008F42AA /* Build configuration list for PBXNativeTarget "VastClient tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FCD6F3221FF58B9008F42AA /* Debug */,
+				0FCD6F3321FF58B9008F42AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

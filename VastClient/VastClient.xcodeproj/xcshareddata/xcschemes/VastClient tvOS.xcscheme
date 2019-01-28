@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0F7B977E2077CB340096438D"
+               BlueprintIdentifier = "0FCD6F2B21FF58B9008F42AA"
                BuildableName = "VastClient.framework"
-               BlueprintName = "VastClient"
+               BlueprintName = "VastClient tvOS"
                ReferencedContainer = "container:VastClient.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0F7B97872077CB340096438D"
-               BuildableName = "VastClientTests.xctest"
-               BlueprintName = "VastClientTests"
-               ReferencedContainer = "container:VastClient.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0F7B977E2077CB340096438D"
-            BuildableName = "VastClient.framework"
-            BlueprintName = "VastClient"
-            ReferencedContainer = "container:VastClient.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -64,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0F7B977E2077CB340096438D"
+            BlueprintIdentifier = "0FCD6F2B21FF58B9008F42AA"
             BuildableName = "VastClient.framework"
-            BlueprintName = "VastClient"
+            BlueprintName = "VastClient tvOS"
             ReferencedContainer = "container:VastClient.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0F7B977E2077CB340096438D"
+            BlueprintIdentifier = "0FCD6F2B21FF58B9008F42AA"
             BuildableName = "VastClient.framework"
-            BlueprintName = "VastClient"
+            BlueprintName = "VastClient tvOS"
             ReferencedContainer = "container:VastClient.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -94,7 +75,6 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
-      customArchiveName = "VastClient"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

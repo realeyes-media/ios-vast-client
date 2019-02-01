@@ -47,7 +47,7 @@ public class VastTracker {
             // playhead
             return max(0.0, floor(currentTime - startTime - completedAdAccumulatedDuration))
         } else {
-            return currentTime
+            return currentTime - startTime
         }
     }
     private var vastAds: [VastAd]
@@ -186,7 +186,7 @@ public class VastTracker {
             return
         }
         
-        guard comparisonTime >= startTime else {
+        guard currentTime >= startTime else {
             return
         }
         
@@ -200,39 +200,35 @@ public class VastTracker {
             
             let impressions = creative.vastAd.impressions.filter { $0.url != nil }.map { $0.url! }
             let trackingUrls = creative.creative.trackingEvents
-                .filter { ($0.type == .creativeView || $0.type == .start) && $0.url != nil }
-                .map { $0.url! }
+                .filter { ($0.type == .creativeView || $0.type == .start) }
+                .compactMap { $0.url }
             creative.callTrackingUrls(impressions + trackingUrls)
             delegate?.adStart(vastTracker: self, ad: creative.vastAd)
         }
         
-        if comparisonTime > creative.firstQuartile && comparisonTime < creative.midpoint {
-            if !creative.trackedFirstQuartile {
-                creative.trackedFirstQuartile = true
-                let trackingUrls = creative.creative.trackingEvents
-                    .filter { $0.type == .firstQuartile && $0.url != nil }
-                    .map { $0.url! }
-                creative.callTrackingUrls(trackingUrls)
-                delegate?.adFirstQuartile(vastTracker: self, ad: creative.vastAd)
-            }
-        } else if comparisonTime > creative.midpoint && comparisonTime < creative.thirdQuartile {
-            if !creative.trackedMidpoint {
-                creative.trackedMidpoint = true
-                let trackingUrls = creative.creative.trackingEvents
-                    .filter { $0.type == .midpoint && $0.url != nil }
-                    .map { $0.url! }
-                creative.callTrackingUrls(trackingUrls)
-                delegate?.adMidpoint(vastTracker: self, ad: creative.vastAd)
-            }
-        } else if comparisonTime > creative.thirdQuartile && comparisonTime < creative.duration {
-            if !creative.trackedThirdQuartile {
-                creative.trackedThirdQuartile = true
-                let trackingUrls = creative.creative.trackingEvents
-                    .filter { $0.type == .thirdQuartile && $0.url != nil }
-                    .map { $0.url! }
-                creative.callTrackingUrls(trackingUrls)
-                delegate?.adThirdQuartile(vastTracker: self, ad: creative.vastAd)
-            }
+        if comparisonTime >= creative.firstQuartile, comparisonTime <= creative.midpoint, !creative.trackedFirstQuartile {
+            creative.trackedFirstQuartile = true
+            let trackingUrls = creative.creative.trackingEvents
+                .filter { $0.type == .firstQuartile }
+                .compactMap { $0.url }
+            creative.callTrackingUrls(trackingUrls)
+            delegate?.adFirstQuartile(vastTracker: self, ad: creative.vastAd)
+        }
+        if comparisonTime >= creative.midpoint, comparisonTime <= creative.thirdQuartile, !creative.trackedMidpoint {
+            creative.trackedMidpoint = true
+            let trackingUrls = creative.creative.trackingEvents
+                .filter { $0.type == .midpoint }
+                .compactMap { $0.url }
+            creative.callTrackingUrls(trackingUrls)
+            delegate?.adMidpoint(vastTracker: self, ad: creative.vastAd)
+        }
+        if comparisonTime >= creative.thirdQuartile, comparisonTime <= creative.duration, !creative.trackedThirdQuartile {
+            creative.trackedThirdQuartile = true
+            let trackingUrls = creative.creative.trackingEvents
+                .filter { $0.type == .thirdQuartile }
+                .compactMap { $0.url }
+            creative.callTrackingUrls(trackingUrls)
+            delegate?.adThirdQuartile(vastTracker: self, ad: creative.vastAd)
         }
         
         currentTrackingCreative = creative

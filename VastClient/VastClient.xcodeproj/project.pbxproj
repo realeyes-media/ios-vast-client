@@ -16,7 +16,6 @@
 		0F7AF07E211B616A000AD5BB /* VMAPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF07D211B616A000AD5BB /* VMAPError.swift */; };
 		0F7AF082211B6B2E000AD5BB /* VMAPErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF081211B6B2E000AD5BB /* VMAPErrorCodes.swift */; };
 		0F7B97892077CB340096438D /* VastClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7B977F2077CB340096438D /* VastClient.framework */; };
-		0F7B978E2077CB340096438D /* VastClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B978D2077CB340096438D /* VastClientTests.swift */; };
 		0F7B97902077CB340096438D /* VastClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7B97822077CB340096438D /* VastClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F7B97CB2077D83B0096438D /* VastError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97CA2077D83B0096438D /* VastError.swift */; };
 		0F7B97D12077DB4C0096438D /* VastXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D02077DB4C0096438D /* VastXMLParser.swift */; };
@@ -32,6 +31,7 @@
 		A91F507E21A432AF0062198F /* Pubads_Wrapper_Model-test.xml in Resources */ = {isa = PBXBuildFile; fileRef = A91F507D21A432AF0062198F /* Pubads_Wrapper_Model-test.xml */; };
 		A91F508021A432CF0062198F /* Pubads_Inline_Model-test.xml in Resources */ = {isa = PBXBuildFile; fileRef = A91F507F21A432CF0062198F /* Pubads_Inline_Model-test.xml */; };
 		A91F508221A437EB0062198F /* VastXMLParserPubadsWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F508121A437EB0062198F /* VastXMLParserPubadsWrapperTests.swift */; };
+		A927D2CB22043CB500272F70 /* VastTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A927D2CA22043CB500272F70 /* VastTrackerTests.swift */; };
 		A945EE0E219C5C100007A079 /* VastCreativeParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDE8219C5C100007A079 /* VastCreativeParameter.swift */; };
 		A945EE0F219C5C100007A079 /* VastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDEA219C5C100007A079 /* VastModel.swift */; };
 		A945EE10219C5C100007A079 /* VastSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDEB219C5C100007A079 /* VastSurvey.swift */; };
@@ -132,7 +132,6 @@
 		0F7B97822077CB340096438D /* VastClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VastClient.h; sourceTree = "<group>"; };
 		0F7B97832077CB340096438D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F7B97882077CB340096438D /* VastClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VastClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F7B978D2077CB340096438D /* VastClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastClientTests.swift; sourceTree = "<group>"; };
 		0F7B978F2077CB340096438D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F7B97CA2077D83B0096438D /* VastError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastError.swift; sourceTree = "<group>"; };
 		0F7B97D02077DB4C0096438D /* VastXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastXMLParser.swift; sourceTree = "<group>"; };
@@ -148,6 +147,7 @@
 		A91F507D21A432AF0062198F /* Pubads_Wrapper_Model-test.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Pubads_Wrapper_Model-test.xml"; sourceTree = "<group>"; };
 		A91F507F21A432CF0062198F /* Pubads_Inline_Model-test.xml */ = {isa = PBXFileReference; explicitFileType = text.xml; path = "Pubads_Inline_Model-test.xml"; sourceTree = "<group>"; };
 		A91F508121A437EB0062198F /* VastXMLParserPubadsWrapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastXMLParserPubadsWrapperTests.swift; sourceTree = "<group>"; };
+		A927D2CA22043CB500272F70 /* VastTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastTrackerTests.swift; sourceTree = "<group>"; };
 		A945EDE8219C5C100007A079 /* VastCreativeParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastCreativeParameter.swift; sourceTree = "<group>"; };
 		A945EDEA219C5C100007A079 /* VastModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastModel.swift; sourceTree = "<group>"; };
 		A945EDEB219C5C100007A079 /* VastSurvey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastSurvey.swift; sourceTree = "<group>"; };
@@ -286,9 +286,9 @@
 			children = (
 				A945EE36219C5C9E0007A079 /* Assets */,
 				A945EE34219C5C990007A079 /* VastXMLParserTests.swift */,
-				0F7B978D2077CB340096438D /* VastClientTests.swift */,
 				0F7B978F2077CB340096438D /* Info.plist */,
 				A91F508121A437EB0062198F /* VastXMLParserPubadsWrapperTests.swift */,
+				A927D2CA22043CB500272F70 /* VastTrackerTests.swift */,
 			);
 			path = VastClientTests;
 			sourceTree = "<group>";
@@ -655,7 +655,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F7B978E2077CB340096438D /* VastClientTests.swift in Sources */,
 				A945EE6C219C5C9F0007A079 /* EventTracking-test.swift in Sources */,
 				A91F507A21A432850062198F /* PubadsWrapperModel-test.swift in Sources */,
 				A945EE6A219C5C9F0007A079 /* InlineSimple-test.swift in Sources */,
@@ -666,6 +665,7 @@
 				A945EE6E219C5C9F0007A079 /* InlineLinearTag-test.swift in Sources */,
 				A91F507C21A432910062198F /* PubadsInlineModel-test.swift in Sources */,
 				A91F507821A432750062198F /* PubadsModel-test.swift in Sources */,
+				A927D2CB22043CB500272F70 /* VastTrackerTests.swift in Sources */,
 				A945EE35219C5C990007A079 /* VastXMLParserTests.swift in Sources */,
 				A91F508221A437EB0062198F /* VastXMLParserPubadsWrapperTests.swift in Sources */,
 				A981D9FD21BEB01800018FD8 /* InlineLinearIcons-test.swift in Sources */,

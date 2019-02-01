@@ -31,7 +31,12 @@
 		A91F507E21A432AF0062198F /* Pubads_Wrapper_Model-test.xml in Resources */ = {isa = PBXBuildFile; fileRef = A91F507D21A432AF0062198F /* Pubads_Wrapper_Model-test.xml */; };
 		A91F508021A432CF0062198F /* Pubads_Inline_Model-test.xml in Resources */ = {isa = PBXBuildFile; fileRef = A91F507F21A432CF0062198F /* Pubads_Inline_Model-test.xml */; };
 		A91F508221A437EB0062198F /* VastXMLParserPubadsWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F508121A437EB0062198F /* VastXMLParserPubadsWrapperTests.swift */; };
-		A927D2CB22043CB500272F70 /* VastTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A927D2CA22043CB500272F70 /* VastTrackerTests.swift */; };
+		A927D2CB22043CB500272F70 /* VastTrackerTest+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A927D2CA22043CB500272F70 /* VastTrackerTest+extensions.swift */; };
+		A927D2CE220474A600272F70 /* VastTrackerDelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A927D2CD220474A600272F70 /* VastTrackerDelegateSpy.swift */; };
+		A927D2D0220474C900272F70 /* VastTrackerNoncumulativeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A927D2CF220474C900272F70 /* VastTrackerNoncumulativeTests.swift */; };
+		A927D2D2220474FF00272F70 /* VastTrackerAccumulativeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A927D2D1220474FF00272F70 /* VastTrackerAccumulativeTests.swift */; };
+		A927D2D52204751F00272F70 /* VastTrackerNoncumulativeStartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A927D2D42204751F00272F70 /* VastTrackerNoncumulativeStartTests.swift */; };
+		A927D2D72204753600272F70 /* VastTrackerCumulativeStartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A927D2D62204753600272F70 /* VastTrackerCumulativeStartTests.swift */; };
 		A945EE0E219C5C100007A079 /* VastCreativeParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDE8219C5C100007A079 /* VastCreativeParameter.swift */; };
 		A945EE0F219C5C100007A079 /* VastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDEA219C5C100007A079 /* VastModel.swift */; };
 		A945EE10219C5C100007A079 /* VastSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EDEB219C5C100007A079 /* VastSurvey.swift */; };
@@ -147,7 +152,12 @@
 		A91F507D21A432AF0062198F /* Pubads_Wrapper_Model-test.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Pubads_Wrapper_Model-test.xml"; sourceTree = "<group>"; };
 		A91F507F21A432CF0062198F /* Pubads_Inline_Model-test.xml */ = {isa = PBXFileReference; explicitFileType = text.xml; path = "Pubads_Inline_Model-test.xml"; sourceTree = "<group>"; };
 		A91F508121A437EB0062198F /* VastXMLParserPubadsWrapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastXMLParserPubadsWrapperTests.swift; sourceTree = "<group>"; };
-		A927D2CA22043CB500272F70 /* VastTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastTrackerTests.swift; sourceTree = "<group>"; };
+		A927D2CA22043CB500272F70 /* VastTrackerTest+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VastTrackerTest+extensions.swift"; sourceTree = "<group>"; };
+		A927D2CD220474A600272F70 /* VastTrackerDelegateSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastTrackerDelegateSpy.swift; sourceTree = "<group>"; };
+		A927D2CF220474C900272F70 /* VastTrackerNoncumulativeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastTrackerNoncumulativeTests.swift; sourceTree = "<group>"; };
+		A927D2D1220474FF00272F70 /* VastTrackerAccumulativeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastTrackerAccumulativeTests.swift; sourceTree = "<group>"; };
+		A927D2D42204751F00272F70 /* VastTrackerNoncumulativeStartTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastTrackerNoncumulativeStartTests.swift; sourceTree = "<group>"; };
+		A927D2D62204753600272F70 /* VastTrackerCumulativeStartTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastTrackerCumulativeStartTests.swift; sourceTree = "<group>"; };
 		A945EDE8219C5C100007A079 /* VastCreativeParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastCreativeParameter.swift; sourceTree = "<group>"; };
 		A945EDEA219C5C100007A079 /* VastModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastModel.swift; sourceTree = "<group>"; };
 		A945EDEB219C5C100007A079 /* VastSurvey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VastSurvey.swift; sourceTree = "<group>"; };
@@ -284,11 +294,11 @@
 		0F7B978C2077CB340096438D /* VastClientTests */ = {
 			isa = PBXGroup;
 			children = (
+				A927D2CC2204749200272F70 /* VastTracker */,
 				A945EE36219C5C9E0007A079 /* Assets */,
 				A945EE34219C5C990007A079 /* VastXMLParserTests.swift */,
 				0F7B978F2077CB340096438D /* Info.plist */,
 				A91F508121A437EB0062198F /* VastXMLParserPubadsWrapperTests.swift */,
-				A927D2CA22043CB500272F70 /* VastTrackerTests.swift */,
 			);
 			path = VastClientTests;
 			sourceTree = "<group>";
@@ -340,6 +350,19 @@
 				A91F507F21A432CF0062198F /* Pubads_Inline_Model-test.xml */,
 			);
 			path = "Pubads wrapper";
+			sourceTree = "<group>";
+		};
+		A927D2CC2204749200272F70 /* VastTracker */ = {
+			isa = PBXGroup;
+			children = (
+				A927D2CA22043CB500272F70 /* VastTrackerTest+extensions.swift */,
+				A927D2CD220474A600272F70 /* VastTrackerDelegateSpy.swift */,
+				A927D2CF220474C900272F70 /* VastTrackerNoncumulativeTests.swift */,
+				A927D2D1220474FF00272F70 /* VastTrackerAccumulativeTests.swift */,
+				A927D2D42204751F00272F70 /* VastTrackerNoncumulativeStartTests.swift */,
+				A927D2D62204753600272F70 /* VastTrackerCumulativeStartTests.swift */,
+			);
+			path = VastTracker;
 			sourceTree = "<group>";
 		};
 		A945EDE7219C5C100007A079 /* models */ = {
@@ -664,13 +687,16 @@
 				A945EE5E219C5C9F0007A079 /* NoWrapperTag-test.swift in Sources */,
 				A945EE6E219C5C9F0007A079 /* InlineLinearTag-test.swift in Sources */,
 				A91F507C21A432910062198F /* PubadsInlineModel-test.swift in Sources */,
+				A927D2D2220474FF00272F70 /* VastTrackerAccumulativeTests.swift in Sources */,
 				A91F507821A432750062198F /* PubadsModel-test.swift in Sources */,
-				A927D2CB22043CB500272F70 /* VastTrackerTests.swift in Sources */,
+				A927D2CB22043CB500272F70 /* VastTrackerTest+extensions.swift in Sources */,
 				A945EE35219C5C990007A079 /* VastXMLParserTests.swift in Sources */,
 				A91F508221A437EB0062198F /* VastXMLParserPubadsWrapperTests.swift in Sources */,
 				A981D9FD21BEB01800018FD8 /* InlineLinearIcons-test.swift in Sources */,
 				A9A3FFB821BA5CBE008DB5D6 /* FullVast4-test.swift in Sources */,
 				A945EE5A219C5C9F0007A079 /* AdVerification-test.swift in Sources */,
+				A927D2CE220474A600272F70 /* VastTrackerDelegateSpy.swift in Sources */,
+				A927D2D52204751F00272F70 /* VastTrackerNoncumulativeStartTests.swift in Sources */,
 				A945EE69219C5C9F0007A079 /* WrapperTag-test.swift in Sources */,
 				A945EE66219C5C9F0007A079 /* VideoClicksAndClickTracking-Inline-test.swift in Sources */,
 				A945EE6F219C5C9F0007A079 /* EventTracking-test3.swift in Sources */,
@@ -678,6 +704,8 @@
 				A945EE74219C5C9F0007A079 /* VideoClicksAndClickTrackingInline-test3.swift in Sources */,
 				A945EE71219C5C9F0007A079 /* WrapperTag-test3.swift in Sources */,
 				A945EE64219C5C9F0007A079 /* ReadyToServerMediaFilesCheck-test.swift in Sources */,
+				A927D2D72204753600272F70 /* VastTrackerCumulativeStartTests.swift in Sources */,
+				A927D2D0220474C900272F70 /* VastTrackerNoncumulativeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

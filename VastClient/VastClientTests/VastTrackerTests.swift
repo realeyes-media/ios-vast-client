@@ -64,6 +64,10 @@ class VastTrackerDelegateSpy: VastTrackerDelegate {
     }
 }
 
+/** Midroll test case scenario
+ 
+ When using non cumulative tracking but you need to adjust start time, because the ad is starting during the main content, you should always add the start time to ad playback updateProgress(time:) method
+ */
 class VastTrackerNoncumulativeStartTests: XCTestCase {
     var vastTracker: VastTracker!
     var deleagteSpy: VastTrackerDelegateSpy!
@@ -124,6 +128,10 @@ class VastTrackerNoncumulativeStartTests: XCTestCase {
     }
 }
 
+/** Midroll test case scenario
+ 
+ When using cumulative tracking but you need to adjust start time, because the ad is starting during the main content.
+ */
 class VastTrackerCumulativeStartTests: XCTestCase {
     var vastTracker: VastTracker!
     var deleagteSpy: VastTrackerDelegateSpy!
@@ -184,7 +192,10 @@ class VastTrackerCumulativeStartTests: XCTestCase {
     }
 }
 
-
+/** Preroll test case scenario with non-cumulative tracker
+ 
+ - each ads progress starts at time 0
+ */
 class VastTrackerNoncumulativeTests: XCTestCase {
     
     var vastTracker: VastTracker!
@@ -331,6 +342,12 @@ class VastTrackerNoncumulativeTests: XCTestCase {
     }
 }
 
+/** Preroll test case scenario with cumulative tracker
+ 
+ - you are tracking the compelte time in host application
+ - first ad starts at 0
+ - next ad starts after but you track the progress including the progress from first ad
+ */
 class VastTrackerAccumulativeTests: XCTestCase {
     
     var vastTracker: VastTracker!

@@ -35,23 +35,31 @@ public class VastTracker {
     public let id: String
     public let vastModel: VastModel
     public let totalAds: Int
+    
+    @available(*, message: "do not use VastTracker for storing this model, it is not being used")
     private var vmapModel: VMAPModel?
-    private var vmapAdBreak: VMAPAdBreak?
 
     private var trackingStatus: TrackingStatus = .unknown
     private let startTime: Double
     private var currentTime = 0.0
-    private var playhead: Double {
-        get {
+    private var comparisonTime: Double {
+        if trackProgressCumulatively {
+            // playhead
             return max(0.0, floor(currentTime - startTime - completedAdAccumulatedDuration))
+        } else {
+            return currentTime - startTime
         }
     }
     private var vastAds: [VastAd]
     private let trackerModel: TrackerModel
     private var completedAdAccumulatedDuration = 0.0
     private var currentTrackingCreative: TrackingCreative?
-
-    public init(id: String, vastModel: VastModel, startTime: Double, supportAdBuffets: Bool = false, delegate: VastTrackerDelegate? = nil) {
+    
+    private var adBreakStarted = false
+    private let trackProgressCumulatively: Bool
+    
+    
+    public init(id: String, vastModel: VastModel, startTime: Double = 0.0, supportAdBuffets: Bool = false, delegate: VastTrackerDelegate? = nil, trackProgressCumulatively: Bool = true) {
         self.id = id
         self.startTime = startTime
         self.vastModel = vastModel
@@ -60,11 +68,11 @@ public class VastTracker {
         self.trackingStatus = .tracking
         self.delegate = delegate
         self.totalAds = self.vastAds.count
-        
-        // FIXME: this will not work correctly for convenience init and also, ad break for VMAP with multiple ad breaks and time offsets will also not work as expected
-        delegate?.adBreakStart(vastTracker: self)
+        self.trackProgressCumulatively = trackProgressCumulatively
     }
     
+    // TODO: this should be removed in the future. Please, store the VMAPModel elsewhere and initialize this class with only one VastModel
+    @available(*, message: "Use init(id:,vastModel:) instead")
     public convenience init(id: String, vmapModel: VMAPModel, breakId: String, startTime: Double, supportAdBuffets: Bool = false, delegate: VastTrackerDelegate? = nil) throws {
         guard let adBreak = vmapModel.adBreaks.first(where: { $0.breakId == breakId }), let vastModel = adBreak.adSource?.vastAdData else {
             throw TrackingError.MissingAdBreak
@@ -125,7 +133,7 @@ public class VastTracker {
             throw TrackingError.unableToUpdateProgress(msg: message)
         }
         currentTime = time
-
+        
         if trackingStatus == .paused {
             // TODO: vast resume
             trackingStatus = .tracking
@@ -174,49 +182,53 @@ public class VastTracker {
             creative.callTrackingUrls(progressUrls)
         }
 
-        guard playhead < creative.duration else {
+        guard comparisonTime < creative.duration else {
             return
         }
         
-        // FIXME: this will possibly track start of ad even for ad that has time offset and should not be starting for some time
+        guard currentTime >= startTime else {
+            return
+        }
+        
+        if !adBreakStarted {
+            adBreakStarted = true
+            delegate?.adBreakStart(vastTracker: self)
+        }
+        
         if !creative.trackedStart {
             creative.trackedStart = true
             
             let impressions = creative.vastAd.impressions.filter { $0.url != nil }.map { $0.url! }
             let trackingUrls = creative.creative.trackingEvents
-                .filter { ($0.type == .creativeView || $0.type == .start) && $0.url != nil }
-                .map { $0.url! }
+                .filter { ($0.type == .creativeView || $0.type == .start) }
+                .compactMap { $0.url }
             creative.callTrackingUrls(impressions + trackingUrls)
             delegate?.adStart(vastTracker: self, ad: creative.vastAd)
         }
         
-        if playhead > creative.firstQuartile && playhead < creative.midpoint {
-            if !creative.trackedFirstQuartile {
-                creative.trackedFirstQuartile = true
-                let trackingUrls = creative.creative.trackingEvents
-                    .filter { $0.type == .firstQuartile && $0.url != nil }
-                    .map { $0.url! }
-                creative.callTrackingUrls(trackingUrls)
-                delegate?.adFirstQuartile(vastTracker: self, ad: creative.vastAd)
-            }
-        } else if playhead > creative.midpoint && playhead < creative.thirdQuartile {
-            if !creative.trackedMidpoint {
-                creative.trackedMidpoint = true
-                let trackingUrls = creative.creative.trackingEvents
-                    .filter { $0.type == .midpoint && $0.url != nil }
-                    .map { $0.url! }
-                creative.callTrackingUrls(trackingUrls)
-                delegate?.adMidpoint(vastTracker: self, ad: creative.vastAd)
-            }
-        } else if playhead > creative.thirdQuartile && playhead < creative.duration {
-            if !creative.trackedThirdQuartile {
-                creative.trackedThirdQuartile = true
-                let trackingUrls = creative.creative.trackingEvents
-                    .filter { $0.type == .thirdQuartile && $0.url != nil }
-                    .map { $0.url! }
-                creative.callTrackingUrls(trackingUrls)
-                delegate?.adThirdQuartile(vastTracker: self, ad: creative.vastAd)
-            }
+        if comparisonTime >= creative.firstQuartile, comparisonTime <= creative.midpoint, !creative.trackedFirstQuartile {
+            creative.trackedFirstQuartile = true
+            let trackingUrls = creative.creative.trackingEvents
+                .filter { $0.type == .firstQuartile }
+                .compactMap { $0.url }
+            creative.callTrackingUrls(trackingUrls)
+            delegate?.adFirstQuartile(vastTracker: self, ad: creative.vastAd)
+        }
+        if comparisonTime >= creative.midpoint, comparisonTime <= creative.thirdQuartile, !creative.trackedMidpoint {
+            creative.trackedMidpoint = true
+            let trackingUrls = creative.creative.trackingEvents
+                .filter { $0.type == .midpoint }
+                .compactMap { $0.url }
+            creative.callTrackingUrls(trackingUrls)
+            delegate?.adMidpoint(vastTracker: self, ad: creative.vastAd)
+        }
+        if comparisonTime >= creative.thirdQuartile, comparisonTime <= creative.duration, !creative.trackedThirdQuartile {
+            creative.trackedThirdQuartile = true
+            let trackingUrls = creative.creative.trackingEvents
+                .filter { $0.type == .thirdQuartile }
+                .compactMap { $0.url }
+            creative.callTrackingUrls(trackingUrls)
+            delegate?.adThirdQuartile(vastTracker: self, ad: creative.vastAd)
         }
         
         currentTrackingCreative = creative
@@ -298,7 +310,11 @@ public class VastTracker {
         vastAds.removeFirst()
         currentTrackingCreative = nil
         if vastAds.count > 0 {
-            try updateProgress(time: 0.0) // FIXME: THIS MIGHT BE WRONG WHEN PLAYHEAD IS USED
+            if trackProgressCumulatively {
+                try updateProgress(time: currentTime)
+            } else {
+                try updateProgress(time: 0.0)
+            }
         } else {
             trackingStatus = .complete
             delegate?.adBreakComplete(vastTracker: self)
@@ -307,7 +323,7 @@ public class VastTracker {
 
     public func skip() throws {
         if let creative = currentTrackingCreative {
-            guard let skipOffset = creative.vastAd.creatives.first?.linear?.skipOffset?.toSeconds, skipOffset < playhead else {
+            guard let skipOffset = creative.vastAd.creatives.first?.linear?.skipOffset?.toSeconds, skipOffset < comparisonTime else {
                 throw TrackingError.unableToSkipAdAtThisTime
             }
             

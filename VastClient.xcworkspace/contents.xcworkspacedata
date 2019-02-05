@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/janbednar/Developer/ios-vast-client/VastClient/VastClientTests/Assets/Vast4/Pubads wrapper/Inline_linear_icons-test.xml">
-   </FileRef>
-   <FileRef
       location = "group:VastClientWrapper/VastClientWrapper.xcodeproj">
    </FileRef>
    <FileRef

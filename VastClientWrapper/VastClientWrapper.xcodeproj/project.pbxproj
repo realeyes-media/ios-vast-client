@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0F442F9520AB3BEA00303767 /* VastExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F442F9420AB3BEA00303767 /* VastExample.swift */; };
-		0F71436320BDB7FD0029BBB6 /* VastClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F71436220BDB7FD0029BBB6 /* VastClient.framework */; };
-		0F71436420BDB7FD0029BBB6 /* VastClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0F71436220BDB7FD0029BBB6 /* VastClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0F7AF071211B55F6000AD5BB /* VMAPExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF070211B55F6000AD5BB /* VMAPExample.swift */; };
 		0F7B97A62077CB680096438D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97A52077CB680096438D /* AppDelegate.swift */; };
 		0F7B97A82077CB680096438D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97A72077CB680096438D /* ViewController.swift */; };
@@ -17,6 +15,8 @@
 		0F7B97AD2077CB680096438D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F7B97AC2077CB680096438D /* Assets.xcassets */; };
 		0F7B97B02077CB680096438D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7B97AE2077CB680096438D /* LaunchScreen.storyboard */; };
 		0FC7274120AB2CC500A59256 /* timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC7274020AB2CC500A59256 /* timer.swift */; };
+		C7D2FE19220A48E20077B7DE /* VastClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7D2FE18220A48E20077B7DE /* VastClient.framework */; };
+		C7D2FE1A220A48E20077B7DE /* VastClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C7D2FE18220A48E20077B7DE /* VastClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,7 +26,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0F71436420BDB7FD0029BBB6 /* VastClient.framework in Embed Frameworks */,
+				C7D2FE1A220A48E20077B7DE /* VastClient.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -35,8 +35,6 @@
 
 /* Begin PBXFileReference section */
 		0F442F9420AB3BEA00303767 /* VastExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastExample.swift; sourceTree = "<group>"; };
-		0F612AF520ADDB9A00F2C519 /* VastClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VastClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F71436220BDB7FD0029BBB6 /* VastClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VastClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F7AF070211B55F6000AD5BB /* VMAPExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMAPExample.swift; sourceTree = "<group>"; };
 		0F7B97A22077CB680096438D /* VastClientWrapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VastClientWrapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F7B97A52077CB680096438D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,8 +43,9 @@
 		0F7B97AC2077CB680096438D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F7B97AF2077CB680096438D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F7B97B12077CB680096438D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0F7B97B92077D35E0096438D /* VastClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VastClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FC7274020AB2CC500A59256 /* timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timer.swift; sourceTree = "<group>"; };
+		C7D2FE17220A48DA0077B7DE /* VastClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VastClient.framework; path = "../../../../Library/Developer/Xcode/DerivedData/VastClient-agndgsvbaxaiinfezbrnqvcmypym/Build/Products/Debug-iphoneos/VastClient.framework"; sourceTree = "<group>"; };
+		C7D2FE18220A48E20077B7DE /* VastClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VastClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F71436320BDB7FD0029BBB6 /* VastClient.framework in Frameworks */,
+				C7D2FE19220A48E20077B7DE /* VastClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,7 +63,7 @@
 		0F7B97992077CB680096438D = {
 			isa = PBXGroup;
 			children = (
-				0F71436220BDB7FD0029BBB6 /* VastClient.framework */,
+				C7D2FE18220A48E20077B7DE /* VastClient.framework */,
 				0F7B97A42077CB680096438D /* VastClientWrapper */,
 				0F7B97A32077CB680096438D /* Products */,
 				0F7B97B72077D35E0096438D /* Frameworks */,
@@ -98,8 +97,7 @@
 		0F7B97B72077D35E0096438D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0F612AF520ADDB9A00F2C519 /* VastClient.framework */,
-				0F7B97B92077D35E0096438D /* VastClient.framework */,
+				C7D2FE17220A48DA0077B7DE /* VastClient.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

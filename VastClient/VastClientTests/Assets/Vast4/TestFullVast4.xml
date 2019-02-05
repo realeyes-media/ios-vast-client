@@ -1,0 +1,433 @@
+<VAST version="4.0" xmlns="http://www.iab.com/VAST">
+    <Ad conditionalAd="false" id="AdId1" sequence="1">
+        <Wrapper allowMultipleAds="true" fallbackOnNoAd="false" followAdditionalWrappers="true">
+            <AdSystem version="1.0">AdSystem1</AdSystem>
+            
+            <Error>http://example.com/error1</Error>
+            <Error><![CDATA[http://example.com/error2]]></Error>
+            
+            <Extensions>
+                <Extension type="ExtensionType1">
+                    <any>any11</any>
+                    <any>any12</any>
+                </Extension>
+                <Extension type="ExtensionType2">
+                    <any>any21</any>
+                    <any>any22</any>
+                </Extension>
+            </Extensions>
+            
+            <Impression id="ImpressionId1">http://example.com/track/impression1</Impression>
+            <Impression id="ImpressionId2">http://example.com/track/impression2</Impression>
+            
+            <Pricing currency="EUR" model="CPC">10</Pricing>
+            
+            <ViewableImpression id="ViewableImpressionId1">
+                <Viewable>http://example.com/track/viewable1</Viewable>
+                <Viewable><![CDATA[http://example.com/track/viewable2]]></Viewable>
+                <NotViewable>http://example.com/track/notViewable1</NotViewable>
+                <NotViewable><![CDATA[http://example.com/track/notViewable2]]></NotViewable>
+                <ViewUndetermined>http://example.com/track/viewUndetermined1</ViewUndetermined>
+                <ViewUndetermined><![CDATA[http://example.com/track/viewUndetermined2]]></ViewUndetermined>
+            </ViewableImpression>
+            
+            <AdVerifications>
+                <Verification vendor="http://vendor1.com">
+                    <ViewableImpression id="VerificationViewableImpression1">http://example.com/track/VerificationViewableImpression1</ViewableImpression>
+                </Verification>
+                <Verification vendor="http://vendor2.com">
+                    <ViewableImpression id="VerificationViewableImpression2"><![CDATA[http://example.com/track/VerificationViewableImpression2]]></ViewableImpression>
+                </Verification>
+            </AdVerifications>
+            
+            <Creatives>
+                <Creative adId="CreativeAdId1" apiFramework="CreativeApiFramework1" id="CreativeId1" sequence="1">
+                    
+                    <CompanionAds required="none">
+                        <Companion adSlotID="AdSlot1" apiFramework="CompanionApiFramework1" assetHeight="51" assetWidth="201" expandedHeight="52" expandedWidth="202" height="50" id="CompanionId1" pxratio="1" width="200">
+                            <HTMLResource>http://example.com/HTMLResource1</HTMLResource>
+                            <HTMLResource>http://example.com/HTMLResource2</HTMLResource>
+                            <IFrameResource>http://example.com/IFrameResource1</IFrameResource>
+                            <IFrameResource>http://example.com/IFrameResource2</IFrameResource>
+                            <StaticResource creativeType="StaticResourceCreativeType1">http://example.com/StaticResource1</StaticResource>
+                            <StaticResource creativeType="StaticResourceCreativeType2">http://example.com/StaticResource2</StaticResource>
+                            <AdParameters xmlEncoded="true">http://example.com/AdParameters1</AdParameters>
+                            <AltText>AltText1</AltText>
+                            <CompanionClickThrough>http://example.com/track/CompanionClickThrough1</CompanionClickThrough>
+                            <CompanionClickTracking id="CompanionClickTrackingId1">http://example.com/track/CompanionClickTracking1</CompanionClickTracking>
+                            <CompanionClickTracking id="CompanionClickTrackingId2"><![CDATA[http://example.com/track/CompanionClickTracking2]]></CompanionClickTracking>
+                            <TrackingEvents>
+                                <Tracking offset="00:00:01" event="mute">http://example.com/track/mute</Tracking>
+                                <Tracking offset="00:00:02" event="unmute">http://example.com/track/unmute</Tracking>
+                                <Tracking offset="00:00:03" event="pause">http://example.com/track/pause</Tracking>
+                                <Tracking offset="00:00:04" event="resume">http://example.com/track/resume</Tracking>
+                                <Tracking offset="00:00:05" event="rewind">http://example.com/track/rewind</Tracking>
+                                <Tracking offset="00:00:06" event="skip">http://example.com/track/skip</Tracking>
+                                <Tracking offset="00:00:07" event="playerExpand">http://example.com/track/playerExpand</Tracking>
+                                <Tracking offset="00:00:08" event="playerCollapse">http://example.com/track/playerCollapse</Tracking>
+                                <Tracking offset="00:00:09" event="acceptInvitationLinear">http://example.com/track/acceptInvitationLinear</Tracking>
+                                <Tracking offset="00:00:10" event="timeSpentViewing">http://example.com/track/timeSpentViewing</Tracking>
+                                <Tracking offset="00:00:11" event="progress">http://example.com/track/progress</Tracking>
+                                <Tracking offset="00:00:12" event="creativeView">http://example.com/track/creativeView</Tracking>
+                                <Tracking offset="00:00:13" event="acceptInvitation">http://example.com/track/acceptInvitation</Tracking>
+                                <Tracking offset="00:00:14" event="adExpand">http://example.com/track/adExpand</Tracking>
+                                <Tracking offset="00:00:15" event="adCollapse">http://example.com/track/adCollapse</Tracking>
+                                <Tracking offset="00:00:16" event="minimize">http://example.com/track/minimize</Tracking>
+                                <Tracking offset="00:00:17" event="close">http://example.com/track/close</Tracking>
+                                <Tracking offset="00:00:18" event="overlayViewDuration">http://example.com/track/overlayViewDuration</Tracking>
+                                <Tracking offset="00:00:19" event="otherAdInteraction">http://example.com/track/otherAdInteraction</Tracking>
+                                <Tracking offset="00:01:01" event="start">http://example.com/track/start</Tracking>
+                                <Tracking offset="00:01:02" event="firstQuartile">http://example.com/track/firstQuartile</Tracking>
+                                <Tracking offset="00:01:03" event="midpoint">http://example.com/track/midpoint</Tracking>
+                                <Tracking offset="00:01:04" event="thirdQuartile">http://example.com/track/thirdQuartile</Tracking>
+                                <Tracking offset="00:01:05" event="complete">http://example.com/track/complete</Tracking>
+                            </TrackingEvents>
+                        </Companion>
+                        <Companion width="55" height="205" id="CompanionId2">
+                        </Companion>
+                    </CompanionAds>
+                    
+                    <Linear skipoffset="00:00:10">
+                        <Icons>
+                            <Icon apiFramework="IconApiFramework1" duration="00:00:05" height="10" offset="00:00:06" program="program" pxratio="1.1" width="11" xPosition="20" yPosition="21">
+                                <HTMLResource>http://example.com/HTMLResource3</HTMLResource>
+                                <HTMLResource>http://example.com/HTMLResource4</HTMLResource>
+                                <IFrameResource>http://example.com/IFrameResource3</IFrameResource>
+                                <IFrameResource>http://example.com/IFrameResource4</IFrameResource>
+                                <StaticResource creativeType="StaticResourceCreativeType3">http://example.com/StaticResource3</StaticResource>
+                                <StaticResource creativeType="StaticResourceCreativeType4">http://example.com/StaticResource4</StaticResource>
+                                <IconClicks>
+                                    <IconClickThrough>http://example.com/track/IconClickThrough1</IconClickThrough>
+                                    <IconClickTracking id="IconClickTrackingId3">http://example.com/track/IconClickTracking3</IconClickTracking>
+                                    <IconClickTracking id="IconClickTrackingId4"><![CDATA[http://example.com/track/IconClickTracking4]]></IconClickTracking>
+                                </IconClicks>
+                                <IconViewTracking>http://example.com/track/IconViewTracking3</IconViewTracking>
+                                <IconViewTracking><![CDATA[http://example.com/track/IconViewTracking4]]></IconViewTracking>
+                            </Icon>
+                        </Icons>
+                        <TrackingEvents>
+                            <Tracking offset="01:00:01" event="mute">http://example.com/track/mute1</Tracking>
+                            <Tracking offset="01:00:02" event="unmute">http://example.com/track/unmute1</Tracking>
+                            <Tracking offset="01:00:03" event="pause">http://example.com/track/pause1</Tracking>
+                            <Tracking offset="01:00:04" event="resume">http://example.com/track/resume1</Tracking>
+                            <Tracking offset="01:00:05" event="rewind">http://example.com/track/rewind1</Tracking>
+                            <Tracking offset="01:00:06" event="skip">http://example.com/track/skip1</Tracking>
+                            <Tracking offset="01:00:07" event="playerExpand">http://example.com/track/playerExpand1</Tracking>
+                            <Tracking offset="01:00:08" event="playerCollapse">http://example.com/track/playerCollapse1</Tracking>
+                            <Tracking offset="01:00:09" event="acceptInvitationLinear">http://example.com/track/acceptInvitationLinear1</Tracking>
+                            <Tracking offset="01:00:10" event="timeSpentViewing">http://example.com/track/timeSpentViewing1</Tracking>
+                            <Tracking offset="01:00:11" event="progress">http://example.com/track/progress1</Tracking>
+                            <Tracking offset="01:00:12" event="creativeView">http://example.com/track/creativeView1</Tracking>
+                            <Tracking offset="01:00:13" event="acceptInvitation">http://example.com/track/acceptInvitation1</Tracking>
+                            <Tracking offset="01:00:14" event="adExpand">http://example.com/track/adExpand1</Tracking>
+                            <Tracking offset="01:00:15" event="adCollapse">http://example.com/track/adCollapse1</Tracking>
+                            <Tracking offset="01:00:16" event="minimize">http://example.com/track/minimize1</Tracking>
+                            <Tracking offset="01:00:17" event="close">http://example.com/track/close1</Tracking>
+                            <Tracking offset="01:00:18" event="overlayViewDuration">http://example.com/track/overlayViewDuration1</Tracking>
+                            <Tracking offset="01:00:19" event="otherAdInteraction">http://example.com/track/otherAdInteraction1</Tracking>
+                            <Tracking offset="01:01:01" event="start">http://example.com/track/start1</Tracking>
+                            <Tracking offset="01:01:02" event="firstQuartile">http://example.com/track/firstQuartile1</Tracking>
+                            <Tracking offset="01:01:03" event="midpoint">http://example.com/track/midpoint1</Tracking>
+                            <Tracking offset="01:01:04" event="thirdQuartile">http://example.com/track/thirdQuartile1</Tracking>
+                            <Tracking offset="01:01:05" event="complete">http://example.com/track/complete1</Tracking>
+                        </TrackingEvents>
+                        <VideoClicks>
+                            <ClickTracking id="VideoClickTrackingId1">http://example.com/track/VideoClickTracking1</ClickTracking>
+                            <ClickTracking id="VideoClickTrackingId2"><![CDATA[http://example.com/track/VideoClickTracking2]]></ClickTracking>
+                            <CustomClick id="VideoCustomClick1">http://example.com/track/VideoCustomClick1</CustomClick>
+                            <CustomClick id="VideoCustomClick2"><![CDATA[http://example.com/track/VideoCustomClick2]]></CustomClick>
+                        </VideoClicks>
+                    </Linear>
+                    
+                </Creative>
+                <Creative adId="CreativeAdId2" apiFramework="CreativeApiFramework2" id="CreativeId2" sequence="2">
+                    
+                    <NonLinearAds>
+                        <TrackingEvents>
+                            <Tracking offset="02:00:01" event="mute">http://example.com/track/mute2</Tracking>
+                            <Tracking offset="02:00:02" event="unmute">http://example.com/track/unmute2</Tracking>
+                            <Tracking offset="02:00:03" event="pause">http://example.com/track/pause2</Tracking>
+                            <Tracking offset="02:00:04" event="resume">http://example.com/track/resume2</Tracking>
+                            <Tracking offset="02:00:05" event="rewind">http://example.com/track/rewind2</Tracking>
+                            <Tracking offset="02:00:06" event="skip">http://example.com/track/skip2</Tracking>
+                            <Tracking offset="02:00:07" event="playerExpand">http://example.com/track/playerExpand2</Tracking>
+                            <Tracking offset="02:00:08" event="playerCollapse">http://example.com/track/playerCollapse2</Tracking>
+                            <Tracking offset="02:00:09" event="acceptInvitationLinear">http://example.com/track/acceptInvitationLinear2</Tracking>
+                            <Tracking offset="02:00:10" event="timeSpentViewing">http://example.com/track/timeSpentViewing2</Tracking>
+                            <Tracking offset="02:00:11" event="progress">http://example.com/track/progress2</Tracking>
+                            <Tracking offset="02:00:12" event="creativeView">http://example.com/track/creativeView2</Tracking>
+                            <Tracking offset="02:00:13" event="acceptInvitation">http://example.com/track/acceptInvitation2</Tracking>
+                            <Tracking offset="02:00:14" event="adExpand">http://example.com/track/adExpand2</Tracking>
+                            <Tracking offset="02:00:15" event="adCollapse">http://example.com/track/adCollapse2</Tracking>
+                            <Tracking offset="02:00:16" event="minimize">http://example.com/track/minimize2</Tracking>
+                            <Tracking offset="02:00:17" event="close">http://example.com/track/close2</Tracking>
+                            <Tracking offset="02:00:18" event="overlayViewDuration">http://example.com/track/overlayViewDuration2</Tracking>
+                            <Tracking offset="02:00:19" event="otherAdInteraction">http://example.com/track/otherAdInteraction2</Tracking>
+                            <Tracking offset="02:01:01" event="start">http://example.com/track/start2</Tracking>
+                            <Tracking offset="02:01:02" event="firstQuartile">http://example.com/track/firstQuartile2</Tracking>
+                            <Tracking offset="02:01:03" event="midpoint">http://example.com/track/midpoint2</Tracking>
+                            <Tracking offset="02:01:04" event="thirdQuartile">http://example.com/track/thirdQuartile2</Tracking>
+                            <Tracking offset="02:01:05" event="complete">http://example.com/track/complete2</Tracking>
+                        </TrackingEvents>
+                        <NonLinear>
+                            <NonLinearClickTracking id="NonLinearClickTrackingId1">http://example.com/track/NonLinearClickTracking1</NonLinearClickTracking>
+                        </NonLinear>
+                        <NonLinear>
+                            <NonLinearClickTracking id="NonLinearClickTrackingId2"><![CDATA[http://example.com/track/NonLinearClickTracking2]]></NonLinearClickTracking>
+                        </NonLinear>
+                    </NonLinearAds>
+                    
+                </Creative>
+            </Creatives>
+            <VASTAdTagURI>http://example.com/VASTAdTagURI</VASTAdTagURI>
+        </Wrapper>
+    </Ad>
+    
+    <Ad conditionalAd="true" id="AdId2" sequence="2">
+        <InLine>
+            <AdSystem version="2.0">AdSystem2</AdSystem>
+            
+            <Error>http://example.com/error3</Error>
+            <Error><![CDATA[http://example.com/error4]]></Error>
+            
+            <Extensions>
+                <Extension type="ExtensionType3">
+                    <any>any51</any>
+                    <any>any52</any>
+                </Extension>
+                <Extension type="ExtensionType4">
+                    <any>any61</any>
+                    <any>any62</any>
+                </Extension>
+            </Extensions>
+            
+            <Impression id="ImpressionId3">http://example.com/track/impression3</Impression>
+            <Impression id="ImpressionId4">http://example.com/track/impression4</Impression>
+            
+            <Pricing model="cpm" currency="CZK">99.90</Pricing>
+            
+            <ViewableImpression id="ViewableImpressionId2">
+                <Viewable>http://example.com/track/viewable3</Viewable>
+                <Viewable><![CDATA[http://example.com/track/viewable4]]></Viewable>
+                <NotViewable>http://example.com/track/notViewable3</NotViewable>
+                <NotViewable><![CDATA[http://example.com/track/notViewable4]]></NotViewable>
+                <ViewUndetermined>http://example.com/track/viewUndetermined3</ViewUndetermined>
+                <ViewUndetermined><![CDATA[http://example.com/track/viewUndetermined4]]></ViewUndetermined>
+            </ViewableImpression>
+            
+            <AdTitle>AdTitle</AdTitle>
+            
+            <AdVerifications>
+                <Verification vendor="http://vendor3.com">
+                    <FlashResource apiFramework="FlashResourceApiFramework1">http://example.com/track/FlashResource1</FlashResource>
+                    <FlashResource apiFramework="FlashResourceApiFramework2">http://example.com/track/FlashResource2</FlashResource>
+                    <JavaScriptResource apiFramework="JavaScriptResourceApiFramework1">http://example.com/track/JavaScriptResource1</JavaScriptResource>
+                    <JavaScriptResource apiFramework="JavaScriptResourceApiFramework2">http://example.com/track/JavaScriptResource2</JavaScriptResource>
+                    <ViewableImpression id="VerificationViewableImpression3">http://example.com/track/VerificationViewableImpression3</ViewableImpression>
+                </Verification>
+                <Verification vendor="http://vendor4.com">
+                    <FlashResource apiFramework="FlashResourceApiFramework3">http://example.com/track/FlashResource3</FlashResource>
+                    <FlashResource apiFramework="FlashResourceApiFramework4">http://example.com/track/FlashResource4</FlashResource>
+                    <JavaScriptResource apiFramework="JavaScriptResourceApiFramework3">http://example.com/track/JavaScriptResource3</JavaScriptResource>
+                    <JavaScriptResource apiFramework="JavaScriptResourceApiFramework4">http://example.com/track/JavaScriptResource4</JavaScriptResource>
+                    <ViewableImpression id="VerificationViewableImpression4">http://example.com/track/VerificationViewableImpression4</ViewableImpression>
+                </Verification>
+            </AdVerifications>
+            
+            <Advertiser>Advertiser</Advertiser>
+            
+            <Category authority="CategoryAuthority1">Category1</Category>
+            <Category authority="CategoryAuthority2">Category2</Category>
+            
+            <Creatives>
+                <Creative adId="CreativeAdId3" apiFramework="CreativeApiFramework3" id="CreativeId3" sequence="3">
+                    
+                    <CompanionAds required="any">
+                        <Companion adSlotID="AdSlot3" apiFramework="CompanionApiFramework3" assetHeight="351" assetWidth="3201" expandedHeight="352" expandedWidth="3202" height="350" id="CompanionId3" pxratio="1.3" width="3200">
+                            <HTMLResource>http://example.com/HTMLResource5</HTMLResource>
+                            <HTMLResource>http://example.com/HTMLResource6</HTMLResource>
+                            <IFrameResource>http://example.com/IFrameResource5</IFrameResource>
+                            <IFrameResource>http://example.com/IFrameResource6</IFrameResource>
+                            <StaticResource creativeType="StaticResourceCreativeType5">http://example.com/StaticResource5</StaticResource>
+                            <StaticResource creativeType="StaticResourceCreativeType6">http://example.com/StaticResource6</StaticResource>
+                            <AdParameters xmlEncoded="true">http://example.com/AdParameters2</AdParameters>
+                            <AltText>AltText2</AltText>
+                            <CompanionClickThrough>http://example.com/track/CompanionClickThrough2</CompanionClickThrough>
+                            <CompanionClickTracking id="CompanionClickTrackingId3">http://example.com/track/CompanionClickTracking3</CompanionClickTracking>
+                            <CompanionClickTracking id="CompanionClickTrackingId4"><![CDATA[http://example.com/track/CompanionClickTracking4]]></CompanionClickTracking>
+                            <TrackingEvents>
+                                <Tracking offset="03:00:01" event="mute">http://example.com/track/mute3</Tracking>
+                                <Tracking offset="03:00:02" event="unmute">http://example.com/track/unmute3</Tracking>
+                                <Tracking offset="03:00:03" event="pause">http://example.com/track/pause3</Tracking>
+                                <Tracking offset="03:00:04" event="resume">http://example.com/track/resume3</Tracking>
+                                <Tracking offset="03:00:05" event="rewind">http://example.com/track/rewind3</Tracking>
+                                <Tracking offset="03:00:06" event="skip">http://example.com/track/skip3</Tracking>
+                                <Tracking offset="03:00:07" event="playerExpand">http://example.com/track/playerExpand3</Tracking>
+                                <Tracking offset="03:00:08" event="playerCollapse">http://example.com/track/playerCollapse3</Tracking>
+                                <Tracking offset="03:00:09" event="acceptInvitationLinear">http://example.com/track/acceptInvitationLinear3</Tracking>
+                                <Tracking offset="03:00:10" event="timeSpentViewing">http://example.com/track/timeSpentViewing3</Tracking>
+                                <Tracking offset="03:00:11" event="progress">http://example.com/track/progress3</Tracking>
+                                <Tracking offset="03:00:12" event="creativeView">http://example.com/track/creativeView3</Tracking>
+                                <Tracking offset="03:00:13" event="acceptInvitation">http://example.com/track/acceptInvitation3</Tracking>
+                                <Tracking offset="03:00:14" event="adExpand">http://example.com/track/adExpand3</Tracking>
+                                <Tracking offset="03:00:15" event="adCollapse">http://example.com/track/adCollapse3</Tracking>
+                                <Tracking offset="03:00:16" event="minimize">http://example.com/track/minimize3</Tracking>
+                                <Tracking offset="03:00:17" event="close">http://example.com/track/close3</Tracking>
+                                <Tracking offset="03:00:18" event="overlayViewDuration">http://example.com/track/overlayViewDuration3</Tracking>
+                                <Tracking offset="03:00:19" event="otherAdInteraction">http://example.com/track/otherAdInteraction3</Tracking>
+                                <Tracking offset="03:01:01" event="start">http://example.com/track/start3</Tracking>
+                                <Tracking offset="03:01:02" event="firstQuartile">http://example.com/track/firstQuartile3</Tracking>
+                                <Tracking offset="03:01:03" event="midpoint">http://example.com/track/midpoint3</Tracking>
+                                <Tracking offset="03:01:04" event="thirdQuartile">http://example.com/track/thirdQuartile3</Tracking>
+                                <Tracking offset="03:01:05" event="complete">http://example.com/track/complete3</Tracking>
+                            </TrackingEvents>
+                        </Companion>
+                        <Companion width="455" height="4205" id="CompanionId4">
+                        </Companion>
+                    </CompanionAds>
+                    
+                    <CreativeExtensions>
+                        <CreativeExtension type="CreativeExtensionType5">
+                            <any>any91</any>
+                            <any>any92</any>
+                        </CreativeExtension>
+                        <CreativeExtension type="CreativeExtensionType6">
+                            <any>any101</any>
+                            <any>any102</any>
+                        </CreativeExtension>
+                    </CreativeExtensions>
+                    
+                    <UniversalAdId idRegistry="unknown" idValue="unknown">UniversalAdId1</UniversalAdId>
+                    
+                </Creative>
+                
+                <Creative adId="CreativeAdId4" apiFramework="CreativeApiFramework4" id="CreativeId4" sequence="4">
+                    
+                    <Linear skipoffset="00:00:08">
+                        <Icons>
+                            <Icon apiFramework="IconApiFramework2" duration="00:02:05" height="210" offset="00:02:06" program="program2" pxratio="1.2" width="211" xPosition="220" yPosition="221">
+                                <HTMLResource>http://example.com/HTMLResource7</HTMLResource>
+                                <HTMLResource>http://example.com/HTMLResource8</HTMLResource>
+                                <IFrameResource>http://example.com/IFrameResource7</IFrameResource>
+                                <IFrameResource>http://example.com/IFrameResource8</IFrameResource>
+                                <StaticResource creativeType="StaticResourceCreativeType7">http://example.com/StaticResource7</StaticResource>
+                                <StaticResource creativeType="StaticResourceCreativeType8">http://example.com/StaticResource8</StaticResource>
+                                <IconClicks>
+                                    <IconClickThrough>http://example.com/track/IconClickThrough2</IconClickThrough>
+                                    <IconClickTracking id="IconClickTrackingId5">http://example.com/track/IconClickTracking5</IconClickTracking>
+                                    <IconClickTracking id="IconClickTrackingId6"><![CDATA[http://example.com/track/IconClickTracking6]]></IconClickTracking>
+                                </IconClicks>
+                                <IconViewTracking>http://example.com/track/IconViewTracking5</IconViewTracking>
+                                <IconViewTracking><![CDATA[http://example.com/track/IconViewTracking6]]></IconViewTracking>
+                            </Icon>
+                        </Icons>
+                        <TrackingEvents>
+                            <Tracking offset="04:00:01" event="mute">http://example.com/track/mute4</Tracking>
+                            <Tracking offset="04:00:02" event="unmute">http://example.com/track/unmute4</Tracking>
+                            <Tracking offset="04:00:03" event="pause">http://example.com/track/pause4</Tracking>
+                            <Tracking offset="04:00:04" event="resume">http://example.com/track/resume4</Tracking>
+                            <Tracking offset="04:00:05" event="rewind">http://example.com/track/rewind4</Tracking>
+                            <Tracking offset="04:00:06" event="skip">http://example.com/track/skip4</Tracking>
+                            <Tracking offset="04:00:07" event="playerExpand">http://example.com/track/playerExpand4</Tracking>
+                            <Tracking offset="04:00:08" event="playerCollapse">http://example.com/track/playerCollapse4</Tracking>
+                            <Tracking offset="04:00:09" event="acceptInvitationLinear">http://example.com/track/acceptInvitationLinear4</Tracking>
+                            <Tracking offset="04:00:10" event="timeSpentViewing">http://example.com/track/timeSpentViewing4</Tracking>
+                            <Tracking offset="04:00:11" event="progress">http://example.com/track/progress4</Tracking>
+                            <Tracking offset="04:00:12" event="creativeView">http://example.com/track/creativeView4</Tracking>
+                            <Tracking offset="04:00:13" event="acceptInvitation">http://example.com/track/acceptInvitation4</Tracking>
+                            <Tracking offset="04:00:14" event="adExpand">http://example.com/track/adExpand4</Tracking>
+                            <Tracking offset="04:00:15" event="adCollapse">http://example.com/track/adCollapse4</Tracking>
+                            <Tracking offset="04:00:16" event="minimize">http://example.com/track/minimize4</Tracking>
+                            <Tracking offset="04:00:17" event="close">http://example.com/track/close4</Tracking>
+                            <Tracking offset="04:00:18" event="overlayViewDuration">http://example.com/track/overlayViewDuration4</Tracking>
+                            <Tracking offset="04:00:19" event="otherAdInteraction">http://example.com/track/otherAdInteraction4</Tracking>
+                            <Tracking offset="04:01:01" event="start">http://example.com/track/start4</Tracking>
+                            <Tracking offset="04:01:02" event="firstQuartile">http://example.com/track/firstQuartile4</Tracking>
+                            <Tracking offset="04:01:03" event="midpoint">http://example.com/track/midpoint4</Tracking>
+                            <Tracking offset="04:01:04" event="thirdQuartile">http://example.com/track/thirdQuartile4</Tracking>
+                            <Tracking offset="04:01:05" event="complete">http://example.com/track/complete4</Tracking>
+                        </TrackingEvents>
+                        <AdParameters xmlEncoded="true">http://example.com/AdParameters3</AdParameters>
+                        <Duration>00:01:10</Duration>
+                        <MediaFiles>
+                            <MediaFile delivery="progressive" type="video/mp4" width="100" height="50" apiFramework="MediaFileApiFramework1" id="1" bitrate="100" codec="H.246" maintainAspectRatio="true" maxBitrate="200" minBitrate="50" scalable="true">http://example.com/video.mp4</MediaFile>
+                            <MediaFile delivery="streaming" type="video/mp4" width="101" height="51" apiFramework="MediaFileApiFramework2" id="2" bitrate="101" codec="H.247" maintainAspectRatio="false" maxBitrate="201" minBitrate="51" scalable="false">http://example.com/video1.mp4</MediaFile>
+                            <Mezzanine>http://example.com/mezzanine</Mezzanine>
+                            <InteractiveCreativeFile apiFramework="InteractiveCreativeFileApiFramework1" type="text/html">http://example.com/InteractiveCreativeFile1</InteractiveCreativeFile>
+                            <InteractiveCreativeFile apiFramework="InteractiveCreativeFileApiFramework2" type="text/text">http://example.com/InteractiveCreativeFile2</InteractiveCreativeFile>
+                        </MediaFiles>
+                        
+                        <VideoClicks>
+                            <ClickTracking id="VideoClickTrackingId3">http://example.com/track/VideoClickTracking3</ClickTracking>
+                            <ClickTracking id="VideoClickTrackingId4"><![CDATA[http://example.com/track/VideoClickTracking4]]></ClickTracking>
+                            <CustomClick id="VideoCustomClick3">http://example.com/track/VideoCustomClick3</CustomClick>
+                            <CustomClick id="VideoCustomClick4"><![CDATA[http://example.com/track/VideoCustomClick4]]></CustomClick>
+                            <ClickThrough id="ClickThrough">http://example.com/track/videoClickThrough</ClickThrough>
+                        </VideoClicks>
+                    </Linear>
+                    
+                    <NonLinearAds>
+                        <TrackingEvents>
+                            <Tracking offset="05:00:01" event="mute">http://example.com/track/mute5</Tracking>
+                            <Tracking offset="05:00:02" event="unmute">http://example.com/track/unmute5</Tracking>
+                            <Tracking offset="05:00:03" event="pause">http://example.com/track/pause5</Tracking>
+                            <Tracking offset="05:00:04" event="resume">http://example.com/track/resume5</Tracking>
+                            <Tracking offset="05:00:05" event="rewind">http://example.com/track/rewind5</Tracking>
+                            <Tracking offset="05:00:06" event="skip">http://example.com/track/skip5</Tracking>
+                            <Tracking offset="05:00:07" event="playerExpand">http://example.com/track/playerExpand5</Tracking>
+                            <Tracking offset="05:00:08" event="playerCollapse">http://example.com/track/playerCollapse5</Tracking>
+                            <Tracking offset="05:00:09" event="acceptInvitationLinear">http://example.com/track/acceptInvitationLinear5</Tracking>
+                            <Tracking offset="05:00:10" event="timeSpentViewing">http://example.com/track/timeSpentViewing5</Tracking>
+                            <Tracking offset="05:00:11" event="progress">http://example.com/track/progress5</Tracking>
+                            <Tracking offset="05:00:12" event="creativeView">http://example.com/track/creativeView5</Tracking>
+                            <Tracking offset="05:00:13" event="acceptInvitation">http://example.com/track/acceptInvitation5</Tracking>
+                            <Tracking offset="05:00:14" event="adExpand">http://example.com/track/adExpand5</Tracking>
+                            <Tracking offset="05:00:15" event="adCollapse">http://example.com/track/adCollapse5</Tracking>
+                            <Tracking offset="05:00:16" event="minimize">http://example.com/track/minimize5</Tracking>
+                            <Tracking offset="05:00:17" event="close">http://example.com/track/close5</Tracking>
+                            <Tracking offset="05:00:18" event="overlayViewDuration">http://example.com/track/overlayViewDuration5</Tracking>
+                            <Tracking offset="05:00:19" event="otherAdInteraction">http://example.com/track/otherAdInteraction5</Tracking>
+                            <Tracking offset="05:01:01" event="start">http://example.com/track/start5</Tracking>
+                            <Tracking offset="05:01:02" event="firstQuartile">http://example.com/track/firstQuartile5</Tracking>
+                            <Tracking offset="05:01:03" event="midpoint">http://example.com/track/midpoint5</Tracking>
+                            <Tracking offset="05:01:04" event="thirdQuartile">http://example.com/track/thirdQuartile5</Tracking>
+                            <Tracking offset="05:01:05" event="complete">http://example.com/track/complete5</Tracking>
+                        </TrackingEvents>
+                        <NonLinear>
+                            <HTMLResource>http://example.com/HTMLResource9</HTMLResource>
+                            <HTMLResource>http://example.com/HTMLResource10</HTMLResource>
+                            <IFrameResource>http://example.com/IFrameResource9</IFrameResource>
+                            <IFrameResource>http://example.com/IFrameResource10</IFrameResource>
+                            <StaticResource creativeType="StaticResourceCreativeType9">http://example.com/StaticResource9</StaticResource>
+                            <StaticResource creativeType="StaticResourceCreativeType10">http://example.com/StaticResource10</StaticResource>
+                            <AdParameters xmlEncoded="true">http://example.com/AdParameters4</AdParameters>
+                            <NonLinearClickThrough>http://example.com/track/nonLinearClickThrough1</NonLinearClickThrough>
+                            <NonLinearClickTracking id="NonLinearClickTrackingId3">http://example.com/track/NonLinearClickTracking3</NonLinearClickTracking>
+                            <NonLinearClickTracking id="NonLinearClickTrackingId4">http://example.com/track/NonLinearClickTracking4</NonLinearClickTracking>
+                        </NonLinear>
+                        <NonLinear>
+                            <HTMLResource>http://example.com/HTMLResource11</HTMLResource>
+                            <HTMLResource>http://example.com/HTMLResource12</HTMLResource>
+                            <IFrameResource>http://example.com/IFrameResource11</IFrameResource>
+                            <IFrameResource>http://example.com/IFrameResource12</IFrameResource>
+                            <StaticResource creativeType="StaticResourceCreativeType10">http://example.com/StaticResource10</StaticResource>
+                            <StaticResource creativeType="StaticResourceCreativeType11">http://example.com/StaticResource11</StaticResource>
+                            <AdParameters xmlEncoded="true">http://example.com/AdParameters5</AdParameters>
+                            <NonLinearClickThrough>http://example.com/track/nonLinearClickThrough2</NonLinearClickThrough>
+                            <NonLinearClickTracking id="NonLinearClickTrackingId5">http://example.com/track/NonLinearClickTracking5</NonLinearClickTracking>
+                            <NonLinearClickTracking id="NonLinearClickTrackingId6">http://example.com/track/NonLinearClickTracking6</NonLinearClickTracking>
+                        </NonLinear>
+                    </NonLinearAds>
+                    
+                    <UniversalAdId idRegistry="unknown" idValue="unknown">UniversalAdId2</UniversalAdId>
+                </Creative>
+                
+            </Creatives>
+            
+            <Description>Description</Description>
+            
+            <Survey type="text/html">http://example.com/survey</Survey>
+            
+        </InLine>
+    </Ad>
+</VAST>

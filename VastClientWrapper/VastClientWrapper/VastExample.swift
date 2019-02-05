@@ -19,6 +19,7 @@ class VastExample {
     private var vastTracker: VastTracker?
     private var fakePlayheadProgressTimer: Timer?
     private var playhead = 123456.0
+    private var currentAdEndTime: TimeInterval?
 
     init() {
         makeVastRequest()
@@ -27,75 +28,88 @@ class VastExample {
     private func makeVastRequest() {
         let urlStr = fw_test
         guard let url = URL(string: urlStr) else { return }
-        do {
-            let start = Date()
-            let vastModel = try vastClient.parseVast(withContentsOf: url)
+        let start = Date()
+        vastClient.parseVast(withContentsOf: url) { [weak self] vastModel, error in
             print("Took \(-1 * start.timeIntervalSinceNow) seconds to parse vast document")
-            trackAd(vastModel)
-        } catch VastError.invalidXMLDocument {
-            print("Error: Invalid XML document")
-        } catch VastError.invalidVASTDocument {
-            print("Error: Invalid Vast Document")
-        } catch VastError.unableToCreateXMLParser {
-            print("Error: Unable to Create XML Parser")
-        } catch VastError.unableToParseDocument {
-            print("Error: Unable to Parse Vast Document")
-        } catch {
-            print("Error: unexpected error ...")
+            if let error = error as? VastError {
+                switch error {
+                case .invalidXMLDocument:
+                    print("Error: Invalid XML document")
+                case .invalidVASTDocument:
+                    print("Error: Invalid Vast Document")
+                case .unableToCreateXMLParser:
+                    print("Error: Unable to Create XML Parser")
+                case .unableToParseDocument:
+                    print("Error: Unable to Parse Vast Document")
+                default:
+                    print("Error: unexpected error ...")
+                }
+                return
+            }
+            
+            guard let vastModel = vastModel else {
+                print("Error: unexpected error ...")
+                return
+            }
+            self?.trackAd(vastModel)
         }
     }
-
-}
-
-extension VastExample: VastTrackerDelegate {
-
-    func trackAd(_ ad: VastModel) {
+    
+    private func trackAd(_ ad: VastModel) {
         let delay = 0.1
         vastTracker = VastTracker(id: "test", vastModel: ad, startTime: 123456.0, delegate: self)
-
+        
         guard let tracker = vastTracker else { return }
         fakePlayheadProgressTimer = setInterval(delay) { [weak self] _ in
             guard var playhead = self?.playhead else { return }
             playhead += delay
             self?.playhead = playhead
+            
             do {
-                try tracker.updateProgress(time: playhead)
-            } catch TrackingError.UnableToUpdateProgress {
-                print("Tracking Error > Unable to update progress")
+                if let duration = self?.currentAdEndTime, playhead >= duration {
+                    try tracker.finishedPlayback()
+                } else {
+                    try tracker.updateProgress(time: playhead)
+                }
+            } catch TrackingError.unableToUpdateProgress(msg: let msg) {
+                print("Tracking Error > Unable to update progress: \(msg)")
             } catch {
                 print("Tracking Error > unknown")
             }
         }
     }
+}
 
-    func adBreakStart(_ id: String, _ vastModel: VastModel, _ vmapAdBreak: VMAPAdBreak?) {
-        print("Ad Break Started > Playhead: \(playhead), Number of Ads: \(vastModel.ads.count), Duration: \(vastModel.ads.reduce(0, { acc, cur in return acc + (cur.linearCreatives.first?.duration ?? 0)}))")
+extension VastExample: VastTrackerDelegate {
+    func adBreakStart(vastTracker: VastTracker) {
+        print("Ad Break Started > Playhead: \(playhead), Number of Ads: \(vastTracker.totalAds)")
     }
-
-    func adStart(_ id: String, _ ad: VastAd) {
-        print("Ad Started > Playhead: \(playhead), Id: \(ad.id), Sequence Number: \(ad.sequence), Duration: \(ad.linearCreatives.first?.duration ?? -1)")
+    
+    func adStart(vastTracker: VastTracker, ad: VastAd) {
+        let duration = ad.creatives.first?.linear?.duration
+        currentAdEndTime = playhead + (duration ?? 0)
+        print("Ad Started > Playhead: \(playhead), Id: \(ad.id), Sequence Number: \(ad.sequence ?? -1), Duration: \(duration ?? -1), skipOffset: \(ad.creatives.first?.linear?.skipOffset ?? "none")")
     }
-
-    func adFirstQuartile(_ id: String, _ ad: VastAd) {
+    
+    func adFirstQuartile(vastTracker: VastTracker, ad: VastAd) {
         print("Ad First Quartile > Playhead: \(playhead), Id: \(ad.id)")
     }
-
-    func adMidpoint(_ id: String, _ ad: VastAd) {
+    
+    func adMidpoint(vastTracker: VastTracker, ad: VastAd) {
         print("Ad Midpoint > Playhead: \(playhead), Id: \(ad.id)")
     }
-
-    func adThirdQuartile(_ id: String, _ ad: VastAd) {
+    
+    func adThirdQuartile(vastTracker: VastTracker, ad: VastAd) {
         print("Ad Third Quartile > Playhead: \(playhead), Id: \(ad.id)")
     }
-
-    func adComplete(_ id: String, _ ad: VastAd) {
+    
+    func adComplete(vastTracker: VastTracker, ad: VastAd) {
         print("Ad Complete > Playhead: \(playhead), Id: \(ad.id)")
     }
-
-    func adBreakComplete(_ id: String, _ vastModel: VastModel, _ vmapAdBreak: VMAPAdBreak?) {
-        print("Ad Break Complete > Playhead: \(playhead), Number of Ads: \(vastModel.ads.count)")
+    
+    func adBreakComplete(vastTracker: VastTracker) {
+        print("Ad Break Complete > Playhead: \(playhead), Number of Ads: \(vastTracker.totalAds)")
         fakePlayheadProgressTimer?.invalidate()
         fakePlayheadProgressTimer = nil
     }
-
 } 

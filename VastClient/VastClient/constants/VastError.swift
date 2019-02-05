@@ -14,5 +14,7 @@ public enum VastError: Error {
     case unableToParseDocument
     case unableToCreateXMLParser
     case wrapperLimitReached
+    case singleRequestTimeLimitReached
+    case wrapperTimeLimitReached
     case internalError
 }

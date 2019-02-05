@@ -23,10 +23,14 @@ struct TrackingCreative {
 }
 
 extension TrackingCreative {
-    init(creative: VastLinearCreative, vastAd: VastAd) {
+    init?(creative: VastLinearCreative, vastAd: VastAd) {
+        guard let duration = creative.duration else {
+            return nil
+        }
+        
         self.creative = creative
         self.vastAd = vastAd
-        self.duration = creative.duration
+        self.duration = duration
         self.firstQuartile = ceil(duration * 0.25)
         self.midpoint = ceil(duration * 0.5)
         self.thirdQuartile = ceil(duration * 0.75)

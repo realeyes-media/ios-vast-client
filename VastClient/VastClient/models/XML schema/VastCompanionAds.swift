@@ -13,7 +13,6 @@ struct CompanionAdsAttributes {
 }
 
 struct CompanionAdsElements {
-    static let companionads = "CompanionAds"
     static let companion = "Companion"
 }
 
@@ -44,7 +43,7 @@ public enum CompanionsRequirement: String {
 
 public struct VastCompanionAds {
     public let required: CompanionsRequirement
-    public var companions = [VastCompanionCreative]()
+    public var companions: [VastCompanionCreative] = []
 }
 
 extension VastCompanionAds {
@@ -63,3 +62,4 @@ extension VastCompanionAds {
         self.required = required
     }
 }
+extension VastCompanionAds: Equatable {}

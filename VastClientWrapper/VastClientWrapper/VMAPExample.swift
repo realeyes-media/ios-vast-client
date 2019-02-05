@@ -26,7 +26,7 @@ class VMAPExample {
             let start = Date()
             let vmapModel = try vastClient.parseVMAP(withContentsOf: url)
             print("Took \(-1 * start.timeIntervalSinceNow) seconds to parse vmap document")
-//            print(vmapModel)
+            print(vmapModel)
         } catch VMAPError.invalidXMLDocument {
             print("Error: InvalidXMLDocument")
         } catch VMAPError.invalidVMAPDocument {

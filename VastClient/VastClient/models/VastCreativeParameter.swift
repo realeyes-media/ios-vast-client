@@ -11,7 +11,6 @@ import Foundation
 // TODO: this is really a custom xml element
 // needs to be defined outside of the library
 // need to find a way to pass custom elements to the library to use
-
 struct CreativeParameterAttributes {
     static let creativeId = "creativeId"
     static let name = "name"
@@ -47,3 +46,8 @@ extension VastCreativeParameter {
         self.type = type
     }
 }
+
+extension VastCreativeParameter: Equatable {
+}
+
+

@@ -8,33 +8,15 @@
 
 import Foundation
 
-public enum CompanionResourceType: String {
-    /**
-     Describes non-html creative where an attribute for creativeType is used to identify the creative resource platform.
-     The video player uses the creativeType information to determine how to display the resource:
-
-     image/gif, image/jpeg, image/png: displayed using the HTML tag <img> and the resource URI as the src attribute
-     application/x-javascript: displayed using the HTML tag <script> and the resource URI as the src attribute
-     applicaton/x-shockwave-flash: displayed using the Flash player
-     */
-    case staticresource = "StaticResource"
-    /**
-     Describes a resouce that is a HTML page that can be displayed within an iframe on the publishers page
-     */
-    case iframeresource = "IFrameResource"
-    /**
-     Describes a "snippet" of html code to be inserted directly within the publishers HTML page code
-     */
-    case htmlresource = "HTMLResource"
-    case unknown
-}
-
 struct CompanionElements {
     static let alttext = "AltText"
     static let companionclickthrough = "CompanionClickThrough"
     static let companionclicktracking = "CompanionClickTracking"
     static let trackingevents = "TrackingEvents"
     static let adparameters = "adparameters"
+    static let htmlResource = "HTMLResource"
+    static let iframeResource = "IFrameResource"
+    static let staticResource = "StaticResource"
 }
 
 struct CompanionAttributes {
@@ -46,10 +28,17 @@ struct CompanionAttributes {
     static let expandedwidth = "expandedWidth"
     static let expandedheight = "expandedHeight"
     static let apiframework = "apiFramework"
-    static let adslotid = "adSlotId"
+    static let adslotid = "adSlotId" //vast 3
+    static let adslotid4 = "adSlotID" //vast 4
+    static let pxRatio = "pxratio"
+}
+
+public struct VastCompanionClickTracking {
+    public let id: String?
 }
 
 public struct VastCompanionCreative {
+    // Attributes
     public let width: Int
     public let height: Int
     public let id: String?
@@ -59,12 +48,17 @@ public struct VastCompanionCreative {
     public let expandedHeight: Int?
     public let apiFramework: String?
     public let adSlotId: String?
-    public var type: CompanionResourceType
-    public var content: String?
+    public let pxRatio: Double?
+    
+    // Sub Elements
+    public var staticResource: [VastStaticResource] = []
+    public var iFrameResource: [URL] = []
+    public var htmlResource: [URL] = []
     public var altText: String?
-    public var clickThrough: URL?
-    public var clickTracking: URL?
-    public var trackingEvents = [VastTrackingEvent]()
+    public var companionClickThrough: URL?
+    public var companionClickTracking: [URL] = []
+    public var trackingEvents: [VastTrackingEvent] = []
+    public var adParameters: VastAdParameters?
 }
 
 extension VastCompanionCreative {
@@ -78,6 +72,7 @@ extension VastCompanionCreative {
         var expandedHeight: Int?
         var apiFramework: String?
         var adSlotId: String?
+        var pxRatio: Double?
 
         for (key, value) in attrDict {
             switch key {
@@ -97,8 +92,10 @@ extension VastCompanionCreative {
                 expandedHeight = Int(value)
             case CompanionAttributes.apiframework:
                 apiFramework = value
-            case CompanionAttributes.adslotid:
+            case CompanionAttributes.adslotid, CompanionAttributes.adslotid4:
                 adSlotId = value
+            case CompanionAttributes.pxRatio:
+                pxRatio = Double(value)
             default:
                 break
             }
@@ -113,6 +110,8 @@ extension VastCompanionCreative {
         self.expandedHeight = expandedHeight
         self.apiFramework = apiFramework
         self.adSlotId = adSlotId
-        self.type = .unknown
+        self.pxRatio = pxRatio
     }
 }
+
+extension VastCompanionCreative: Equatable {}

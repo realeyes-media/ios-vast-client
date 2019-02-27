@@ -21,6 +21,8 @@ public struct VastClientOptions {
 }
 
 public class VastClient {
+    
+    public static var trackingLogOutput: ((String, [URL]) -> ())? = nil
 
     private let options: VastClientOptions
 

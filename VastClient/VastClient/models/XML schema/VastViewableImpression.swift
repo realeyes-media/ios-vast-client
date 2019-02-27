@@ -17,7 +17,7 @@ struct VastViewableImpressionElements {
     static let viewUndetermined = "ViewUndetermined"
 }
 
-public enum VastViewableImpressionType {
+public enum VastViewableImpressionType: String {
     case viewable
     case notViewable
     case viewUndetermined

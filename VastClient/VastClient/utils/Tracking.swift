@@ -1,5 +1,5 @@
 //
-//  http.swift
+//  Tracking.swift
 //  VastClient
 //
 //  Created by John Gainfort Jr on 5/15/18.
@@ -8,21 +8,34 @@
 
 import Foundation
 
-func makeRequest(withUrl url: URL) {
+func track(url: URL, eventName: String? = nil) {
+    track(urls: [url], eventName: eventName)
+}
+
+func track(urls: [URL], eventName: String? = nil) {
+    urls.forEach{ makeRequest(withUrl: $0) }
+    if let eventName = eventName {
+        VastClient.trackingLogOutput?(eventName, urls)
+    } else {
+        VastClient.trackingLogOutput?("UNKNOWN", urls)
+    }
+}
+
+private func makeRequest(withUrl url: URL) {
     let request = URLRequest(url: url)
     let config = URLSessionConfiguration.default
     let session = URLSession(configuration: config)
 
     let task = session.dataTask(with: request) {(data, response, error) in
+        #if DEBUG
         DispatchQueue.global().async {
-            #if DEBUG
-            print("Completed request: \(request.debugDescription)")
             if let error = error {
                 print("Request \(request.debugDescription), finished with error: \(error)")
                 return
             }
-            #endif
+            print("Completed request: \(request.debugDescription)")
         }
+        #endif
     }
 
     task.resume()

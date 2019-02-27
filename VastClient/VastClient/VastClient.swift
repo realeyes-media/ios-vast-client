@@ -21,11 +21,18 @@ public struct VastClientOptions {
 }
 
 public class VastClient {
+    
+    public static var trackingLogOutput: ((String, [URL]) -> ())? = nil
 
     private let options: VastClientOptions
 
     public init(options: VastClientOptions = VastClientOptions()) {
         self.options = options
+        #if DEBUG
+        VastClient.trackingLogOutput = { string, urls in
+            print("VastClient log: \(string), \(urls.debugDescription)")
+        }
+        #endif
     }
     
     public func parseVast(withContentsOf url: URL, completion: @escaping (VastModel?, Error?) -> ()) {

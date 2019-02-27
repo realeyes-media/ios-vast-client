@@ -35,10 +35,4 @@ extension TrackingCreative {
         self.midpoint = ceil(duration * 0.5)
         self.thirdQuartile = ceil(duration * 0.75)
     }
-
-    func callTrackingUrls(_ urls: [URL]) {
-        urls.forEach { url in
-            makeRequest(withUrl: url)
-        }
-    }
 }

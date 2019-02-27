@@ -82,9 +82,8 @@ class VastXMLParser: NSObject {
         }
 
         if !vm.errors.isEmpty, vm.ads.count == 0 {
-            vm.errors.forEach { error in
-                makeRequest(withUrl: error.withErrorCode(VastErrorCodes.noAdsVastResponse))
-            }
+            let urls = vm.errors.compactMap { $0.withErrorCode(VastErrorCodes.noAdsVastResponse) }
+            track(urls: urls, eventName: "ERROR NO ADS")
         }
         return vm
     }

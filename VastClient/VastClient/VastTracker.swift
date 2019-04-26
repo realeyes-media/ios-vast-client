@@ -147,7 +147,7 @@ public class VastTracker {
                 delegate?.adStart(id, creative.vastAd)
             }
 
-            if playhead > creative.firstQuartile && playhead < creative.midpoint {
+            if playhead >= creative.firstQuartile && playhead < creative.midpoint {
                 if !creative.trackedFirstQuartile {
                     creative.trackedFirstQuartile = true
                     let trackingUrls = creative.creative.trackingEvents
@@ -165,7 +165,7 @@ public class VastTracker {
                     creative.callTrackingUrls(trackingUrls)
                     delegate?.adMidpoint(id, creative.vastAd)
                 }
-            } else if playhead > creative.thirdQuartile && playhead < creative.duration {
+            } else if playhead >= creative.thirdQuartile && playhead < creative.duration {
                 if !creative.trackedThirdQuartile {
                     creative.trackedThirdQuartile = true
                     let trackingUrls = creative.creative.trackingEvents

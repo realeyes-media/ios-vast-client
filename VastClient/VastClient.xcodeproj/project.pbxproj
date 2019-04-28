@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F442F9720AB461C00303767 /* http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F442F9620AB461C00303767 /* http.swift */; };
 		0F58AE3520C7410700699B77 /* VastMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F58AE3420C7410700699B77 /* VastMacros.swift */; };
 		0F71436620BDCD930029BBB6 /* VastErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71436520BDCD930029BBB6 /* VastErrorCodes.swift */; };
 		0F71436820BDD07D0029BBB6 /* URL+replace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71436720BDD07D0029BBB6 /* URL+replace.swift */; };
@@ -23,6 +22,9 @@
 		0F7B97D72077E3000096438D /* String+seconds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D62077E3000096438D /* String+seconds.swift */; };
 		0F7B97D92077E40A0096438D /* Sequence+every.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D82077E40A0096438D /* Sequence+every.swift */; };
 		0F7B97DD20782FF90096438D /* VastTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97DC20782FF90096438D /* VastTracker.swift */; };
+		0FC3AE4B227652C900255CA2 /* Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC3AE4A227652C900255CA2 /* Tracking.swift */; };
+		0FC3AE4C227652C900255CA2 /* Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC3AE4A227652C900255CA2 /* Tracking.swift */; };
+		0FC3AE4D227652C900255CA2 /* Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC3AE4A227652C900255CA2 /* Tracking.swift */; };
 		0FCD6F3021FF58B9008F42AA /* VastClient_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCD6F2E21FF58B9008F42AA /* VastClient_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FCD6F3421FF598E008F42AA /* VastTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97DC20782FF90096438D /* VastTracker.swift */; };
 		0FCD6F3521FF5992008F42AA /* VastClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D22077E0DC0096438D /* VastClient.swift */; };
@@ -46,7 +48,6 @@
 		0FCD6F4A21FF59A4008F42AA /* VMAPParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF07B211B60A6000AD5BB /* VMAPParser.swift */; };
 		0FCD6F4B21FF59A9008F42AA /* String+seconds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D62077E3000096438D /* String+seconds.swift */; };
 		0FCD6F4C21FF59A9008F42AA /* Sequence+every.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D82077E40A0096438D /* Sequence+every.swift */; };
-		0FCD6F4D21FF59A9008F42AA /* http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F442F9620AB461C00303767 /* http.swift */; };
 		0FCD6F4E21FF59A9008F42AA /* URL+replace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71436720BDD07D0029BBB6 /* URL+replace.swift */; };
 		0FCD6F4F21FF59A9008F42AA /* String+encode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71436920BDD59D0029BBB6 /* String+encode.swift */; };
 		0FCD6F5021FF59AE008F42AA /* VastError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97CA2077D83B0096438D /* VastError.swift */; };
@@ -196,7 +197,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0F442F9620AB461C00303767 /* http.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = http.swift; sourceTree = "<group>"; };
 		0F58AE3420C7410700699B77 /* VastMacros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastMacros.swift; sourceTree = "<group>"; };
 		0F71436520BDCD930029BBB6 /* VastErrorCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastErrorCodes.swift; sourceTree = "<group>"; };
 		0F71436720BDD07D0029BBB6 /* URL+replace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+replace.swift"; sourceTree = "<group>"; };
@@ -215,6 +215,7 @@
 		0F7B97D62077E3000096438D /* String+seconds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+seconds.swift"; sourceTree = "<group>"; };
 		0F7B97D82077E40A0096438D /* Sequence+every.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+every.swift"; sourceTree = "<group>"; };
 		0F7B97DC20782FF90096438D /* VastTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastTracker.swift; sourceTree = "<group>"; };
+		0FC3AE4A227652C900255CA2 /* Tracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tracking.swift; sourceTree = "<group>"; };
 		0FCD6F2C21FF58B9008F42AA /* VastClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VastClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FCD6F2E21FF58B9008F42AA /* VastClient_tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VastClient_tvOS.h; sourceTree = "<group>"; };
 		0FCD6F2F21FF58B9008F42AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -399,9 +400,9 @@
 		0F7B97D52077E2F10096438D /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				0FC3AE4A227652C900255CA2 /* Tracking.swift */,
 				0F7B97D62077E3000096438D /* String+seconds.swift */,
 				0F7B97D82077E40A0096438D /* Sequence+every.swift */,
-				0F442F9620AB461C00303767 /* http.swift */,
 				0F71436720BDD07D0029BBB6 /* URL+replace.swift */,
 				A945EE32219C5C560007A079 /* String+value.swift */,
 				0F71436920BDD59D0029BBB6 /* String+encode.swift */,
@@ -753,6 +754,7 @@
 				A945EE1B219C5C100007A079 /* VastWrapper.swift in Sources */,
 				A945EE0F219C5C100007A079 /* VastModel.swift in Sources */,
 				0F7B97D92077E40A0096438D /* Sequence+every.swift in Sources */,
+				0FC3AE4B227652C900255CA2 /* Tracking.swift in Sources */,
 				0F71436A20BDD59D0029BBB6 /* String+encode.swift in Sources */,
 				A945EE22219C5C100007A079 /* VastCreativeExtension.swift in Sources */,
 				A945EE2E219C5C100007A079 /* VMAPAdSource.swift in Sources */,
@@ -766,7 +768,6 @@
 				0F7AF07E211B616A000AD5BB /* VMAPError.swift in Sources */,
 				A945EE2D219C5C100007A079 /* VMAPModel.swift in Sources */,
 				A9A84FEC21A3053200949C4B /* VastParser.swift in Sources */,
-				0F442F9720AB461C00303767 /* http.swift in Sources */,
 				A945EE13219C5C100007A079 /* VastCreative.swift in Sources */,
 				0F7B97DD20782FF90096438D /* VastTracker.swift in Sources */,
 				0F71436620BDCD930029BBB6 /* VastErrorCodes.swift in Sources */,
@@ -836,6 +837,7 @@
 				A945EE64219C5C9F0007A079 /* ReadyToServerMediaFilesCheck-test.swift in Sources */,
 				A927D2D72204753600272F70 /* VastTrackerCumulativeStartTests.swift in Sources */,
 				A927D2D0220474C900272F70 /* VastTrackerNoncumulativeTests.swift in Sources */,
+				0FC3AE4C227652C900255CA2 /* Tracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -843,6 +845,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FC3AE4D227652C900255CA2 /* Tracking.swift in Sources */,
 				C7D2FDF9220A47C60077B7DE /* VastVideoClicks.swift in Sources */,
 				C7D2FDFD220A47C60077B7DE /* VastLinearCreative.swift in Sources */,
 				C7D2FE01220A47C60077B7DE /* VastIconClickTracking.swift in Sources */,
@@ -868,7 +871,6 @@
 				0FCD6F3C21FF599A008F42AA /* (null) in Sources */,
 				C7D2FDEC220A479F0077B7DE /* VastAd.swift in Sources */,
 				C7D2FDF6220A47C60077B7DE /* VastTrackingEvent.swift in Sources */,
-				0FCD6F4D21FF59A9008F42AA /* http.swift in Sources */,
 				0FCD6F5221FF59AE008F42AA /* TrackingError.swift in Sources */,
 				C7D2FDF0220A47C60077B7DE /* VastSurvey.swift in Sources */,
 				C7D2FE05220A47C60077B7DE /* VastAdCategory.swift in Sources */,

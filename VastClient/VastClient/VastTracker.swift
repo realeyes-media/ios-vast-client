@@ -129,7 +129,7 @@ public class VastTracker {
 
         if progressUrls.count > 0 {
             progressUrls.forEach { url in
-                guard let idx = creative.creative.trackingEvents.index(where: { $0.url == url }) else { return }
+                guard let idx = creative.creative.trackingEvents.firstIndex(where: { $0.url == url }) else { return }
                 creative.creative.trackingEvents[idx].tracked = true
             }
             creative.callTrackingUrls(progressUrls)

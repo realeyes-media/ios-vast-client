@@ -59,7 +59,7 @@ extension VastTrackingEvent {
 
             if key == TrackingEventAttributes.offset {
                 // format is either (HH:MM:SS or HH:MM:SS.mmm) or n%
-                self.offset = value.index(of: ":") != nil ? value.toSeconds : Double(value) ?? 0 / 100
+                self.offset = value.firstIndex(of: ":") != nil ? value.toSeconds : Double(value) ?? 0 / 100
             }
         }
 

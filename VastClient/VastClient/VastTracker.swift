@@ -156,7 +156,7 @@ public class VastTracker {
                     creative.callTrackingUrls(trackingUrls)
                     delegate?.adFirstQuartile(id, creative.vastAd)
                 }
-            } else if playhead > creative.midpoint && playhead < creative.thirdQuartile {
+            } else if playhead >= creative.midpoint && playhead < creative.thirdQuartile {
                 if !creative.trackedMidpoint {
                     creative.trackedMidpoint = true
                     let trackingUrls = creative.creative.trackingEvents

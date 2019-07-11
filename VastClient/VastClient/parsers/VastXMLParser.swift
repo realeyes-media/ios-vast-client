@@ -35,6 +35,7 @@ class VastXMLParser: NSObject {
     var currentVerification: VastVerification?
     var currentResource: VastResource?
     var currentVerificationViewableImpression: VastViewableImpression?
+    var currentAdVerificationParameters: VastAdVerificationParameters?
     
     var currentCreative: VastCreative?
     
@@ -101,6 +102,7 @@ extension VastXMLParser: XMLParserDelegate {
         }
 
         if validVastDocument && fatalError == nil {
+            print("$$$ elementName: \(elementName)")
             switch elementName {
             case VastElements.ad:
                 currentVastAd = VastAd(attrDict: attributeDict)
@@ -124,6 +126,8 @@ extension VastXMLParser: XMLParserDelegate {
                 }
             case AdElements.verification:
                 currentVerification = VastVerification(attrDict: attributeDict)
+            case VastAdVerificationElements.verificationParameters:
+                currentAdVerificationParameters = VastAdVerificationParameters()
             case VastAdVerificationElements.flashResource, VastAdVerificationElements.javaScriptResource:
                 currentResource = VastResource(attrDict: attributeDict)
             case AdElements.ext:
@@ -181,6 +185,7 @@ extension VastXMLParser: XMLParserDelegate {
         currentContent = currentContent.trimmingCharacters(in: .whitespacesAndNewlines)
 
         if validVastDocument && fatalError == nil {
+            print("$$$ element Name for the other thing: \(elementName)")
             switch elementName {
             case VastElements.vast:
                 // If another class is using this delegate call complete
@@ -288,6 +293,12 @@ extension VastXMLParser: XMLParserDelegate {
                 if let resource = currentResource {
                     currentVerification?.javaScriptResource.append(resource)
                     currentResource = nil
+                }
+            case VastAdVerificationElements.verificationParameters:
+                if var verificationParams = currentAdVerificationParameters {
+                    verificationParams.data = currentContent
+                    currentVerification?.verificationParameters = verificationParams
+                    currentAdVerificationParameters = nil
                 }
             case VastWrapperElements.vastAdTagUri:
                 currentWrapper?.adTagUri = URL(string: currentContent)

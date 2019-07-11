@@ -59,6 +59,8 @@
 		0FCD6F5621FF59AE008F42AA /* VMAPErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF081211B6B2E000AD5BB /* VMAPErrorCodes.swift */; };
 		0FEDAABF20AA3A05006850C8 /* TrackingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAABE20AA3A05006850C8 /* TrackingStatus.swift */; };
 		0FEDAAC120AA3A62006850C8 /* TrackingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAAC020AA3A62006850C8 /* TrackingError.swift */; };
+		433D192522D7AE810012E88A /* VastAdVerificationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433D192422D7AE810012E88A /* VastAdVerificationParameters.swift */; };
+		433D192622D7AE810012E88A /* VastAdVerificationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433D192422D7AE810012E88A /* VastAdVerificationParameters.swift */; };
 		A91F507821A432750062198F /* PubadsModel-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F507721A432750062198F /* PubadsModel-test.swift */; };
 		A91F507A21A432850062198F /* PubadsWrapperModel-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F507921A432850062198F /* PubadsWrapperModel-test.swift */; };
 		A91F507C21A432910062198F /* PubadsInlineModel-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F507B21A432910062198F /* PubadsInlineModel-test.swift */; };
@@ -221,6 +223,7 @@
 		0FCD6F2F21FF58B9008F42AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FEDAABE20AA3A05006850C8 /* TrackingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingStatus.swift; sourceTree = "<group>"; };
 		0FEDAAC020AA3A62006850C8 /* TrackingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingError.swift; sourceTree = "<group>"; };
+		433D192422D7AE810012E88A /* VastAdVerificationParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastAdVerificationParameters.swift; sourceTree = "<group>"; };
 		A91F507721A432750062198F /* PubadsModel-test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PubadsModel-test.swift"; sourceTree = "<group>"; };
 		A91F507921A432850062198F /* PubadsWrapperModel-test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PubadsWrapperModel-test.swift"; sourceTree = "<group>"; };
 		A91F507B21A432910062198F /* PubadsInlineModel-test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PubadsInlineModel-test.swift"; sourceTree = "<group>"; };
@@ -500,6 +503,7 @@
 				A945EE03219C5C100007A079 /* VastImpression.swift */,
 				A945EE04219C5C100007A079 /* VastStaticResource.swift */,
 				A945EE05219C5C100007A079 /* VastVerification.swift */,
+				433D192422D7AE810012E88A /* VastAdVerificationParameters.swift */,
 			);
 			path = "XML schema";
 			sourceTree = "<group>";
@@ -799,6 +803,7 @@
 				A945EE20219C5C100007A079 /* VastAdSystem.swift in Sources */,
 				A945EE31219C5C100007A079 /* TrackingCreative.swift in Sources */,
 				0F7AF082211B6B2E000AD5BB /* VMAPErrorCodes.swift in Sources */,
+				433D192522D7AE810012E88A /* VastAdVerificationParameters.swift in Sources */,
 				A945EE21219C5C100007A079 /* VastExtension.swift in Sources */,
 				A945EE17219C5C100007A079 /* VastCompanionAds.swift in Sources */,
 				A945EE1C219C5C100007A079 /* VastCompanionCreative.swift in Sources */,
@@ -846,6 +851,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FC3AE4D227652C900255CA2 /* Tracking.swift in Sources */,
+				433D192622D7AE810012E88A /* VastAdVerificationParameters.swift in Sources */,
 				C7D2FDF9220A47C60077B7DE /* VastVideoClicks.swift in Sources */,
 				C7D2FDFD220A47C60077B7DE /* VastLinearCreative.swift in Sources */,
 				C7D2FE01220A47C60077B7DE /* VastIconClickTracking.swift in Sources */,

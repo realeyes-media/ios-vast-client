@@ -15,6 +15,7 @@ struct VastAdVerificationElements {
     static let viewableImpression = "ViewableImpression"
     static let javaScriptResource = "JavaScriptResource"
     static let flashResource = "FlashResource"
+    static let verificationParameters = "VerificationParameters"
 }
 
 // VAST/Ad/InLine/AdVerifications/Verification
@@ -24,6 +25,7 @@ public struct VastVerification {
     public var viewableImpression: VastViewableImpression?
     public var javaScriptResource: [VastResource] = []
     public var flashResources: [VastResource] = []
+    public var verificationParameters: VastAdVerificationParameters?
 }
 
 extension VastVerification {

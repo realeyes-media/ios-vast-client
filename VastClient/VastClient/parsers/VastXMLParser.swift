@@ -102,7 +102,6 @@ extension VastXMLParser: XMLParserDelegate {
         }
 
         if validVastDocument && fatalError == nil {
-            print("$$$ elementName: \(elementName)")
             switch elementName {
             case VastElements.ad:
                 currentVastAd = VastAd(attrDict: attributeDict)
@@ -185,7 +184,6 @@ extension VastXMLParser: XMLParserDelegate {
         currentContent = currentContent.trimmingCharacters(in: .whitespacesAndNewlines)
 
         if validVastDocument && fatalError == nil {
-            print("$$$ element Name for the other thing: \(elementName)")
             switch elementName {
             case VastElements.vast:
                 // If another class is using this delegate call complete

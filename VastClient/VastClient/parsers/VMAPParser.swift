@@ -48,7 +48,6 @@ class VMAPParser: NSObject {
         parser.delegate = self
 
         if parser.parse() {
-            print("$$$ 4")
             if !validVMAPDocument {
                 throw VMAPError.invalidVMAPDocument
             }

@@ -37,7 +37,7 @@ public class VastTracker {
     public let totalAds: Int
     
     @available(*, message: "do not use VastTracker for storing this model, it is not being used")
-    private var vmapModel: VMAPModel?
+    public var vmapModel: VMAPModel?
 
     private var trackingStatus: TrackingStatus = .unknown
     private let startTime: Double

@@ -51,8 +51,8 @@ extension VastModel {
         ]
         
         let adVerifications: [VastVerification] = [
-            VastVerification(vendor: nil, viewableImpression: nil, javaScriptResource: [VastResource(apiFramework: nil, url: URL(string: "https://verificationcompany1.com/verification_script1.js"))], flashResources: []),
-            VastVerification(vendor: nil, viewableImpression: nil, javaScriptResource: [VastResource(apiFramework: nil, url: URL(string: "https://verificationcompany.com/untrusted.js"))], flashResources: [])
+            VastVerification(vendor: nil, viewableImpression: nil, javaScriptResource: [VastResource(apiFramework: nil, url: URL(string: "https://verificationcompany1.com/verification_script1.js"))], flashResources: [], verificationParameters: nil),
+            VastVerification(vendor: nil, viewableImpression: nil, javaScriptResource: [VastResource(apiFramework: nil, url: URL(string: "https://verificationcompany.com/untrusted.js"))], flashResources: [], verificationParameters: nil)
         ]
         
         let advertiser = "IAB Sample Company"

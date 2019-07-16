@@ -11,7 +11,7 @@ import Foundation
 public extension String {
 
     // takes time format hh:mm:ss and converts to seconds
-    public var toSeconds: Double? {
+    var toSeconds: Double? {
         let arr = self.split(separator: ":").map { Double($0) ?? -1.0 }
         if arr.count != 3 && !arr.every(predicate: { $0 >= 0  }) {
             return nil

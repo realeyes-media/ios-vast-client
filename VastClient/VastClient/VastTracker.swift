@@ -35,12 +35,12 @@ public class VastTracker {
     public let id: String
     public let vastModel: VastModel
     public let totalAds: Int
+    public let startTime: Double
     
     @available(*, message: "do not use VastTracker for storing this model, it is not being used")
     public var vmapModel: VMAPModel?
 
     private var trackingStatus: TrackingStatus = .unknown
-    private let startTime: Double
     private var currentTime = 0.0
     private var comparisonTime: Double {
         if trackProgressCumulatively {
@@ -173,7 +173,7 @@ public class VastTracker {
 
         if progressUrls.count > 0 {
             progressUrls.forEach { url in
-                guard let idx = creative.creative.trackingEvents.index(where: { $0.url == url }) else { return }
+                guard let idx = creative.creative.trackingEvents.firstIndex(where: { $0.url == url }) else { return }
                 creative.creative.trackingEvents[idx].tracked = true
             }
             track(urls: progressUrls, eventName: "PROGRESS")

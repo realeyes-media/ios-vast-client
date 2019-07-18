@@ -52,11 +52,11 @@ extension VastModel {
         let extensions: [VastExtension] = [
             VastExtension(type: "iab-Count", creativeParameters: [])
         ]
-        
-        let vastVerification1 = VastVerification(vendor: URL(string: "VendorURL"), viewableImpression: nil, javaScriptResource: [VastResource(apiFramework: "frameworkname", url: URL(string: "https://iabtechlab.com/wp-content/uploads/2017/12/VAST-4.0-Short-Intro-mid-resolution.mp4")), VastResource(apiFramework: "frameworkname", url: URL(string: "https://iabtechlab.com/wp-content/uploads/2017/12/VAST-4.0-Short-Intro-mid-resolution.mp4"))], flashResources: [])
-        
-        let vastVerification2 = VastVerification(vendor: URL(string: "VendorURL"), viewableImpression: VastViewableImpression(id: "verificationViewableImpressionID", url: URL(string: "https://iabtechlab.com/wp-content/uploads/2017/12/VAST-4.0-Short-Intro-mid-resolution.mp4"), viewable: [], notViewable: [], viewUndetermined: []), javaScriptResource: [], flashResources: [VastResource(apiFramework: "frameworkname", url: URL(string: "https://iabtechlab.com/wp-content/uploads/2017/12/VAST-4.0-Short-Intro-mid-resolution.mp4"))])
-        
+
+        let vastVerification1 = VastVerification(vendor: URL(string: "VendorURL"), viewableImpression: nil, javaScriptResource: [VastResource(apiFramework: "frameworkname", url: URL(string: "https://iabtechlab.com/wp-content/uploads/2017/12/VAST-4.0-Short-Intro-mid-resolution.mp4")), VastResource(apiFramework: "frameworkname", url: URL(string: "https://iabtechlab.com/wp-content/uploads/2017/12/VAST-4.0-Short-Intro-mid-resolution.mp4"))], flashResources: [], verificationParameters: nil)
+
+        let vastVerification2 = VastVerification(vendor: URL(string: "VendorURL"), viewableImpression: VastViewableImpression(id: "verificationViewableImpressionID", url: URL(string: "https://iabtechlab.com/wp-content/uploads/2017/12/VAST-4.0-Short-Intro-mid-resolution.mp4"), viewable: [], notViewable: [], viewUndetermined: []), javaScriptResource: [], flashResources: [VastResource(apiFramework: "frameworkname", url: URL(string: "https://iabtechlab.com/wp-content/uploads/2017/12/VAST-4.0-Short-Intro-mid-resolution.mp4"))], verificationParameters: nil)
+
         let adVerifications: [VastVerification] = [vastVerification1, vastVerification2]
         
         let viewableImpression = VastViewableImpression(id: "VImpression-ID", url: nil, viewable: [URL(string: "http://example.com/track/Viewable")!], notViewable: [], viewUndetermined: [URL(string: "http://example.com/track/ViewUndetermined")!])

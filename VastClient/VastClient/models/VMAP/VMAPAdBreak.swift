@@ -60,4 +60,21 @@ extension VMAPAdBreak {
         self.timeOffset = timeOffset
         self.repeatAfter = repeatAfter
     }
+
+    public func trackEvent(withType type: VMAPTrackingEventType) {
+        trackingEvents.filter { $0.event == type }
+            .forEach { event in
+                guard let url = event.url else { return }
+                print("tracking event of type: \(type), url: \(url.absoluteString)")
+                track(url: url)
+        }
+    }
+
+    public func trackEvents(withUrls urls: [URL]) {
+        urls.forEach { url in
+            print("tracking event of type: \(VMAPTrackingEventType.breakEnd), url: \(url.absoluteString)")
+            track(url: url)
+        }
+    }
+
 }

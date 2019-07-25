@@ -11,7 +11,7 @@ import Foundation
 class VMAPParser: NSObject {
 
     private let options: VastClientOptions
-    private let vastXMLParser: VastXMLParser
+    private var vastXMLParser: VastXMLParser
     private let vastParser: VastParser
 
     var xmlParser: XMLParser?
@@ -101,6 +101,7 @@ extension VMAPParser: XMLParserDelegate {
             case VMAPAdSourceElements.adSource:
                 currentVMAPAdSource = VMAPAdSource(attrDict: attributeDict)
             case VMAPAdSourceElements.vastAdData:
+                vastXMLParser = VastXMLParser()
                 vastXMLParser.completeClosure = { [weak self] error, vastModel in
                     self?.fatalError = error
                     self?.currentVastModel = vastModel

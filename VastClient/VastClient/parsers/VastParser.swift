@@ -24,6 +24,10 @@ class VastParser {
     private let queue: DispatchQueue
     
     init(options: VastClientOptions, queue: DispatchQueue = DispatchQueue.init(label: "parser", qos: .userInitiated), testFileBundle: Bundle? = nil) {
+        print("\nJoe:")
+        print("Joe: INIT VastParser")
+        print("Joe:\n")
+
         self.options = options
         self.queue = queue
         self.testFileBundle = testFileBundle

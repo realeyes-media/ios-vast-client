@@ -34,6 +34,11 @@ class VMAPParser: NSObject {
     var currentContent = ""
 
     init(options: VastClientOptions) {
+
+        print("\nJoe:")
+        print("Joe: INIT VMAPParser")
+        print("Joe:\n")
+
         self.options = options
         self.vastXMLParser = VastXMLParser()
         self.vastParser = VastParser(options: options)

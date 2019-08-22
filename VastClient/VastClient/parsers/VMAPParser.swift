@@ -34,11 +34,6 @@ class VMAPParser: NSObject {
     var currentContent = ""
 
     init(options: VastClientOptions) {
-
-        print("\nJoe:")
-        print("Joe: INIT VMAPParser")
-        print("Joe:\n")
-
         self.options = options
         self.vastXMLParser = VastXMLParser()
         self.vastParser = VastParser(options: options)
@@ -89,11 +84,19 @@ class VMAPParser: NSObject {
 extension VMAPParser: XMLParserDelegate {
 
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+        print("\nJoe:")
+        print("Joe: attributeDict: \(attributeDict)")
+        print("Joe:\n")
+
         if !validVMAPDocument && !parsedFirstElement {
             parsedFirstElement = true
             if elementName == VMAPElements.vmap {
                 validVMAPDocument = true
                 vmapModel = VMAPModel(attrDict: attributeDict)
+                print("\nJoe:")
+                print("Joe: vmapModel: \(vmapModel!)")
+                print("Joe:\n")
+
             }
         }
 

@@ -33,11 +33,20 @@ class VMAPParser: NSObject {
 
     var currentContent = ""
 
+    var arrayOfJoesStuff = [(String, [String:String])]()
+
     init(options: VastClientOptions) {
         self.options = options
         self.vastXMLParser = VastXMLParser()
         self.vastParser = VastParser(options: options)
     }
+
+//    init?(options: VastClientOptions, somethingElse: NotYetMade) {
+//        self.options = options
+//        self.vastXMLParser = VastXMLParser()
+//        self.vastParser = VastParser(options: options)
+//        // do something with the something else
+//    }
 
     func parse(url: URL) throws -> VMAPModel {
         xmlParser = XMLParser(contentsOf: url)
@@ -166,8 +175,28 @@ extension VMAPParser: XMLParserDelegate {
         currentContent = ""
     }
 
+    func parserDidEndDocument(_ parser: XMLParser) {
+        serializeLatestVMAP()
+    }
+
     func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
         fatalError = parseError
     }
 
+}
+
+// MARK: - Serializing VMAP
+private extension VMAPParser {
+
+    func prepareToSerialize(elementName: String, attributes attributeDict: [String : String]) {
+        guard !attributeDict.isEmpty else { return }
+        arrayOfJoesStuff.append((elementName, attributeDict))
+        print("Joe: - capture this \(elementName)")
+    }
+
+    func serializeLatestVMAP() {
+        print("Joe: - start saving this")
+        print("Joe: - saved \(arrayOfJoesStuff)")
+        arrayOfJoesStuff = []
+    }
 }

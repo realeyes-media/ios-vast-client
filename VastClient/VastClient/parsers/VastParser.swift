@@ -27,6 +27,7 @@ class VastParser {
         print("\nJoe:")
         print("Joe: INIT VastParser")
         print("Joe:\n")
+        print("Joe: another thing here")
 
         self.options = options
         self.queue = queue

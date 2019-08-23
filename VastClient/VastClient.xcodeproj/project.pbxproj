@@ -186,6 +186,7 @@
 		C7D2FE0F220A483B0077B7DE /* VMAPTrackingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE0B219C5C100007A079 /* VMAPTrackingEvent.swift */; };
 		C7D2FE10220A483B0077B7DE /* VMAPAdBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE0C219C5C100007A079 /* VMAPAdBreak.swift */; };
 		C7D2FE11220A484D0077B7DE /* String+value.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE32219C5C560007A079 /* String+value.swift */; };
+		D8F46B68231057C600CF9E96 /* VMAPArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F46B67231057C600CF9E96 /* VMAPArchiver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -313,6 +314,7 @@
 		A9A3FFB521BA5B4C008DB5D6 /* TestFullVast4.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TestFullVast4.xml; sourceTree = "<group>"; };
 		A9A3FFB721BA5CBE008DB5D6 /* FullVast4-test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FullVast4-test.swift"; sourceTree = "<group>"; };
 		A9A84FEB21A3053200949C4B /* VastParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastParser.swift; sourceTree = "<group>"; };
+		D8F46B67231057C600CF9E96 /* VMAPArchiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMAPArchiver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -393,9 +395,10 @@
 		0F7B97CE2077DB310096438D /* parsers */ = {
 			isa = PBXGroup;
 			children = (
-				0F7B97D02077DB4C0096438D /* VastXMLParser.swift */,
 				0F7AF07B211B60A6000AD5BB /* VMAPParser.swift */,
+				D8F46B67231057C600CF9E96 /* VMAPArchiver.swift */,
 				A9A84FEB21A3053200949C4B /* VastParser.swift */,
+				0F7B97D02077DB4C0096438D /* VastXMLParser.swift */,
 			);
 			path = parsers;
 			sourceTree = "<group>";
@@ -758,6 +761,7 @@
 				0F7B97D12077DB4C0096438D /* VastXMLParser.swift in Sources */,
 				A945EE1B219C5C100007A079 /* VastWrapper.swift in Sources */,
 				A945EE0F219C5C100007A079 /* VastModel.swift in Sources */,
+				D8F46B68231057C600CF9E96 /* VMAPArchiver.swift in Sources */,
 				0F7B97D92077E40A0096438D /* Sequence+every.swift in Sources */,
 				0FC3AE4B227652C900255CA2 /* Tracking.swift in Sources */,
 				0F71436A20BDD59D0029BBB6 /* String+encode.swift in Sources */,

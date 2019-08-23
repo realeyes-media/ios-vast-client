@@ -20,20 +20,16 @@ class VMAPParser: NSObject {
     var fatalError: Error?
 
     var vmapModel: VMAPModel?
-
     var adBreaks = [VMAPAdBreak]()
     var currentAdBreak: VMAPAdBreak?
-
     var trackingEvents = [VMAPTrackingEvent]()
     var currentTrackingEvent: VMAPTrackingEvent?
-
     var currentVMAPAdSource: VMAPAdSource?
-
     var currentVastModel: VastModel?
 
-    var currentContent = ""
+    var vmapArchiver = VMAPArchiver()
 
-    var arrayOfJoesStuff = [(String, [String:String])]()
+    var currentContent = ""
 
     init(options: VastClientOptions) {
         self.options = options
@@ -41,14 +37,13 @@ class VMAPParser: NSObject {
         self.vastParser = VastParser(options: options)
     }
 
-//    init?(options: VastClientOptions, somethingElse: NotYetMade) {
-//        self.options = options
-//        self.vastXMLParser = VastXMLParser()
-//        self.vastParser = VastParser(options: options)
-//        // do something with the something else
-//    }
-
     func parse(url: URL) throws -> VMAPModel {
+        if vmapArchiver.shouldUseSavedVMAP {
+            print("Joe: Should use saved vmap")
+        } else {
+            print("Joe: Should create new vmap")
+            // eventually, move all of the logic below in here
+        }
         xmlParser = XMLParser(contentsOf: url)
         guard let parser = xmlParser else {
             throw VMAPError.unableToCreateXMLParser
@@ -92,9 +87,12 @@ class VMAPParser: NSObject {
 
 extension VMAPParser: XMLParserDelegate {
 
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+    func parserDidStartDocument(_ parser: XMLParser) {
+        vmapArchiver.parserDidStartDocument()
+    }
 
-        prepareToSerialize(elementName: elementName, attributes: attributeDict)
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+        vmapArchiver.parserStartedNewElement(elementName: elementName, attributes: attributeDict)
 
         if !validVMAPDocument && !parsedFirstElement {
             parsedFirstElement = true
@@ -128,10 +126,12 @@ extension VMAPParser: XMLParserDelegate {
     }
 
     func parser(_ parser: XMLParser, foundCharacters string: String) {
+        vmapArchiver.parserFoundCharacters(string: string)
         currentContent += string
     }
 
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        vmapArchiver.parserEndedElement(elementName: elementName)
         currentContent = currentContent.trimmingCharacters(in: .whitespacesAndNewlines)
 
         if validVMAPDocument && fatalError == nil {
@@ -171,27 +171,12 @@ extension VMAPParser: XMLParserDelegate {
     }
 
     func parserDidEndDocument(_ parser: XMLParser) {
-        serializeLatestVMAP()
+        vmapArchiver.parserDidEndDocument()
     }
 
     func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
+        vmapArchiver.parserErrorOccurred()
         fatalError = parseError
     }
 
-}
-
-// MARK: - Serializing VMAP
-private extension VMAPParser {
-
-    func prepareToSerialize(elementName: String, attributes attributeDict: [String : String]) {
-        guard !attributeDict.isEmpty else { return }
-        arrayOfJoesStuff.append((elementName, attributeDict))
-        print("Joe: - capture this \(elementName)")
-    }
-
-    func serializeLatestVMAP() {
-        print("Joe: - start saving this")
-        print("Joe: - saved \(arrayOfJoesStuff)")
-        arrayOfJoesStuff = []
-    }
 }

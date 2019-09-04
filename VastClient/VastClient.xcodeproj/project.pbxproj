@@ -61,6 +61,9 @@
 		0FEDAAC120AA3A62006850C8 /* TrackingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAAC020AA3A62006850C8 /* TrackingError.swift */; };
 		433D192522D7AE810012E88A /* VastAdVerificationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433D192422D7AE810012E88A /* VastAdVerificationParameters.swift */; };
 		433D192622D7AE810012E88A /* VastAdVerificationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433D192422D7AE810012E88A /* VastAdVerificationParameters.swift */; };
+		43D39ED523207445001E7B9A /* VastNonlinearCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D39ED423207445001E7B9A /* VastNonlinearCreative.swift */; };
+		43D39ED7232079F9001E7B9A /* VastNonlinear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D39ED6232079F9001E7B9A /* VastNonlinear.swift */; };
+		43D39ED8232079F9001E7B9A /* VastNonlinear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D39ED6232079F9001E7B9A /* VastNonlinear.swift */; };
 		A91F507821A432750062198F /* PubadsModel-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F507721A432750062198F /* PubadsModel-test.swift */; };
 		A91F507A21A432850062198F /* PubadsWrapperModel-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F507921A432850062198F /* PubadsWrapperModel-test.swift */; };
 		A91F507C21A432910062198F /* PubadsInlineModel-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F507B21A432910062198F /* PubadsInlineModel-test.swift */; };
@@ -224,6 +227,8 @@
 		0FEDAABE20AA3A05006850C8 /* TrackingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingStatus.swift; sourceTree = "<group>"; };
 		0FEDAAC020AA3A62006850C8 /* TrackingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingError.swift; sourceTree = "<group>"; };
 		433D192422D7AE810012E88A /* VastAdVerificationParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastAdVerificationParameters.swift; sourceTree = "<group>"; };
+		43D39ED423207445001E7B9A /* VastNonlinearCreative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastNonlinearCreative.swift; sourceTree = "<group>"; };
+		43D39ED6232079F9001E7B9A /* VastNonlinear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastNonlinear.swift; sourceTree = "<group>"; };
 		A91F507721A432750062198F /* PubadsModel-test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PubadsModel-test.swift"; sourceTree = "<group>"; };
 		A91F507921A432850062198F /* PubadsWrapperModel-test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PubadsWrapperModel-test.swift"; sourceTree = "<group>"; };
 		A91F507B21A432910062198F /* PubadsInlineModel-test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PubadsInlineModel-test.swift"; sourceTree = "<group>"; };
@@ -491,6 +496,8 @@
 				A945EDF7219C5C100007A079 /* VastCompanionCreative.swift */,
 				A945EDF8219C5C100007A079 /* VastMediaFile.swift */,
 				A945EDF9219C5C100007A079 /* VastLinearCreative.swift */,
+				43D39ED423207445001E7B9A /* VastNonlinearCreative.swift */,
+				43D39ED6232079F9001E7B9A /* VastNonlinear.swift */,
 				A945EDFA219C5C100007A079 /* VastViewableImpression.swift */,
 				A945EDFB219C5C100007A079 /* VastAdSystem.swift */,
 				A945EDFC219C5C100007A079 /* VastExtension.swift */,
@@ -758,10 +765,12 @@
 				0F7B97D12077DB4C0096438D /* VastXMLParser.swift in Sources */,
 				A945EE1B219C5C100007A079 /* VastWrapper.swift in Sources */,
 				A945EE0F219C5C100007A079 /* VastModel.swift in Sources */,
+				43D39ED523207445001E7B9A /* VastNonlinearCreative.swift in Sources */,
 				0F7B97D92077E40A0096438D /* Sequence+every.swift in Sources */,
 				0FC3AE4B227652C900255CA2 /* Tracking.swift in Sources */,
 				0F71436A20BDD59D0029BBB6 /* String+encode.swift in Sources */,
 				A945EE22219C5C100007A079 /* VastCreativeExtension.swift in Sources */,
+				43D39ED7232079F9001E7B9A /* VastNonlinear.swift in Sources */,
 				A945EE2E219C5C100007A079 /* VMAPAdSource.swift in Sources */,
 				A945EE15219C5C100007A079 /* IconClicks.swift in Sources */,
 				0FEDAAC120AA3A62006850C8 /* TrackingError.swift in Sources */,
@@ -885,6 +894,7 @@
 				C7D2FE08220A47E60077B7DE /* VastCreativeParameter.swift in Sources */,
 				0FCD6F3721FF599A008F42AA /* (null) in Sources */,
 				0FCD6F4621FF599F008F42AA /* (null) in Sources */,
+				43D39ED8232079F9001E7B9A /* VastNonlinear.swift in Sources */,
 				0FCD6F5421FF59AE008F42AA /* VastMacros.swift in Sources */,
 				0FCD6F3D21FF599A008F42AA /* (null) in Sources */,
 				0FCD6F4421FF599F008F42AA /* (null) in Sources */,

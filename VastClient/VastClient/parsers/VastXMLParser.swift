@@ -101,7 +101,6 @@ extension VastXMLParser: XMLParserDelegate {
             }
         }
         
-        print("$$$ test 2")
         print("$$$ elementName: \(elementName)")
 
         if validVastDocument && fatalError == nil {

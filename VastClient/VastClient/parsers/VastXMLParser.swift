@@ -100,6 +100,8 @@ extension VastXMLParser: XMLParserDelegate {
                 vastModel = VastModel(attrDict: attributeDict)
             }
         }
+        
+        print("$$$ test 2")
 
         if validVastDocument && fatalError == nil {
             switch elementName {

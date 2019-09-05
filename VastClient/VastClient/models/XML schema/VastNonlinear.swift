@@ -8,6 +8,6 @@
 
 import Foundation
 
-public struct nonlinearPlaceholder {
-    var foo: String
-}
+//public struct nonlinearPlaceholder {
+//    var foo: String
+//}

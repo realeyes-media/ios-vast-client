@@ -59,6 +59,7 @@ extension VastLinearCreative {
             guard let newKey = LinearCreativeAttribute(rawValue: key) else {
                 return nil
             }
+            print("$$$ new key: \(newKey)")
             return (newKey, value)
             }.forEach { (key, value) in
                 switch key {

@@ -1,5 +1,5 @@
 //
-//  VastNonlinear.swift
+//  VastNonLinear.swift
 //  VastClient
 //
 //  Created by Austin Christensen on 9/4/19.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-//public struct nonlinearPlaceholder {
-//    var foo: String
-//}
+public struct nonLinearPlaceholder {
+    var foo: String
+}

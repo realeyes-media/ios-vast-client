@@ -40,6 +40,7 @@ class VastXMLParser: NSObject {
     var currentCreative: VastCreative?
     
     var currentLinearCreative: VastLinearCreative?
+    var currentNonLinearAdsCreative: VastNonLinearAdsCreative?
     var currentUniversalAdId: VastUniversalAdId?
     var currentCreativeExtension: VastCreativeExtension?
     var currentTrackingEvent: VastTrackingEvent?
@@ -135,6 +136,8 @@ extension VastXMLParser: XMLParserDelegate {
                 currentCreative = VastCreative(attrDict: attributeDict)
             case VastCreativeElements.linear:
                 currentLinearCreative = VastLinearCreative(attrDict: attributeDict)
+            case VastCreativeElements.nonLinearAds:
+                currentNonLinearAdsCreative = VastNonLinearAdsCreative()
             case VastCreativeElements.universalAdId:
                 currentUniversalAdId = VastUniversalAdId(attrDict: attributeDict)
             case VastCreativeElements.creativeExtension:
@@ -327,6 +330,11 @@ extension VastXMLParser: XMLParserDelegate {
             case VastCreativeElements.linear:
                 if let linear = currentLinearCreative {
                     currentCreative?.linear = linear
+                    currentLinearCreative = nil
+                }
+            case VastCreativeElements.nonLinearAds:
+                if let nonLinearAds = currentNonLinearAdsCreative {
+                    currentCreative?.nonLinearAds = nonLinearAds
                     currentLinearCreative = nil
                 }
             case CreativeLinearElements.duration:

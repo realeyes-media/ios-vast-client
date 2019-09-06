@@ -38,6 +38,7 @@ public struct VastCreative {
     public var universalAdId: VastUniversalAdId?
     public var creativeExtensions: [VastCreativeExtension] = []
     public var linear: VastLinearCreative?
+    public var nonLinearAds: VastNonLinearAdsCreative?
     public var companionAds: VastCompanionAds?
 }
 

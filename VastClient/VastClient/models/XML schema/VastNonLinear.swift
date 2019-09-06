@@ -15,12 +15,12 @@ fileprivate enum NonLinearAttribute: String {
 }
 
 public struct VastNonLinear {
-    var height: String
-    var id: String
-    var width: String
+    public var height: String
+    public var id: String
+    public var width: String
     
-    var staticResource: VastStaticResource?
-    var nonLinearClickTracking: URL?
+    public var staticResource: VastStaticResource?
+    public var nonLinearClickTracking: URL?
 }
 
 extension VastNonLinear {
@@ -47,4 +47,7 @@ extension VastNonLinear {
         self.id = id
         self.width = width
     }
+}
+
+extension VastNonLinear: Equatable {
 }

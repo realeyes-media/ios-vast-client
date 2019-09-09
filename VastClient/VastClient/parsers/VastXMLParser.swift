@@ -402,6 +402,7 @@ extension VastXMLParser: XMLParserDelegate {
                         currentCompanionCreative?.staticResource.append(staticResource)
                     } else {
                         currentIcon?.staticResource.append(staticResource)
+                        currentNonLinear?.staticResource = staticResource
                     }
                 }
                 currentStaticResource = nil

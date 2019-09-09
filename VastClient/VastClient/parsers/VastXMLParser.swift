@@ -139,6 +139,8 @@ extension VastXMLParser: XMLParserDelegate {
                 currentLinearCreative = VastLinearCreative(attrDict: attributeDict)
             case VastCreativeElements.nonLinearAds:
                 currentNonLinearAdsCreative = VastNonLinearAdsCreative()
+            case CreativeNonLinearAdsElements.nonLinear:
+                currentNonLinear = VastNonLinear(attrDict: attributeDict)
             case VastCreativeElements.universalAdId:
                 currentUniversalAdId = VastUniversalAdId(attrDict: attributeDict)
             case VastCreativeElements.creativeExtension:
@@ -385,9 +387,6 @@ extension VastXMLParser: XMLParserDelegate {
                     currentCreative?.nonLinearAds = nonLinearAds
                     currentLinearCreative = nil
                 }
-            case CreativeNonLinearAdsElements.nonLinear:
-                guard let url = URL(string: currentContent) else { return }
-                currentNonLinearAdsCreative?.nonLinear?.staticResource?.url? = url
             case VastIconElements.staticResource, CompanionElements.staticResource:
                 currentStaticResource?.url = URL(string: currentContent)
                 

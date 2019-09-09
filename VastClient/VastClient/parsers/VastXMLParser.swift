@@ -410,10 +410,6 @@ extension VastXMLParser: XMLParserDelegate {
                 if let url = URL(string: currentContent){
                     currentNonLinear?.nonLinearClickTracking = url
                 }
-            case AdElements.error:
-                if let url = URL(string: currentContent) {
-                    currentVastAd?.errors.append(url)
-                }
             case CompanionElements.iframeResource: // TODO: add icon iFrameResource check if necessary
                 if let url = URL(string: currentContent) {
                     currentCompanionCreative?.iFrameResource.append(url)

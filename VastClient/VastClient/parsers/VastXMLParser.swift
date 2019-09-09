@@ -149,6 +149,8 @@ extension VastXMLParser: XMLParserDelegate {
                 currentCreativeExtension = VastCreativeExtension(attrDict: attributeDict)
             case CreativeLinearElements.tracking:
                 currentTrackingEvent = VastTrackingEvent(attrDict: attributeDict)
+            case CreativeNonLinearAdsElements.tracking:
+                currentTrackingEvent = VastTrackingEvent(attrDict: attributeDict)
             case CreativeLinearElements.clickthrough, CreativeLinearElements.clicktracking, CreativeLinearElements.customclick:
                 guard let type = ClickType(rawValue: elementName) else { break }
                 currentVideoClick = VastVideoClick(type: type, attrDict: attributeDict)
@@ -368,13 +370,17 @@ extension VastXMLParser: XMLParserDelegate {
                     currentLinearCreative?.videoClicks.append(click)
                     currentVideoClick = nil
                 }
-            case CreativeLinearElements.tracking, CompanionElements.trackingevents:
+            case CreativeLinearElements.tracking, CompanionElements.trackingevents, CreativeNonLinearAdsElements.tracking:
                 currentTrackingEvent?.url = URL(string: currentContent)
                 if let trackingEvent = currentTrackingEvent {
                     if currentCompanionCreative != nil {
                         currentCompanionCreative?.trackingEvents.append(trackingEvent)
                     } else {
-                        currentLinearCreative?.trackingEvents.append(trackingEvent)
+                        if currentNonLinearAdsCreative != nil {
+                            currentNonLinearAdsCreative?.trackingEvents.append(trackingEvent)
+                        } else {
+                            currentLinearCreative?.trackingEvents.append(trackingEvent)
+                        }
                     }
                     currentTrackingEvent = nil
                 }
@@ -401,8 +407,11 @@ extension VastXMLParser: XMLParserDelegate {
                     if currentCompanionCreative != nil {
                         currentCompanionCreative?.staticResource.append(staticResource)
                     } else {
-                        currentIcon?.staticResource.append(staticResource)
-                        currentNonLinear?.staticResource = staticResource
+                        if currentNonLinear != nil {
+                            currentNonLinear?.staticResource = staticResource
+                        } else {
+                            currentIcon?.staticResource.append(staticResource)
+                        }
                     }
                 }
                 currentStaticResource = nil

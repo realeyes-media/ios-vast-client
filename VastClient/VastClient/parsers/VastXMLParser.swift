@@ -139,6 +139,8 @@ extension VastXMLParser: XMLParserDelegate {
                 currentLinearCreative = VastLinearCreative(attrDict: attributeDict)
             case VastCreativeElements.nonLinearAds:
                 currentNonLinearAdsCreative = VastNonLinearAdsCreative()
+            case CreativeNonLinearAdsElements.staticResource:
+                currentStaticResource = VastStaticResource(attrDict: attributeDict)
             case CreativeNonLinearAdsElements.nonLinear:
                 currentNonLinear = VastNonLinear(attrDict: attributeDict)
             case VastCreativeElements.universalAdId:

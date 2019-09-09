@@ -397,7 +397,7 @@ extension VastXMLParser: XMLParserDelegate {
                 }
             case CreativeNonLinearAdsElements.nonLinear:
                 if let nonLinear = currentNonLinear {
-                    currentNonLinearAdsCreative?.nonLinear = nonLinear
+                    currentNonLinearAdsCreative?.nonLinear.append(nonLinear)
                     currentNonLinear = nil
                 }
             case VastIconElements.staticResource, CompanionElements.staticResource, CreativeNonLinearAdsElements.staticResource:

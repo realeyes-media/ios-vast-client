@@ -391,7 +391,6 @@ extension VastXMLParser: XMLParserDelegate {
                 }
             case CreativeNonLinearAdsElements.nonLinear:
                 if let nonLinear = currentNonLinear {
-//                    currentCreative?.nonLinearAds?.nonLinear = nonLinear
                     currentNonLinearAdsCreative?.nonLinear = nonLinear
                     currentNonLinear = nil
                 }
@@ -407,6 +406,14 @@ extension VastXMLParser: XMLParserDelegate {
                     }
                 }
                 currentStaticResource = nil
+            case CreativeNonLinearAdsElements.NonLinearClickTracking:
+                if let url = URL(string: currentContent){
+                    currentNonLinear?.nonLinearClickTracking = url
+                }
+            case AdElements.error:
+                if let url = URL(string: currentContent) {
+                    currentVastAd?.errors.append(url)
+                }
             case CompanionElements.iframeResource: // TODO: add icon iFrameResource check if necessary
                 if let url = URL(string: currentContent) {
                     currentCompanionCreative?.iFrameResource.append(url)

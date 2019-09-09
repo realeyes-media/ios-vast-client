@@ -41,6 +41,7 @@ class VastXMLParser: NSObject {
     
     var currentLinearCreative: VastLinearCreative?
     var currentNonLinearAdsCreative: VastNonLinearAdsCreative?
+    var currentNonLinear: VastNonLinear?
     var currentUniversalAdId: VastUniversalAdId?
     var currentCreativeExtension: VastCreativeExtension?
     var currentTrackingEvent: VastTrackingEvent?
@@ -384,6 +385,9 @@ extension VastXMLParser: XMLParserDelegate {
                     currentCreative?.nonLinearAds = nonLinearAds
                     currentLinearCreative = nil
                 }
+            case CreativeNonLinearAdsElements.nonLinear:
+                guard let url = URL(string: currentContent) else { return }
+                currentNonLinearAdsCreative?.nonLinear?.staticResource?.url? = url
             case VastIconElements.staticResource, CompanionElements.staticResource:
                 currentStaticResource?.url = URL(string: currentContent)
                 

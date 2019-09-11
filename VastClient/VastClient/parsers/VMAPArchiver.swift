@@ -12,7 +12,7 @@ class VMAPArchiver {
     // Use UserDefaults to store the time of last save.
     // This will prevent us from having to store this information in a much
     // larger file with all of the data associated with VMAP
-    private let saveDateKey = "timeSince1970"
+    private let saveDateKey = "VASTClientTimeSince1970"
     private var lastSaveDate: Date? {
         let time = UserDefaults.standard.double(forKey: saveDateKey)
         if time <= 0 { return nil }

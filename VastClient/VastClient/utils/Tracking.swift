@@ -24,7 +24,6 @@ func track(urls: [URL], eventName: String? = nil) {
 }
 
 private func makeRequest(withUrl url: URL) {
-    print("$$$ URL: \(url.absoluteString)")
     let request = URLRequest(url: url)
     let config = URLSessionConfiguration.default
     let session = URLSession(configuration: config)

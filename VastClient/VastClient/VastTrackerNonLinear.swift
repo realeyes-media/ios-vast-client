@@ -227,13 +227,8 @@ public class VastTrackerNonLinear {
             throw TrackingError.internalError(msg: "Unable to find current creative to track")
         }
         
-        if !creative.trackedComplete && creative.trackedStart {
-            creative.trackedComplete = true
-            try trackEvent(.complete)
-            delegate?.adComplete(vastTracker: self, ad: creative.vastAd)
-        }
-        
-        try tryToPlayNext()
+        try trackEvent(.complete)
+        delegate?.adComplete(vastTracker: self, ad: creative.vastAd)
     }
     
     public func paused(_ val: Bool) throws {

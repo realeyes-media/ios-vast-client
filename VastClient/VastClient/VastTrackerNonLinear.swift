@@ -221,14 +221,8 @@ public class VastTrackerNonLinear {
         currentNonlinearTrackingCreative = creative
     }
     
-    public func finishedPlayback() throws {
-        guard var creative = currentNonlinearTrackingCreative else {
-            trackingStatus = .errored
-            throw TrackingError.internalError(msg: "Unable to find current creative to track")
-        }
-        
-        try trackEvent(.complete)
-        delegate?.adComplete(vastTracker: self, ad: creative.vastAd)
+    public func adBreakCompleted() throws {
+         delegate?.adBreakComplete(vastTracker: self)
     }
     
     public func paused(_ val: Bool) throws {

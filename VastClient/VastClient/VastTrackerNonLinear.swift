@@ -192,15 +192,12 @@ public class VastTrackerNonLinear {
             delegate?.adBreakStart(vastTracker: self)
         }
 //
-//        if !creative.trackedStart {
-//            creative.trackedStart = true
-//
-//            let impressions = creative.vastAd.impressions.compactMap { $0.url }
-//            track(urls: impressions, eventName: "IMPRESSIONS")
-//            trackEvent(.creativeView, creative: creative)
-//            trackEvent(.start, creative: creative)
-//            delegate?.adStart(vastTracker: self, ad: creative.vastAd)
-//        }
+        if !creative.trackedStart {
+            creative.trackedStart = true
+
+            let impressions = creative.vastAd.impressions.compactMap { $0.url }
+            track(urls: impressions, eventName: "IMPRESSIONS")
+        }
 //
 //        if comparisonTime >= creative.firstQuartile, comparisonTime <= creative.midpoint, !creative.trackedFirstQuartile {
 //            creative.trackedFirstQuartile = true

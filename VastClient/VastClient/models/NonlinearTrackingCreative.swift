@@ -27,5 +27,8 @@ extension NonlinearTrackingCreative {
         
         self.creative = creative
         self.vastAd = vastAd
+        self.firstQuartile = 0.0
+        self.midpoint = 0.0
+        self.thirdQuartile = 0.0
     }
 }

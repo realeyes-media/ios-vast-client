@@ -67,6 +67,8 @@
 		43D39ED92322F57E001E7B9A /* VastNonLinearAdsCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D39ED423207445001E7B9A /* VastNonLinearAdsCreative.swift */; };
 		43D39EDF23304C07001E7B9A /* VastTrackerNonLinear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D39EDE23304C07001E7B9A /* VastTrackerNonLinear.swift */; };
 		43D39EE023304C08001E7B9A /* VastTrackerNonLinear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D39EDE23304C07001E7B9A /* VastTrackerNonLinear.swift */; };
+		43D39EE22332BC06001E7B9A /* NonlinearTrackingCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D39EE12332BC05001E7B9A /* NonlinearTrackingCreative.swift */; };
+		43D39EE32332BC06001E7B9A /* NonlinearTrackingCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D39EE12332BC05001E7B9A /* NonlinearTrackingCreative.swift */; };
 		A91F507821A432750062198F /* PubadsModel-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F507721A432750062198F /* PubadsModel-test.swift */; };
 		A91F507A21A432850062198F /* PubadsWrapperModel-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F507921A432850062198F /* PubadsWrapperModel-test.swift */; };
 		A91F507C21A432910062198F /* PubadsInlineModel-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F507B21A432910062198F /* PubadsInlineModel-test.swift */; };
@@ -233,6 +235,7 @@
 		43D39ED423207445001E7B9A /* VastNonLinearAdsCreative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastNonLinearAdsCreative.swift; sourceTree = "<group>"; };
 		43D39ED6232079F9001E7B9A /* VastNonLinear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastNonLinear.swift; sourceTree = "<group>"; };
 		43D39EDE23304C07001E7B9A /* VastTrackerNonLinear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastTrackerNonLinear.swift; sourceTree = "<group>"; };
+		43D39EE12332BC05001E7B9A /* NonlinearTrackingCreative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonlinearTrackingCreative.swift; sourceTree = "<group>"; };
 		A91F507721A432750062198F /* PubadsModel-test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PubadsModel-test.swift"; sourceTree = "<group>"; };
 		A91F507921A432850062198F /* PubadsWrapperModel-test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PubadsWrapperModel-test.swift"; sourceTree = "<group>"; };
 		A91F507B21A432910062198F /* PubadsInlineModel-test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PubadsInlineModel-test.swift"; sourceTree = "<group>"; };
@@ -478,6 +481,7 @@
 				A945EDE9219C5C100007A079 /* XML schema */,
 				A945EE06219C5C100007A079 /* VMAP */,
 				A945EE0D219C5C100007A079 /* TrackingCreative.swift */,
+				43D39EE12332BC05001E7B9A /* NonlinearTrackingCreative.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -782,6 +786,7 @@
 				A945EE30219C5C100007A079 /* VMAPAdBreak.swift in Sources */,
 				0F71436820BDD07D0029BBB6 /* URL+replace.swift in Sources */,
 				0F58AE3520C7410700699B77 /* VastMacros.swift in Sources */,
+				43D39EE22332BC06001E7B9A /* NonlinearTrackingCreative.swift in Sources */,
 				A945EE1A219C5C100007A079 /* VastVideoClicks.swift in Sources */,
 				A945EE1D219C5C100007A079 /* VastMediaFile.swift in Sources */,
 				0F7AF07E211B616A000AD5BB /* VMAPError.swift in Sources */,
@@ -880,6 +885,7 @@
 				C7D2FDF7220A47C60077B7DE /* VastCompanionAds.swift in Sources */,
 				C7D2FE09220A48140077B7DE /* TrackingCreative.swift in Sources */,
 				0FCD6F5021FF59AE008F42AA /* VastError.swift in Sources */,
+				43D39EE32332BC06001E7B9A /* NonlinearTrackingCreative.swift in Sources */,
 				C7D2FE07220A47C60077B7DE /* VastVerification.swift in Sources */,
 				C7D2FDF2220A47C60077B7DE /* VastIcon.swift in Sources */,
 				0FCD6F5521FF59AE008F42AA /* VMAPError.swift in Sources */,

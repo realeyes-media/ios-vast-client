@@ -53,7 +53,7 @@ public class VastTrackerNonLinear {
     private var vastAds: [VastAd]
     private let trackerModel: TrackerModel
     private var completedAdAccumulatedDuration = 0.0
-    private var currentTrackingCreative: TrackingCreative?
+    private var currentNonlinearTrackingCreative: NonlinearTrackingCreative?
     
     private var adBreakStarted = false
     private let trackProgressCumulatively: Bool
@@ -138,91 +138,91 @@ public class VastTrackerNonLinear {
             trackingStatus = .tracking
         }
         
-        if currentTrackingCreative == nil {
+        if currentNonlinearTrackingCreative == nil {
             guard let vastAd = vastAds.first,
-                let linearCreative = vastAd.creatives.first?.linear, vastAd.sequence ?? 1 > 0 else {
+                let nonlinearCreative = vastAd.creatives.first?.nonLinearAds, vastAd.sequence ?? 1 > 0 else {
                     trackingStatus = .complete
                     delegate?.adBreakComplete(vastTracker: self)
                     return
             }
             
-            currentTrackingCreative = TrackingCreative(creative: linearCreative, vastAd: vastAd)
+            currentNonlinearTrackingCreative = NonlinearTrackingCreative(creative: nonlinearCreative, vastAd: vastAd)
         }
         
-        guard var creative = currentTrackingCreative else {
+        guard var creative = currentNonlinearTrackingCreative else {
             trackingStatus = .errored
             throw TrackingError.internalError(msg: "Unable to find current creative to track")
         }
         
-        let progressUrls = creative.creative.trackingEvents
-            .filter { $0.type == .progress && !$0.tracked && $0.url != nil }
-            .filter { event -> Bool in
-                if var offset = event.offset {
-                    if offset > 0 && offset < 1 {
-                        offset = creative.duration * offset
-                    }
-                    if time >= offset {
-                        return true
-                    }
-                } else {
-                    return true
-                }
-                return false
-            }
-            .compactMap { $0.url }
+//        let progressUrls = creative.creative.trackingEvents
+//            .filter { $0.type == .progress && !$0.tracked && $0.url != nil }
+//            .filter { event -> Bool in
+//                if var offset = event.offset {
+//                    if offset > 0 && offset < 1 {
+//                        offset = creative.duration * offset
+//                    }
+//                    if time >= offset {
+//                        return true
+//                    }
+//                } else {
+//                    return true
+//                }
+//                return false
+//            }
+//            .compactMap { $0.url }
+//
+//        if progressUrls.count > 0 {
+//            progressUrls.forEach { url in
+//                guard let idx = creative.creative.trackingEvents.firstIndex(where: { $0.url == url }) else { return }
+//                creative.creative.trackingEvents[idx].tracked = true
+//            }
+//            track(urls: progressUrls, eventName: "PROGRESS")
+//        }
         
-        if progressUrls.count > 0 {
-            progressUrls.forEach { url in
-                guard let idx = creative.creative.trackingEvents.firstIndex(where: { $0.url == url }) else { return }
-                creative.creative.trackingEvents[idx].tracked = true
-            }
-            track(urls: progressUrls, eventName: "PROGRESS")
-        }
+//        guard comparisonTime < creative.duration else {
+//            return
+//        }
         
-        guard comparisonTime < creative.duration else {
-            return
-        }
-        
-        guard currentTime >= startTime else {
-            return
-        }
+//        guard currentTime >= startTime else {
+//            return
+//        }
         
         if !adBreakStarted {
             adBreakStarted = true
             delegate?.adBreakStart(vastTracker: self)
         }
+//
+//        if !creative.trackedStart {
+//            creative.trackedStart = true
+//
+//            let impressions = creative.vastAd.impressions.compactMap { $0.url }
+//            track(urls: impressions, eventName: "IMPRESSIONS")
+//            trackEvent(.creativeView, creative: creative)
+//            trackEvent(.start, creative: creative)
+//            delegate?.adStart(vastTracker: self, ad: creative.vastAd)
+//        }
+//
+//        if comparisonTime >= creative.firstQuartile, comparisonTime <= creative.midpoint, !creative.trackedFirstQuartile {
+//            creative.trackedFirstQuartile = true
+//            trackEvent(.firstQuartile, creative: creative)
+//            delegate?.adFirstQuartile(vastTracker: self, ad: creative.vastAd)
+//        }
+//        if comparisonTime >= creative.midpoint, comparisonTime <= creative.thirdQuartile, !creative.trackedMidpoint {
+//            creative.trackedMidpoint = true
+//            trackEvent(.midpoint, creative: creative)
+//            delegate?.adMidpoint(vastTracker: self, ad: creative.vastAd)
+//        }
+//        if comparisonTime >= creative.thirdQuartile, comparisonTime <= creative.duration, !creative.trackedThirdQuartile {
+//            creative.trackedThirdQuartile = true
+//            trackEvent(.thirdQuartile, creative: creative)
+//            delegate?.adThirdQuartile(vastTracker: self, ad: creative.vastAd)
+//        }
         
-        if !creative.trackedStart {
-            creative.trackedStart = true
-            
-            let impressions = creative.vastAd.impressions.compactMap { $0.url }
-            track(urls: impressions, eventName: "IMPRESSIONS")
-            trackEvent(.creativeView, creative: creative)
-            trackEvent(.start, creative: creative)
-            delegate?.adStart(vastTracker: self, ad: creative.vastAd)
-        }
-        
-        if comparisonTime >= creative.firstQuartile, comparisonTime <= creative.midpoint, !creative.trackedFirstQuartile {
-            creative.trackedFirstQuartile = true
-            trackEvent(.firstQuartile, creative: creative)
-            delegate?.adFirstQuartile(vastTracker: self, ad: creative.vastAd)
-        }
-        if comparisonTime >= creative.midpoint, comparisonTime <= creative.thirdQuartile, !creative.trackedMidpoint {
-            creative.trackedMidpoint = true
-            trackEvent(.midpoint, creative: creative)
-            delegate?.adMidpoint(vastTracker: self, ad: creative.vastAd)
-        }
-        if comparisonTime >= creative.thirdQuartile, comparisonTime <= creative.duration, !creative.trackedThirdQuartile {
-            creative.trackedThirdQuartile = true
-            trackEvent(.thirdQuartile, creative: creative)
-            delegate?.adThirdQuartile(vastTracker: self, ad: creative.vastAd)
-        }
-        
-        currentTrackingCreative = creative
+        currentNonlinearTrackingCreative = creative
     }
     
     public func finishedPlayback() throws {
-        guard var creative = currentTrackingCreative else {
+        guard var creative = currentNonlinearTrackingCreative else {
             trackingStatus = .errored
             throw TrackingError.internalError(msg: "Unable to find current creative to track")
         }
@@ -231,7 +231,6 @@ public class VastTrackerNonLinear {
             creative.trackedComplete = true
             try trackEvent(.complete)
             delegate?.adComplete(vastTracker: self, ad: creative.vastAd)
-            completedAdAccumulatedDuration += creative.duration
         }
         
         try tryToPlayNext()
@@ -257,7 +256,7 @@ public class VastTrackerNonLinear {
     
     private func tryToPlayNext() throws {
         vastAds.removeFirst()
-        currentTrackingCreative = nil
+        currentNonlinearTrackingCreative = nil
         if vastAds.count > 0 {
             if trackProgressCumulatively {
                 try updateProgress(time: currentTime)
@@ -270,18 +269,18 @@ public class VastTrackerNonLinear {
         }
     }
     
-    public func skip() throws {
-        if let creative = currentTrackingCreative {
-            guard let skipOffset = creative.vastAd.creatives.first?.linear?.skipOffset?.toSeconds, skipOffset < comparisonTime else {
-                throw TrackingError.unableToSkipAdAtThisTime
-            }
-            try trackEvent(.skip)
-            completedAdAccumulatedDuration += creative.duration
-            try tryToPlayNext()
-        } else {
-            throw TrackingError.internalError(msg: "Unable to find current creative to track")
-        }
-    }
+//    public func skip() throws {
+//        if let creative = currentNonlinearTrackingCreative {
+//            guard let skipOffset = creative.vastAd.creatives.first?.linear?.skipOffset?.toSeconds, skipOffset < comparisonTime else {
+//                throw TrackingError.unableToSkipAdAtThisTime
+//            }
+//            try trackEvent(.skip)
+//            completedAdAccumulatedDuration += creative.duration
+//            try tryToPlayNext()
+//        } else {
+//            throw TrackingError.internalError(msg: "Unable to find current creative to track")
+//        }
+//    }
     
     public func acceptedLinearInvitation() throws {
         try trackEvent(.acceptInvitationLinear)
@@ -291,39 +290,39 @@ public class VastTrackerNonLinear {
         try trackEvent(.closeLinear)
     }
     
-    public func clicked() throws -> URL? {
-        if let trackingCreative = currentTrackingCreative {
-            trackClicks(for: trackingCreative)
-            
-            return trackingCreative.creative.videoClicks.first(where: { $0.type == .clickThrough })?.url
-        } else {
-            // TODO: determine if this is an error or complete
-            throw TrackingError.unableToProvideCreativeClickThroughUrls
-        }
-    }
+//    public func clicked() throws -> URL? {
+//        if let nonLinearTrackingCreative = currentNonlinearTrackingCreative {
+//            trackClicks(for: nonLinearTrackingCreative)
+//
+//            return nonLinearTrackingCreative.creative.videoClicks.first(where: { $0.type == .clickThrough })?.url
+//        } else {
+//            // TODO: determine if this is an error or complete
+//            throw TrackingError.unableToProvideCreativeClickThroughUrls
+//        }
+//    }
     
-    public func clickedWithCustomAction() throws -> [URL] {
-        if let trackingCreative = currentTrackingCreative {
-            trackClicks(for: trackingCreative)
-            
-            return trackingCreative.creative.videoClicks
-                .filter { $0.type == .customClick }
-                .compactMap { $0.url }
-        } else {
-            // TODO: determine if this is an error or complete
-            throw TrackingError.unableToProvideCreativeClickThroughUrls
-        }
-    }
+//    public func clickedWithCustomAction() throws -> [URL] {
+//        if let nonLinearTrackingCreative = currentNonlinearTrackingCreative {
+//            trackClicks(for: nonLinearTrackingCreative)
+//
+//            return NonlinearTrackingCreative.creative.videoClicks
+//                .filter { $0.type == .customClick }
+//                .compactMap { $0.url }
+//        } else {
+//            // TODO: determine if this is an error or complete
+//            throw TrackingError.unableToProvideCreativeClickThroughUrls
+//        }
+//    }
     
-    private func trackClicks(for creative: TrackingCreative) {
-        let clickUrls = creative.creative.videoClicks
-            .filter { $0.type == .clickTracking }
-            .compactMap { $0.url }
-        track(urls: clickUrls, eventName: "CLICK TRACKING")
-    }
+//    private func trackClicks(for creative: NonlinearTrackingCreative) {
+//        let clickUrls = creative.creative.videoClicks
+//            .filter { $0.type == .clickTracking }
+//            .compactMap { $0.url }
+//        track(urls: clickUrls, eventName: "CLICK TRACKING")
+//    }
     
     public func error(withReason code: VastErrorCodes?) throws {
-        if let creative = currentTrackingCreative {
+        if let creative = currentNonlinearTrackingCreative {
             let urls = creative.vastAd.errors.map { error -> URL in
                 if let c = code {
                     return error.withErrorCode(c)
@@ -355,7 +354,7 @@ public class VastTrackerNonLinear {
             }
         }
         
-        if let creative = currentTrackingCreative, let viewableImpression = creative.vastAd.viewableImpression {
+        if let creative = currentNonlinearTrackingCreative, let viewableImpression = creative.vastAd.viewableImpression {
             let urls = viewableImpressionUrls(type: type, viewableImpression: viewableImpression)
             track(urls: urls, eventName: "VIEWABLE IMPRESSION \(type.rawValue.uppercased())")
         } else {
@@ -363,19 +362,19 @@ public class VastTrackerNonLinear {
         }
     }
     
-    private func trackEvent(_ types: TrackingEventType..., creative: TrackingCreative) {
+    private func trackEvent(_ types: TrackingEventType..., creative: NonlinearTrackingCreative) {
         callTrackingUrlsFor(types: types, creative: creative)
     }
     
     private func trackEvent(_ types: TrackingEventType...) throws {
-        if let creative = currentTrackingCreative {
+        if let creative = currentNonlinearTrackingCreative {
             callTrackingUrlsFor(types: types, creative: creative)
         } else {
             throw TrackingError.internalError(msg: "Unable to find current creative to track")
         }
     }
     
-    private func callTrackingUrlsFor(types: [TrackingEventType], creative: TrackingCreative) {
+    private func callTrackingUrlsFor(types: [TrackingEventType], creative: NonlinearTrackingCreative) {
         types.forEach { trackingEventType in
             let trackingUrls = creative.creative.trackingEvents
                 .filter { $0.type == trackingEventType }

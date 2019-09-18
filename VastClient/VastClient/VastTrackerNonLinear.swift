@@ -113,7 +113,7 @@ public class VastTrackerNonLinear {
         case .adPod:
             return trackerModel.vastModel.ads
                 .filter { $0.sequence != nil }
-                .filter { $0.creatives.contains(where: { $0.linear != nil })}
+                .filter { $0.creatives.contains(where: { $0.nonLinearAds != nil })}
                 .sorted(by: { $0.sequence ?? 0 < $1.sequence ?? 0 })
         }
     }

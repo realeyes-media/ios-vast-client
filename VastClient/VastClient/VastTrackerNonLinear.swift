@@ -142,7 +142,7 @@ public class VastTrackerNonLinear {
             adBreakStarted = true
             delegate?.adBreakStart(vastTracker: self)
         }
-//
+
         if !creative.trackedStart {
             creative.trackedStart = true
 

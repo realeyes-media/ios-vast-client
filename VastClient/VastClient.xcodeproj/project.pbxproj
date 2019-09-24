@@ -61,6 +61,14 @@
 		0FEDAAC120AA3A62006850C8 /* TrackingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAAC020AA3A62006850C8 /* TrackingError.swift */; };
 		433D192522D7AE810012E88A /* VastAdVerificationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433D192422D7AE810012E88A /* VastAdVerificationParameters.swift */; };
 		433D192622D7AE810012E88A /* VastAdVerificationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433D192422D7AE810012E88A /* VastAdVerificationParameters.swift */; };
+		43D39ED523207445001E7B9A /* VastNonLinearAdsCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D39ED423207445001E7B9A /* VastNonLinearAdsCreative.swift */; };
+		43D39ED7232079F9001E7B9A /* VastNonLinear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D39ED6232079F9001E7B9A /* VastNonLinear.swift */; };
+		43D39ED8232079F9001E7B9A /* VastNonLinear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D39ED6232079F9001E7B9A /* VastNonLinear.swift */; };
+		43D39ED92322F57E001E7B9A /* VastNonLinearAdsCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D39ED423207445001E7B9A /* VastNonLinearAdsCreative.swift */; };
+		43D39EDF23304C07001E7B9A /* VastTrackerNonLinear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D39EDE23304C07001E7B9A /* VastTrackerNonLinear.swift */; };
+		43D39EE023304C08001E7B9A /* VastTrackerNonLinear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D39EDE23304C07001E7B9A /* VastTrackerNonLinear.swift */; };
+		43D39EE22332BC06001E7B9A /* NonlinearTrackingCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D39EE12332BC05001E7B9A /* NonlinearTrackingCreative.swift */; };
+		43D39EE32332BC06001E7B9A /* NonlinearTrackingCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D39EE12332BC05001E7B9A /* NonlinearTrackingCreative.swift */; };
 		A91F507821A432750062198F /* PubadsModel-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F507721A432750062198F /* PubadsModel-test.swift */; };
 		A91F507A21A432850062198F /* PubadsWrapperModel-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F507921A432850062198F /* PubadsWrapperModel-test.swift */; };
 		A91F507C21A432910062198F /* PubadsInlineModel-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F507B21A432910062198F /* PubadsInlineModel-test.swift */; };
@@ -224,6 +232,10 @@
 		0FEDAABE20AA3A05006850C8 /* TrackingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingStatus.swift; sourceTree = "<group>"; };
 		0FEDAAC020AA3A62006850C8 /* TrackingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingError.swift; sourceTree = "<group>"; };
 		433D192422D7AE810012E88A /* VastAdVerificationParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastAdVerificationParameters.swift; sourceTree = "<group>"; };
+		43D39ED423207445001E7B9A /* VastNonLinearAdsCreative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastNonLinearAdsCreative.swift; sourceTree = "<group>"; };
+		43D39ED6232079F9001E7B9A /* VastNonLinear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastNonLinear.swift; sourceTree = "<group>"; };
+		43D39EDE23304C07001E7B9A /* VastTrackerNonLinear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastTrackerNonLinear.swift; sourceTree = "<group>"; };
+		43D39EE12332BC05001E7B9A /* NonlinearTrackingCreative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonlinearTrackingCreative.swift; sourceTree = "<group>"; };
 		A91F507721A432750062198F /* PubadsModel-test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PubadsModel-test.swift"; sourceTree = "<group>"; };
 		A91F507921A432850062198F /* PubadsWrapperModel-test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PubadsWrapperModel-test.swift"; sourceTree = "<group>"; };
 		A91F507B21A432910062198F /* PubadsInlineModel-test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PubadsInlineModel-test.swift"; sourceTree = "<group>"; };
@@ -374,6 +386,7 @@
 				0F7B97832077CB340096438D /* Info.plist */,
 				0F7B97D22077E0DC0096438D /* VastClient.swift */,
 				0F7B97DC20782FF90096438D /* VastTracker.swift */,
+				43D39EDE23304C07001E7B9A /* VastTrackerNonLinear.swift */,
 			);
 			path = VastClient;
 			sourceTree = "<group>";
@@ -468,6 +481,7 @@
 				A945EDE9219C5C100007A079 /* XML schema */,
 				A945EE06219C5C100007A079 /* VMAP */,
 				A945EE0D219C5C100007A079 /* TrackingCreative.swift */,
+				43D39EE12332BC05001E7B9A /* NonlinearTrackingCreative.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -491,6 +505,8 @@
 				A945EDF7219C5C100007A079 /* VastCompanionCreative.swift */,
 				A945EDF8219C5C100007A079 /* VastMediaFile.swift */,
 				A945EDF9219C5C100007A079 /* VastLinearCreative.swift */,
+				43D39ED423207445001E7B9A /* VastNonLinearAdsCreative.swift */,
+				43D39ED6232079F9001E7B9A /* VastNonLinear.swift */,
 				A945EDFA219C5C100007A079 /* VastViewableImpression.swift */,
 				A945EDFB219C5C100007A079 /* VastAdSystem.swift */,
 				A945EDFC219C5C100007A079 /* VastExtension.swift */,
@@ -758,16 +774,19 @@
 				0F7B97D12077DB4C0096438D /* VastXMLParser.swift in Sources */,
 				A945EE1B219C5C100007A079 /* VastWrapper.swift in Sources */,
 				A945EE0F219C5C100007A079 /* VastModel.swift in Sources */,
+				43D39ED523207445001E7B9A /* VastNonLinearAdsCreative.swift in Sources */,
 				0F7B97D92077E40A0096438D /* Sequence+every.swift in Sources */,
 				0FC3AE4B227652C900255CA2 /* Tracking.swift in Sources */,
 				0F71436A20BDD59D0029BBB6 /* String+encode.swift in Sources */,
 				A945EE22219C5C100007A079 /* VastCreativeExtension.swift in Sources */,
+				43D39ED7232079F9001E7B9A /* VastNonLinear.swift in Sources */,
 				A945EE2E219C5C100007A079 /* VMAPAdSource.swift in Sources */,
 				A945EE15219C5C100007A079 /* IconClicks.swift in Sources */,
 				0FEDAAC120AA3A62006850C8 /* TrackingError.swift in Sources */,
 				A945EE30219C5C100007A079 /* VMAPAdBreak.swift in Sources */,
 				0F71436820BDD07D0029BBB6 /* URL+replace.swift in Sources */,
 				0F58AE3520C7410700699B77 /* VastMacros.swift in Sources */,
+				43D39EE22332BC06001E7B9A /* NonlinearTrackingCreative.swift in Sources */,
 				A945EE1A219C5C100007A079 /* VastVideoClicks.swift in Sources */,
 				A945EE1D219C5C100007A079 /* VastMediaFile.swift in Sources */,
 				0F7AF07E211B616A000AD5BB /* VMAPError.swift in Sources */,
@@ -794,6 +813,7 @@
 				0F7B97CB2077D83B0096438D /* VastError.swift in Sources */,
 				A945EE1F219C5C100007A079 /* VastViewableImpression.swift in Sources */,
 				0FEDAABF20AA3A05006850C8 /* TrackingStatus.swift in Sources */,
+				43D39EDF23304C07001E7B9A /* VastTrackerNonLinear.swift in Sources */,
 				0F7AF07C211B60A6000AD5BB /* VMAPParser.swift in Sources */,
 				A945EE18219C5C100007A079 /* VastAd.swift in Sources */,
 				A945EE1E219C5C100007A079 /* VastLinearCreative.swift in Sources */,
@@ -865,6 +885,7 @@
 				C7D2FDF7220A47C60077B7DE /* VastCompanionAds.swift in Sources */,
 				C7D2FE09220A48140077B7DE /* TrackingCreative.swift in Sources */,
 				0FCD6F5021FF59AE008F42AA /* VastError.swift in Sources */,
+				43D39EE32332BC06001E7B9A /* NonlinearTrackingCreative.swift in Sources */,
 				C7D2FE07220A47C60077B7DE /* VastVerification.swift in Sources */,
 				C7D2FDF2220A47C60077B7DE /* VastIcon.swift in Sources */,
 				0FCD6F5521FF59AE008F42AA /* VMAPError.swift in Sources */,
@@ -885,6 +906,8 @@
 				C7D2FE08220A47E60077B7DE /* VastCreativeParameter.swift in Sources */,
 				0FCD6F3721FF599A008F42AA /* (null) in Sources */,
 				0FCD6F4621FF599F008F42AA /* (null) in Sources */,
+				43D39ED8232079F9001E7B9A /* VastNonLinear.swift in Sources */,
+				43D39EE023304C08001E7B9A /* VastTrackerNonLinear.swift in Sources */,
 				0FCD6F5421FF59AE008F42AA /* VastMacros.swift in Sources */,
 				0FCD6F3D21FF599A008F42AA /* (null) in Sources */,
 				0FCD6F4421FF599F008F42AA /* (null) in Sources */,
@@ -908,6 +931,7 @@
 				0FCD6F3921FF599A008F42AA /* (null) in Sources */,
 				C7D2FE0C220A483B0077B7DE /* VMAPVastAdData.swift in Sources */,
 				0FCD6F4921FF59A4008F42AA /* VastXMLParser.swift in Sources */,
+				43D39ED92322F57E001E7B9A /* VastNonLinearAdsCreative.swift in Sources */,
 				C7D2FDFE220A47C60077B7DE /* VastViewableImpression.swift in Sources */,
 				C7D2FDF3220A47C60077B7DE /* VastCreative.swift in Sources */,
 				C7D2FE00220A47C60077B7DE /* VastCreativeExtension.swift in Sources */,

@@ -10,6 +10,7 @@ import Foundation
 struct VastCreativeElements {
     static let universalAdId = "UniversalAdId"
     static let linear = "Linear"
+    static let nonLinearAds = "NonLinearAds"
     static let creativeExtension = "CreativeExtension"
     static let companionAds = "CompanionAds"
 }
@@ -38,6 +39,7 @@ public struct VastCreative {
     public var universalAdId: VastUniversalAdId?
     public var creativeExtensions: [VastCreativeExtension] = []
     public var linear: VastLinearCreative?
+    public var nonLinearAds: VastNonLinearAdsCreative?
     public var companionAds: VastCompanionAds?
 }
 

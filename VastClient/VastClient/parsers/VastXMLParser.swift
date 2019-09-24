@@ -40,6 +40,8 @@ class VastXMLParser: NSObject {
     var currentCreative: VastCreative?
     
     var currentLinearCreative: VastLinearCreative?
+    var currentNonLinearAdsCreative: VastNonLinearAdsCreative?
+    var currentNonLinear: VastNonLinear?
     var currentUniversalAdId: VastUniversalAdId?
     var currentCreativeExtension: VastCreativeExtension?
     var currentTrackingEvent: VastTrackingEvent?
@@ -135,11 +137,19 @@ extension VastXMLParser: XMLParserDelegate {
                 currentCreative = VastCreative(attrDict: attributeDict)
             case VastCreativeElements.linear:
                 currentLinearCreative = VastLinearCreative(attrDict: attributeDict)
+            case VastCreativeElements.nonLinearAds:
+                currentNonLinearAdsCreative = VastNonLinearAdsCreative()
+            case CreativeNonLinearAdsElements.staticResource:
+                currentStaticResource = VastStaticResource(attrDict: attributeDict)
+            case CreativeNonLinearAdsElements.nonLinear:
+                currentNonLinear = VastNonLinear(attrDict: attributeDict)
             case VastCreativeElements.universalAdId:
                 currentUniversalAdId = VastUniversalAdId(attrDict: attributeDict)
             case VastCreativeElements.creativeExtension:
                 currentCreativeExtension = VastCreativeExtension(attrDict: attributeDict)
             case CreativeLinearElements.tracking:
+                currentTrackingEvent = VastTrackingEvent(attrDict: attributeDict)
+            case CreativeNonLinearAdsElements.tracking:
                 currentTrackingEvent = VastTrackingEvent(attrDict: attributeDict)
             case CreativeLinearElements.clickthrough, CreativeLinearElements.clicktracking, CreativeLinearElements.customclick:
                 guard let type = ClickType(rawValue: elementName) else { break }
@@ -360,13 +370,17 @@ extension VastXMLParser: XMLParserDelegate {
                     currentLinearCreative?.videoClicks.append(click)
                     currentVideoClick = nil
                 }
-            case CreativeLinearElements.tracking, CompanionElements.trackingevents:
+            case CreativeLinearElements.tracking, CompanionElements.trackingevents, CreativeNonLinearAdsElements.tracking:
                 currentTrackingEvent?.url = URL(string: currentContent)
                 if let trackingEvent = currentTrackingEvent {
                     if currentCompanionCreative != nil {
                         currentCompanionCreative?.trackingEvents.append(trackingEvent)
                     } else {
-                        currentLinearCreative?.trackingEvents.append(trackingEvent)
+                        if currentNonLinearAdsCreative != nil {
+                            currentNonLinearAdsCreative?.trackingEvents.append(trackingEvent)
+                        } else {
+                            currentLinearCreative?.trackingEvents.append(trackingEvent)
+                        }
                     }
                     currentTrackingEvent = nil
                 }
@@ -376,17 +390,35 @@ extension VastXMLParser: XMLParserDelegate {
                     
                 }
                 currentIcon = nil
-            case VastIconElements.staticResource, CompanionElements.staticResource:
+            case VastCreativeElements.nonLinearAds:
+                if let nonLinearAds = currentNonLinearAdsCreative {
+                    currentCreative?.nonLinearAds = nonLinearAds
+                    currentLinearCreative = nil
+                }
+            case CreativeNonLinearAdsElements.nonLinear:
+                if let nonLinear = currentNonLinear {
+                    currentNonLinearAdsCreative?.nonLinear.append(nonLinear)
+                    currentNonLinear = nil
+                }
+            case VastIconElements.staticResource, CompanionElements.staticResource, CreativeNonLinearAdsElements.staticResource:
                 currentStaticResource?.url = URL(string: currentContent)
                 
                 if let staticResource = currentStaticResource {
                     if currentCompanionCreative != nil {
                         currentCompanionCreative?.staticResource.append(staticResource)
                     } else {
-                        currentIcon?.staticResource.append(staticResource)
+                        if currentNonLinear != nil {
+                            currentNonLinear?.staticResource = staticResource
+                        } else {
+                            currentIcon?.staticResource.append(staticResource)
+                        }
                     }
                 }
                 currentStaticResource = nil
+            case CreativeNonLinearAdsElements.NonLinearClickTracking:
+                if let url = URL(string: currentContent){
+                    currentNonLinear?.nonLinearClickTracking = url
+                }
             case CompanionElements.iframeResource: // TODO: add icon iFrameResource check if necessary
                 if let url = URL(string: currentContent) {
                     currentCompanionCreative?.iFrameResource.append(url)

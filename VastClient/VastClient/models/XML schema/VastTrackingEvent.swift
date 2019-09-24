@@ -28,6 +28,10 @@ public enum TrackingEventType: String {
     case closeLinear
     case skip
     case progress
+    case collapse
+    case expand
+    case acceptInvitation
+    case close
     case unknown
 }
 

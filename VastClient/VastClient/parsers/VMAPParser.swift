@@ -31,6 +31,8 @@ class VMAPParser: NSObject {
 
     var currentVastModel: VastModel?
 
+    var vmapArchiver = VMAPArchiver()
+
     var currentContent = ""
 
     init(options: VastClientOptions) {
@@ -40,6 +42,18 @@ class VMAPParser: NSObject {
     }
 
     func parse(url: URL) throws -> VMAPModel {
+        if vmapArchiver.shouldUseSavedVMAP {
+            print("Joe: Should use saved vmap")
+        } else {
+            print("Joe: Should create new vmap")
+            // eventually, move all of the logic below in here
+        }
+
+        print("\nJoe:")
+        print("Joe: vmapArchiver should have done something")
+        print("Joe:\n")
+
+
         xmlParser = XMLParser(contentsOf: url)
         guard let parser = xmlParser else {
             throw VMAPError.unableToCreateXMLParser

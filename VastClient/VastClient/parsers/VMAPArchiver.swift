@@ -45,43 +45,6 @@ extension VMAPArchiver {
     }
 }
 
-// Methods Relevant to Saving
-extension VMAPArchiver {
-    func parserDidStartDocument() {
-        print("Joe: - parser about to start")
-        errorOccuredWhileParsing = false
-        arrayOfJoesStuff = []
-    }
-
-    func parserStartedNewElement(elementName: String, attributes attributeDict: [String : String]) {
-        //        guard !attributeDict.isEmpty else { return }
-        arrayOfJoesStuff.append((elementName, attributeDict))
-        print("Joe: - startedElement \(elementName). \(attributeDict)")
-    }
-
-    func parserFoundCharacters(string: String) {
-        print("Joe: - foundCharacters \(string)")
-    }
-
-
-    func parserEndedElement(elementName: String) {
-        print("Joe: - endedElement \(elementName)")
-    }
-
-    func parserDidEndDocument() {
-        guard !errorOccuredWhileParsing else { return } // this is just a sanity check. you should never enter this block.
-        print("Joe: - parser finished")
-        print("Joe: - should save this: \(arrayOfJoesStuff)")
-        arrayOfJoesStuff = []
-    }
-
-    func parserErrorOccurred() {
-        errorOccuredWhileParsing = true
-        print("Joe: - error occurred while saving, don't do anything here")
-        arrayOfJoesStuff = []
-    }
-}
-
 // Methods Relevant to Loading
 extension VMAPArchiver {
     func loadSavedVMAP() throws -> VMAPModel {

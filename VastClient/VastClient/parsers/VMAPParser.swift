@@ -50,6 +50,7 @@ class VMAPParser: NSObject {
                 print("Joe: Should create new vmap")
                 let newVMAPModel = try createNewVMAPModel(url: url)
                 // save model in archiver here
+                vmapArchiver.save(vmapModel: newVMAPModel)
                 return newVMAPModel
             }
         } catch {
@@ -99,17 +100,7 @@ class VMAPParser: NSObject {
 }
 
 extension VMAPParser: XMLParserDelegate {
-
-    func parserDidStartDocument(_ parser: XMLParser) {
-        vmapArchiver.parserDidStartDocument()
-    }
-
-    func parserDidEndDocument(_ parser: XMLParser) {
-        vmapArchiver.parserDidEndDocument()
-    }
-
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-        vmapArchiver.parserStartedNewElement(elementName: elementName, attributes: attributeDict)
         if !validVMAPDocument && !parsedFirstElement {
             parsedFirstElement = true
             if elementName == VMAPElements.vmap {
@@ -142,13 +133,11 @@ extension VMAPParser: XMLParserDelegate {
     }
 
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-        vmapArchiver.parserFoundCharacters(string: string)
         currentContent += string
     }
 
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         currentContent = currentContent.trimmingCharacters(in: .whitespacesAndNewlines)
-        vmapArchiver.parserEndedElement(elementName: elementName)
         if validVMAPDocument && fatalError == nil {
             switch elementName {
             case VMAPElements.vmap:
@@ -181,12 +170,10 @@ extension VMAPParser: XMLParserDelegate {
                 break
             }
         }
-
         currentContent = ""
     }
 
     func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
-        vmapArchiver.parserErrorOccurred()
         fatalError = parseError
     }
 

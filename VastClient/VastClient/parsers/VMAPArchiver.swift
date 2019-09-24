@@ -34,7 +34,6 @@ class VMAPArchiver {
     }
 
     var arrayOfJoesStuff = [(String, [String:String])]()
-
 }
 
 // Methods Relevant to Saving
@@ -72,10 +71,16 @@ extension VMAPArchiver {
         print("Joe: - error occurred while saving, don't do anything here")
         arrayOfJoesStuff = []
     }
-
 }
 
 // Methods Relevant to Loading
 extension VMAPArchiver {
+    func loadSavedVMAP() throws -> VMAPModel {
+        print("Joe: - Here's where I'd return a saved VMAP... if I had one")
+        throw VMAPArchiverError.vmapArchiverIsCurrentlyShitty
+    }
+}
 
+enum VMAPArchiverError: Error {
+    case vmapArchiverIsCurrentlyShitty
 }

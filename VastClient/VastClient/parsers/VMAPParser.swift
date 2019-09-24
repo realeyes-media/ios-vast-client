@@ -44,16 +44,14 @@ class VMAPParser: NSObject {
     func parse(url: URL) throws -> VMAPModel {
         if vmapArchiver.shouldUseSavedVMAP {
             print("Joe: Should use saved vmap")
+            return try vmapArchiver.loadSavedVMAP()
         } else {
             print("Joe: Should create new vmap")
-            // eventually, move all of the logic below in here
+            return try createNewVMAPModel(url: url)
         }
+    }
 
-        print("\nJoe:")
-        print("Joe: vmapArchiver should have done something")
-        print("Joe:\n")
-
-
+    private func createNewVMAPModel(url: URL) throws -> VMAPModel {
         xmlParser = XMLParser(contentsOf: url)
         guard let parser = xmlParser else {
             throw VMAPError.unableToCreateXMLParser
@@ -76,11 +74,11 @@ class VMAPParser: NSObject {
         guard var vm = vmapModel else {
             throw VMAPError.internalError
         }
-        
+
         let flattenedAdBreaks = vm.adBreaks.map { adBreak -> VMAPAdBreak in
             var copiedAdBreak = adBreak
             guard let adSource = adBreak.adSource, var vastAdData = adSource.vastAdData else { return adBreak }
-            
+
             let flattenedVastAds = vastParser.unwrap(vm: vastAdData, count: 0)
             vastAdData.ads = flattenedVastAds
             copiedAdBreak.adSource?.vastAdData = vastAdData
@@ -89,15 +87,23 @@ class VMAPParser: NSObject {
         }
 
         vm.adBreaks = flattenedAdBreaks
-        
+
         return vm
     }
-
 }
 
 extension VMAPParser: XMLParserDelegate {
 
+    func parserDidStartDocument(_ parser: XMLParser) {
+        vmapArchiver.parserDidStartDocument()
+    }
+
+    func parserDidEndDocument(_ parser: XMLParser) {
+        vmapArchiver.parserDidEndDocument()
+    }
+
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+        vmapArchiver.parserDidStartDocument()
         if !validVMAPDocument && !parsedFirstElement {
             parsedFirstElement = true
             if elementName == VMAPElements.vmap {
@@ -130,12 +136,13 @@ extension VMAPParser: XMLParserDelegate {
     }
 
     func parser(_ parser: XMLParser, foundCharacters string: String) {
+        vmapArchiver.parserFoundCharacters(string: string)
         currentContent += string
     }
 
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         currentContent = currentContent.trimmingCharacters(in: .whitespacesAndNewlines)
-
+        vmapArchiver.parserEndedElement(elementName: elementName)
         if validVMAPDocument && fatalError == nil {
             switch elementName {
             case VMAPElements.vmap:
@@ -173,6 +180,7 @@ extension VMAPParser: XMLParserDelegate {
     }
 
     func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
+        vmapArchiver.parserErrorOccurred()
         fatalError = parseError
     }
 

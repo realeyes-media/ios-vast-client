@@ -49,9 +49,6 @@ extension VMAPArchiver {
     private var vmapModelLocalURL: URL? {
         guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
         let fullPath =  path.appendingPathComponent("VMAPModel.json")
-        print("\nJoe:")
-        print("Joe: fullPath \(fullPath)")
-        print("Joe:\n")
         return fullPath
     }
 
@@ -60,7 +57,6 @@ extension VMAPArchiver {
         print("\nJoe:")
         print("Joe: UpdateLastSaveDate with \(timeSince1970)")
         print("Joe:\n")
-
         UserDefaults.standard.set(timeSince1970, forKey: saveDateKey)
         UserDefaults.standard.set(url, forKey: saveURLKey)
     }
@@ -69,10 +65,10 @@ extension VMAPArchiver {
 // MARK: - Methods relevant to loading VMAP Model
 extension VMAPArchiver {
     func loadSavedVMAP(for url: URL) throws -> VMAPModel {
-        guard shouldUseSavedVMAP(url: url) else { throw VMAPArchiverError.dataNoLongerValid }
+        guard shouldUseSavedVMAP(url: url) else { throw VMAPArchiverError.dataTimedOut }
         do {
-            guard let url = vmapModelLocalURL else { throw VMAPArchiverError.invalidURL }
-            let data = try Data(contentsOf: url)
+            guard let vmapModelLocalURL = vmapModelLocalURL else { throw VMAPArchiverError.invalidURL }
+            let data = try Data(contentsOf: vmapModelLocalURL)
             let vmapModel = try JSONDecoder().decode(VMAPModel.self, from: data)
             print("\nJoe:")
             print("Joe: Loaded VMAP Model \(vmapModel.version)")
@@ -85,7 +81,7 @@ extension VMAPArchiver {
     }
 
     enum VMAPArchiverError: Error {
-        case dataNoLongerValid
+        case dataTimedOut
         case invalidURL
     }
 }

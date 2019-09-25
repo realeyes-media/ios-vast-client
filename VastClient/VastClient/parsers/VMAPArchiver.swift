@@ -9,41 +9,38 @@
 import Foundation
 
 class VMAPArchiver {
-    // Use UserDefaults to store the time of last save.
-    // This will prevent us from having to store this information in a much
-    // larger file with all of the data associated with VMAP
+    // MARK: - Private Variables
     private let saveDateKey = "VASTClient.timeSince1970"
-    private var lastSaveDate: Date? {
+    private let saveURLKey = "VASTClient.lastSavedURL"
+    private var lastSavedDate: Date? {
         let time = UserDefaults.standard.double(forKey: saveDateKey)
         if time <= 0 { return nil }
         return Date(timeIntervalSince1970: time)
     }
+    private var lastSavedURL: URL? {
+        return UserDefaults.standard.url(forKey: saveURLKey)
+    }
     private let amountOfTimeVMAPIsValidFor: TimeInterval = 5*60
     private var errorOccuredWhileParsing = false
-    var shouldUseSavedVMAP: Bool {
-        print("\nJoe:")
-        print("Joe: lastSaveDate: \(lastSaveDate)")
-        print("Joe:\n")
 
-        guard let lastSaveDate = lastSaveDate else { return false }
+    // MARK: - Methods
+    func shouldUseSavedVMAP(url: URL) -> Bool {
+        guard let lastSavedURL = lastSavedURL, lastSavedURL == url, let lastSavedDate = lastSavedDate else { return false }
         print("\nJoe:")
-        print("Joe: dateSinceLastSave: \(Date().timeIntervalSince(lastSaveDate))")
+        print("Joe: dateSinceLastSave: \(Date().timeIntervalSince(lastSavedDate))")
         print("Joe:\n")
-
-        return abs(Date().timeIntervalSince(lastSaveDate)) < amountOfTimeVMAPIsValidFor
+        return abs(Date().timeIntervalSince(lastSavedDate)) < amountOfTimeVMAPIsValidFor
     }
-
-    var arrayOfJoesStuff = [(String, [String:String])]()
 }
 
-// Simpler way of saving VMAPModel?
+// MARK: - Methods relevant to saving VMAP Model
 extension VMAPArchiver {
-    func save(vmapModel: VMAPModel) {
+    func save(vmapModel: VMAPModel, for url: URL) {
         if let jsonData = try? JSONEncoder().encode(vmapModel), let vmapModelLocalURL = vmapModelLocalURL {
             print("Joe: SAVING THE VMAP MODEL!")
             do {
                 try jsonData.write(to: vmapModelLocalURL)
-                updateLastSaveDate()
+                updateLastSaveDate(for: url)
             } catch {
                 print("Joe: error while saving to local URL")
             }
@@ -61,20 +58,21 @@ extension VMAPArchiver {
         return fullPath
     }
 
-    private func updateLastSaveDate() {
+    private func updateLastSaveDate(for url: URL) {
         let timeSince1970 = Date().timeIntervalSince1970
         print("\nJoe:")
         print("Joe: UpdateLastSaveDate with \(timeSince1970)")
         print("Joe:\n")
 
         UserDefaults.standard.set(timeSince1970, forKey: saveDateKey)
+        UserDefaults.standard.set(url, forKey: saveURLKey)
     }
 }
 
-// Methods Relevant to Loading
+// MARK: - Methods relevant to loading VMAP Model
 extension VMAPArchiver {
-    func loadSavedVMAP() throws -> VMAPModel {
-        guard shouldUseSavedVMAP else { throw VMAPArchiverError.dataNoLongerValid }
+    func loadSavedVMAP(for url: URL) throws -> VMAPModel {
+        guard shouldUseSavedVMAP(url: url) else { throw VMAPArchiverError.dataNoLongerValid }
         do {
             guard let url = vmapModelLocalURL else { throw VMAPArchiverError.invalidURL }
             let data = try Data(contentsOf: url)

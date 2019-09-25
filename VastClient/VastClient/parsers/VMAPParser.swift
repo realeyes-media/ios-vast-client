@@ -43,14 +43,13 @@ class VMAPParser: NSObject {
 
     func parse(url: URL) throws -> VMAPModel {
         do {
-            if vmapArchiver.shouldUseSavedVMAP {
+            if vmapArchiver.shouldUseSavedVMAP(url: url) {
                 print("Joe: Should use saved vmap")
-                return try vmapArchiver.loadSavedVMAP()
+                return try vmapArchiver.loadSavedVMAP(for: url)
             } else {
                 print("Joe: Should create new vmap")
                 let newVMAPModel = try createNewVMAPModel(url: url)
-                // save model in archiver here
-                vmapArchiver.save(vmapModel: newVMAPModel)
+                vmapArchiver.save(vmapModel: newVMAPModel, for: url)
                 return newVMAPModel
             }
         } catch {
@@ -176,5 +175,4 @@ extension VMAPParser: XMLParserDelegate {
     func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
         fatalError = parseError
     }
-
 }

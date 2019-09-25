@@ -26,9 +26,6 @@ class VMAPArchiver {
     // MARK: - Methods
     func shouldUseSavedVMAP(url: URL) -> Bool {
         guard let lastSavedURL = lastSavedURL, lastSavedURL == url, let lastSavedDate = lastSavedDate else { return false }
-        print("\nJoe:")
-        print("Joe: dateSinceLastSave: \(Date().timeIntervalSince(lastSavedDate))")
-        print("Joe:\n")
         return abs(Date().timeIntervalSince(lastSavedDate)) < amountOfTimeVMAPIsValidFor
     }
 }
@@ -37,7 +34,7 @@ class VMAPArchiver {
 extension VMAPArchiver {
     func save(vmapModel: VMAPModel, for url: URL) {
         if let jsonData = try? JSONEncoder().encode(vmapModel), let vmapModelLocalURL = vmapModelLocalURL {
-            print("Joe: SAVING THE VMAP MODEL!")
+            print("Joe: SAVING THE VMAP MODEL! \(url.absoluteString)")
             do {
                 try jsonData.write(to: vmapModelLocalURL)
                 updateLastSaveDate(for: url)
@@ -76,7 +73,12 @@ extension VMAPArchiver {
         do {
             guard let url = vmapModelLocalURL else { throw VMAPArchiverError.invalidURL }
             let data = try Data(contentsOf: url)
-            return try JSONDecoder().decode(VMAPModel.self, from: data)
+            let vmapModel = try JSONDecoder().decode(VMAPModel.self, from: data)
+            print("\nJoe:")
+            print("Joe: Loaded VMAP Model \(vmapModel.version)")
+            print("Joe: Loaded VMAP Model \(url.absoluteString)")
+            print("Joe:\n")
+            return vmapModel
         } catch {
             throw error
         }

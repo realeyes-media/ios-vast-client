@@ -41,6 +41,8 @@ extension VMAPArchiver {
     func save(vmapModel: VMAPModel) {
         print("\nJoe:")
         print("Joe: Here's where I should save the VMAP Model")
+        print("Joe: \(vmapModel.version)")
+        print("Joe: \(vmapModel.adBreaks)")
         print("Joe:\n")
     }
 }

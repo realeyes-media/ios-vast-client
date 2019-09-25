@@ -44,6 +44,16 @@ extension VMAPArchiver {
         print("Joe: \(vmapModel.version)")
         print("Joe: \(vmapModel.adBreaks)")
         print("Joe:\n")
+        if let jsonEncoder = try? JSONEncoder().encode(vmapModel) {
+            print("\nJoe:")
+            print("Joe: SAVING THE VMAP MODEL!")
+            print("Joe:\n")
+        } else {
+            print("\nJoe:")
+            print("Joe: Can't save this VMAPModel")
+            print("Joe:\n")
+
+        }
     }
 }
 

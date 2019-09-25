@@ -11,7 +11,7 @@ enum VastSurveyAttribute: String {
     case type
 }
 
-public struct VastSurvey {
+public struct VastSurvey: Codable {
     public let type: String?
     
     public var survey: URL?

@@ -27,7 +27,7 @@ enum VastIconAttribute: String {
     case pxratio
 }
 
-public struct VastIcon {
+public struct VastIcon: Codable {
     public let program: String
     public let width: Int
     public let height: Int

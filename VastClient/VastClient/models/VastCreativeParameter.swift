@@ -17,7 +17,7 @@ struct CreativeParameterAttributes {
     static let type = "type"
 }
 
-public struct VastCreativeParameter {
+public struct VastCreativeParameter: Codable {
     public var creativeId: String
     public var name: String
     public var type: String // TODO: enum

@@ -11,7 +11,7 @@ enum VastAdSystemAttribute: String {
     case version
 }
 
-public struct VastAdSystem {
+public struct VastAdSystem: Codable {
     public let version: String?
     public var system: String?
 }

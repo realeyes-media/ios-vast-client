@@ -11,7 +11,7 @@ enum VastStaticResourceAttribute: String {
     case creativeType
 }
 
-public struct VastStaticResource {
+public struct VastStaticResource: Codable {
     public let creativeType: String
     
     public var url: URL?

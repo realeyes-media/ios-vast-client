@@ -16,7 +16,7 @@ struct VMAPAttributes {
     static let version = "version"
 }
 
-public struct VMAPModel {
+public struct VMAPModel: Codable {
     public let version: String
     public var adBreaks = [VMAPAdBreak]()
 }

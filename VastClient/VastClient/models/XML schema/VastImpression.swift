@@ -12,7 +12,7 @@ struct ImpressionAttributes {
     static let id = "id"
 }
 
-public struct VastImpression {
+public struct VastImpression: Codable {
     public let id: String?
     
     public var url: URL?

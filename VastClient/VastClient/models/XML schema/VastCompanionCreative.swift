@@ -37,7 +37,7 @@ public struct VastCompanionClickTracking {
     public let id: String?
 }
 
-public struct VastCompanionCreative {
+public struct VastCompanionCreative: Codable {
     // Attributes
     public let width: Int
     public let height: Int

@@ -38,13 +38,13 @@ struct AdAttributes {
     static let conditionalAd = "conditionalAd"
 }
 
-public enum AdType {
+public enum AdType: String, Codable {
     case inline
     case wrapper
     case unknown
 }
 
-public struct VastAd {
+public struct VastAd: Codable {
     // Non element type
     public var type: AdType
     

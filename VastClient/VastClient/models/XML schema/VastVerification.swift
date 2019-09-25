@@ -20,7 +20,7 @@ struct VastAdVerificationElements {
 
 // VAST/Ad/InLine/AdVerifications/Verification
 // VAST/Ad/Wrapper/AdVerifications/Verification
-public struct VastVerification {
+public struct VastVerification: Codable {
     public let vendor: URL?
     public var viewableImpression: VastViewableImpression?
     public var javaScriptResource: [VastResource] = []

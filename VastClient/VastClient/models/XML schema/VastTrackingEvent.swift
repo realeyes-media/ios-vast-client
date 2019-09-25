@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum TrackingEventType: String {
+public enum TrackingEventType: String, Codable {
     case firstQuartile
     case midpoint
     case thirdQuartile
@@ -40,7 +40,7 @@ struct TrackingEventAttributes {
     static let offset = "offset"
 }
 
-public struct VastTrackingEvent {
+public struct VastTrackingEvent: Codable {
     public let type: TrackingEventType
     public let offset: Double?
     

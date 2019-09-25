@@ -17,14 +17,14 @@ struct VMAPTrackingEventAttributes {
     static let event = "event"
 }
 
-public enum VMAPTrackingEventType: String {
+public enum VMAPTrackingEventType: String, Codable {
     case breakStart = "breakStart"
     case breakEnd = "breakEnd"
     case error = "error"
     case unknown = "unknown"
 }
 
-public struct VMAPTrackingEvent {
+public struct VMAPTrackingEvent: Codable {
     public let event: VMAPTrackingEventType
     public var url: URL?
 }

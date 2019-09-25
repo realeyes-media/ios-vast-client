@@ -17,7 +17,7 @@ struct VastWrapperElements {
     static let vastAdTagUri = "VASTAdTagURI"
 }
 
-public struct VastWrapper {
+public struct VastWrapper: Codable {
     public let followAdditionalWrappers: Bool?
     public let allowMultipleAds: Bool?
     public let fallbackOnNoAd: Bool?

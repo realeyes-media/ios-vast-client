@@ -11,7 +11,7 @@ enum VastCreativeExtensionAttribute: String {
     case type
 }
 
-public struct VastCreativeExtension {
+public struct VastCreativeExtension: Codable {
     public let mimeType: String?
     
     public var content: String? //XML

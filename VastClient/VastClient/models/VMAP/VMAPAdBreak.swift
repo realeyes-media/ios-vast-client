@@ -19,14 +19,14 @@ struct VMAPAdBreakAttributes {
     static let repeatAfter = "repeatAfter"
 }
 
-public enum VMAPAdBreakType: String {
+public enum VMAPAdBreakType: String, Codable {
     case linear = "linear"
     case nonlinear = "nonlinear"
     case display = "display"
     case unknown = "unknown"
 }
 
-public struct VMAPAdBreak {
+public struct VMAPAdBreak: Codable {
     public var breakId: String?
     public var repeatAfter: String?
     public let breakType: VMAPAdBreakType

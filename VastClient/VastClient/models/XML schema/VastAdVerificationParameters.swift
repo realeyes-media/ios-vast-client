@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct VastAdVerificationParameters {
+public struct VastAdVerificationParameters: Codable {
     public var data: String?
 }
 

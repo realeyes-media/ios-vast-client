@@ -39,32 +39,53 @@ class VMAPArchiver {
 // Simpler way of saving VMAPModel?
 extension VMAPArchiver {
     func save(vmapModel: VMAPModel) {
-        print("\nJoe:")
-        print("Joe: Here's where I should save the VMAP Model")
-        print("Joe: \(vmapModel.version)")
-        print("Joe: \(vmapModel.adBreaks)")
-        print("Joe:\n")
-        if let jsonEncoder = try? JSONEncoder().encode(vmapModel) {
-            print("\nJoe:")
+        if let jsonData = try? JSONEncoder().encode(vmapModel), let vmapModelLocalURL = vmapModelLocalURL {
             print("Joe: SAVING THE VMAP MODEL!")
-            print("Joe:\n")
+            do {
+                try jsonData.write(to: vmapModelLocalURL)
+                updateLastSaveDate()
+            } catch {
+                print("Joe: error while saving to local URL")
+            }
         } else {
-            print("\nJoe:")
             print("Joe: Can't save this VMAPModel")
-            print("Joe:\n")
-
         }
+    }
+
+    private var vmapModelLocalURL: URL? {
+        guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        let fullPath =  path.appendingPathComponent("VMAPModel.json")
+        print("\nJoe:")
+        print("Joe: fullPath \(fullPath)")
+        print("Joe:\n")
+        return fullPath
+    }
+
+    private func updateLastSaveDate() {
+        let timeSince1970 = Date().timeIntervalSince1970
+        print("\nJoe:")
+        print("Joe: UpdateLastSaveDate with \(timeSince1970)")
+        print("Joe:\n")
+
+        UserDefaults.standard.set(timeSince1970, forKey: saveDateKey)
     }
 }
 
 // Methods Relevant to Loading
 extension VMAPArchiver {
     func loadSavedVMAP() throws -> VMAPModel {
-        print("Joe: - Here's where I'd return a saved VMAP... if I had one")
-        throw VMAPArchiverError.vmapArchiverIsCurrentlyShitty
+        guard shouldUseSavedVMAP else { throw VMAPArchiverError.dataNoLongerValid }
+        do {
+            guard let url = vmapModelLocalURL else { throw VMAPArchiverError.invalidURL }
+            let data = try Data(contentsOf: url)
+            return try JSONDecoder().decode(VMAPModel.self, from: data)
+        } catch {
+            throw error
+        }
     }
-}
 
-enum VMAPArchiverError: Error {
-    case vmapArchiverIsCurrentlyShitty
+    enum VMAPArchiverError: Error {
+        case dataNoLongerValid
+        case invalidURL
+    }
 }

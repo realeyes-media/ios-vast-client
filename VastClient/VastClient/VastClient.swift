@@ -37,17 +37,7 @@ public class VastClient {
     
     public func parseVMAP(withContentsOf url: URL) throws -> VMAPModel {
         let parser = VMAPParser(options: options)
-
-        do {
-            let vmapModel = try parser.parse(url: url)
-            print("\nJoe:")
-            print("Joe: VastClient has a valid VMAP Model for \(url.absoluteString)")
-            print("Joe:\n")
-            return vmapModel
-        } catch {
-            throw error
-        }
-
+        return try parser.parse(url: url)
     }
     
     

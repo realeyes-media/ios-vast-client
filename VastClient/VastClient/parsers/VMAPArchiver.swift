@@ -34,7 +34,7 @@ class VMAPArchiver {
 extension VMAPArchiver {
     func save(vmapModel: VMAPModel, for url: URL) {
         if let jsonData = try? JSONEncoder().encode(vmapModel), let vmapModelLocalURL = vmapModelLocalURL {
-            print("Joe: SAVING THE VMAP MODEL! \(url.absoluteString)")
+            print("Joe: SAVING THE VMAP MODEL")
             do {
                 try jsonData.write(to: vmapModelLocalURL)
                 updateLastSaveDate(for: url)

@@ -34,15 +34,12 @@ class VMAPArchiver {
 extension VMAPArchiver {
     func save(vmapModel: VMAPModel, for url: URL) {
         if let jsonData = try? JSONEncoder().encode(vmapModel), let vmapModelLocalURL = vmapModelLocalURL {
-            print("Joe: SAVING THE VMAP MODEL")
             do {
                 try jsonData.write(to: vmapModelLocalURL)
                 updateLastSaveDate(for: url)
             } catch {
-                print("Joe: error while saving to local URL")
+                print("Unable to save VMAPModel")
             }
-        } else {
-            print("Joe: Can't save this VMAPModel")
         }
     }
 
@@ -54,9 +51,6 @@ extension VMAPArchiver {
 
     private func updateLastSaveDate(for url: URL) {
         let timeSince1970 = Date().timeIntervalSince1970
-        print("\nJoe:")
-        print("Joe: UpdateLastSaveDate with \(timeSince1970)")
-        print("Joe:\n")
         UserDefaults.standard.set(timeSince1970, forKey: saveDateKey)
         UserDefaults.standard.set(url, forKey: saveURLKey)
     }
@@ -70,10 +64,6 @@ extension VMAPArchiver {
             guard let vmapModelLocalURL = vmapModelLocalURL else { throw VMAPArchiverError.invalidURL }
             let data = try Data(contentsOf: vmapModelLocalURL)
             let vmapModel = try JSONDecoder().decode(VMAPModel.self, from: data)
-            print("\nJoe:")
-            print("Joe: Loaded VMAP Model \(vmapModel.version)")
-            print("Joe: Loaded VMAP Model \(url.absoluteString)")
-            print("Joe:\n")
             return vmapModel
         } catch {
             throw error

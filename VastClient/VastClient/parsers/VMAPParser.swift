@@ -43,7 +43,7 @@ class VMAPParser: NSObject {
 
     func parse(url: URL) throws -> VMAPModel {
         do {
-            if options.shouldCacheVMAPModel && vmapArchiver.shouldUseSavedVMAP(url: url) {
+            if options.shouldCacheVMAPModel && vmapArchiver.doesHaveSavedVMAP(for: url) {
                 return try vmapArchiver.loadSavedVMAP(for: url)
             } else {
                 let newVMAPModel = try createNewVMAPModel(url: url)

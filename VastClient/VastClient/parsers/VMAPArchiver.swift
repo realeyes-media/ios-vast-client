@@ -10,23 +10,14 @@ import Foundation
 
 class VMAPArchiver {
     // MARK: - Private Variables
-    private let saveDateKey = "VASTClient.timeSince1970"
     private let saveURLKey = "VASTClient.lastSavedURL"
-    private var lastSavedDate: Date? {
-        let time = UserDefaults.standard.double(forKey: saveDateKey)
-        if time <= 0 { return nil }
-        return Date(timeIntervalSince1970: time)
-    }
     private var lastSavedURL: URL? {
         return UserDefaults.standard.url(forKey: saveURLKey)
     }
-    private let amountOfTimeVMAPIsValidFor: TimeInterval = 5*60
-    private var errorOccuredWhileParsing = false
 
     // MARK: - Methods
-    func shouldUseSavedVMAP(url: URL) -> Bool {
-        guard let lastSavedURL = lastSavedURL, lastSavedURL == url, let lastSavedDate = lastSavedDate else { return false }
-        return abs(Date().timeIntervalSince(lastSavedDate)) < amountOfTimeVMAPIsValidFor
+    func doesHaveSavedVMAP(for url: URL) -> Bool {
+        return lastSavedURL == url
     }
 }
 
@@ -36,7 +27,7 @@ extension VMAPArchiver {
         if let jsonData = try? JSONEncoder().encode(vmapModel), let vmapModelLocalURL = vmapModelLocalURL {
             do {
                 try jsonData.write(to: vmapModelLocalURL)
-                updateLastSaveDate(for: url)
+                UserDefaults.standard.set(url, forKey: saveURLKey)
             } catch {
                 print("Unable to save VMAPModel")
             }
@@ -48,18 +39,12 @@ extension VMAPArchiver {
         let fullPath =  path.appendingPathComponent("VMAPModel.json")
         return fullPath
     }
-
-    private func updateLastSaveDate(for url: URL) {
-        let timeSince1970 = Date().timeIntervalSince1970
-        UserDefaults.standard.set(timeSince1970, forKey: saveDateKey)
-        UserDefaults.standard.set(url, forKey: saveURLKey)
-    }
 }
 
 // MARK: - Methods relevant to loading VMAP Model
 extension VMAPArchiver {
     func loadSavedVMAP(for url: URL) throws -> VMAPModel {
-        guard shouldUseSavedVMAP(url: url) else { throw VMAPArchiverError.dataTimedOut }
+        guard doesHaveSavedVMAP(for: url) else { throw VMAPArchiverError.noSavedVMAPAvailable }
         do {
             guard let vmapModelLocalURL = vmapModelLocalURL else { throw VMAPArchiverError.invalidURL }
             let data = try Data(contentsOf: vmapModelLocalURL)
@@ -71,7 +56,7 @@ extension VMAPArchiver {
     }
 
     enum VMAPArchiverError: Error {
-        case dataTimedOut
+        case noSavedVMAPAvailable
         case invalidURL
     }
 }

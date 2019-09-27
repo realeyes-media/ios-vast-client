@@ -12,11 +12,15 @@ public struct VastClientOptions {
     public let wrapperLimit: Int
     public let singleWrapperTimeLimit: TimeInterval
     public let timeLimit: TimeInterval
+    public let shouldCacheVMAPModel: Bool
+    public let cachedVMAPModelTimeLimit: TimeInterval
     
-    public init(wrapperLimit: Int = 5, singleWrapperTimeLimit: TimeInterval = 5, timeLimit: TimeInterval = 10) {
+    public init(wrapperLimit: Int = 5, singleWrapperTimeLimit: TimeInterval = 5, timeLimit: TimeInterval = 10, shouldCacheVMAPModel: Bool = false, cachedVMAPModelTimeLimit: TimeInterval = 300) {
         self.wrapperLimit = wrapperLimit
         self.singleWrapperTimeLimit = singleWrapperTimeLimit
         self.timeLimit = timeLimit
+        self.shouldCacheVMAPModel = shouldCacheVMAPModel
+        self.cachedVMAPModelTimeLimit = cachedVMAPModelTimeLimit
     }
 }
 

@@ -45,17 +45,12 @@ extension VMAPArchiver {
 extension VMAPArchiver {
     func loadSavedVMAP(for url: URL) throws -> VMAPModel {
         guard doesHaveSavedVMAP(for: url) else {
-            print("$$$ No Saved VMAP available")
             throw VMAPArchiverError.noSavedVMAPAvailable }
         do {
-            print("$$$ try to use saved vmap")
             guard let vmapModelLocalURL = vmapModelLocalURL else {
-                print("$$$ invalid URL for saved VMAP")
                 throw VMAPArchiverError.invalidURL }
             let data = try Data(contentsOf: vmapModelLocalURL)
-            print("$$$ successfully created data")
             let vmapModel = try JSONDecoder().decode(VMAPModel.self, from: data)
-            print("$$$ successfully created vmapModel to use")
             return vmapModel
         } catch {
             throw error

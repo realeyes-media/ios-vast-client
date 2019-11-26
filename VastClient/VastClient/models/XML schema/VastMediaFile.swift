@@ -23,7 +23,7 @@ fileprivate enum MediaFileAttribute: String {
     case apiFramework
 }
 
-public struct VastMediaFile {
+public struct VastMediaFile: Codable {
     public let delivery: String
     public let type: String
     public let width: String

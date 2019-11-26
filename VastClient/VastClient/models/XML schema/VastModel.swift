@@ -19,7 +19,7 @@ struct VastAttributes {
     static let version = "version"
 }
 
-public struct VastModel {
+public struct VastModel: Codable {
     public let version: String
     public var ads: [VastAd] = []
     public var errors: [URL] = []

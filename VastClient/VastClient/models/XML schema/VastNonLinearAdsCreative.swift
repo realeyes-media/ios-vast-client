@@ -20,7 +20,7 @@ struct CreativeNonLinearAdsElements {
 }
 
 // VAST/Ad/InLine/Creatives/Creative/
-public struct VastNonLinearAdsCreative {
+public struct VastNonLinearAdsCreative: Codable {
     public var trackingEvents: [VastTrackingEvent] = []
     public var nonLinear: [VastNonLinear] = []
 }

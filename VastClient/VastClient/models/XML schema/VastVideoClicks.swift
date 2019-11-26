@@ -12,13 +12,13 @@ struct VideoClickAttributes {
     static let id = "id"
 }
 
-public enum ClickType: String {
+public enum ClickType: String, Codable {
     case clickThrough = "ClickThrough" //InLine only
     case clickTracking = "ClickTracking"
     case customClick = "CustomClick"
 }
 
-public struct VastVideoClick {
+public struct VastVideoClick: Codable {
     public let id: String?
     public let type: ClickType
     

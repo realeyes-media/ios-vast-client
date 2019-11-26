@@ -194,6 +194,8 @@
 		C7D2FE0F220A483B0077B7DE /* VMAPTrackingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE0B219C5C100007A079 /* VMAPTrackingEvent.swift */; };
 		C7D2FE10220A483B0077B7DE /* VMAPAdBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE0C219C5C100007A079 /* VMAPAdBreak.swift */; };
 		C7D2FE11220A484D0077B7DE /* String+value.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE32219C5C560007A079 /* String+value.swift */; };
+		D8ABCE18233ABBBA00AB6C2A /* VMAPArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8ABCE17233ABBBA00AB6C2A /* VMAPArchiver.swift */; };
+		D8ABCE19233ABBC100AB6C2A /* VMAPArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8ABCE17233ABBBA00AB6C2A /* VMAPArchiver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -325,6 +327,7 @@
 		A9A3FFB521BA5B4C008DB5D6 /* TestFullVast4.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TestFullVast4.xml; sourceTree = "<group>"; };
 		A9A3FFB721BA5CBE008DB5D6 /* FullVast4-test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FullVast4-test.swift"; sourceTree = "<group>"; };
 		A9A84FEB21A3053200949C4B /* VastParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastParser.swift; sourceTree = "<group>"; };
+		D8ABCE17233ABBBA00AB6C2A /* VMAPArchiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMAPArchiver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -408,6 +411,7 @@
 			children = (
 				0F7B97D02077DB4C0096438D /* VastXMLParser.swift */,
 				0F7AF07B211B60A6000AD5BB /* VMAPParser.swift */,
+				D8ABCE17233ABBBA00AB6C2A /* VMAPArchiver.swift */,
 				A9A84FEB21A3053200949C4B /* VastParser.swift */,
 			);
 			path = parsers;
@@ -794,6 +798,7 @@
 				A9A84FEC21A3053200949C4B /* VastParser.swift in Sources */,
 				A945EE13219C5C100007A079 /* VastCreative.swift in Sources */,
 				0F7B97DD20782FF90096438D /* VastTracker.swift in Sources */,
+				D8ABCE18233ABBBA00AB6C2A /* VMAPArchiver.swift in Sources */,
 				0F71436620BDCD930029BBB6 /* VastErrorCodes.swift in Sources */,
 				A945EE28219C5C100007A079 /* VastImpression.swift in Sources */,
 				A945EE33219C5C560007A079 /* String+value.swift in Sources */,
@@ -936,6 +941,7 @@
 				C7D2FDF3220A47C60077B7DE /* VastCreative.swift in Sources */,
 				C7D2FE00220A47C60077B7DE /* VastCreativeExtension.swift in Sources */,
 				0FCD6F5121FF59AE008F42AA /* TrackingStatus.swift in Sources */,
+				D8ABCE19233ABBC100AB6C2A /* VMAPArchiver.swift in Sources */,
 				C7D2FE10220A483B0077B7DE /* VMAPAdBreak.swift in Sources */,
 				0FCD6F3E21FF599A008F42AA /* (null) in Sources */,
 				0FCD6F4821FF599F008F42AA /* (null) in Sources */,

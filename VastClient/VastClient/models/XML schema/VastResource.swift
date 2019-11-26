@@ -11,7 +11,7 @@ enum VastResourceAttribute: String {
     case apiFramework
 }
 
-public struct VastResource {
+public struct VastResource: Codable {
     public let apiFramework: String?
     
     public var url: URL?

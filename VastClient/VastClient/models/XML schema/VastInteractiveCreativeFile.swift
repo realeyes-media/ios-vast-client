@@ -12,7 +12,7 @@ fileprivate enum VastInteractiveCreativeFileAttributes: String {
     case apiFramework
 }
 
-public struct VastInteractiveCreativeFile {
+public struct VastInteractiveCreativeFile: Codable {
     public let type: String?
     public let apiFramework: String?
 

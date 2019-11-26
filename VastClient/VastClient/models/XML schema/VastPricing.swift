@@ -8,7 +8,7 @@
 import Foundation
 
 // VAST/Ad/Inline/Pricing/model
-public enum PricingModel {
+public enum PricingModel: String, Codable {
     case cpc
     case cpm
     case cpe
@@ -36,7 +36,7 @@ enum VastPricingAttribute: String {
 }
 
 // VAST/Ad/Inline/Pricing
-public struct VastPricing {
+public struct VastPricing: Codable {
     public let model: PricingModel
     public let currency: String
     

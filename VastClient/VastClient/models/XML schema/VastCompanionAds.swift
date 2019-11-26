@@ -21,7 +21,7 @@ struct CompanionAdsElements {
  when multiple Companions are supplied and whether the Ad can be displayed without its Companion creative. The value for required can be one
  of three values: all, any, none.
  */
-public enum CompanionsRequirement: String {
+public enum CompanionsRequirement: String, Codable {
     /**
      The video player must attempt to display the contents for all <Companion> elemens provided;
      if all Companion creative cannot be displayed, the Ad should be disregarded and the ad server should be notified using the <Error> element.
@@ -41,7 +41,7 @@ public enum CompanionsRequirement: String {
 }
 
 
-public struct VastCompanionAds {
+public struct VastCompanionAds: Codable {
     public let required: CompanionsRequirement
     public var companions: [VastCompanionCreative] = []
 }

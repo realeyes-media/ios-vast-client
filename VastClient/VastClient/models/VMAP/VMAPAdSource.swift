@@ -21,16 +21,16 @@ struct VMAPAdSourceAttributes {
     static let id = "id"
 }
 
-public enum VMAPAdSourceTemplate: String {
+public enum VMAPAdSourceTemplate: String, Codable {
     case vast = "vast"
     case vast1 = "vast1"
     case vast2 = "vast2"
     case vast3 = "vast3"
     case vast4 = "vast4"
-    case unknwon = "unknown"
+    case unknown = "unknown"
 }
 
-public struct VMAPAdSource {
+public struct VMAPAdSource: Codable {
     public let allowMultipleAds: Bool
     public let followRedirects: Bool
     public let id: String

@@ -11,7 +11,7 @@ enum VastIconClickTrackingAttribute: String {
     case id
 }
 
-public struct VastIconClickTracking {
+public struct VastIconClickTracking: Codable {
     public let id: String?
     
     public var url: URL?

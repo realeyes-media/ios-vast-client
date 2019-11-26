@@ -14,7 +14,7 @@ fileprivate enum NonLinearAttribute: String {
     case width
 }
 
-public struct VastNonLinear {
+public struct VastNonLinear: Codable {
     public var height: String
     public var id: String
     public var width: String

@@ -18,6 +18,7 @@ iOS Vast Client contains 2 interfaces for public use.
 ### VastClient
 
 Fetch and parse VAST file from URL. You can customize behaviour with `VastClientOptions` during initialization of `VastClient`.
+If you would like to cache the VMAPModel to prevent duplicate calls, change the value of shouldCacheVMAPModel to true.
 
 `VastClient` result is `VastModel` structure or `Error` in case the fetch failed. You should pass this model to `VastTracker`.
 

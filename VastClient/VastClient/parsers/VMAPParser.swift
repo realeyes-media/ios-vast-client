@@ -31,6 +31,8 @@ class VMAPParser: NSObject {
 
     var currentVastModel: VastModel?
 
+    var vmapArchiver = VMAPArchiver()
+
     var currentContent = ""
 
     init(options: VastClientOptions) {
@@ -40,6 +42,20 @@ class VMAPParser: NSObject {
     }
 
     func parse(url: URL) throws -> VMAPModel {
+        do {
+            if options.shouldCacheVMAPModel && vmapArchiver.doesHaveSavedVMAP(for: url) {
+                return try vmapArchiver.loadSavedVMAP(for: url)
+            } else {
+                let newVMAPModel = try createNewVMAPModel(url: url)
+                vmapArchiver.save(vmapModel: newVMAPModel, for: url)
+                return newVMAPModel
+            }
+        } catch {
+            throw error
+        }
+    }
+
+    private func createNewVMAPModel(url: URL) throws -> VMAPModel {
         xmlParser = XMLParser(contentsOf: url)
         guard let parser = xmlParser else {
             throw VMAPError.unableToCreateXMLParser
@@ -62,11 +78,11 @@ class VMAPParser: NSObject {
         guard var vm = vmapModel else {
             throw VMAPError.internalError
         }
-        
+
         let flattenedAdBreaks = vm.adBreaks.map { adBreak -> VMAPAdBreak in
             var copiedAdBreak = adBreak
             guard let adSource = adBreak.adSource, var vastAdData = adSource.vastAdData else { return adBreak }
-            
+
             let flattenedVastAds = vastParser.unwrap(vm: vastAdData, count: 0)
             vastAdData.ads = flattenedVastAds
             copiedAdBreak.adSource?.vastAdData = vastAdData
@@ -75,14 +91,12 @@ class VMAPParser: NSObject {
         }
 
         vm.adBreaks = flattenedAdBreaks
-        
+
         return vm
     }
-
 }
 
 extension VMAPParser: XMLParserDelegate {
-
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         if !validVMAPDocument && !parsedFirstElement {
             parsedFirstElement = true
@@ -121,7 +135,6 @@ extension VMAPParser: XMLParserDelegate {
 
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         currentContent = currentContent.trimmingCharacters(in: .whitespacesAndNewlines)
-
         if validVMAPDocument && fatalError == nil {
             switch elementName {
             case VMAPElements.vmap:
@@ -154,12 +167,10 @@ extension VMAPParser: XMLParserDelegate {
                 break
             }
         }
-
         currentContent = ""
     }
 
     func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
         fatalError = parseError
     }
-
 }

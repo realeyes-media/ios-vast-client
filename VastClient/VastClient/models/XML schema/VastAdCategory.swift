@@ -12,7 +12,7 @@ enum VastAdCategoryAttribute: String {
 }
 
 // VAST/Ad/InLine/Category
-public struct VastAdCategory {
+public struct VastAdCategory: Codable {
     public let authority: URL?
     
     public var category: String?

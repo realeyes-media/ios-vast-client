@@ -27,7 +27,7 @@ public enum VastViewableImpressionType: String {
 // VAST/Ad/Wrapper/ViewableImpression
 // VAST/Ad/InLine/AdVerifications/Verification/ViewableImpression
 // VAST/Ad/Wrapper/AdVerifications/Verification/ViewableImpression
-public struct VastViewableImpression {
+public struct VastViewableImpression: Codable {
     public let id: String
     
     public var url: URL? = nil //for verification only

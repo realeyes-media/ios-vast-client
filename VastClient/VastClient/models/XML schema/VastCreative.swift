@@ -30,7 +30,7 @@ fileprivate enum VastCreativeAttribute: String, CaseIterable {
     }
 }
 
-public struct VastCreative {
+public struct VastCreative: Codable {
     public let id: String?
     public let adId: String?
     public let sequence: Int?

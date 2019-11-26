@@ -12,7 +12,7 @@ enum VastUniversalAdIdAttribute: String {
     case idValue
 }
 
-public struct VastUniversalAdId {
+public struct VastUniversalAdId: Codable {
     public let idRegistry: String
     public let idValue: String
     

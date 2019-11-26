@@ -17,7 +17,7 @@ struct ExtensionElements {
     static let creativeparameter = "CreativeParameter" // TODO: this needs to be defined outside the library
 }
 
-public struct VastExtension {
+public struct VastExtension: Codable {
     public let type: String
     public var creativeParameters = [VastCreativeParameter]()
 }

@@ -12,7 +12,7 @@ struct IconClicksElements {
     static let iconClickTracking = "IconClickTracking"
 }
 
-public struct IconClicks {
+public struct IconClicks: Codable {
     public var iconClickThrough: URL?
     public var iconClickTracking: [VastIconClickTracking] = []
 }

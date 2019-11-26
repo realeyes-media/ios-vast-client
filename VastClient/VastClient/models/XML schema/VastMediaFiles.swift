@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct VastMediaFiles {
+public struct VastMediaFiles: Codable {
     public var mediaFiles: [VastMediaFile] = []
     public var interactiveCreativeFiles: [VastInteractiveCreativeFile] = []
 }

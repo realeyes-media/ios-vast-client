@@ -11,7 +11,7 @@ enum VastAdParametersAttribute: String {
     case xmlEncoded
 }
 
-public struct VastAdParameters {
+public struct VastAdParameters: Codable {
     public let xmlEncoded: String?
     
     public var content: String?

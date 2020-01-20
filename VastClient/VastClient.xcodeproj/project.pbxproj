@@ -23,7 +23,6 @@
 		0F7B97D92077E40A0096438D /* Sequence+every.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97D82077E40A0096438D /* Sequence+every.swift */; };
 		0F7B97DD20782FF90096438D /* VastTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97DC20782FF90096438D /* VastTracker.swift */; };
 		0FC3AE4B227652C900255CA2 /* Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC3AE4A227652C900255CA2 /* Tracking.swift */; };
-		0FC3AE4C227652C900255CA2 /* Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC3AE4A227652C900255CA2 /* Tracking.swift */; };
 		0FC3AE4D227652C900255CA2 /* Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC3AE4A227652C900255CA2 /* Tracking.swift */; };
 		0FCD6F3021FF58B9008F42AA /* VastClient_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FCD6F2E21FF58B9008F42AA /* VastClient_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FCD6F3421FF598E008F42AA /* VastTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B97DC20782FF90096438D /* VastTracker.swift */; };
@@ -59,6 +58,7 @@
 		0FCD6F5621FF59AE008F42AA /* VMAPErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF081211B6B2E000AD5BB /* VMAPErrorCodes.swift */; };
 		0FEDAABF20AA3A05006850C8 /* TrackingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAABE20AA3A05006850C8 /* TrackingStatus.swift */; };
 		0FEDAAC120AA3A62006850C8 /* TrackingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEDAAC020AA3A62006850C8 /* TrackingError.swift */; };
+		1622A48123D2329300A4B503 /* WrapperTag-test3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE51219C5C9E0007A079 /* WrapperTag-test3.swift */; };
 		433D192522D7AE810012E88A /* VastAdVerificationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433D192422D7AE810012E88A /* VastAdVerificationParameters.swift */; };
 		433D192622D7AE810012E88A /* VastAdVerificationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433D192422D7AE810012E88A /* VastAdVerificationParameters.swift */; };
 		43D39ED523207445001E7B9A /* VastNonLinearAdsCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D39ED423207445001E7B9A /* VastNonLinearAdsCreative.swift */; };
@@ -143,7 +143,6 @@
 		A945EE6E219C5C9F0007A079 /* InlineLinearTag-test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE4D219C5C9E0007A079 /* InlineLinearTag-test.swift */; };
 		A945EE6F219C5C9F0007A079 /* EventTracking-test3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE4F219C5C9E0007A079 /* EventTracking-test3.swift */; };
 		A945EE70219C5C9F0007A079 /* InlineLinearTag-test3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE50219C5C9E0007A079 /* InlineLinearTag-test3.swift */; };
-		A945EE71219C5C9F0007A079 /* WrapperTag-test3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE51219C5C9E0007A079 /* WrapperTag-test3.swift */; };
 		A945EE72219C5C9F0007A079 /* Wrapper_Tag-test3.xml in Resources */ = {isa = PBXBuildFile; fileRef = A945EE52219C5C9E0007A079 /* Wrapper_Tag-test3.xml */; };
 		A945EE73219C5C9F0007A079 /* Event_Tracking-test3.xml in Resources */ = {isa = PBXBuildFile; fileRef = A945EE53219C5C9E0007A079 /* Event_Tracking-test3.xml */; };
 		A945EE74219C5C9F0007A079 /* VideoClicksAndClickTrackingInline-test3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE54219C5C9E0007A079 /* VideoClicksAndClickTrackingInline-test3.swift */; };
@@ -194,8 +193,6 @@
 		C7D2FE0F220A483B0077B7DE /* VMAPTrackingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE0B219C5C100007A079 /* VMAPTrackingEvent.swift */; };
 		C7D2FE10220A483B0077B7DE /* VMAPAdBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE0C219C5C100007A079 /* VMAPAdBreak.swift */; };
 		C7D2FE11220A484D0077B7DE /* String+value.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945EE32219C5C560007A079 /* String+value.swift */; };
-		D8ABCE18233ABBBA00AB6C2A /* VMAPArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8ABCE17233ABBBA00AB6C2A /* VMAPArchiver.swift */; };
-		D8ABCE19233ABBC100AB6C2A /* VMAPArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8ABCE17233ABBBA00AB6C2A /* VMAPArchiver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -327,7 +324,6 @@
 		A9A3FFB521BA5B4C008DB5D6 /* TestFullVast4.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TestFullVast4.xml; sourceTree = "<group>"; };
 		A9A3FFB721BA5CBE008DB5D6 /* FullVast4-test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FullVast4-test.swift"; sourceTree = "<group>"; };
 		A9A84FEB21A3053200949C4B /* VastParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastParser.swift; sourceTree = "<group>"; };
-		D8ABCE17233ABBBA00AB6C2A /* VMAPArchiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMAPArchiver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -411,7 +407,6 @@
 			children = (
 				0F7B97D02077DB4C0096438D /* VastXMLParser.swift */,
 				0F7AF07B211B60A6000AD5BB /* VMAPParser.swift */,
-				D8ABCE17233ABBBA00AB6C2A /* VMAPArchiver.swift */,
 				A9A84FEB21A3053200949C4B /* VastParser.swift */,
 			);
 			path = parsers;
@@ -798,7 +793,6 @@
 				A9A84FEC21A3053200949C4B /* VastParser.swift in Sources */,
 				A945EE13219C5C100007A079 /* VastCreative.swift in Sources */,
 				0F7B97DD20782FF90096438D /* VastTracker.swift in Sources */,
-				D8ABCE18233ABBBA00AB6C2A /* VMAPArchiver.swift in Sources */,
 				0F71436620BDCD930029BBB6 /* VastErrorCodes.swift in Sources */,
 				A945EE28219C5C100007A079 /* VastImpression.swift in Sources */,
 				A945EE33219C5C560007A079 /* String+value.swift in Sources */,
@@ -854,6 +848,7 @@
 				A927D2CB22043CB500272F70 /* VastTrackerTest+extensions.swift in Sources */,
 				A945EE35219C5C990007A079 /* VastXMLParserTests.swift in Sources */,
 				A91F508221A437EB0062198F /* VastXMLParserPubadsWrapperTests.swift in Sources */,
+				1622A48123D2329300A4B503 /* WrapperTag-test3.swift in Sources */,
 				A981D9FD21BEB01800018FD8 /* InlineLinearIcons-test.swift in Sources */,
 				A9A3FFB821BA5CBE008DB5D6 /* FullVast4-test.swift in Sources */,
 				A945EE5A219C5C9F0007A079 /* AdVerification-test.swift in Sources */,
@@ -864,11 +859,9 @@
 				A945EE6F219C5C9F0007A079 /* EventTracking-test3.swift in Sources */,
 				A945EE5C219C5C9F0007A079 /* ViewableImpression.swift in Sources */,
 				A945EE74219C5C9F0007A079 /* VideoClicksAndClickTrackingInline-test3.swift in Sources */,
-				A945EE71219C5C9F0007A079 /* WrapperTag-test3.swift in Sources */,
 				A945EE64219C5C9F0007A079 /* ReadyToServerMediaFilesCheck-test.swift in Sources */,
 				A927D2D72204753600272F70 /* VastTrackerCumulativeStartTests.swift in Sources */,
 				A927D2D0220474C900272F70 /* VastTrackerNoncumulativeTests.swift in Sources */,
-				0FC3AE4C227652C900255CA2 /* Tracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -941,7 +934,6 @@
 				C7D2FDF3220A47C60077B7DE /* VastCreative.swift in Sources */,
 				C7D2FE00220A47C60077B7DE /* VastCreativeExtension.swift in Sources */,
 				0FCD6F5121FF59AE008F42AA /* TrackingStatus.swift in Sources */,
-				D8ABCE19233ABBC100AB6C2A /* VMAPArchiver.swift in Sources */,
 				C7D2FE10220A483B0077B7DE /* VMAPAdBreak.swift in Sources */,
 				0FCD6F3E21FF599A008F42AA /* (null) in Sources */,
 				0FCD6F4821FF599F008F42AA /* (null) in Sources */,

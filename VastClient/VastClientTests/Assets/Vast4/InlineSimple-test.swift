@@ -44,7 +44,7 @@ extension VastModel {
         let linear = VastLinearCreative(skipOffset: nil, duration: 16, adParameters: nil, videoClicks: videoClicks, trackingEvents: trackingEvents, files: VastMediaFiles(mediaFiles: mediaFiles, interactiveCreativeFiles: interactiveMediaFiles), icons: icons)
         let universalAdId = VastUniversalAdId(idRegistry: "Ad-ID", idValue: "8465", uniqueCreativeId: "8465")
         
-        let creative = VastCreative(id: "5480", adId: "2447226", sequence: 1, apiFramework: nil, universalAdId: universalAdId, creativeExtensions: [], linear: linear, companionAds: nil)
+        let creative = VastCreative(id: "5480", adId: "2447226", sequence: 1, apiFramework: nil, universalAdId: universalAdId, creativeExtensions: [], linear: linear, nonLinearAds: nil, companionAds: nil)
         
         let extensions: [VastExtension] = []
         

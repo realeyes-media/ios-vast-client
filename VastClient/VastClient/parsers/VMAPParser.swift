@@ -31,8 +31,6 @@ class VMAPParser: NSObject {
 
     var currentVastModel: VastModel?
 
-    var vmapArchiver = VMAPArchiver()
-
     var currentContent = ""
 
     init(options: VastClientOptions) {
@@ -43,11 +41,10 @@ class VMAPParser: NSObject {
 
     func parse(url: URL) throws -> VMAPModel {
         do {
-            if options.shouldCacheVMAPModel && vmapArchiver.doesHaveSavedVMAP(for: url) {
-                return try vmapArchiver.loadSavedVMAP(for: url)
+            if let cachedVMAPModel = options.cachedVMAPModel {
+                return cachedVMAPModel
             } else {
                 let newVMAPModel = try createNewVMAPModel(url: url)
-                vmapArchiver.save(vmapModel: newVMAPModel, for: url)
                 return newVMAPModel
             }
         } catch {

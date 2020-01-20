@@ -24,7 +24,7 @@ extension VastModel {
         
         let companion1 = VastCompanionCreative(width: 100, height: 150, id: "1232", assetWidth: 250, assetHeight: 200, expandedWidth: 350, expandedHeight: 250, apiFramework: "VPAID", adSlotId: "3214", pxRatio: 1400, staticResource: [VastStaticResource(creativeType: "image/png", url: URL(string: "https://www.iab.com/wp-content/uploads/2014/09/iab-tech-lab-6-644x290.png"))], iFrameResource: [], htmlResource: [], altText: nil, companionClickThrough: URL(string: "https://iabtechlab.com"), companionClickTracking: [], trackingEvents: [], adParameters: nil)
         let companionAds = VastCompanionAds(required: .none, companions: [companion1])
-        let creative = VastCreative(id: "5480", adId: "2447226", sequence: 1, apiFramework: nil, universalAdId: universalAdId, creativeExtensions: [], linear: linear, companionAds: companionAds)
+        let creative = VastCreative(id: "5480", adId: "2447226", sequence: 1, apiFramework: nil, universalAdId: universalAdId, creativeExtensions: [], linear: linear, nonLinearAds: nil,  companionAds: companionAds)
         
         let extensions: [VastExtension] = []
         

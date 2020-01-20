@@ -102,6 +102,10 @@ class VastXMLParserTests: XCTestCase {
     
     func test_fullVast4File() {
         let model = self.loadVastFile(named: "TestFullVast4")
+        
+        // @TODO: tracking events are not being parsed for this VAST
+        XCTAssertEqual(model.ads.last?.creatives.last?.linear?.trackingEvents, VastModel.fullVast4.ads.last?.creatives.last?.linear?.trackingEvents)
+
         XCTAssertEqual(model, VastModel.fullVast4)
     }
     

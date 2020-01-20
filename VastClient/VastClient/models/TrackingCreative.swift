@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum TrackingCreativeError: Error {
+    case noDurationInVastLinearCreative
+}
+
 struct TrackingCreative {
     var creative: VastLinearCreative
     let vastAd: VastAd
@@ -23,9 +27,9 @@ struct TrackingCreative {
 }
 
 extension TrackingCreative {
-    init?(creative: VastLinearCreative, vastAd: VastAd) {
+    init(creative: VastLinearCreative, vastAd: VastAd) throws {
         guard let duration = creative.duration else {
-            return nil
+            throw TrackingCreativeError.noDurationInVastLinearCreative
         }
         
         self.creative = creative

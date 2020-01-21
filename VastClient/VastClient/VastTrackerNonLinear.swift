@@ -21,9 +21,6 @@ public class VastTrackerNonLinear {
     public let totalAds: Int
     public let startTime: Double
     
-    @available(*, message: "do not use VastTracker for storing this model, it is not being used")
-    public var vmapModel: VMAPModel?
-    
     private var trackingStatus: TrackingStatus = .unknown
     private var currentTime = 0.0
     private var comparisonTime: Double {
@@ -52,16 +49,6 @@ public class VastTrackerNonLinear {
         self.delegate = delegate
         self.totalAds = self.vastAds.count
         self.trackProgressCumulatively = trackProgressCumulatively
-    }
-    
-    // TODO: this should be removed in the future. Please, store the VMAPModel elsewhere and initialize this class with only one VastModel
-    @available(*, message: "Use init(id:,vastModel:) instead")
-    public convenience init(id: String, vmapModel: VMAPModel, breakId: String, startTime: Double, supportAdBuffets: Bool = false, delegate: VastTrackerNonLinearDelegate? = nil) throws {
-        guard let adBreak = vmapModel.adBreaks.first(where: { $0.breakId == breakId }), let vastModel = adBreak.adSource?.vastAdData else {
-            throw TrackingError.MissingAdBreak
-        }
-        self.init(id: id, vastModel: vastModel, startTime: startTime, supportAdBuffets: supportAdBuffets, delegate: delegate)
-        self.vmapModel = vmapModel
     }
     
     private static func getTrackerModel(from vastModel: VastModel) -> TrackerModel {

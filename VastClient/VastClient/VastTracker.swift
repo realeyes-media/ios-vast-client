@@ -9,13 +9,9 @@
 import Foundation
 
 public protocol VastTrackerDelegate: AnyObject {
-//    func adBreakStart(vastTracker: VastTracker)
-//    func adStart(vastTracker: VastTracker, ad: VastAd)
     func adFirstQuartile(vastTracker: VastTracker, ad: VastAd)
     func adMidpoint(vastTracker: VastTracker, ad: VastAd)
     func adThirdQuartile(vastTracker: VastTracker, ad: VastAd)
-//    func adComplete(vastTracker: VastTracker, ad: VastAd)
-//    func adBreakComplete(vastTracker: VastTracker)
 }
 
 enum TrackerModelType {
@@ -32,8 +28,8 @@ public struct TrackerModel {
 public class VastTracker {
     public weak var delegate: VastTrackerDelegate?
     
-    public let id: String
     public let vastModel: VastModel
+    public let adBreak: VMAPAdBreak
     public let totalAds: Int
     public let startTime: Double
 
@@ -55,10 +51,15 @@ public class VastTracker {
     private var adBreakStarted = false
     private let trackProgressCumulatively: Bool    
     
-    public init(id: String, vastModel: VastModel, startTime: Double = 0.0, supportAdBuffets: Bool = false, delegate: VastTrackerDelegate? = nil, trackProgressCumulatively: Bool = true) {
-        self.id = id
+    public init(vastModel: VastModel,
+                adBreak: VMAPAdBreak,
+                startTime: Double = 0.0,
+                supportAdBuffets: Bool = false,
+                delegate: VastTrackerDelegate? = nil,
+                trackProgressCumulatively: Bool = true) {
         self.startTime = startTime
         self.vastModel = vastModel
+        self.adBreak = adBreak
         self.trackerModel = VastTracker.getTrackerModel(from: vastModel)
         self.vastAds = VastTracker.getAds(from: trackerModel)
         self.trackingStatus = .tracking
@@ -174,11 +175,6 @@ public class VastTracker {
             return
         }
         
-//        if !adBreakStarted {
-//            adBreakStarted = true
-//            delegate?.adBreakStart(vastTracker: self)
-//        }
-        
 //        if !creative.trackedStart {
 //            creative.trackedStart = true
 //
@@ -208,11 +204,20 @@ public class VastTracker {
         currentTrackingCreative = creative
     }
     
-    public func trackAdBreakStart(withId: String) {}
-    public func trackAdBreakComplated(withId: String) {}
+    public func trackAdBreakStart() {
+        adBreak.trackEvent(withType: .breakStart)
+    }
     
-    private func trackingCreativeFrom(adId: String) throws -> TrackingCreative {
-        guard let vastAd = vastAds.first(where: { $0.id == id }),
+    public func trackAdBreakEnd() {
+        adBreak.trackEvent(withType: .breakEnd)
+    }
+    
+    public func trackAdBreakEvents(withURLs urls: [URL]) {
+        adBreak.trackEvents(withUrls: urls)
+    }
+    
+    private func getTrackingCreativeFrom(adId: String) throws -> TrackingCreative {
+        guard let vastAd = vastAds.first(where: { $0.id == adId }),
             let linearCreative = vastAd.creatives.first?.linear, vastAd.sequence ?? 1 > 0 else {
                 throw TrackingError.noAdFound(withId: adId)
         }
@@ -221,7 +226,7 @@ public class VastTracker {
     }
     
     public func trackAdStart(withId id: String) throws {
-        let creative = try trackingCreativeFrom(adId: id)
+        let creative = try getTrackingCreativeFrom(adId: id)
         currentTrackingCreative = creative
         
         let impressions = creative.vastAd.impressions.compactMap { $0.url }
@@ -230,7 +235,7 @@ public class VastTracker {
     }
     
     public func trackAdComplete(withId id: String) throws {
-        let creative = try trackingCreativeFrom(adId: id)
+        let creative = try getTrackingCreativeFrom(adId: id)
         trackEvent(.complete, creative: creative)
     }
     

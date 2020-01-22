@@ -129,17 +129,6 @@ extension VastTracker {
             trackingStatus = .tracking
         }
         
-        //        if currentTrackingCreative == nil {
-        //            guard let vastAd = vastAds.first,
-        //                let linearCreative = vastAd.creatives.first?.linear, vastAd.sequence ?? 1 > 0 else {
-        //                    trackingStatus = .complete
-        //                    delegate?.adBreakComplete(vastTracker: self)
-        //                    return
-        //            }
-        //
-        //            currentTrackingCreative = TrackingCreative(creative: linearCreative, vastAd: vastAd)
-        //        }
-        
         guard var creative = currentTrackingCreative else {
             trackingStatus = .errored
             throw TrackingError.internalError(msg: "Unable to find current creative to track")
@@ -177,16 +166,6 @@ extension VastTracker {
         guard currentTime >= startTime else {
             return
         }
-        
-        //        if !creative.trackedStart {
-        //            creative.trackedStart = true
-        //
-        //            let impressions = creative.vastAd.impressions.compactMap { $0.url }
-        //            track(urls: impressions, eventName: "IMPRESSIONS")
-        //            trackEvent(.creativeView, creative: creative)
-        //            trackEvent(.start, creative: creative)
-        //            delegate?.adStart(vastTracker: self, ad: creative.vastAd)
-        //        }
         
         if comparisonTime >= creative.firstQuartile, comparisonTime <= creative.midpoint, !creative.trackedFirstQuartile {
             creative.trackedFirstQuartile = true
@@ -250,8 +229,12 @@ extension VastTracker {
     }
 
     // MARK: - Other tracking
-    public func paused(_ val: Bool) throws {
-        try trackEventForCurrentCreative(val ? .pause : .resume)
+    public func played() throws {
+        try trackEventForCurrentCreative(.resume)
+    }
+    
+    public func paused() throws {
+        try trackEventForCurrentCreative(.pause)
     }
 
     public func fullscreen(_ val: Bool) throws {

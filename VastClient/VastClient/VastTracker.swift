@@ -164,11 +164,7 @@ extension VastTracker {
         print(startTime, "$$$ startTime")
         print("$$$ –––––––––––––––––––––––")
 
-        guard comparisonTime < creative.duration else {
-            return
-        }
-        
-        guard currentTime >= startTime else {
+        guard comparisonTime < creative.duration, currentTime >= startTime else {
             return
         }
         
@@ -231,6 +227,14 @@ extension VastTracker {
         }
         
         return try TrackingCreative(creative: linearCreative, vastAd: vastAd)
+    }
+    
+    public func trackSkippedAds(with ids: [String]) {
+        let creatives = ids.compactMap({ try? getTrackingCreativeFrom(adId: $0) })
+        let adDurations = creatives.reduce(0.0) { (result, creative) -> Double in
+            return result + creative.duration
+        }
+        completedAdAccumulatedDuration += adDurations
     }
 
     // MARK: - Other tracking

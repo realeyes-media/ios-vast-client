@@ -19,11 +19,9 @@ struct TrackingCreative {
     let midpoint: Double
     let thirdQuartile: Double
     let duration: Double
-    var trackedStart = false
     var trackedFirstQuartile = false
     var trackedMidpoint = false
     var trackedThirdQuartile = false
-    var trackedComplete = false
 }
 
 extension TrackingCreative {

@@ -160,7 +160,7 @@ extension VastTracker {
         }
         
         print(currentTime, "$$$ currenTime")
-        print(completedAdAccumulatedDuration, "$$$ currenTime")
+        print(completedAdAccumulatedDuration, "$$$ completedAdAccumulatedDuration")
         print(comparisonTime, "$$$ comparison time")
         print(creative.duration, "$$$ creative.duration")
         print(startTime, "$$$ startTime")
@@ -236,6 +236,8 @@ extension VastTracker {
         let adDurations = creatives.reduce(0.0) { (result, creative) -> Double in
             return result + creative.duration
         }
+        print(creatives.count, "$$$ creatives.count")
+        print(adDurations, "$$$ adDurations")
         completedAdAccumulatedDuration += adDurations
     }
 

@@ -33,7 +33,11 @@ public class VastTracker {
     public let totalAds: Int
     public let startTime: Double
 
-    private var trackingStatus: TrackingStatus = .unknown
+    private var trackingStatus: TrackingStatus = .unknown {
+        didSet {
+            print("$$$ VASTTRACKER: \(self.trackingStatus)")
+        }
+    }
     private var currentTime = 0.0
     private var comparisonTime: Double {
         if trackProgressCumulatively {
@@ -185,6 +189,7 @@ extension VastTracker {
     // MARK: - Track Ad Break
     public func trackAdBreakStart() {
         adBreak.trackEvent(withType: .breakStart)
+        trackingStatus = .tracking
     }
     
     public func trackAdBreakEnd() {

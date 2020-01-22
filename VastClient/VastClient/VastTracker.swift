@@ -159,6 +159,8 @@ extension VastTracker {
             track(urls: progressUrls, eventName: "PROGRESS")
         }
         
+        print(currentTime, "$$$ currenTime")
+        print(completedAdAccumulatedDuration, "$$$ currenTime")
         print(comparisonTime, "$$$ comparison time")
         print(creative.duration, "$$$ creative.duration")
         print(startTime, "$$$ startTime")

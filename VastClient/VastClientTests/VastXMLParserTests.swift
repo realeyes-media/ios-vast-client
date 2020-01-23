@@ -6,11 +6,10 @@
 //  Copyright © 2018 STER. All rights reserved.
 //
 
-import XCTest
 @testable import VastClient
+import XCTest
 
 class VastXMLParserTests: XCTestCase {
-    
     func test_online_file() {
         let url = URL(string: "https://raw.githubusercontent.com/InteractiveAdvertisingBureau/VAST_Samples/master/VAST%204.0%20Samples/Ad_Verification-test.xml")!
         let parser = VastXMLParser()
@@ -105,7 +104,7 @@ class VastXMLParserTests: XCTestCase {
         
         // @TODO: tracking events are not being parsed for this VAST
         XCTAssertEqual(model.ads.last?.creatives.last?.linear?.trackingEvents, VastModel.fullVast4.ads.last?.creatives.last?.linear?.trackingEvents)
-
+        
         XCTAssertEqual(model, VastModel.fullVast4)
     }
     

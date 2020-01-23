@@ -37,6 +37,11 @@
                BlueprintName = "VastClientTests"
                ReferencedContainer = "container:VastClient.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "VastXMLParserTests/test_fullVast4File()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

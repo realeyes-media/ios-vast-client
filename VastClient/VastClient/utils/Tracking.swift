@@ -7,8 +7,6 @@
 //
 
 import Foundation
-// TODO: why does this throw errors when missing?
-import VastClient
 
 func track(url: URL, eventName: String? = nil) {
     track(urls: [url], eventName: eventName)

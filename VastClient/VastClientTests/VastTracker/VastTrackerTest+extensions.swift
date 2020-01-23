@@ -27,7 +27,7 @@ extension VastAd {
         let files = VastMediaFiles(mediaFiles: [VastMediaFile(delivery: "", type: "", width: "", height: "", codec: "", id: nil, bitrate: nil, minBitrate: nil, maxBitrate: nil, scalable: nil, maintainAspectRatio: nil, apiFramework: nil, url: URL(string: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"))], interactiveCreativeFiles: [])
         
         let linearCreative = VastLinearCreative(skipOffset: skipOffset, duration: duration, adParameters: nil, videoClicks: [], trackingEvents: [], files: files, icons: [])
-        let creative = VastCreative(id: nil, adId: nil, sequence: nil, apiFramework: nil, universalAdId: nil, creativeExtensions: [], linear: linearCreative, companionAds: nil)
+        let creative = VastCreative(id: nil, adId: nil, sequence: nil, apiFramework: nil, universalAdId: nil, creativeExtensions: [], linear: linearCreative, nonLinearAds: nil, companionAds: nil)
         
         return VastAd(type: .inline, id: "", sequence: sequence, conditionalAd: nil, adSystem: nil, impressions: [], adVerifications: [], viewableImpression: nil, pricing: nil, errors: [], creatives: [creative], extensions: [], adTitle: nil, adCategories: [], description: nil, advertiser: nil, surveys: [], wrapper: nil)
     }

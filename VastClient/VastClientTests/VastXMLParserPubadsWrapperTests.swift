@@ -6,11 +6,10 @@
 //  Copyright © 2018 John Gainfort Jr. All rights reserved.
 //
 
-import XCTest
 @testable import VastClient
+import XCTest
 
 class VastXMLParserPubadsWrapperTests: XCTestCase {
-    
     var client: VastClient!
     private lazy var bundle = Bundle(for: type(of: self))
     
@@ -29,7 +28,6 @@ class VastXMLParserPubadsWrapperTests: XCTestCase {
         let model = loadVastFile(named: "Pubads_Inline_Model-test")
         let testModel = VastModel.pubadsInlineModel
         XCTAssertEqual(model, testModel)
-
     }
     
     func test_parse_response_success() {
@@ -37,7 +35,7 @@ class VastXMLParserPubadsWrapperTests: XCTestCase {
         let expect = expectation(description: "model")
         var model: VastModel?
         
-        client.parseVast(withContentsOf: url, testBundle: bundle) { (vastModel, error) in
+        client.parseVast(withContentsOf: url, testBundle: bundle) { vastModel, _ in
             model = vastModel
             expect.fulfill()
         }
@@ -53,7 +51,7 @@ class VastXMLParserPubadsWrapperTests: XCTestCase {
         let expect = expectation(description: "model")
         var model: VastModel?
         
-        client.parseVast(withContentsOf: url) { (vastModel, error) in
+        client.parseVast(withContentsOf: url) { vastModel, _ in
             model = vastModel
             expect.fulfill()
         }
@@ -71,5 +69,4 @@ class VastXMLParserPubadsWrapperTests: XCTestCase {
         let model = try! parser.parse(url: url)
         return model
     }
-    
 }

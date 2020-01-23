@@ -6,8 +6,8 @@
 //  Copyright © 2019 John Gainfort Jr. All rights reserved.
 //
 
-import XCTest
 @testable import VastClient
+import XCTest
 
 /** Midroll test case scenario
  
@@ -20,12 +20,12 @@ class VastTrackerCumulativeStartTests: XCTestCase {
     let ad1 = VastAd.make(skipOffset: nil, duration: 5, sequence: 1)
     
     lazy var model: VastModel = {
-        return VastModel(version: "4.0", ads: [ad1], errors: [])
+        VastModel(version: "4.0", ads: [ad1], errors: [])
     }()
     
     override func setUp() {
         deleagteSpy = VastTrackerDelegateSpy()
-        vastTracker = VastTracker(id: "id", vastModel: model, startTime: 15, supportAdBuffets: false, delegate: deleagteSpy, trackProgressCumulatively: true)
+        vastTracker = VastTracker(vastModel: model, startTime: 15, supportAdBuffets: false, delegate: deleagteSpy, trackProgressCumulatively: true)
     }
     
     func test_trackingDoesNotStartBeforeStartTime() {
@@ -33,13 +33,10 @@ class VastTrackerCumulativeStartTests: XCTestCase {
         times.forEach { try? vastTracker.updateProgress(time: $0) }
         
         XCTAssertEqual(vastTracker.totalAds, 1)
-        XCTAssertEqual(deleagteSpy.lastStartedAd, nil)
-        XCTAssertFalse(deleagteSpy.adBreakStarted)
+        
         XCTAssertFalse(deleagteSpy.firstQuartileDone)
         XCTAssertFalse(deleagteSpy.midpointDone)
         XCTAssertFalse(deleagteSpy.thirdQuartileDone)
-        XCTAssertFalse(deleagteSpy.adComplete)
-        XCTAssertFalse(deleagteSpy.adBreakComplete)
     }
     
     func test_trackingStartsWithFirstAdAtStartTime() {
@@ -47,28 +44,22 @@ class VastTrackerCumulativeStartTests: XCTestCase {
         times.forEach { try? vastTracker.updateProgress(time: $0) }
         
         XCTAssertEqual(vastTracker.totalAds, 1)
-        XCTAssertTrue(deleagteSpy.adBreakStarted)
-        XCTAssertEqual(deleagteSpy.lastStartedAd, self.ad1)
         
         XCTAssertFalse(deleagteSpy.firstQuartileDone)
         XCTAssertFalse(deleagteSpy.midpointDone)
         XCTAssertFalse(deleagteSpy.thirdQuartileDone)
-        XCTAssertFalse(deleagteSpy.adComplete)
-        XCTAssertFalse(deleagteSpy.adBreakComplete)
     }
     
     func test_trackingFirstAdHitsFirstQuartile() {
+        try? vastTracker.trackAdStart(withId: ad1.id)
         let times = Double.makeArray(from: 15, to: 17)
         times.forEach { try? vastTracker.updateProgress(time: $0) }
         
         XCTAssertEqual(vastTracker.totalAds, 1)
-        XCTAssertTrue(deleagteSpy.adBreakStarted)
-        XCTAssertEqual(deleagteSpy.lastStartedAd, self.ad1)
+        
         XCTAssertTrue(deleagteSpy.firstQuartileDone)
         
         XCTAssertFalse(deleagteSpy.midpointDone)
         XCTAssertFalse(deleagteSpy.thirdQuartileDone)
-        XCTAssertFalse(deleagteSpy.adComplete)
-        XCTAssertFalse(deleagteSpy.adBreakComplete)
     }
 }

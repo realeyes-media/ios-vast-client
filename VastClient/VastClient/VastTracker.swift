@@ -9,13 +9,9 @@
 import Foundation
 
 public protocol VastTrackerDelegate: AnyObject {
-    func adBreakStart(vastTracker: VastTracker)
-    func adStart(vastTracker: VastTracker, ad: VastAd)
     func adFirstQuartile(vastTracker: VastTracker, ad: VastAd)
     func adMidpoint(vastTracker: VastTracker, ad: VastAd)
     func adThirdQuartile(vastTracker: VastTracker, ad: VastAd)
-    func adComplete(vastTracker: VastTracker, ad: VastAd)
-    func adBreakComplete(vastTracker: VastTracker)
 }
 
 enum TrackerModelType {
@@ -32,13 +28,9 @@ public struct TrackerModel {
 public class VastTracker {
     public weak var delegate: VastTrackerDelegate?
     
-    public let id: String
     public let vastModel: VastModel
     public let totalAds: Int
     public let startTime: Double
-    
-    @available(*, message: "do not use VastTracker for storing this model, it is not being used")
-    public var vmapModel: VMAPModel?
 
     private var trackingStatus: TrackingStatus = .unknown
     private var currentTime = 0.0
@@ -58,8 +50,11 @@ public class VastTracker {
     private var adBreakStarted = false
     private let trackProgressCumulatively: Bool    
     
-    public init(id: String, vastModel: VastModel, startTime: Double = 0.0, supportAdBuffets: Bool = false, delegate: VastTrackerDelegate? = nil, trackProgressCumulatively: Bool = true) {
-        self.id = id
+    public init(vastModel: VastModel,
+                startTime: Double = 0.0,
+                supportAdBuffets: Bool = false,
+                delegate: VastTrackerDelegate? = nil,
+                trackProgressCumulatively: Bool = true) {
         self.startTime = startTime
         self.vastModel = vastModel
         self.trackerModel = VastTracker.getTrackerModel(from: vastModel)
@@ -68,16 +63,6 @@ public class VastTracker {
         self.delegate = delegate
         self.totalAds = self.vastAds.count
         self.trackProgressCumulatively = trackProgressCumulatively
-    }
-    
-    // TODO: this should be removed in the future. Please, store the VMAPModel elsewhere and initialize this class with only one VastModel
-    @available(*, message: "Use init(id:,vastModel:) instead")
-    public convenience init(id: String, vmapModel: VMAPModel, breakId: String, startTime: Double, supportAdBuffets: Bool = false, delegate: VastTrackerDelegate? = nil) throws {
-        guard let adBreak = vmapModel.adBreaks.first(where: { $0.breakId == breakId }), let vastModel = adBreak.adSource?.vastAdData else {
-            throw TrackingError.MissingAdBreak
-        }
-        self.init(id: id, vastModel: vastModel, startTime: startTime, supportAdBuffets: supportAdBuffets, delegate: delegate)
-        self.vmapModel = vmapModel
     }
 
     private static func getTrackerModel(from vastModel: VastModel) -> TrackerModel {
@@ -117,7 +102,10 @@ public class VastTracker {
                 .sorted(by: { $0.sequence ?? 0 < $1.sequence ?? 0 })
         }
     }
+}
 
+// MARK: - Tracking
+extension VastTracker {
     public func updateProgress(time: Double) throws {
         var message = "Cannot update tracking progress."
         guard trackingStatus == .tracking || trackingStatus == .paused else {
@@ -137,23 +125,12 @@ public class VastTracker {
             // TODO: vast resume
             trackingStatus = .tracking
         }
-
-        if currentTrackingCreative == nil {
-            guard let vastAd = vastAds.first,
-                let linearCreative = vastAd.creatives.first?.linear, vastAd.sequence ?? 1 > 0 else {
-                    trackingStatus = .complete
-                    delegate?.adBreakComplete(vastTracker: self)
-                    return
-            }
-
-            currentTrackingCreative = TrackingCreative(creative: linearCreative, vastAd: vastAd)
-        }
-
+        
         guard var creative = currentTrackingCreative else {
             trackingStatus = .errored
             throw TrackingError.internalError(msg: "Unable to find current creative to track")
         }
-
+        
         let progressUrls = creative.creative.trackingEvents
             .filter { $0.type == .progress && !$0.tracked && $0.url != nil }
             .filter { event -> Bool in
@@ -168,9 +145,9 @@ public class VastTracker {
                     return true
                 }
                 return false
-            }
-            .compactMap { $0.url }
-
+        }
+        .compactMap { $0.url }
+        
         if progressUrls.count > 0 {
             progressUrls.forEach { url in
                 guard let idx = creative.creative.trackingEvents.firstIndex(where: { $0.url == url }) else { return }
@@ -179,27 +156,8 @@ public class VastTracker {
             track(urls: progressUrls, eventName: "PROGRESS")
         }
 
-        guard comparisonTime < creative.duration else {
+        guard comparisonTime < creative.duration, currentTime >= startTime else {
             return
-        }
-        
-        guard currentTime >= startTime else {
-            return
-        }
-        
-        if !adBreakStarted {
-            adBreakStarted = true
-            delegate?.adBreakStart(vastTracker: self)
-        }
-        
-        if !creative.trackedStart {
-            creative.trackedStart = true
-            
-            let impressions = creative.vastAd.impressions.compactMap { $0.url }
-            track(urls: impressions, eventName: "IMPRESSIONS")
-            trackEvent(.creativeView, creative: creative)
-            trackEvent(.start, creative: creative)
-            delegate?.adStart(vastTracker: self, ad: creative.vastAd)
         }
         
         if comparisonTime >= creative.firstQuartile, comparisonTime <= creative.midpoint, !creative.trackedFirstQuartile {
@@ -221,74 +179,87 @@ public class VastTracker {
         currentTrackingCreative = creative
     }
     
-    public func finishedPlayback() throws {
-        guard var creative = currentTrackingCreative else {
-            trackingStatus = .errored
+    // MARK: - Track Ad Break
+    public func trackAdBreakStart(for adBreak: VMAPAdBreak) {
+        adBreak.trackEvent(withType: .breakStart)
+        trackingStatus = .tracking
+    }
+    
+    public func trackAdBreakEnd(for adBreak: VMAPAdBreak) {
+        adBreak.trackEvent(withType: .breakEnd)
+        trackingStatus = .complete
+    }
+    
+    public func trackAdBreakEvents(for adBreak: VMAPAdBreak, withURLs urls: [URL]) {
+        adBreak.trackEvents(withUrls: urls)
+    }
+    
+    // MARK: - Track Ad
+    public func trackAdStart(withId id: String) throws {
+        let creative = try getTrackingCreativeFrom(adId: id)
+        currentTrackingCreative = creative
+        
+        let impressions = creative.vastAd.impressions.compactMap { $0.url }
+        track(urls: impressions, eventName: "IMPRESSIONS")
+        trackEvent(.start, .creativeView, creative: creative)
+        trackingStatus = .tracking
+    }
+    
+    public func trackAdComplete() throws {
+        guard let creative = currentTrackingCreative else {
             throw TrackingError.internalError(msg: "Unable to find current creative to track")
         }
-        
-        if !creative.trackedComplete && creative.trackedStart {
-            creative.trackedComplete = true
-            try trackEvent(.complete)
-            delegate?.adComplete(vastTracker: self, ad: creative.vastAd)
-            completedAdAccumulatedDuration += creative.duration
+        completedAdAccumulatedDuration += creative.duration
+        currentTrackingCreative = nil
+        trackEvent(.complete, creative: creative)
+    }
+    
+    private func getTrackingCreativeFrom(adId: String) throws -> TrackingCreative {
+        guard let vastAd = vastAds.first(where: { $0.id == adId }),
+            let linearCreative = vastAd.creatives.first?.linear, vastAd.sequence ?? 1 > 0 else {
+                throw TrackingError.noAdFound(withId: adId)
         }
         
-        try tryToPlayNext()
+        return try TrackingCreative(creative: linearCreative, vastAd: vastAd)
+    }
+    
+    public func trackSkippedAds(with ids: [String]) {
+        let creatives = ids.compactMap({ try? getTrackingCreativeFrom(adId: $0) })
+        let adDurations = creatives.reduce(0.0) { (result, creative) -> Double in
+            return result + creative.duration
+        }
+        completedAdAccumulatedDuration += adDurations
     }
 
-    public func paused(_ val: Bool) throws {
-        try trackEvent(val ? .pause : .resume)
+    // MARK: - Other tracking
+    public func played() throws {
+        try trackEventForCurrentCreative(.resume)
+    }
+    
+    public func paused() throws {
+        try trackEventForCurrentCreative(.pause)
     }
 
     public func fullscreen(_ val: Bool) throws {
         let fullScreenTrackingEvent: TrackingEventType = val ? .fullscreen : .exitFullscreen
         let playerExpandTrackingEvent: TrackingEventType = val ? .playerExpand : .playerCollapse
-        try trackEvent(fullScreenTrackingEvent, playerExpandTrackingEvent)
+        try trackEventForCurrentCreative(fullScreenTrackingEvent, playerExpandTrackingEvent)
     }
 
     public func rewind() throws {
-        try trackEvent(.rewind)
+        try trackEventForCurrentCreative(.rewind)
     }
 
     public func muted(_ val: Bool) throws {
-        try trackEvent(val ? .mute : .unmute)
-    }
-    
-    private func tryToPlayNext() throws {
-        vastAds.removeFirst()
-        currentTrackingCreative = nil
-        if vastAds.count > 0 {
-            if trackProgressCumulatively {
-                try updateProgress(time: currentTime)
-            } else {
-                try updateProgress(time: 0.0)
-            }
-        } else {
-            trackingStatus = .complete
-            delegate?.adBreakComplete(vastTracker: self)
-        }
-    }
-
-    public func skip() throws {
-        if let creative = currentTrackingCreative {
-            guard let skipOffset = creative.vastAd.creatives.first?.linear?.skipOffset?.toSeconds, skipOffset < comparisonTime else {
-                throw TrackingError.unableToSkipAdAtThisTime
-            }
-            try trackEvent(.skip)
-            completedAdAccumulatedDuration += creative.duration
-            try tryToPlayNext()
-        } else {
-            throw TrackingError.internalError(msg: "Unable to find current creative to track")
-        }
+        try trackEventForCurrentCreative(val ? .mute : .unmute)
     }
 
     public func acceptedLinearInvitation() throws {
-        try trackEvent(.acceptInvitationLinear)
+        try trackEventForCurrentCreative(.acceptInvitationLinear)
     }
 
     public func closed() throws {
-        try trackEvent(.closeLinear)
+        try trackEventForCurrentCreative(.closeLinear)
     }
 
     public func clicked() throws -> URL? {
@@ -367,7 +338,7 @@ public class VastTracker {
         callTrackingUrlsFor(types: types, creative: creative)
     }
     
-    private func trackEvent(_ types: TrackingEventType...) throws {
+    private func trackEventForCurrentCreative(_ types: TrackingEventType...) throws {
         if let creative = currentTrackingCreative {
             callTrackingUrlsFor(types: types, creative: creative)
         } else {

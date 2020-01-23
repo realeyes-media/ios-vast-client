@@ -15,4 +15,5 @@ public enum TrackingError: Error {
     case unableToProvideCreativeClickThroughUrls
     case internalError(msg: String)
     case unableToSkipAdAtThisTime
+    case noAdFound(withId: String)
 }

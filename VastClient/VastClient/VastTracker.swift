@@ -29,7 +29,6 @@ public class VastTracker {
     public weak var delegate: VastTrackerDelegate?
     
     public let vastModel: VastModel
-    public let adBreak: VMAPAdBreak
     public let totalAds: Int
     public let startTime: Double
 
@@ -56,14 +55,12 @@ public class VastTracker {
     private let trackProgressCumulatively: Bool    
     
     public init(vastModel: VastModel,
-                adBreak: VMAPAdBreak,
                 startTime: Double = 0.0,
                 supportAdBuffets: Bool = false,
                 delegate: VastTrackerDelegate? = nil,
                 trackProgressCumulatively: Bool = true) {
         self.startTime = startTime
         self.vastModel = vastModel
-        self.adBreak = adBreak
         self.trackerModel = VastTracker.getTrackerModel(from: vastModel)
         self.vastAds = VastTracker.getAds(from: trackerModel)
         self.trackingStatus = .tracking
@@ -187,17 +184,17 @@ extension VastTracker {
     }
     
     // MARK: - Track Ad Break
-    public func trackAdBreakStart() {
+    public func trackAdBreakStart(for adBreak: VMAPAdBreak) {
         adBreak.trackEvent(withType: .breakStart)
         trackingStatus = .tracking
     }
     
-    public func trackAdBreakEnd() {
+    public func trackAdBreakEnd(for adBreak: VMAPAdBreak) {
         adBreak.trackEvent(withType: .breakEnd)
         trackingStatus = .complete
     }
     
-    public func trackAdBreakEvents(withURLs urls: [URL]) {
+    public func trackAdBreakEvents(for adBreak: VMAPAdBreak, withURLs urls: [URL]) {
         adBreak.trackEvents(withUrls: urls)
     }
     

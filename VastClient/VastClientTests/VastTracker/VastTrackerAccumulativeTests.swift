@@ -29,7 +29,7 @@ class VastTrackerAccumulativeTests: XCTestCase {
     
     override func setUp() {
         deleagteSpy = VastTrackerDelegateSpy()
-        vastTracker = VastTracker(id: "id", vastModel: model, startTime: 0, supportAdBuffets: false, delegate: deleagteSpy, trackProgressCumulatively: true)
+        vastTracker = VastTracker(vastModel: model, startTime: 0, supportAdBuffets: false, delegate: deleagteSpy, trackProgressCumulatively: true)
     }
     
     func test_trackingStartsWithFirstAd() {
@@ -100,7 +100,7 @@ class VastTrackerAccumulativeTests: XCTestCase {
     private static func finishTrackingFirstAd(tracker: VastTracker) {
         let times = Double.makeArray(to: 5)
         times.forEach { try? tracker.updateProgress(time: $0) }
-        try? tracker.finishedPlayback()
+        try? tracker.trackAdComplete()
     }
     
     func test_trackingSecondAdHitsFirstQuarter() {
@@ -150,7 +150,7 @@ class VastTrackerAccumulativeTests: XCTestCase {
         let times = Double.makeArray(from: 6, to: 5 + 10)
         times.forEach { try? vastTracker.updateProgress(time: $0) }
         
-        try? vastTracker.finishedPlayback()
+        try? vastTracker.trackAdComplete()
         
         XCTAssertEqual(deleagteSpy.lastStartedAd, nil)
         XCTAssertTrue(deleagteSpy.firstQuartileDone)

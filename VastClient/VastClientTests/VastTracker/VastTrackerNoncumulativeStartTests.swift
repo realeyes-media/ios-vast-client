@@ -25,7 +25,7 @@ class VastTrackerNoncumulativeStartTests: XCTestCase {
     
     override func setUp() {
         deleagteSpy = VastTrackerDelegateSpy()
-        vastTracker = VastTracker(id: "id", vastModel: model, startTime: 15, supportAdBuffets: false, delegate: deleagteSpy, trackProgressCumulatively: false)
+        vastTracker = VastTracker(vastModel: model, startTime: 15, supportAdBuffets: false, delegate: deleagteSpy, trackProgressCumulatively: false)
     }
     
     func test_trackingDoesNotStartBeforeStartTime() {

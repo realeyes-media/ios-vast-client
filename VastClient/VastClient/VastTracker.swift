@@ -209,6 +209,7 @@ extension VastTracker {
         let impressions = creative.vastAd.impressions.compactMap { $0.url }
         track(urls: impressions, eventName: "IMPRESSIONS")
         trackEvent(.start, .creativeView, creative: creative)
+        trackingStatus = .tracking
     }
     
     public func trackAdComplete() throws {

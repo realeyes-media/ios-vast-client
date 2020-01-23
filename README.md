@@ -24,23 +24,29 @@ If you would like to cache the VMAPModel to prevent duplicate calls, change the 
 
 ### VastTracker
 
-Handels tracking of ad break progress and errors. Notifies state updates via delegate calls.
+Handles tracking of ad quartiles. Performs tracking for ads/ad breaks. Notifies quartile state updates via delegate calls.
 
 #### Initialization
 
-Init `VastTracker` with `VastModel` structure but always make sure to use the actual `VastAd` and other information provided via delegate function calls - do not keep the `VastModel` as not all information from the `VastModel` might be valid for playback etc.
+Init `VastTracker` with `VastModel` structure but always make sure to use the actual `VastAd` and other information provided via delegate function calls - do not keep the `VastModel` as not all information from the `VastModel` might be valid for playback etc. 
 
-If you initialize `VastTracker` with delegate - `func adBreakStart(vastTracker: VastTracker, totalAds: Int)` will be called immediately. 
-
-#### Progress
+#### Progress and Ad Tracking
 
 `func updateProgress(time: Double) throws`
 After you initialize `VastTracker` you should call this function with `time = playhead` parameter to start tracking process. Playhead should match the playhead value used in intialization of `VastTracker`.  (If you simply want to play pre-roll ads before your content, initialize `VastTracker` with `playhead = 0` and call `updateProgress(time:)` with `time = 0`)
 
-`VastTracker` will select linear ad to play and will notify you via delegate call `func adStart(vastTracker: VastTracker, ad: VastAd)`
-
 You have to call this function periodically during ad playback.
-These delegate function will be called during normal ad playback and you do not have to react to them - they are only informative
+
+Your client must track when ads/ad breaks start and end. You can pass this information to `Vast Tracker` via the following
+- `func trackAdBreakStart(for adBreak: VMAPAdBreak)`
+- `func trackAdBreakEnd(for adBreak: VMAPAdBreak)`
+- `func trackAdStart(withId id: String) throws`
+- `func trackAdComplete() throws`
+
+`VastTracker` will track quartile updates while `func updateProgress(time: Double) throws` is being called.
+
+
+These delegate functions will be called during normal ad playback and you do not have to react to them - they are only informative
 
 ```swift
 func adFirstQuartile(vastTracker: VastTracker, ad: VastAd)
@@ -48,20 +54,7 @@ func adMidpoint(vastTracker: VastTracker, ad: VastAd)
 func adThirdQuartile(vastTracker: VastTracker, ad: VastAd)
 ```
 
-#### Ad End
-
-When ad playback ends your app is responsible for calling `finishedPlayback()`.
-Delegate function `func adComplete(vastTracker: VastTracker, ad: VastAd)` will be called.
-
-If there are more ads, next one will be played and your app will receive `func adStart(vastTracker: VastTracker, ad: VastAd)` again. There is no need to call update progress with `time = 0` anymore, this is handled by the `VastTracker`
-
-If there are no more ads to be played, ad break is finished and delegate `func adBreakComplete(vastTracker: VastTracker, vastModel: VastModel)` will be called.
-
-#### Skipping Ads
-
-Call `public func skip()` to skip ad playback for skippable linear ad at appropriate time. Next ad playback will start.
-
-### Tracking
+### Other Tracking
 
 During ad break, other actions might be invoked by the user or the system.
 `VastTracker` support tracking of these actions:

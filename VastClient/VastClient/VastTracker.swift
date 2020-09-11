@@ -206,7 +206,7 @@ extension VastTracker {
     }
     
     public func trackAdComplete() throws {
-        guard let creative = currentTrackingCreative else {
+        guard let creative = currentTrackingCreative, creative.trackedThirdQuartile else {
             throw TrackingError.internalError(msg: "Unable to find current creative to track")
         }
         completedAdAccumulatedDuration += creative.duration

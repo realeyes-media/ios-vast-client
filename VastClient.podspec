@@ -5,7 +5,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'VastClient'
-  s.version          = '1.1.1'
+  s.version          = '2.0.1'
   s.summary          = 'Swift Vast Client'
   s.description      = 'iOS Vast Client is a Swift Framework which implements the VAST 4.0 spec and is backwards compatible with VAST 3.0.'
   s.homepage         = 'https://github.com/realeyes-media/ios-vast-client'

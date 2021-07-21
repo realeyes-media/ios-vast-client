@@ -8,7 +8,7 @@ let package = Package(
     platforms: [
         .iOS(.v13),
         .tvOS(.v13),
-        .macOS(.v10_13)
+        .macOS(.v10_13),
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
@@ -28,6 +28,11 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "VastClientTests",
-            dependencies: ["VastClient"]),
-    ]
-)
+            dependencies: ["VastClient"],
+            resources: [
+                .process("Assets/Vast4-resources"),
+                .process("Assets/Vast3-resources"),
+                .process("Assets/vast3.xsd"),
+                .process("Assets/vast4.xsd"),
+            ]),
+    ])

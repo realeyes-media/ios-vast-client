@@ -11,7 +11,7 @@ import XCTest
 
 class VastXMLParserPubadsWrapperTests: XCTestCase {
     var client: VastClient!
-    private lazy var bundle = Bundle(for: type(of: self))
+    private lazy var bundle = Bundle.module
     
     override func setUp() {
         super.setUp()
@@ -62,8 +62,9 @@ class VastXMLParserPubadsWrapperTests: XCTestCase {
     }
     
     private func loadVastFile(named filename: String) -> VastModel {
+        
         let parser = VastXMLParser()
-        let bundle = Bundle(for: type(of: self))
+        let bundle = Bundle.module
         let filepath = bundle.path(forResource: filename, ofType: "xml")!
         let url = URL(fileURLWithPath: filepath)
         let model = try! parser.parse(url: url)

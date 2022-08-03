@@ -371,7 +371,7 @@ extension VastXMLParser: XMLParserDelegate {
                     currentVideoClick = nil
                 }
             case CreativeLinearElements.tracking, CompanionElements.trackingevents, CreativeNonLinearAdsElements.tracking:
-                currentTrackingEvent?.url = URL(string: currentContent)
+                currentTrackingEvent?.url = URL(string: currentContent.encoded)
                 if let trackingEvent = currentTrackingEvent {
                     if currentCompanionCreative != nil {
                         currentCompanionCreative?.trackingEvents.append(trackingEvent)
